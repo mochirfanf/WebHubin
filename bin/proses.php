@@ -90,21 +90,21 @@
 					}
 					else{
 						?>
-						<script>
-							alert("LOGIN GAGAL\nUsername atau Password Salah");
-							top.location="login.php";
-						</script>
-					<?php }
+    <script>
+        alert("LOGIN GAGAL\nUsername atau Password Salah");
+        top.location = "login.php";
+    </script>
+    <?php }
 
 				}
 
 				else{
 					?>
-					<script>
-						alert("LOGIN GAGAL\nUsername atau Password Salah");
-						top.location="login.php";
-					</script>
-		<?php }
+        <script>
+            alert("LOGIN GAGAL\nUsername atau Password Salah");
+            top.location = "login.php";
+        </script>
+        <?php }
 			break;
 
 			case "logout";
@@ -140,10 +140,10 @@
                 mysql_query("INSERT INTO hb_du(username,nama_du,email,bidang) VALUES('$username','$nama','$email','$bidang')");
             }else{
               ?>
-                <script>
-                    alert('Username Telah Digunakan');
-                </script>
-              <?php
+            <script>
+                alert('Username Telah Digunakan');
+            </script>
+            <?php
             }
       break;
 
@@ -151,12 +151,25 @@
         $nama = anti_injection($_POST['nama']);
         $email = anti_injection($_POST['email']);
         $alamat = anti_injection($_POST['alamat']);
-        $provinsi = anti_injection($_POST['provinsi']);
-        $kabupaten = anti_injection($_POST['kabupaten']);
-        $kecamatan = anti_injection($_POST['kecamatan']);
-        $kelurahan = anti_injection($_POST['kelurahan']);
+        $provinsi = anti_injection($_POST['prop']);
+        $kabupaten = anti_injection($_POST['kota']);
+        $kecamatan = anti_injection($_POST['kec']);
+        $kelurahan = anti_injection($_POST['kel']);
         $kodepos = anti_injection($_POST['kodepos']);
-
+        
+        
+        if(mysql_fetch_array($d = mysql_query("SELECT id_prov FROM provinsi WHERE nama='$provinsi'"))){
+            $provinsi = $d['id_prov'];
+        }
+        if(mysql_fetch_array($d = mysql_query("SELECT id_kab FROM kabupaten WHERE nama='$kabupaten'"))){
+            $kabupaten = $d['id_kab'];
+        }
+        if(mysql_fetch_array($d = mysql_query("SELECT id_kec FROM kecamatan WHERE nama='$kecamatan'"))){
+            $provinsi = $d['id_kec'];
+        }
+        if(mysql_fetch_array($d = mysql_query("SELECT id_kel FROM kelurahan WHERE nama='$kelurahan'"))){
+            $kelurahan = $d['id_kel'];
+        }
         $a = mysql_query("SELECT email_du FROM hb_du_umum");
         $f = 0;
 
@@ -167,19 +180,42 @@
             }
 
             if($f==0){
-                mysql_query("INSERT INTO hb_du_umum (nama_du, email_du, alamat, nama_provinsi, nama_kabupaten, nama_kecamatan, nama_kelurahan, no_kodepos, level, status) VALUES('$nama','$email','$alamat','$provinsi', '$kabupaten', '$kecamatan', '$kelurahan', '$kodepos', 'perusahaan', 'Belum Aktif')");
+                define('ROOT', 'http://localhost:8080/WebHubin/bin/landing/');
+                $kode   = md5(uniqid(rand()));
+                
+        $to     = $email;
+        $judul  = "Aktivasi Akun Anda";
+        $dari   = "From: hubin.com\n";
+        $dari   .= "Content-type: text/html \r\n";
+ 
+        $pesan  = "Klik link berikut untuk mengaktifkan akun: <br />";
+        $pesan  .= "<a href='".ROOT."konfirm.php?email=".$_POST['email']."&kode=".$kode."'>".ROOT."konfirm.php?email=".$_POST['email']."&kode=$kode</a>";
+ 
+        $kirim  = mail($to, $judul, $pesan, $dari)or die(mysql_error());
+ 
+        if($kirim)
+        {
+            echo "<p class=info>Berhasil Dikirim</p>";
+        }
+        else
+        {
+            echo "<p class=infoGagal>Gagal Dikirim</p>";
+        }
+                    
+                mysql_query("INSERT INTO hb_du_umum (nama_du, email_du, alamat, nama_provinsi, nama_kabupaten, nama_kecamatan, nama_kelurahan, no_kodepos, level, status,kode) VALUES('$nama','$email','$alamat','$provinsi', '$kabupaten', '$kecamatan', '$kelurahan', '$kodepos', 'perusahaan', 'Belum Aktif','$kode')");
                 ?>
                 <script>
-                  alert(" Register Berhasil! Cek Email untuk Verifikasi ");
-                  top.location='register.php';
-                </script><?php
+                    alert(" Register Berhasil! Cek Email untuk Verifikasi ");
+                    //top.location = 'register.php';
+                </script>
+                <?php
 
             }else{
               ?>
-                <script>
-                    alert('Email Telah Digunakan');
-                </script>
-              <?php
+                    <script>
+                        alert('Email Telah Digunakan');
+                    </script>
+                    <?php
             }
 
       break;

@@ -1,608 +1,72 @@
--- phpMyAdmin SQL Dump
--- version 4.1.12
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: 19 Sep 2016 pada 12.45
--- Versi Server: 5.6.16
--- PHP Version: 5.5.11
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Database: `db_hubin`
---
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `al_kabupaten`
---
-
-CREATE TABLE IF NOT EXISTS `al_kabupaten` (
-  `id_kabupaten` int(5) NOT NULL,
-  `nama_kabupaten` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `al_kecamatan`
---
-
-CREATE TABLE IF NOT EXISTS `al_kecamatan` (
-  `id_kecamatan` int(5) NOT NULL,
-  `nama_kecamatan` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `al_kelurahan`
---
-
-CREATE TABLE IF NOT EXISTS `al_kelurahan` (
-  `id_kelurahan` int(5) NOT NULL,
-  `nama_kelurahan` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `al_provinsi`
---
-
-CREATE TABLE IF NOT EXISTS `al_provinsi` (
-  `id_provinsi` int(5) NOT NULL,
-  `nama_provinsi` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `guru`
---
-
-CREATE TABLE IF NOT EXISTS `guru` (
-  `nip_guru` varchar(18) NOT NULL,
-  `jenis` varchar(10) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `jenis_kelamin` char(1) NOT NULL,
-  `tempat_lahir` varchar(50) NOT NULL,
-  `tanggal_lahir` date NOT NULL,
-  `alamat` text NOT NULL,
-  `agama` varchar(15) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `no_telepon` varchar(12) NOT NULL,
-  `gol_darah` char(2) NOT NULL,
-  `status` varchar(15) NOT NULL,
-  `foto` varchar(70) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `guru`
---
-
-INSERT INTO `guru` (`nip_guru`, `jenis`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `agama`, `email`, `no_telepon`, `gol_darah`, `status`, `foto`) VALUES
-('111', 'Produktif', 'Agus Nugroho', 'L', 'Bandung', '1990-07-06', 'Jl. Soreang No.45', 'Islam', 'agusnugroho@ymail.com', '089617788528', 'AB', 'Menikah', 'kaprog.jpg'),
-('222', 'Produktif', 'Pa KM', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('333', 'Produktif', 'Pa KP', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('444', 'Produktif', 'Pa TEI', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('555', 'Produktif', 'Pa TEK', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('666', 'Produktif', 'Pa TKJ', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('71', 'Normatif', 'Guru Normatif', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('777', 'Produktif', 'Pa TOI', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('888', 'Produktif', 'Pa TP4', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('91', 'Produktif', 'Guru RPL1', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('910', 'Produktif', 'Guru TEK 2', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('911', 'Produktif', 'Guru TKJ 1', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('912', 'Produktif', 'Guru TKJ 2', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('913', 'Produktif', 'Guru TOI 1', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('914', 'Produktif', 'Guru TOI 2', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('915', 'Produktif', 'Guru TP4 1', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('916', 'Produktif', 'Guru TP4 2', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('917', 'Produktif', 'Guru TP 1', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('918', 'Produktif', 'Guru TP 2', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('92', 'Produktif', 'Guru RPL 2', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('93', 'Produktif', 'Guru KM 1', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('94', 'Produktif', 'Guru KM 2', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('95', 'Produktif', 'Guru KP 1', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('96', 'Produktif', 'Guru KP 2', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('97', 'Produktif', 'Guru TEI 1', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('98', 'Produktif', 'Guru TEI 2', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('99', 'Produktif', 'Guru TEK 1', '', '', '0000-00-00', '', '', '', '', '', '', ''),
-('999', 'Produktif', 'Pa TPTU', '', '', '0000-00-00', '', '', '', '', '', '', '');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `hb_berita`
---
-
-CREATE TABLE IF NOT EXISTS `hb_berita` (
-  `id_berita` int(10) NOT NULL,
-  `kategori` varchar(20) NOT NULL,
-  `tgl_berita` date NOT NULL,
-  `judul_berita` varchar(50) NOT NULL,
-  `isi_berita` text NOT NULL,
-  `keterangan` text NOT NULL,
-  `hits_berita` int(20) NOT NULL,
-  `foto_berita` text NOT NULL,
-  `sumber` varchar(18) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `hb_berita`
---
-
-INSERT INTO `hb_berita` (`id_berita`, `kategori`, `tgl_berita`, `judul_berita`, `isi_berita`, `keterangan`, `hits_berita`, `foto_berita`, `sumber`) VALUES
-(4, 'umum', '2016-01-02', 'Sesuatu yg Baru di Hubin', '<p>Apa pun dhvsdvamn &nbsp;shbhvd hnsvbhd jsggdsb bsgjsfjgsfjg shvbabbs shvshabanvs dhvsbnsbndhhbs ndhvhdsnbd bbdhghsbxbhvddhvd hd djhd hd dh dhdh hdhd hdh dhdkjaywyeud xag xakwpvhcbxsnbd &nbsp;jsghgdhfs whwchwhvvc cwg cwg uqwggwdjdwvdwufwdhebvbsdvdw dgwvdhdwgdwgjwdv dwnvdhgwhjd hdwvdwj hjdw djdjw udwudwu.</p>\r\n', 'Tes', 1, 'S3.jpg', 'Dwi Sulistyawati'),
-(5, 'umum', '2016-01-05', 'Selamat Datang di Hubin!', '<p>Hubin (Hubungan Industri) &nbsp;SMKN 1 Cimahi adalah bal agaffsgtwtdghahdab hvdgtwusa dajdidaoab dbcb dhhdbgd dghds hbbcbc hshad hdcp csyqwttdu kaiddhpa hhbhsas hdsggshshhahadh</p>\r\n', 'Tes', 1, '3s.jpg', 'Dwi Sulistyawati');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `hb_du`
---
-
-CREATE TABLE IF NOT EXISTS `hb_du` (
-  `id_du` int(10) NOT NULL,
-  `tahun_ajaran` varchar(9) NOT NULL,
-  `nama_du` varchar(50) NOT NULL,
-  `alamat` text NOT NULL,
-  `kota` varchar(50) NOT NULL,
-  `status_du` varchar(10) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `nama_penanggung_jawab` varchar(50) NOT NULL,
-  `mulai_pelaksanaan` date NOT NULL,
-  `berakhir_pelaksanaan` date NOT NULL,
-  `kerjasama_magang` varchar(3) NOT NULL,
-  `kerjasama_tidak_langsung` varchar(3) NOT NULL,
-  `permintaan_siswa` varchar(20) NOT NULL,
-  `du_siswa` varchar(3) NOT NULL,
-  `keterangan_du` text NOT NULL,
-  `seleksi_du` varchar(5) NOT NULL,
-  `seleksi_tempat` varchar(50) NOT NULL,
-  `seleksi_tanggal` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `hb_du`
---
-
-INSERT INTO `hb_du` (`id_du`, `tahun_ajaran`, `nama_du`, `alamat`, `kota`, `status_du`, `email`, `nama_penanggung_jawab`, `mulai_pelaksanaan`, `berakhir_pelaksanaan`, `kerjasama_magang`, `kerjasama_tidak_langsung`, `permintaan_siswa`, `du_siswa`, `keterangan_du`, `seleksi_du`, `seleksi_tempat`, `seleksi_tanggal`) VALUES
-(1, '2013-2014', 'Percobaan DU Penerima', 'Percobaan DU Penerima', 'Percobaan DU Penerima', 'Menerima', 'asepp@ho.oaa', 'pa Percobaan DU Penerima', '2015-11-30', '2016-01-30', '', '', '', '', 'Percobaan DU Penerima', 'Tidak', '', '0000-00-00'),
-(2, '2013-2014', 'WAWA', 'er', 'ev', 'proses', 'rv@s.sds', '', '0000-00-00', '0000-00-00', '', '', '', '', 'tes', 'Tidak', '', '0000-00-00'),
-(3, '2013-2014', 'ww', 'w', 'ww', 'Menolak', 'w', '', '0000-00-00', '0000-00-00', '', '', '', '', '', 'Tidak', '', '0000-00-00'),
-(5, '2013-2014', 'Tambah Lagi', 'ayo tambah', 'apacik', 'Menolak', 'd@gmail.co', '', '0000-00-00', '0000-00-00', '', '', '', '', '', 'Tidak', '', '0000-00-00'),
-(6, '2013-2014', 'for rpl', 'alam rpl', 'erpeel', 'Menerima', 'erpl@g.c', 'Dea', '2015-11-09', '2015-11-21', '', '', '', '', '', 'Tidak', '', '0000-00-00'),
-(7, '2013-2014', 'toi aaxac', 'ala toi', 'hagjgh toi', 'Menerima', 'toi@g.dl', 'patoi', '2015-11-01', '2015-11-06', '', '', '', '', '', 'Tidak', '', '0000-00-00'),
-(8, '2013-2014', 'kp', 'kp', 'kp', 'Menerima', 'kp@kp.kp', 'kp', '2015-11-14', '2015-11-18', '', '', '', '', '', 'Tidak', '', '0000-00-00'),
-(9, '2013-2014', 'km', 'km', 'km', 'Menerima', 'km@km.km', 'kmm', '2015-11-04', '2015-12-05', '', '', '', '', '', 'Tidak', '', '0000-00-00'),
-(10, '2013-2014', 'tek', 'tek', 'tek', 'Menerima', 'telk@tek.tek', '12', '2015-11-12', '2015-11-07', '', '', '', '', '', 'Tidak', '', '0000-00-00'),
-(11, '2013-2014', 'tei', 'tei', 'tei', 'Menerima', 'telk@tek.tei', 'patei', '2015-10-12', '2015-12-18', '', '', '', '', '', 'Tidak', '', '0000-00-00'),
-(12, '2013-2014', 'tkj', 'tkj', 'tkj', 'Menerima', 'tkj@tkj.tj', 'tkj', '2015-11-14', '2015-11-06', '', '', '', '', '', 'Tidak', '', '0000-00-00'),
-(13, '2013-2014', 'tp4', 'tp4', 'tp4', 'Menerima', 'tp4@tp4.tp4', 'tp4', '2015-11-13', '2015-12-18', '', '', '', '', '', 'Tidak', '', '0000-00-00'),
-(14, '2013-2014', 'tp', 'tp', 'tp', 'Menerima', 'tp@tp.tp', 'patp', '2015-11-18', '2015-11-19', '', '', '', '', '', 'Tidak', '', '0000-00-00'),
-(15, '2013-2014', 'Nama DU', 'JL. Rancabali RT.06 RW.03', 'Bandung', 'Menerima', 'deaemalia28@gmail.com', 'driko', '2015-12-01', '2016-03-31', '', '', '', '', '', 'Tidak', '', '0000-00-00'),
-(16, '2013-2014', 'Nama DU bARU', 'Jl. DU nya', 'Bogor', 'Menerima', 'nama@du.g', 'Penanggung jawab', '2015-11-12', '2015-11-12', '', '', '', '', '', 'Tidak', '', '0000-00-00'),
-(18, '2013-2014', 'DU siswaqquuu', 'dusiswauu', 'Siswaaa', 'Menerima', 'dew@gmail.co', 'Percobaan', '0000-00-00', '0000-00-00', '', '', '132', 'Yes', '', 'Tidak', '', '0000-00-00'),
-(19, '2013-2014', 'Mencobaaaaaa', 'tukaaaa', 'pahamiaaaaaaaa', 'Menerima', 'mencari@celah.d', 'Pihapuseun', '2015-12-30', '2015-12-31', '', '', '', '', 'Bialaaaaa', 'Tidak', '', '0000-00-00'),
-(21, '2013-2014', 'rtgh', 'he', 'htet', 'Menerima', 'th@d.l', 'Raden Sarwijdoo', '2015-12-03', '2015-12-05', '', '', '131', 'Yes', 'te', 'Tidak', '', '0000-00-00'),
-(22, '2013-2014', 'DU km', 'Jalan KM ya', 'KM', 'Menerima', 'km@jaik.a', 'Pa Siaia', '2016-01-06', '2016-01-02', '', '', '133', 'Yes', 'Ini du km', 'No', '', '0000-00-00'),
-(23, '2013-2014', 'DU Satu', 'Jalan Bismillah', 'Bismillah', 'Menerima', 'Bismillah@fga.a', 'Raden Awer', '2015-12-01', '2015-12-30', '', '', '', '', 'Apaweh atuh bismillah', 'Tidak', '', '0000-00-00'),
-(24, '2013-2014', 'DuniaUsahaDD', 'Jalaaa', 've', 'Menerima', 'dada@d.d', 'Rendi', '2015-12-11', '2015-12-10', '', '', '', '', 'apaalah', 'Tidak', '', '0000-00-00'),
-(26, '2013-2014', 'Percobaan', 'Percobaan', 'Percobaan', 'Menerima', 'Percobaan@Percobaan.Percobaan', 'Bu Percobaan', '2015-12-09', '2015-12-17', '', '', '', '', 'Percobaan', 'Tidak', '', '0000-00-00'),
-(27, '2013-2014', 'Percobaan Tolak', 'Percobaan', 'Percobaan', 'Menolak', 'Percobaan@a.a', '', '0000-00-00', '0000-00-00', '', '', '', '', 'Percobaan', 'Tidak', '', '0000-00-00'),
-(28, '2013-2014', 'Percobaan DU Siswa', 'Percobaan', 'Percobaan', 'Menerima', 'Percobaan@PercobaanPercobaa.n', 'PJ Percobaan', '2015-12-17', '2015-12-26', '', '', '135', 'Yes', 'Percobaan', 'Tidak', '', '0000-00-00'),
-(29, '2013-2014', 'Mencoba Lagi', 'Percobaan', 'Percobaan', 'DU_Siswa', 'Percobaan@Percobaan.Percobaan', '', '0000-00-00', '0000-00-00', '', '', '136', 'Yes', 'Percobaan', 'Tidak', '', '0000-00-00'),
-(31, '2014-2015', 'Pihapuseun', 'Pihapuseun', 'Pihapuseun', 'Menolak', 'Pihapuseun@a.a', ' ', '0000-00-00', '0000-00-00', '', '', '', '', 'Pihapuseun', 'Tidak', '', '0000-00-00'),
-(32, '2014-2015', 'aa', 'aa', 'aa', 'Menolak', 'aaa@f.s', '', '0000-00-00', '0000-00-00', '', '', '', '', 'aa', 'Tidak', '', '0000-00-00'),
-(33, '2013-2014', 'Hapusssssssssss', 'Hapusssssssssss', 'Hapusssssssssss', 'Menerima', 'Hapusssssssssss@n.m', 'Hapusssssssssss', '2015-12-04', '2015-12-17', '', '', '', '', 'Hapusssssssssss', 'Tidak', '', '0000-00-00'),
-(34, '2013-2014', 'Buat Dihapus DU Jurusan', 'Buat Dihapus DU Jurusan', 'Buat Dihapus DU Jurusan', 'Menerima', 'urusana@s.a', 'Buat Dihapus DU Jurusan', '2015-12-04', '2015-12-26', '', '', '', '', 'Buat Dihapus DU Jurusan', 'Ya', 'Ruang Media', '2015-12-12'),
-(35, '2013-2014', 'Seleksi Y', 'Seleksi Y', 'v', 'Menerima', 'SeleksiY@gb.a', 'hmpp', '2015-12-09', '2015-12-02', '', '', '', '', 'Seleksi Y', 'Tidak', '', '0000-00-00'),
-(36, '2013-2014', 'Tes doang', 'Tes doang', 'Tes doang', 'Menerima', 'czcz@j', 'vddfd', '2016-01-07', '2016-01-29', '', '', '', '', 'ggm', 'Ya', '', '0000-00-00'),
-(37, '2013-2014', 'Apa ', 'TFGAFY', 'Cimahi', 'Menerima', 'dead@da.a', 'Agus', '2016-01-22', '2016-01-09', '', '', '', '', 'ftaftf', 'Ya', '', '0000-00-00'),
-(38, '2013-2014', 'DU KM Siswa', 'ggff', 'yyty', 'Proses', 'dea@fa.a', '', '0000-00-00', '0000-00-00', '', '', '134', 'Yes', 'tffttf', '', '', '0000-00-00'),
-(39, '2013-2014', 'Misal', 'Misal', 'MIsal', 'Proses', 'dea@fa.a', '', '0000-00-00', '0000-00-00', '', '', '', '', 'Misal', '', '', '0000-00-00'),
-(40, '2013-2014', 'fefe', 'fefe', 'ffe', 'Menerima', 'deaemalia28@gmail.com', 'Dea ', '2016-07-22', '2016-08-12', '', '', '', '', 'aas', 'Ya', '', '0000-00-00');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `hb_du_penerima`
---
-
-CREATE TABLE IF NOT EXISTS `hb_du_penerima` (
-  `id_du_penerima` int(10) NOT NULL,
-  `id_du` int(10) NOT NULL,
-  `id_jurusan` int(10) NOT NULL,
-  `jumlah_penerimaan` int(10) NOT NULL,
-  `sisa_kuota_penerimaan` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `hb_du_penerima`
---
-
-INSERT INTO `hb_du_penerima` (`id_du_penerima`, `id_du`, `id_jurusan`, `jumlah_penerimaan`, `sisa_kuota_penerimaan`) VALUES
-(1, 1, 1, 7, 7),
-(2, 1, 9, 8, 8),
-(3, 1, 3, 5, 5),
-(4, 6, 1, 5, 4),
-(5, 7, 7, 49, 49),
-(6, 14, 9, 9, 9),
-(7, 13, 1, 21, 21),
-(8, 13, 8, 12, 12),
-(9, 12, 7, 3, 3),
-(10, 12, 6, 55, 54),
-(11, 10, 2, 11, 11),
-(12, 10, 5, 6, 6),
-(13, 11, 8, 5, 5),
-(14, 11, 4, 15, 15),
-(15, 8, 5, 4, 4),
-(16, 8, 3, 12, 12),
-(17, 9, 2, 8, 8),
-(18, 15, 1, 20, 20),
-(19, 16, 4, 11, 11),
-(20, 16, 1, 21, 21),
-(21, 21, 1, 3, 3),
-(22, 23, 3, 1, 1),
-(23, 23, 6, 1, 0),
-(24, 23, 1, 2, 2),
-(25, 24, 4, 2, 2),
-(26, 24, 1, 3, 2),
-(27, 26, 3, 3, 3),
-(28, 26, 9, 5, 5),
-(29, 26, 1, 1, 1),
-(30, 28, 1, 2, 2),
-(31, 18, 3, 1, 1),
-(32, 19, 2, 4, 3),
-(33, 19, 5, 2, 2),
-(35, 33, 3, 2, 2),
-(43, 35, 6, 8, 8),
-(44, 22, 2, 1, 0),
-(45, 36, 2, 3, 3),
-(46, 36, 1, 5, 5),
-(47, 36, 5, 3, 3),
-(48, 37, 2, 5, 5),
-(49, 37, 1, 3, 3),
-(50, 37, 6, 3, 3),
-(51, 40, 2, 3, 3),
-(52, 40, 1, 4, 4);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `hb_du_permintaan_1`
---
-
-CREATE TABLE IF NOT EXISTS `hb_du_permintaan_1` (
-  `id_du_permintaan` int(10) NOT NULL,
-  `id_du` int(10) NOT NULL,
-  `permintaan_siswa` varchar(3) NOT NULL,
-  `du_siswa` varchar(18) NOT NULL,
-  `permintaan_du` varchar(3) NOT NULL,
-  `permintaan_hubin` varchar(3) NOT NULL,
-  `status_du` varchar(10) NOT NULL,
-  `seleksi_du` varchar(5) NOT NULL,
-  `seleksi_tempat` varchar(50) NOT NULL,
-  `seleksi_tanggal` date NOT NULL,
-  `nama_penanggung_jawab` varchar(50) NOT NULL,
-  `contact_person` varchar(20) NOT NULL,
-  `ket_contact_person` varchar(20) NOT NULL,
-  `status_permintaan` varchar(10) NOT NULL,
-  `mulai_pelaksanaan` date NOT NULL,
-  `berakhir_pelaksanaan` date NOT NULL,
-  `kerjasama_magang` varchar(3) NOT NULL,
-  `kerjasama_tidak_langsung` varchar(3) NOT NULL,
-  `keterangan_permintaan` text NOT NULL,
-  `fasilitas_1` varchar(3) NOT NULL,
-  `fasilitas_2` varchar(3) NOT NULL,
-  `fasilitas_3` varchar(3) NOT NULL,
-  `fasilitas_4` varchar(3) NOT NULL,
-  `fasilitas_lain` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `hb_du_permintaan_du`
---
-
-CREATE TABLE IF NOT EXISTS `hb_du_permintaan_du` (
-  `id_du_permintaan_du` int(10) NOT NULL,
-  `id_du` int(10) NOT NULL,
-  `id_jurusan` int(10) NOT NULL,
-  `jumlah_penerimaan` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `hb_du_umum`
---
-
-CREATE TABLE IF NOT EXISTS `hb_du_umum` (
-  `id_du` int(10) NOT NULL AUTO_INCREMENT,
-  `nama_du` varchar(50) NOT NULL,
-  `email_du` varchar(50) NOT NULL,
-  `alamat` text NOT NULL,
-  `nama_provinsi` int(5) NOT NULL,
-  `nama_kabupaten` int(5) NOT NULL,
-  `nama_kecamatan` int(5) NOT NULL,
-  `nama_kelurahan` int(5) NOT NULL,
-  `no_kodepos` int(5) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `level` varchar(11) NOT NULL,
-  `status` varchar(11) NOT NULL,
-  `keterangan` text NOT NULL,
-  `bidang_usaha` text NOT NULL,
-  `kode` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_du`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
-
---
--- Dumping data untuk tabel `hb_du_umum`
---
-
-INSERT INTO `hb_du_umum` (`id_du`, `nama_du`, `email_du`, `alamat`, `nama_provinsi`, `nama_kabupaten`, `nama_kecamatan`, `nama_kelurahan`, `no_kodepos`, `username`, `password`, `level`, `status`, `keterangan`, `bidang_usaha`, `kode`) VALUES
-(1, '1', 'sds@f.com', 'wa', 0, 234, 0, 0, 564, '', '', 'perusahaan', 'Belum Aktif', '', '', ''),
-(2, 'dsfs', 'dfs@dfd.com', '', 32, 3271, 327103, 2147483647, 67, '', '', 'perusahaan', 'Belum Aktif', '', '', ''),
-(3, 'as', 'd@gm.com', '', 11, 1105, 110508, 1105082020, 34, '', '', 'perusahaan', 'Belum Aktif', '', '', ''),
-(4, 'dfd', 'ewp@g.om', '', 51, 5108, 510803, 2147483647, 2, '', '', 'perusahaan', 'Belum Aktif', '', '', ''),
-(5, 'mochi', 'mochi@gmail.com', 'hjg nkjk ', 32, 3211, 321102, 2147483647, 35, '', '', 'perusahaan', 'Belum Aktif', '', '', ''),
-(7, 'vv', 'irfanmochamad26@gmail.com', 'fdsgjh ', 34, 3404, 340409, 2147483647, 3, '', '', 'perusahaan', 'Belum Aktif', '', '', 'bfe029b0c05abc13d2937f0cf864e5d4'),
-(8, 'cc', 'cc@f.com', 'sfs ', 19, 1905, 190502, 1905022004, 2, '', '', 'perusahaan', 'Belum Aktif', '', '', '8a4df07b05dc5537591c1a61c087bfbb');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `hb_guru_jurusan`
---
-
-CREATE TABLE IF NOT EXISTS `hb_guru_jurusan` (
-  `id_guru_jurusan` int(10) NOT NULL,
-  `nip_guru` varchar(18) NOT NULL,
-  `id_jurusan` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `hb_guru_jurusan`
---
-
-INSERT INTO `hb_guru_jurusan` (`id_guru_jurusan`, `nip_guru`, `id_jurusan`) VALUES
-(1, '111', 1),
-(2, '222', 2),
-(3, '333', 3),
-(4, '444', 4),
-(5, '555', 5),
-(6, '666', 6),
-(7, '777', 7),
-(8, '888', 8),
-(9, '999', 9),
-(10, '91', 1),
-(11, '92', 1),
-(12, '93', 2),
-(13, '94', 2),
-(14, '95', 3),
-(15, '96', 3),
-(16, '97', 4),
-(17, '98', 4),
-(18, '99', 5),
-(19, '910', 5),
-(20, '911', 6),
-(21, '912', 6),
-(22, '913', 7),
-(23, '914', 7),
-(24, '915', 8),
-(25, '916', 8),
-(26, '917', 9),
-(27, '918', 9);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `hb_login_operator`
---
-
-CREATE TABLE IF NOT EXISTS `hb_login_operator` (
-  `nip_nis` varchar(18) NOT NULL,
-  `password` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `hb_login_operator`
---
-
-INSERT INTO `hb_login_operator` (`nip_nis`, `password`) VALUES
-('111', '698d51a19d8a121ce581499d7b701668'),
-('131', '1afa34a7f984eeabdbb0a7d494132ee5'),
-('133', '9fc3d7152ba9336a670e36d0ed79bc43'),
-('222', 'bcbe3365e6ac95ea2c0343a2395834dd'),
-('333', '310dcbbf4cce62f762a2aaa148d556bd'),
-('444', '550a141f12de6341fba65b0ad0433500'),
-('555', '15de21c670ae7c3f6f3f1f37029303c9'),
-('666', 'fae0b27c451c728867a567e8c1bb4e53'),
-('777', 'f1c1592588411002af340cbaedd6fc33'),
-('888', '0a113ef6b61820daa5611c870ed8d5ee'),
-('999', 'b706835de79a2b4e80506f582af3676a');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `hb_monitoring`
---
-
-CREATE TABLE IF NOT EXISTS `hb_monitoring` (
-  `id_monitoring` int(10) NOT NULL,
-  `id_du` int(10) NOT NULL,
-  `nis` varchar(18) NOT NULL,
-  `nip_guru` varchar(18) NOT NULL,
-  `tgl_monitoring` date NOT NULL,
-  `tgl_masuk` date NOT NULL,
-  `kegiatan_siswa` text NOT NULL,
-  `nilai` varchar(15) NOT NULL,
-  `masalah_yg_ditemukan` text NOT NULL,
-  `saran` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `hb_pengelola_hubin`
---
-
-CREATE TABLE IF NOT EXISTS `hb_pengelola_hubin` (
-  `username` varchar(20) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `jabatan` varchar(20) NOT NULL,
-  `jenis_kelamin` char(1) NOT NULL,
-  `tempat_lahir` varchar(50) NOT NULL,
-  `tanggal_lahir` date NOT NULL,
-  `alamat` text NOT NULL,
-  `agama` varchar(15) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `no_telepon` varchar(12) NOT NULL,
-  `gol_darah` char(2) NOT NULL,
-  `status` varchar(15) NOT NULL,
-  `nip` varchar(18) NOT NULL,
-  `foto` varchar(70) NOT NULL,
-  `motto_hidup` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `hb_pengelola_hubin`
---
-
-INSERT INTO `hb_pengelola_hubin` (`username`, `nama`, `jabatan`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `agama`, `email`, `no_telepon`, `gol_darah`, `status`, `nip`, `foto`, `motto_hidup`) VALUES
-('deaa', '987', '987', '', '', '0000-00-00', '', '', '', '', '', '', '987', '', ''),
-('dwisulis', 'Dwi Sulistyawati', 'Ketua', 'P', 'Cimahi', '2015-11-09', 'Jalan jalan', 'Islam', 'dwi@gatau.com', '089617788528', 'A', 'Belum Menikah', '1234', '2.jpg', 'Semangat Ajalah'),
-('dwisulis2', 'Dwi Sulistyawati 2', 'Wakil Bu Dwi', 'P', 'Dimana ', '0000-00-00', '', '', '', '', '', '', '12345', '', ''),
-('tedea', 'Teh Dea', 'deaa', '', '', '0000-00-00', '', '', '', '', '', '', '123', '', ''),
-('teeg', '456', '456', '', '', '0000-00-00', '', '', '', '', '', '', '456', '', ''),
-('tehdea', '321', '321e', '', '', '0000-00-00', '', '', '', '', '', '', '321', '', '');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `hb_prakerin`
---
-
-CREATE TABLE IF NOT EXISTS `hb_prakerin` (
-  `id_prakerin` int(10) NOT NULL,
-  `nis` varchar(18) NOT NULL,
-  `id_du` int(10) NOT NULL,
-  `status_verifikasi` varchar(25) NOT NULL,
-  `status_prakerin` varchar(25) NOT NULL,
-  `nip_guru` varchar(18) NOT NULL,
-  `saran_pembimbing` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `hb_prakerin`
---
-
-INSERT INTO `hb_prakerin` (`id_prakerin`, `nis`, `id_du`, `status_verifikasi`, `status_prakerin`, `nip_guru`, `saran_pembimbing`) VALUES
-(11, '1311', 23, 'Terverifikasi', 'Menunggu Verifikasi Siswa', '111', '333'),
-(13, '1312', 12, 'Menunggu Verifikasi', '', '91', '91'),
-(14, '131', 24, 'Terverifikasi', 'Menunggu Verifikasi Siswa', '92', '91'),
-(15, '133', 22, 'Terverifikasi', 'Menunggu Verifikasi Siswa', '93', '333'),
-(16, '134', 19, 'Terverifikasi', 'Menunggu Verifikasi Siswa', '111', '333');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `hb_riwayat_siswa`
---
-
-CREATE TABLE IF NOT EXISTS `hb_riwayat_siswa` (
-  `id_riwayat` int(10) NOT NULL,
-  `nis` varchar(18) NOT NULL,
-  `riwayat` varchar(10) NOT NULL,
-  `nama_tempat` varchar(50) NOT NULL,
-  `tanggal_riwayat` date NOT NULL,
-  `alamat_tempat` text NOT NULL,
-  `status` varchar(15) NOT NULL,
-  `keterangan` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `hb_user_admin`
---
-
-CREATE TABLE IF NOT EXISTS `hb_user_admin` (
-  `username` varchar(20) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `level` varchar(11) NOT NULL,
-  `status` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `hb_user_admin`
---
-
-INSERT INTO `hb_user_admin` (`username`, `password`, `level`, `status`) VALUES
-('deaa', '68053af2923e00204c3ca7c6a3150cf7', 'admin', 'aktif'),
-('deaemalia', '12e0a145f08f27d8b3b0d08e467920b3', 'super_admin', 'aktif'),
-('dwisulis', 'ea220da363fd87704cbd653cbc59ed49', 'admin', 'aktif'),
-('dwisulis2', '4a718e220eeb9edd41ac4fec56ba8e73', 'admin', 'aktif'),
-('perusahaan', '21f57628aa8d2ba238f7a6db352195c8', 'perusahaan', 'aktif'),
-('tedea', 'ab72e8f0f6419701edf03f24737f3aec', 'admin', 'aktif'),
-('teeg', '372c331c7b8f8d7a3e7e01a4b6af7895', 'admin', 'aktif'),
-('tehdea', 'caf1a3dfb505ffed0d024130f58c5cfa', 'admin', 'aktif'),
-('a', '7fc56270e7a70fa81a5935b72eacbe29', 'perusahaan', 'aktif');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `jenis`
---
-
-CREATE TABLE IF NOT EXISTS `jenis` (
-  `id_jenis` int(11) NOT NULL,
-  `nama` tinytext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `jenis`
---
-
-INSERT INTO `jenis` (`id_jenis`, `nama`) VALUES
+﻿
+CREATE DATABASE IF NOT EXISTS db_daerah;
+USE db_daerah;
+
+DROP TABLE IF EXISTS jenis;
+CREATE TABLE IF NOT EXISTS jenis (
+  id_jenis int(11) NOT NULL,
+  nama tinytext NOT NULL
+);
+
+INSERT INTO jenis (id_jenis, nama) VALUES
 (1, 'kabupaten'),
 (2, 'kota'),
 (3, 'kelurahan'),
 (4, 'desa');
 
--- --------------------------------------------------------
+DROP TABLE IF EXISTS provinsi;
+CREATE TABLE IF NOT EXISTS provinsi (
+  id_prov char(2) NOT NULL,
+  nama tinytext NOT NULL,
+  PRIMARY KEY (id_prov)
+);
 
---
--- Struktur dari tabel `kabupaten`
---
+INSERT INTO provinsi (id_prov, nama) VALUES
+('11', 'Aceh'),
+('12', 'Sumatera Utara'),
+('13', 'Sumatera Barat'),
+('14', 'Riau'),
+('15', 'Jambi'),
+('16', 'Sumatera Selatan'),
+('17', 'Bengkulu'),
+('18', 'Lampung'),
+('19', 'Kepulauan Bangka Belitung'),
+('21', 'Kepulauan Riau'),
+('31', 'DKI Jakarta'),
+('32', 'Jawa Barat'),
+('33', 'Jawa Tengah'),
+('34', 'DI Yogyakarta'),
+('35', 'Jawa Timur'),
+('36', 'Banten'),
+('51', 'Bali'),
+('52', 'Nusa Tenggara Barat'),
+('53', 'Nusa Tenggara Timur'),
+('61', 'Kalimantan Barat'),
+('62', 'Kalimantan Tengah'),
+('63', 'Kalimantan Selatan'),
+('64', 'Kalimantan Timur'),
+('65', 'Kalimantan Utara'),
+('71', 'Sulawesi Utara'),
+('72', 'Sulawesi Tengah'),
+('73', 'Sulawesi Selatan'),
+('74', 'Sulawesi Tenggara'),
+('75', 'Gorontalo'),
+('76', 'Sulawesi Barat'),
+('81', 'Maluku'),
+('82', 'Maluku Utara'),
+('92', 'Papua'),
+('91', 'Papua Barat');
 
-CREATE TABLE IF NOT EXISTS `kabupaten` (
-  `id_kab` char(4) NOT NULL,
-  `id_prov` char(2) NOT NULL,
-  `nama` tinytext NOT NULL,
-  `id_jenis` int(11) NOT NULL,
-  PRIMARY KEY (`id_kab`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS kabupaten;
+CREATE TABLE IF NOT EXISTS kabupaten (
+  id_kab char(4) NOT NULL,
+  id_prov char(2) NOT NULL,
+  nama tinytext NOT NULL,
+  id_jenis int(11) NOT NULL,
+  PRIMARY KEY (id_kab)
+);
 
---
--- Dumping data untuk tabel `kabupaten`
---
-
-INSERT INTO `kabupaten` (`id_kab`, `id_prov`, `nama`, `id_jenis`) VALUES
+INSERT INTO kabupaten (id_kab, id_prov, nama, id_jenis) VALUES
 ('1101', '11', 'KAB. ACEH SELATAN', 1),
 ('1102', '11', 'KAB. ACEH TENGGARA', 1),
 ('1103', '11', 'KAB. ACEH TIMUR', 1),
@@ -1118,24 +582,15 @@ INSERT INTO `kabupaten` (`id_kab`, `id_prov`, `nama`, `id_jenis`) VALUES
 ('9212', '92', 'KAB. PEGUNUNGAN ARFAK', 1),
 ('9271', '92', 'KOTA SORONG', 2);
 
--- --------------------------------------------------------
+DROP TABLE IF EXISTS kecamatan;
+CREATE TABLE IF NOT EXISTS kecamatan (
+  id_kec char(6) NOT NULL,
+  id_kab char(4) NOT NULL,
+  nama tinytext NOT NULL,
+  PRIMARY KEY (id_kec)
+);
 
---
--- Struktur dari tabel `kecamatan`
---
-
-CREATE TABLE IF NOT EXISTS `kecamatan` (
-  `id_kec` char(6) NOT NULL,
-  `id_kab` char(4) NOT NULL,
-  `nama` tinytext NOT NULL,
-  PRIMARY KEY (`id_kec`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `kecamatan`
---
-
-INSERT INTO `kecamatan` (`id_kec`, `id_kab`, `nama`) VALUES
+INSERT INTO kecamatan (id_kec, id_kab, nama) VALUES
 ('110101', '1101', 'Bakongan'),
 ('110102', '1101', 'Kluet Utara'),
 ('110103', '1101', 'Kluet Selatan'),
@@ -2640,7 +2095,7 @@ INSERT INTO `kecamatan` (`id_kec`, `id_kab`, `nama`) VALUES
 ('170508', '1705', 'Seluma Barat'),
 ('170509', '1705', 'Seluma Timur'),
 ('170510', '1705', 'Seluma Utara');
-INSERT INTO `kecamatan` (`id_kec`, `id_kab`, `nama`) VALUES
+INSERT INTO kecamatan (id_kec, id_kab, nama) VALUES
 ('170511', '1705', 'Seluma Selatan'),
 ('170512', '1705', 'Talo Kecil'),
 ('170513', '1705', 'Ulu Talo'),
@@ -4242,7 +3697,7 @@ INSERT INTO `kecamatan` (`id_kec`, `id_kab`, `nama`) VALUES
 ('332913', '3329', 'Tanjung'),
 ('332914', '3329', 'Bulakamba'),
 ('332915', '3329', 'Larangan');
-INSERT INTO `kecamatan` (`id_kec`, `id_kab`, `nama`) VALUES
+INSERT INTO kecamatan (id_kec, id_kab, nama) VALUES
 ('332916', '3329', 'Ketanggungan'),
 ('332917', '3329', 'Banjarharjo'),
 ('337101', '3371', 'Magelang Selatan'),
@@ -5876,7 +5331,7 @@ INSERT INTO `kecamatan` (`id_kec`, `id_kab`, `nama`) VALUES
 ('620403', '6204', 'Karau Kuala'),
 ('620404', '6204', 'Dusun Utara'),
 ('620405', '6204', 'Gn. Bintang Awai');
-INSERT INTO `kecamatan` (`id_kec`, `id_kab`, `nama`) VALUES
+INSERT INTO kecamatan (id_kec, id_kab, nama) VALUES
 ('620406', '6204', 'Dusun Selatan'),
 ('620501', '6205', 'Montallat'),
 ('620502', '6205', 'Gunung Timang'),
@@ -7439,7 +6894,7 @@ INSERT INTO `kecamatan` (`id_kec`, `id_kab`, `nama`) VALUES
 ('820411', '8204', 'Kayoa Barat'),
 ('820412', '8204', 'Kayoa Selatan'),
 ('820413', '8204', 'Kayoa Utara');
-INSERT INTO `kecamatan` (`id_kec`, `id_kab`, `nama`) VALUES
+INSERT INTO kecamatan (id_kec, id_kab, nama) VALUES
 ('820414', '8204', 'Bacan Barat Utara'),
 ('820415', '8204', 'Kasiruta Barat'),
 ('820416', '8204', 'Kasiruta Timur'),
@@ -8235,25 +7690,16 @@ INSERT INTO `kecamatan` (`id_kec`, `id_kab`, `nama`) VALUES
 ('927109', '9271', 'Malaimsimsa'),
 ('927110', '9271', 'Maladum Mes');
 
--- --------------------------------------------------------
+DROP TABLE IF EXISTS kelurahan;
+CREATE TABLE IF NOT EXISTS kelurahan (
+  id_kel char(10) NOT NULL,
+  id_kec char(6) DEFAULT NULL,
+  nama tinytext,
+  id_jenis int(11) NOT NULL,
+  PRIMARY KEY (id_kel)
+);
 
---
--- Struktur dari tabel `kelurahan`
---
-
-CREATE TABLE IF NOT EXISTS `kelurahan` (
-  `id_kel` char(10) NOT NULL,
-  `id_kec` char(6) DEFAULT NULL,
-  `nama` tinytext,
-  `id_jenis` int(11) NOT NULL,
-  PRIMARY KEY (`id_kel`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `kelurahan`
---
-
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1101012001', '110101', 'Keude Bakongan', 4),
 ('1101012002', '110101', 'Ujung Mangki', 4),
 ('1101012003', '110101', 'Ujung Padang', 4),
@@ -9414,7 +8860,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1103242006', '110324', 'Sri Mulya', 4),
 ('1104012003', '110401', 'Delung Sekinel', 4),
 ('1104012005', '110401', 'Gelampang Gading', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1104012006', '110401', 'Gewat', 4),
 ('1104012008', '110401', 'Jamat', 4),
 ('1104012009', '110401', 'Kemerleng', 4),
@@ -10618,7 +10064,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1106232008', '110623', 'Cot Meulangeun', 4),
 ('1106232009', '110623', 'Cot Madi', 4),
 ('1106232010', '110623', 'Bung Sidom', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1106232011', '110623', 'Cot Karieng', 4),
 ('1106232012', '110623', 'Gampong Blang', 4),
 ('1106232013', '110623', 'Cot Malem', 4),
@@ -11823,7 +11269,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1108122005', '110812', 'Rawa', 4),
 ('1108122006', '110812', 'Punti Pulo Agam', 4),
 ('1108122007', '110812', 'Alue Pangkat', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1108122008', '110812', 'Teungoh Pulo Agam', 4),
 ('1108122009', '110812', 'Hueng', 4),
 ('1108122010', '110812', 'Pulo U', 4),
@@ -13009,7 +12455,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1111152012', '111115', 'Alue Krueb', 4),
 ('1111152013', '111115', 'Alue Let', 4),
 ('1111152014', '111115', 'Paloh Mampre', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1111152015', '111115', 'Buket Sudan', 4),
 ('1111152016', '111115', 'Awe Geutah', 4),
 ('1111152017', '111115', 'Cot Saleuet', 4),
@@ -14203,7 +13649,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1118012015', '111801', 'Geuleudah', 4),
 ('1118012016', '111801', 'Dayah Timur', 4),
 ('1118012017', '111801', 'Bunot', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1118012018', '111801', 'Glimpang Tutong', 4),
 ('1118012019', '111801', 'Meunasah Hagu', 4),
 ('1118012020', '111801', 'Pohroh', 4),
@@ -15373,7 +14819,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1203142036', '120314', 'Nanggar Jati', 4),
 ('1203142037', '120314', 'Natambang Roncitan', 4),
 ('1203142038', '120314', 'Dalihan Natolu', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1203201004', '120320', 'Pasar Sempurna', 3),
 ('1203202002', '120320', 'Huraba', 4),
 ('1203202014', '120320', 'Mombang Boru', 4),
@@ -16559,7 +16005,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1207332009', '120733', 'Karang Anyer', 4),
 ('1207332010', '120733', 'Sidodadi Ramonia', 4),
 ('1207332011', '120733', 'Tumpatan', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1208012001', '120801', 'Silampuyang', 4),
 ('1208012002', '120801', 'Marihat Baris', 4),
 ('1208012003', '120801', 'Dolok Marlawan', 4),
@@ -17722,7 +17168,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1213032007', '121303', 'Pardomuan', 4),
 ('1213032008', '121303', 'Parmompang', 4),
 ('1213032009', '121303', 'Ranto Natas', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1213032010', '121303', 'Sirangkap', 4),
 ('1213032011', '121303', 'Tanjung', 4),
 ('1213032012', '121303', 'Tebing Tinggi', 4),
@@ -18898,7 +18344,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1218022019', '121802', 'Lubuk Rotan', 4),
 ('1218022020', '121802', 'Melati II', 4),
 ('1218022024', '121802', 'Pematang Sijonam', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1218022025', '121802', 'Pematang Tatal', 4),
 ('1218022028', '121802', 'Suka Beras', 4),
 ('1218022029', '121802', 'Sukajadi', 4),
@@ -20071,7 +19517,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1223062010', '122306', 'Hatapang', 4),
 ('1223062011', '122306', 'Pasang Lela', 4),
 ('1223062012', '122306', 'Simpang Marbau', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1223062013', '122306', 'Bangun Rejo', 4),
 ('1223071001', '122307', 'Bandar Durian', 3),
 ('1223072002', '122307', 'Poldung', 4),
@@ -21239,7 +20685,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1305072004', '130507', 'Sungai Sirah Kuranji Hulu', 4),
 ('1305082001', '130508', 'Kuranji Hilir', 4),
 ('1305082002', '130508', 'Pilubang', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1305082003', '130508', 'Guguak Kuranji Hilir', 4),
 ('1305082004', '130508', 'Koto Tinggi Kuranji Hilir', 4),
 ('1305092001', '130509', 'III Koto Aur Malintang', 4),
@@ -22409,7 +21855,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1403012005', '140301', 'Pedekik', 4),
 ('1403012006', '140301', 'Pangkalan Batang', 4),
 ('1403012007', '140301', 'Sebauk', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1403012008', '140301', 'Teluklatak', 4),
 ('1403012009', '140301', 'Meskom', 4),
 ('1403012010', '140301', 'Senggoro', 4),
@@ -23581,7 +23027,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1409142001', '140914', 'Pulaukomang Sentajo', 4),
 ('1409142002', '140914', 'Muaro Sentajo', 4),
 ('1409142003', '140914', 'Koto Sentajo', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1409142004', '140914', 'Kampung Baru Sentajo', 4),
 ('1409142005', '140914', 'Pulaukopung Sentajo', 4),
 ('1409142006', '140914', 'Teratak Air Hitam', 4),
@@ -24758,7 +24204,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1506032007', '150603', 'Sungaiserindit', 4),
 ('1506032008', '150603', 'Mekar Jati', 4),
 ('1506032012', '150603', 'Sungaipampang', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1506032013', '150603', 'Parit Sidang', 4),
 ('1506032014', '150603', 'Sungaijering', 4),
 ('1506032015', '150603', 'Parit Bilal', 4),
@@ -25940,7 +25386,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1603092005', '160309', 'Tebing Abang', 4),
 ('1603092006', '160309', 'Batu Surau', 4),
 ('1603092007', '160309', 'Tanjung Raya', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1603092008', '160309', 'Muara Tenang', 4),
 ('1603092009', '160309', 'Rekimai Jaya', 4),
 ('1603092010', '160309', 'Palak Tanah', 4),
@@ -27133,7 +26579,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1607152009', '160715', 'Sido Mulyo', 4),
 ('1607152010', '160715', 'Keluang', 4),
 ('1607152011', '160715', 'Bumi Serdang', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1607152012', '160715', 'Karang Mulya', 4),
 ('1607152013', '160715', 'Sukakarya', 4),
 ('1607152014', '160715', 'Panca Mulya', 4),
@@ -28314,7 +27760,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1671021003', '167102', 'Ulu', 3),
 ('1671021004', '167102', 'Ulu', 3),
 ('1671021005', '167102', 'Ulu', 3);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1671021006', '167102', 'Ulu', 3),
 ('1671021007', '167102', 'Ulu', 3),
 ('1671021008', '167102', 'Ulu', 3),
@@ -29505,7 +28951,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1706032009', '170603', 'Pondok Kopi', 4),
 ('1706032013', '170603', 'Setia Budi', 4),
 ('1706032014', '170603', 'Tunggal Jaya', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1706032024', '170603', 'Talang Kuning', 4),
 ('1706032025', '170603', 'Teruntung', 4),
 ('1706032026', '170603', 'Karang Jaya', 4),
@@ -30690,7 +30136,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1803042017', '180304', 'Sido Mulyo', 4),
 ('1803042018', '180304', 'Sinar Mulya', 4),
 ('1803042019', '180304', 'Priangan Baru', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1803052001', '180305', 'Banjar Agung', 4),
 ('1803052002', '180305', 'Bumi Agung Marga', 4),
 ('1803052003', '180305', 'Pungguk Lama', 4),
@@ -31876,7 +31322,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1808072017', '180807', 'Bandar Kasih', 4),
 ('1808072018', '180807', 'Sumber Rejeki', 4),
 ('1808072019', '180807', 'Mulya Agung', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1808082001', '180808', 'Way Tuba', 4),
 ('1808082002', '180808', 'Karya Jaya', 4),
 ('1808082003', '180808', 'Say Umpu', 4),
@@ -33081,7 +32527,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('1971041009', '197104', 'Keramat', 3),
 ('1971041010', '197104', 'Gajah Mada', 3),
 ('1971051001', '197105', 'Taman Bunga', 3);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('1971051002', '197105', 'Bukitmerapin', 3),
 ('1971051004', '197105', 'Bukitsari', 3),
 ('1971051005', '197105', 'Tua Tunu', 3),
@@ -34305,7 +33751,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3202102002', '320210', 'Parakanlima', 4),
 ('3202102003', '320210', 'Bojong', 4),
 ('3202102004', '320210', 'Cimanggu', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3202102005', '320210', 'Bojongkembar', 4),
 ('3202102006', '320210', 'Sukamaju', 4),
 ('3202102007', '320210', 'Cibatu', 4),
@@ -35546,7 +34992,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3205272001', '320527', 'Pameungpeuk', 4),
 ('3205272002', '320527', 'Mancagahar', 4),
 ('3205272003', '320527', 'Paas', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3205272004', '320527', 'Mandalakasih', 4),
 ('3205272005', '320527', 'Jatimulya', 4),
 ('3205272006', '320527', 'Bojong', 4),
@@ -36783,7 +36229,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3209102005', '320910', 'Sidamulya', 4),
 ('3209102006', '320910', 'Mertapada Kulon', 4),
 ('3209102007', '320910', 'Mertapada Wetan', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3209102008', '320910', 'Buntet', 4),
 ('3209102009', '320910', 'Kanci Kulon', 4),
 ('3209102010', '320910', 'Kanci', 4),
@@ -38023,7 +37469,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3212292004', '321229', 'Pasekan', 4),
 ('3212292005', '321229', 'Karanganyar', 4),
 ('3212292006', '321229', 'Totoran', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3212302001', '321230', 'Bodas', 4),
 ('3212302002', '321230', 'Gadel', 4),
 ('3212302003', '321230', 'Rancajawat', 4),
@@ -39255,7 +38701,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3271011010', '327101', 'Rancamaya', 3),
 ('3271011011', '327101', 'Kertamaya', 3),
 ('3271011012', '327101', 'Harjasari', 3);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3271011013', '327101', 'Muarasari', 3),
 ('3271011014', '327101', 'Genteng', 3),
 ('3271011015', '327101', 'Pakuan', 3),
@@ -40489,7 +39935,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3303082018', '330308', 'Pengalusan', 4),
 ('3303082019', '330308', 'Sangkanayu', 4),
 ('3303092001', '330309', 'Gandasuli', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3303092002', '330309', 'Kalapacung', 4),
 ('3303092003', '330309', 'Karangmalang', 4),
 ('3303092004', '330309', 'Banjarsari', 4),
@@ -41740,7 +41186,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3306122037', '330612', 'Kedungpomahankulon', 4),
 ('3306122038', '330612', 'Sukogelap', 4),
 ('3306122039', '330612', 'Gunungteges', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3306122040', '330612', 'Purbayan', 4),
 ('3306132001', '330613', 'Puspo', 4),
 ('3306132002', '330613', 'Plipiran', 4),
@@ -43020,7 +42466,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3310172014', '331017', 'Kranggan', 4),
 ('3310172015', '331017', 'Kebonharjo', 4),
 ('3310172016', '331017', 'Janti', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3310172017', '331017', 'Sidowayah', 4),
 ('3310172018', '331017', 'Sidoharjo', 4),
 ('3310182001', '331018', 'Jambeyan', 4),
@@ -44304,7 +43750,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3316032006', '331603', 'Mendenrejo', 4),
 ('3316032007', '331603', 'Sumber', 4),
 ('3316032008', '331603', 'Mojorembun', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3316032009', '331603', 'Nglungger', 4),
 ('3316032010', '331603', 'Medalem', 4),
 ('3316042001', '331604', 'Gondel', 4),
@@ -45570,7 +45016,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3320142006', '332014', 'Jinggotan', 4),
 ('3320142007', '332014', 'Dermolo', 4),
 ('3320142008', '332014', 'Kaliaman', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3320142009', '332014', 'Tubanan', 4),
 ('3320142010', '332014', 'Balong', 4),
 ('3320142011', '332014', 'Kancilan', 4),
@@ -46839,7 +46285,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3325112004', '332511', 'Kalisalak', 4),
 ('3325112005', '332511', 'Kecepak', 4),
 ('3325112006', '332511', 'Klidang Wetan', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3325112007', '332511', 'Klidang Lor', 4),
 ('3325112008', '332511', 'Kalipucang Wetan', 4),
 ('3325112009', '332511', 'Kalipucang Kulon', 4),
@@ -48090,7 +47536,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3374011008', '337401', 'Pandansari', 3),
 ('3374011009', '337401', 'Bangunharjo', 3),
 ('3374011010', '337401', 'Kauman', 3);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3374011011', '337401', 'Purwodinatan', 3),
 ('3374011012', '337401', 'Karangkidul', 3),
 ('3374011013', '337401', 'Pekunden', 3),
@@ -49356,7 +48802,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3503112013', '350311', 'Dawuhan', 4),
 ('3503122001', '350312', 'Wonocoyo', 4),
 ('3503122002', '350312', 'Ngetal', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3503122003', '350312', 'Ngadirenggo', 4),
 ('3503122004', '350312', 'Pogalan', 4),
 ('3503122005', '350312', 'Ngulungkulon', 4),
@@ -50628,7 +50074,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3507322006', '350732', 'Sumberdem', 4),
 ('3507322007', '350732', 'Wonosari', 4),
 ('3507322008', '350732', 'Bangelan', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3507332001', '350733', 'Clumprit', 4),
 ('3507332002', '350733', 'Suwaru', 4),
 ('3507332003', '350733', 'Kademangan', 4),
@@ -51880,7 +51326,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3513162001', '351316', 'Selogudig Kulon', 4),
 ('3513162002', '351316', 'Selogudig Wetan', 4),
 ('3513162003', '351316', 'Ketompen', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3513162004', '351316', 'Karangbong', 4),
 ('3513162005', '351316', 'Karangpranti', 4),
 ('3513162006', '351316', 'Gejugan', 4),
@@ -53131,7 +52577,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3517082009', '351708', 'Watugaluh', 4),
 ('3517082010', '351708', 'Pundong', 4),
 ('3517082011', '351708', 'Diwek', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3517082012', '351708', 'Bandung', 4),
 ('3517082013', '351708', 'Kedawong', 4),
 ('3517082014', '351708', 'Ngudirejo', 4),
@@ -54407,7 +53853,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3522092022', '352209', 'Mudung', 4),
 ('3522092023', '352209', 'Karanggang', 4),
 ('3522092024', '352209', 'Sugih Waras', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3522092025', '352209', 'Sumbergede', 4),
 ('3522102001', '352210', 'Drajat', 4),
 ('3522102002', '352210', 'Banjaranyar', 4),
@@ -55669,7 +55115,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3525092014', '352509', 'Bunderan', 4),
 ('3525092015', '352509', 'Asempapak', 4),
 ('3525092016', '352509', 'Mriyunan', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3525092017', '352509', 'Mojoasem', 4),
 ('3525092018', '352509', 'Sedagaran', 4),
 ('3525092019', '352509', 'Ngawen', 4),
@@ -56913,7 +56359,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3572031006', '357203', 'Karang Tengah', 3),
 ('3572031007', '357203', 'Bendogerit', 3),
 ('3573011001', '357301', 'Balearjosari', 3);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3573011002', '357301', 'Arjosari', 3),
 ('3573011003', '357301', 'Polowijen', 3),
 ('3573011004', '357301', 'Purwodadi', 3),
@@ -58150,7 +57596,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('3603222005', '360322', 'Cijantra', 4),
 ('3603222006', '360322', 'Lengkong Kulon', 4),
 ('3603222007', '360322', 'Situ Gadung', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('3603222008', '360322', 'Jatake', 4),
 ('3603222009', '360322', 'Cihuni', 4),
 ('3603222010', '360322', 'Kadu Sirung', 4),
@@ -59405,7 +58851,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('5108052002', '510805', 'Wanagiri', 4),
 ('5108052003', '510805', 'Ambengan', 4),
 ('5108052004', '510805', 'Gitgit', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('5108052005', '510805', 'Pegayaman', 4),
 ('5108052006', '510805', 'Silangjana', 4),
 ('5108052007', '510805', 'Pegadungan', 4),
@@ -60665,7 +60111,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('5301042003', '530104', 'Bokonusan', 4),
 ('5301042004', '530104', 'Otan', 4),
 ('5301042005', '530104', 'Uitao', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('5301042006', '530104', 'Uiasa', 4),
 ('5301042008', '530104', 'Hansisi', 4),
 ('5301042009', '530104', 'Huilelot', 4),
@@ -61957,7 +61403,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('5307182006', '530718', 'Heopuat', 4),
 ('5307182007', '530718', 'Munerana', 4),
 ('5307192001', '530719', 'Teka Iku', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('5307192002', '530719', 'Mekendetung', 4),
 ('5307192003', '530719', 'Kokowahor', 4),
 ('5307192004', '530719', 'Balatatatin', 4),
@@ -63224,7 +62670,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('5316012015', '531601', 'Ngegedhawe', 4),
 ('5316012016', '531601', 'Tadakisa', 4),
 ('5316012017', '531601', 'Nggolombay', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('5316012018', '531601', 'Nangadhero', 4),
 ('5316021001', '531602', 'Nangaroro', 3),
 ('5316022002', '531602', 'Podenura', 4),
@@ -64460,7 +63906,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('6104082014', '610408', 'Kenanga', 4),
 ('6104082015', '610408', 'Balai Pinang Hulu', 4),
 ('6104082016', '610408', 'Sekucing Kualan', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('6104082017', '610408', 'Labai Hilir', 4),
 ('6104112001', '610411', 'Nanga Tayap', 4),
 ('6104112002', '610411', 'Pangkalan Telok', 4),
@@ -65669,7 +65115,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('6110072017', '611007', 'Landau Kabu', 4),
 ('6110072018', '611007', 'Tanjung Mahung', 4),
 ('6110082001', '611008', 'Tekelak', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('6110082002', '611008', 'Manding', 4),
 ('6110082003', '611008', 'Nanga Belimbing', 4),
 ('6110082004', '611008', 'Tengkajau', 4),
@@ -66858,7 +66304,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('6207052032', '620705', 'Tumbang Laku', 4),
 ('6207052033', '620705', 'Tanjungpaku', 4),
 ('6207052034', '620705', 'Buntut Sapau', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('6207052035', '620705', 'Tumbang Taberau', 4),
 ('6207052036', '620705', 'Riam Batang', 4),
 ('6207052037', '620705', 'Tumbang Sepan', 4),
@@ -68059,7 +67505,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('6303122013', '630312', 'Mangkalawat', 4),
 ('6303122014', '630312', 'Gunung Ulin', 4),
 ('6303122015', '630312', 'Tanah Abang', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('6303132001', '630313', 'Pindahan Baru', 4),
 ('6303132002', '630313', 'Handil Purai', 4),
 ('6303132003', '630313', 'Kampung Baru', 4),
@@ -69252,7 +68698,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('6310072006', '631007', 'Batu Licin Irigasi', 4),
 ('6310072007', '631007', 'Manunggal', 4),
 ('6310072009', '631007', 'Sumber Wangi', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('6310072010', '631007', 'Madu Retno', 4),
 ('6310072011', '631007', 'Maju Sejahtera', 4),
 ('6310072012', '631007', 'Karang Rejo', 4),
@@ -70461,7 +69907,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('6471051006', '647105', 'Gunungbahagia', 3),
 ('6471051008', '647105', 'Sepinggan Baru', 3),
 ('6471051009', '647105', 'Sepinggan Raya', 3);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('6471051010', '647105', 'Sungainangka', 3),
 ('6471051011', '647105', 'Damai Baru', 3),
 ('6471051012', '647105', 'Damai Bahagia', 3),
@@ -71693,7 +71139,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('7104042007', '710404', 'Lalue', 4),
 ('7104042008', '710404', 'Bulude', 4),
 ('7104042016', '710404', 'Maririk', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('7104042018', '710404', 'Essang Selatan', 4),
 ('7104042019', '710404', 'Bulude Selatan', 4),
 ('7104042020', '710404', 'Lalue Tengah', 4),
@@ -72929,7 +72375,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('7201062014', '720106', 'Kiloma', 4),
 ('7201062015', '720106', 'Ra''u', 4),
 ('7201062016', '720106', 'Tanotu', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('7201062017', '720106', 'Padang', 4),
 ('7201062018', '720106', 'Mamping', 4),
 ('7201062021', '720106', 'Luok', 4),
@@ -74202,7 +73648,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('7208132008', '720813', 'Toribulu Selatan', 4),
 ('7208132009', '720813', 'Tomoli Utara', 4),
 ('7208142001', '720814', 'Karya Agung', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('7208142002', '720814', 'Nunurantai', 4),
 ('7208142003', '720814', 'Palapi', 4),
 ('7208142004', '720814', 'Taopa', 4),
@@ -75456,7 +74902,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('7306092002', '730609', 'Bontomanai', 4),
 ('7306092003', '730609', 'Buakkang', 4),
 ('7306092004', '730609', 'Bissoloro', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('7306092011', '730609', 'Rannaloe', 4),
 ('7306092012', '730609', 'Mangempang', 4),
 ('7306101001', '730610', 'Tamaona', 3),
@@ -76713,7 +76159,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('7315111005', '731511', 'Laleng Bata', 3),
 ('7315111006', '731511', 'Benteng Sawito', 3),
 ('7315121003', '731512', 'Kassa', 3);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('7315122001', '731512', 'Batu Lappa', 4),
 ('7315122004', '731512', 'Tapporang', 4),
 ('7315122005', '731512', 'Kaseralau', 4),
@@ -77960,7 +77406,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('7401122002', '740112', 'Longori', 4),
 ('7401122003', '740112', 'Puubunga', 4),
 ('7401122004', '740112', 'Puulemo', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('7401122005', '740112', 'Puubenua', 4),
 ('7401122006', '740112', 'Baula', 4),
 ('7401122007', '740112', 'Pewutaa', 4),
@@ -79227,7 +78673,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('7408052012', '740805', 'Jabal Kubis', 4),
 ('7408052014', '740805', 'Sawanggaoha', 4),
 ('7408052018', '740805', 'Ainani Tajriani', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('7408052019', '740805', 'Delang-Delang', 4),
 ('7408061003', '740806', 'Lapai', 3),
 ('7408062002', '740806', 'Ngapa', 4),
@@ -80498,7 +79944,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('7503112007', '750311', 'Poduwoma', 4),
 ('7503112008', '750311', 'Panggulo', 4),
 ('7503112009', '750311', 'Tulabolo Barat', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('7503112010', '750311', 'Pangi', 4),
 ('7503112011', '750311', 'Tinemba', 4),
 ('7503122001', '750312', 'Bulontala', 4),
@@ -81767,7 +81213,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('8102132013', '810213', 'Ohoinol', 4),
 ('8102132014', '810213', 'Semawi', 4),
 ('8102132015', '810213', 'Iso', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('8102132016', '810213', 'Disuk', 4),
 ('8102132017', '810213', 'Wain Baru', 4),
 ('8102132018', '810213', 'Marfun', 4),
@@ -83058,7 +82504,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('8203152003', '820315', 'Bobisingo', 4),
 ('8203152004', '820315', 'Salimuli', 4),
 ('8203152005', '820315', 'Tutumaloleo', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('8203152006', '820315', 'Saluta', 4),
 ('8203152007', '820315', 'Jere', 4),
 ('8203152008', '820315', 'Dodowo', 4),
@@ -84357,7 +83803,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('9102612006', '910261', 'Walak Selatan', 4),
 ('9102612007', '910261', 'Kodlangga', 4),
 ('9102612008', '910261', 'Air Garam', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('9102622001', '910262', 'Irilinga', 4),
 ('9102622002', '910262', 'Onggobaga', 4),
 ('9102622003', '910262', 'Walakma', 4),
@@ -85659,7 +85105,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('9110092004', '911009', 'Airoran', 4),
 ('9110092005', '911009', 'Murara', 4),
 ('9110092006', '911009', 'Sasawapece', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('9110092011', '911009', 'Maniwa', 4),
 ('9110092012', '911009', 'Surimania', 4),
 ('9110092013', '911009', 'Kwawitania', 4),
@@ -86983,7 +86429,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('9114342008', '911434', 'Nowo', 4),
 ('9114342009', '911434', 'Gunalo', 4),
 ('9114342010', '911434', 'Korlo', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('9114342011', '911434', 'Towolome', 4),
 ('9114342012', '911434', 'Golena', 4),
 ('9114352001', '911435', 'Geka', 4),
@@ -88310,7 +87756,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('9123152004', '912315', 'Mabume', 4),
 ('9123152005', '912315', 'Wandoak', 4),
 ('9123152006', '912315', 'Bogun Kunik', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('9123152007', '912315', 'Urgelo', 4),
 ('9123152008', '912315', 'Omapaga', 4),
 ('9123152009', '912315', 'Gimili Alome', 4),
@@ -89620,7 +89066,7 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('9204092020', '920409', 'Migrito', 4),
 ('9204092021', '920409', 'Daimar', 4),
 ('9204102001', '920410', 'Moswaren', 4);
-INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
+INSERT INTO kelurahan (id_kel, id_kec, nama, id_jenis) VALUES
 ('9204102002', '920410', 'Johsiro', 4),
 ('9204102003', '920410', 'Hararo', 4),
 ('9204102004', '920410', 'Bumi Ajo', 4),
@@ -90825,59 +90271,3 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 ('9271101002', '927110', 'Tampa Garam', 3),
 ('9271101003', '927110', 'Saoka', 3),
 ('9271101004', '927110', 'Tanjung Kasuari', 3);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `provinsi`
---
-
-CREATE TABLE IF NOT EXISTS `provinsi` (
-  `id_prov` char(2) NOT NULL,
-  `nama` tinytext NOT NULL,
-  PRIMARY KEY (`id_prov`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `provinsi`
---
-
-INSERT INTO `provinsi` (`id_prov`, `nama`) VALUES
-('11', 'Aceh'),
-('12', 'Sumatera Utara'),
-('13', 'Sumatera Barat'),
-('14', 'Riau'),
-('15', 'Jambi'),
-('16', 'Sumatera Selatan'),
-('17', 'Bengkulu'),
-('18', 'Lampung'),
-('19', 'Kepulauan Bangka Belitung'),
-('21', 'Kepulauan Riau'),
-('31', 'DKI Jakarta'),
-('32', 'Jawa Barat'),
-('33', 'Jawa Tengah'),
-('34', 'DI Yogyakarta'),
-('35', 'Jawa Timur'),
-('36', 'Banten'),
-('51', 'Bali'),
-('52', 'Nusa Tenggara Barat'),
-('53', 'Nusa Tenggara Timur'),
-('61', 'Kalimantan Barat'),
-('62', 'Kalimantan Tengah'),
-('63', 'Kalimantan Selatan'),
-('64', 'Kalimantan Timur'),
-('65', 'Kalimantan Utara'),
-('71', 'Sulawesi Utara'),
-('72', 'Sulawesi Tengah'),
-('73', 'Sulawesi Selatan'),
-('74', 'Sulawesi Tenggara'),
-('75', 'Gorontalo'),
-('76', 'Sulawesi Barat'),
-('81', 'Maluku'),
-('82', 'Maluku Utara'),
-('91', 'Papua Barat'),
-('92', 'Papua');
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

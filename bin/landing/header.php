@@ -19,6 +19,25 @@ include "../koneksidb.php";
         <link href="css/responsive.css" rel="stylesheet">
         <link href="css/dealanding.css" rel="stylesheet">
         <link href="../css/mycustom.css" rel="stylesheet">
+        <style>
+            #map-canvas {
+                width: 100%;
+                height: 400px;
+                border: solid #999 1px;
+            }
+            
+            select {
+                width: 240px;
+            }
+            
+            #kab_box,
+            #kec_box,
+            #kel_box,
+            #lat_box,
+            #lng_box {
+                display: none;
+            }
+        </style>
         <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
