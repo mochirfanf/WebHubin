@@ -59,6 +59,7 @@ include "header.php";
             <li class="scroll"><a href="#misi">Misi</a></li> 
             <li class="scroll"><a href="#tentang-kami">Tentang Hubin</a></li>                     
             <li class="scroll"><a href="#tujuan">Tujuan Prakerin</a></li>
+            <li class="scroll"><a href="#perusahaan">Perusahaan</a></li>
             <li class="scroll"><a href="#berita">Berita</a></li>
             <li class="scroll"><a href="#kontak-kami">Kontak Kami</a></li>
             <li><a data-toggle="modal" data-target="#myModal">Login</a></li>          
@@ -121,6 +122,146 @@ include "header.php";
     </div>
   </div>
 </div>
+
+
+
+
+<div class='modal fade' id='register' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+
+                                                                      
+
+                                                                      <div class='modal-dialog'>
+
+                                                                        <div class='modal-content'>
+
+                                                                          <div class='modal-header'>
+
+                                                                            <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+
+                                                                            <h4 class='modal-title' id='myModalLabel'>Register Perusahaan</h4>
+
+                                                                          </div>
+
+
+
+                                                                          <div class='modal-body'>
+
+                                                                          
+
+                                                                            <form class='form-horizontal form-label-left' method='POST' action='../proses.php?a=daftar-perusahaan' enctype='multipart/form-data'>
+
+
+
+                                                                                <div class='item form-group'>
+
+                                                                                    <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Username : <span class='required'></span>
+
+                                                                                    </label>
+
+                                                                                    <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+
+                                                                                        <input class='form-control col-md-7 col-xs-12' name='username'  required='required' placeholder='Username' type='text'>
+
+                                                                                    </div>
+
+                                                                                </div>
+
+
+
+                                                                                <div class='item form-group'>
+
+                                                                                    <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Nama Perusahaan : <span class='required'></span>
+
+                                                                                    </label>
+
+                                                                                    <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+
+                                                                                        <input class='form-control col-md-7 col-xs-12' name='nama' required='required' placeholder='Nama Perusahaan' type='text' required>
+
+                                                                                    </div>
+
+                                                                                </div>    
+
+
+
+                                                                                <div class='item form-group'>
+
+                                                                                    <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Bidang Usaha :<span class='required'></span>
+
+                                                                                    </label>
+
+                                                                                    <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+
+                                                                                        <input class='form-control col-md-7 col-xs-12' name='bidang' required='required' placeholder='Bidang Usaha' type='text'>
+
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                
+                                                                                <div class='item form-group'>
+
+                                                                                    <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Email :<span class='required'></span>
+
+                                                                                    </label>
+
+                                                                                    <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+
+                                                                                        <input class='form-control col-md-7 col-xs-12' name='email' required='required' placeholder='Email' type='email'>
+
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                
+                                                                                <div class='item form-group'>
+
+                                                                                    <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Password :<span class='required'></span>
+
+                                                                                    </label>
+
+                                                                                    <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+
+                                                                                        <input class='form-control col-md-7 col-xs-12' name='password' required='required' placeholder='Password' type='password'>
+
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                
+                                                                                </div>
+
+<
+<
+                                                                        <div class='modal-footer'>
+
+                                                                           
+
+                                                                                <div class='form-group'>
+
+
+
+                                                                                    <div class='col-md-4 col-md-offset-8'>
+
+                                                                                        <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+
+                                                                                        <button style=' margin-top: -5px;' value='DAFTAR' id='send' type='submit' class='btn btn-success' name='DAFTAR'>Tambah</button>
+
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                                    
+
+                                                                            </form>
+
+
+
+                                                                        </div>
+
+                                                                        </div>
+
+                                                                      </div>
+
+                                                                    </div> 
+
   <section id="visi">
       <div class="container">
           <div class="heading wow fadeInDown" data-wow-duration="2000ms" data-wow-delay="500ms">
@@ -296,7 +437,6 @@ include "header.php";
     </div>
   </section><!--/#team-->
 
-
 <section id="tujuan">
     <div class="container">
       <div class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
@@ -334,6 +474,47 @@ include "header.php";
             <div class="service-info">
               <h3>Teori & Praktek</h3>
               <p>Mengaplikasikan pelajaran teori dan praktek yang diberikan di sekolah dengan kenyataan yang ada di dunia usaha/dunia industri.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="perusahaan">
+    <div class="container">
+      <div class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <div class="row">
+          <div class="text-center col-sm-8 col-sm-offset-2">
+            <h2>Kerjasama dengan SMKN 1 Cimahi</h2>
+          </div>
+        </div> 
+      </div>
+      <div class="text-center our-services">
+        
+        <div class="row">
+          <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="650ms">
+            <div class="rounded service-icon">
+              <i class="fa fa-suitcase"></i>
+            </div>
+            <div class="service-info">
+              <h3>Prakerin</h3>
+              <p>Bekerja Sama dalam hal menempatkan Siswa SMKN 1 Cimahi untuk Praktek Kerja Industri ( Prakerin )</p>
+            </div>
+          </div>
+          <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="750ms">
+            <div class="rounded service-icon">
+              <i class="fa fa-user-plus"></i>
+            </div>
+            <div class="service-info">
+              <h3>Kerja</h3>
+              <p>Bekerja Sama untuk memperkerjakan Siswa SMKN 1 Cimahi</div>
+          </div>
+          <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="850ms" style='border-left:2px solid #000;background-color:#c2c2c2'>
+            
+            <div class="service-info">
+              <h3>Lakukan Permohonan Kerja Sama</h3>
+              <a class='btn btn-primary' data-toggle="modal" data-target="#register">Register</a>
             </div>
           </div>
         </div>
