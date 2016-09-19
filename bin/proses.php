@@ -147,6 +147,43 @@
             }
       break;
 
+      case "register":
+        $nama = anti_injection($_POST['nama']);
+        $email = anti_injection($_POST['email']);
+        $alamat = anti_injection($_POST['alamat']);
+        $provinsi = anti_injection($_POST['provinsi']);
+        $kabupaten = anti_injection($_POST['kabupaten']);
+        $kecamatan = anti_injection($_POST['kecamatan']);
+        $kelurahan = anti_injection($_POST['kelurahan']);
+        $kodepos = anti_injection($_POST['kodepos']);
+
+        $a = mysql_query("SELECT email_du FROM hb_du_umum");
+        $f = 0;
+
+            while($d=mysql_fetch_array($a)){
+              if($d['email_du']==$email){
+                  $f=1;
+              }
+            }
+
+            if($f==0){
+                mysql_query("INSERT INTO hb_du_umum (nama_du, email_du, alamat, nama_provinsi, nama_kabupaten, nama_kecamatan, nama_kelurahan, no_kodepos, level, status) VALUES('$nama','$email','$alamat','$provinsi', '$kabupaten', '$kecamatan', '$kelurahan', '$kodepos', 'perusahaan', 'Belum Aktif')");
+                ?>
+                <script>
+                  alert(" Register Berhasil! Cek Email untuk Verifikasi ");
+                  top.location='register.php';
+                </script><?php
+
+            }else{
+              ?>
+                <script>
+                    alert('Email Telah Digunakan');
+                </script>
+              <?php
+            }
+
+      break;
+
 		}
 	}
 

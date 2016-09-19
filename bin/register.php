@@ -44,13 +44,10 @@ include "koneksidb.php";
 					<input name='kabupaten' type='text' placeholder='Kabupaten'> <br>
 					<input name='kecamatan' type='text' placeholder='Kecamatan'> <br>
 					<input name='kelurahan' type='text' placeholder='Kelurahan'> <br>
-					<input name='kodepos' type='text' placeholder='Kode Pos'> <br>
+					<input name='kodepos' type='text' placeholder='Kode Pos'> <br><br>
 
 				  <input type='submit' name='REGISTER' value='REGISTER' class='button' >
 			</form>
-
-
-
 		</body>
 		</html>
 
