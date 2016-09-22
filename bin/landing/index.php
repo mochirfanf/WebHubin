@@ -8,30 +8,20 @@ include "header.php";
         <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="item active" style="background-image: url(images/slider/1.jpg)">
-                  <div class="caption">
-                    <h1 style="margin-bottom: 20px; margin-top: 75px; font-size: 50px;" class="animated fadeInLeftBig">Selamat Datang <font style="text-transform:lowercase" > di </font> <span style="color:#1DD8A5">HUBIN</span></h1>
-                    <p style="color: #fff; text-transform: capitalize;" class="animated fadeInRightBig"><font style="font-weight:400; color: #37ae8e;">HUBUNGAN INDUSTRI</font> SMKN 1 CIMAHI</p>
-                    <a data-scroll class="btn btn-start animated fadeInUpBig" href="#visi">Lihat Selengkapnya</a>
-                    <a data-scroll class="btn btn-start animated fadeInUpBig"  data-toggle="modal" data-target="#register">Lakukan Kerjasama</a>
-                  </div>
+                    <div class="caption">
+                        <h1 style="margin-bottom: 20px; margin-top: 75px; font-size: 50px;" class="animated fadeInLeftBig">Selamat Datang <font style="text-transform:lowercase" > di </font> <span style="color:#1DD8A5">HUBIN</span></h1>
+                        <p style="color: #fff; text-transform: capitalize;" class="animated fadeInRightBig"><font style="font-weight:400; color: #37ae8e;">HUBUNGAN INDUSTRI</font> SMKN 1 CIMAHI</p> <a data-scroll class="btn btn-start animated fadeInUpBig" href="#visi">Lihat Selengkapnya</a> </div>
                 </div>
                 <div class="item" style="background-image: url(images/slider/2.jpg)">
-                  <div class="caption">
-                    <h1 style="color:#1FF3B9; margin-top: 20px; font-size: 40px;" class="animated fadeInLeftBig">Membantu <font style="text-transform:lowercase" > dan </font> Mempermudah</h1>
-                    <h1 style=" color:#fff; margin-top:-20px; font-size: 40px; margin-bottom:60px; " class="animated fadeInRightBig"> Praktek Kerja Industri </h1>
-                    <p style="color: #fff; text-transform: capitalize;" class="animated fadeInLeftBig"><font style="font-weight:400; color: #1EF2B8;">HUBUNGAN INDUSTRI</font> SMKN 1 CIMAHI</p>
-
-                    <a data-scroll class="btn btn-start animated fadeInUpBig" href="#visi">Lihat Selengkapnya</a>
-                    <a data-scroll class="btn btn-start animated fadeInUpBig"  data-toggle="modal" data-target="#register">Lakukan Kerjasama</a>
-                  </div>
+                    <div class="caption">
+                        <h1 style="color:#1FF3B9; margin-top: 20px; font-size: 40px;" class="animated fadeInLeftBig">Membantu <font style="text-transform:lowercase" > dan </font> Mempermudah</h1>
+                        <h1 style=" color:#fff; margin-top:-20px; font-size: 40px; margin-bottom:60px; " class="animated fadeInRightBig"> Praktek Kerja Industri </h1>
+                        <p style="color: #fff; text-transform: capitalize;" class="animated fadeInLeftBig"><font style="font-weight:400; color: #1EF2B8;">HUBUNGAN INDUSTRI</font> SMKN 1 CIMAHI</p> <a data-scroll class="btn btn-start animated fadeInUpBig" href="#visi">Lihat Selengkapnya</a> </div>
                 </div>
                 <div class="item" style="background-image: url(images/slider/3.jpg)">
-                  <div class="caption">
-                    <h1 class="animated fadeInLeftBig">SESUATU YANG <span style="color:#1DD8A5">BARU</span></h1>
-                    <p style="color: #fff; text-transform: capitalize;" class="animated fadeInRightBig"><font style="font-weight:400; color: #1EF2B8;">HUBUNGAN INDUSTRI</font> SMKN 1 CIMAHI</p>
-                    <a data-scroll class="btn btn-start animated fadeInUpBig" href="#visi">Lihat Selengkapnya</a>
-                    <a data-scroll class="btn btn-start animated fadeInUpBig"  data-toggle="modal" data-target="#register">Lakukan Kerjasama</a>
-                  </div>
+                    <div class="caption">
+                        <h1 class="animated fadeInLeftBig">SESUATU YANG <span style="color:#1DD8A5">BARU</span></h1>
+                        <p style="color: #fff; text-transform: capitalize;" class="animated fadeInRightBig"><font style="font-weight:400; color: #1EF2B8;">HUBUNGAN INDUSTRI</font> SMKN 1 CIMAHI</p> <a data-scroll class="btn btn-start animated fadeInUpBig" href="#visi">Lihat Selengkapnya</a> </div>
                 </div>
             </div> <a class="left-control" href="#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a> <a class="right-control" href="#home-slider" data-slide="next"><i class="fa fa-angle-right"></i></a> <a id="tohash" href="#services"><i class="fa fa-angle-down"></i></a> </div>
         <!--/#home-slider-->
@@ -52,6 +42,7 @@ include "header.php";
                         <li class="scroll"><a href="#perusahaan">Perusahaan</a></li>
                         <li class="scroll"><a href="#berita">Berita</a></li>
                         <li class="scroll"><a href="#kontak-kami">Kontak Kami</a></li>
+                        <li><a data-toggle="modal" data-target="#myModal">Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -60,7 +51,55 @@ include "header.php";
     </header>
     <!--/#home-->
     <!-- Modal -->
-
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <!--WRAPPER-->
+                    <div id='wrapper'>
+                        <!--SLIDE-IN ICONS-->
+                        <div class='user-icon'></div>
+                        <div class='pass-icon'></div>
+                        <!--END SLIDE-IN ICONS-->
+                        <!--LOGIN FORM-->
+                        <form name='login-form' class='login-form' method="POST" action="../proses.php?a=login">
+                            <!--HEADER-->
+                            <div class='header'>
+                                <!--TITLE-->
+                                <h1>Login Form</h1>
+                                <!--END TITLE-->
+                                <!--DESCRIPTION--><span> HUBIN SMK NEGERI 1 CIMAHI</span>
+                                <!--END DESCRIPTION-->
+                            </div>
+                            <!--END HEADER-->
+                            <!--CONTENT-->
+                            <div class='content'>
+                                <!--USERNAME-->
+                                <input name='username' type='text' class='input username' placeholder='Username' onfocus='this.value=' '' />
+                                <!--END USERNAME-->
+                                <!--PASSWORD-->
+                                <input name='password' type='password' class='input password' placeholder='Password' onfocus='this.value=' '' />
+                                <!--END PASSWORD-->
+                            </div>
+                            <!--END CONTENT-->
+                            <!--FOOTER-->
+                            <div class='footer'>
+                                <!--LOGIN BUTTON-->
+                                <input type='submit' name='MASUK' value='MASUK' class='button' />
+                                <!--END LOGIN BUTTON-->
+                            </div>
+                            <!--END FOOTER-->
+                        </form>
+                        <!--END LOGIN FORM-->
+                    </div>
+                    <!--END WRAPPER-->
+                </div>
+            </div>
+        </div>
+    </div>
     <div class='modal fade' id='register' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
         <div class='modal-dialog'>
             <div class='modal-content'>
@@ -90,27 +129,27 @@ include "header.php";
                             <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
                                 <select name="prop" id="prop" onchange="ajaxkota(this.value)" class='form-control'>
                                     <option value="">Pilih Provinsi</option>
-                                    <?php
-                                      include 'koneksi.php';
-                                      $query=$db->prepare("SELECT id_prov,nama FROM provinsi ORDER BY nama");
-                                      $query->execute();
-                                      while ($data=$query->fetchObject()){
-                                      echo '<option value="'.$data->id_prov.'">'.$data->nama.'</option>';
-                                      }
-                                    ?>
+                                    <?php 
+          include 'koneksi.php';
+          $query=$db->prepare("SELECT id_prov,nama FROM provinsi ORDER BY nama");
+          $query->execute();
+          while ($data=$query->fetchObject()){
+          echo '<option value="'.$data->id_prov.'">'.$data->nama.'</option>';
+          }
+          ?>
                                 </select>
                             </div>
                         </div>
                         <div class='item form-group'>
-                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Kota/Kabupaten :<span class='required'></span> </label>
+                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Provinsi :<span class='required'></span> </label>
                             <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
                                 <select name="kota" id="kota" onchange="ajaxkec(this.value)" class='form-control'>
-                                    <option value="">Pilih Kota/Kabupaten</option>
+                                    <option value="">Pilih Kota</option>
                                 </select>
                             </div>
                         </div>
                         <div class='item form-group'>
-                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Kecamatan :<span class='required'></span> </label>
+                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Provinsi :<span class='required'></span> </label>
                             <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
                                 <select name="kec" id="kec" onchange="ajaxkel(this.value)" class='form-control'>
                                     <option value="">Pilih Kecamatan</option>
@@ -118,7 +157,7 @@ include "header.php";
                             </div>
                         </div>
                         <div class='item form-group'>
-                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Kelurahan/Desa :<span class='required'></span> </label>
+                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Provinsi :<span class='required'></span> </label>
                             <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
                                 <select name="kel" id="kel" onchange="showCoordinate();" class='form-control'>
                                     <option value="">Pilih Kelurahan/Desa</option>
@@ -150,7 +189,7 @@ include "header.php";
                     <div class="text-center col-md-12">
                         <h2>Visi Kami</h2 >
               </div>
-            </div>
+            </div> 
           </div>
 
             <div class="row">
@@ -165,9 +204,9 @@ include "header.php";
                   <img style="float:right; margin-right: -119px;" width="500px" src="images/visi.jpg">
                 </div>
               </div>
-            </div>
+            </div> 
 
-
+        
       </div>
   </section>
 
@@ -372,7 +411,7 @@ include "header.php";
                 <div class="row">
                     <div class="col-sm-8 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">
                         <h2>Berita Terkini</h2>
-                        <?php
+                        <?php 
 			$data = mysql_query( "SELECT * from hb_berita ORDER BY id_berita DESC LIMIT 3");
 			while ($d = mysql_fetch_array($data)) {
 			?>
@@ -381,7 +420,7 @@ include "header.php";
                                 <h3><a href="detail_berita.php?id=<?php echo $d['id_berita'] ?>"><?php echo $d['judul_berita'] ?></a></h3> <span class="date"><?php echo $d['tgl_berita'] ?></span> <span class="cetagory">by <strong><?php echo $d['sumber'] ?></strong></span> </div>
                             <div class="entry-content">
                                 <p>
-                                    <?php
+                                    <?php 
               $text = $d['isi_berita'];
 				if(strlen($text) > 200)
 				{
@@ -390,7 +429,7 @@ include "header.php";
 				else
 				{
 				$textdisplay = $text;
-				}
+				} 
                 echo  $textdisplay; ?> </p>
                             </div>
                             <?php } ?>
@@ -398,7 +437,7 @@ include "header.php";
                     </div>
                     <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <h2>Berita Pilihan</h2>
-                        <?php
+                        <?php 
 			$data2 = mysql_query( "SELECT * from hb_berita WHERE hits_berita > 1 ORDER BY id_berita DESC LIMIT 1");
 			while ($d2 = mysql_fetch_array($data2)) {
 			?>
@@ -413,7 +452,7 @@ include "header.php";
                                 <h3><a href="detail_berita.php?id=<?php echo $d2['id_berita'] ?>"><?php echo $d2['judul_berita'] ?></a></h3> <span class="date"><?php echo $d2['tgl_berita'] ?></span> <span class="cetagory">by <strong><?php echo $d2['sumber'] ?></strong></span> </div>
                             <div class="entry-content">
                                 <p>
-                                    <?php
+                                    <?php 
               $text2 = $d2['isi_berita'];
 				if(strlen($text2) > 200)
 				{
@@ -422,7 +461,7 @@ include "header.php";
 				else
 				{
 				$textdisplay2 = $text2;
-				}
+				} 
                 echo  $textdisplay2; ?> </p>
                             </div>
                             <?php } ?>

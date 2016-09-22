@@ -2,14 +2,16 @@
 
 include "../koneksidb.php";
 
-if($_SESSION['level']=='perusahaan'){
+if($_SESSION['level']=='perusahaan'){ 
+	if ($_SESSION['tahun_ajaran']!='') {
         $title="Permohonan Perizinan Prakerin";
         $active = "";
         $active3 = "active";
+        $navactive2 ="nav-active";
 
 		include "leftside.php";
-
-        $f = mysql_query("SELECT * FROM hb_du_umum WHERE username='$_SESSION[username]'");
+        
+        $f = mysql_query("SELECT * FROM hb_du WHERE username='$_SESSION[username]'");
         $dl=mysql_fetch_array($f);
 
 ?>
@@ -19,7 +21,7 @@ if($_SESSION['level']=='perusahaan'){
             <div class="col-sm-12">
                 <section class="panel">
                     <header class="panel-heading"> <big>Identitas Perusahaan</big> <span class="pull-right">
-
+                            
                      </span> </header>
                     <form class="form-horizontal form-label-left" method="POST" action="prosesperusahaan.php?a=update-prakerin" enctype="multipart/form-data">
                         <div class="form-group">
@@ -29,11 +31,11 @@ if($_SESSION['level']=='perusahaan'){
                             </div>
                             <?php
                                                             $q1 = mysql_query("SELECT * FROM hb_du_penerima WHERE id_du=(SELECT id_du FROM hb_du WHERE username='$_SESSION[username]')")or die(mysql_error());
-
+        
                                                             $q2 = mysql_query("SELECT count(*) no FROM hb_du_penerima WHERE id_du=(SELECT id_du FROM hb_du WHERE username='$_SESSION[username]')");
-
+                                                            
                                                             $q3 = mysql_query("SELECT * FROM hb_du WHERE id_du=(SELECT id_du FROM hb_du WHERE username='$_SESSION[username]')")or die(mysql_error());
-
+        
                                                             $fa2 = mysql_fetch_array($q2);
                                                             $fa3 = mysql_fetch_array($q3);
         if($fa2['no']>0){while($d1=mysql_fetch_array($q1)){
@@ -123,7 +125,9 @@ if($_SESSION['level']=='perusahaan'){
     </div>
     <!--body wrapper end-->
     <?php		include "footer.php";
-
+	}else{
+		header('location:tahun_ajaran.php');
+	}
 }else{
 	header('location:../login.php');
 }

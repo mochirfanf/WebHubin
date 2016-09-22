@@ -14,7 +14,7 @@
 				$password = anti_injection($_POST['password']);
 				$password = md5($password);
 
-				$useradmin 	= mysql_query("SELECT * FROM hb_user_admin WHERE username='$username' AND password='$password'");
+				$useradmin 	= mysql_query("SELECT * FROM hb_user_admin WHERE username='$username' and password='$password'");
 				$ruseradmin = mysql_fetch_row($useradmin);
 
 				$kapprog = mysql_query("SELECT * FROM jurusan WHERE kapprog = '$username'");
@@ -22,9 +22,6 @@
 
 				$siswa = mysql_query("SELECT * FROM siswa WHERE nis = '$username'");
 				$rsiswa = mysql_fetch_row($siswa);
-
-                $userperusahaan  = mysql_query("SELECT * FROM hb_du_umum WHERE username='$username' AND password='$password' AND level='perusahaan' AND status='aktif' ");
-                $ruserperusahaan = mysql_fetch_row($userperusahaan);
 
 				if($ruseradmin>0){
 
@@ -49,6 +46,16 @@
 						$_SESSION['nip'] = $d["nip"];
 						header("location:admin/index.php");
 					}
+
+          if($level=="perusahaan" AND $status=="aktif"){
+						$_SESSION['username'] = $username;
+						$_SESSION['level'] = $level;
+						$_SESSION['password'] = $password;
+						$_SESSION['tahun_ajaran'] = '';
+
+						header("location:perusahaan/index.php");
+					}
+
 
 				}
 
@@ -83,35 +90,21 @@
 					}
 					else{
 						?>
-                        <script>
-                            alert("LOGIN GAGAL\nUsername atau Password Salah");
-                            top.location = "login.php";
-                        </script>
-                        <?php
-                    }
+    <script>
+        alert("LOGIN GAGAL\nUsername atau Password Salah");
+        top.location = "login.php";
+    </script>
+    <?php }
 
 				}
 
-                elseif($ruserperusahaan > 0) {
-
-
-                        $_SESSION['username'] = $username;
-                        $_SESSION['level'] = 'perusahaan';
-                        $_SESSION['password'] = $password;
-
-                        header("location:perusahaan/index.php");
-
-                }
-
 				else{
 					?>
-                    <script>
-                        alert("LOGIN GAGAL\nUsername atau Password Salah");
-                        top.location = "login.php";
-                    </script>
-                    <?php
-                }
-
+        <script>
+            alert("LOGIN GAGAL\nUsername atau Password Salah");
+            top.location = "login.php";
+        </script>
+        <?php }
 			break;
 
 			case "logout";
@@ -163,8 +156,8 @@
         $kecamatan = anti_injection($_POST['kec']);
         $kelurahan = anti_injection($_POST['kel']);
         $kodepos = anti_injection($_POST['kodepos']);
-
-
+        
+        
         if(mysql_fetch_array($d = mysql_query("SELECT id_prov FROM provinsi WHERE nama='$provinsi'"))){
             $provinsi = $d['id_prov'];
         }
@@ -189,17 +182,17 @@
             if($f==0){
                 define('ROOT', 'http://localhost:8080/WebHubin/bin/landing/');
                 $kode   = md5(uniqid(rand()));
-
+                
         $to     = $email;
         $judul  = "Aktivasi Akun Anda";
         $dari   = "From: hubin.com\n";
         $dari   .= "Content-type: text/html \r\n";
-
+ 
         $pesan  = "Klik link berikut untuk mengaktifkan akun: <br />";
         $pesan  .= "<a href='".ROOT."konfirm.php?email=".$_POST['email']."&kode=".$kode."'>".ROOT."konfirm.php?email=".$_POST['email']."&kode=$kode</a>";
-
+ 
         $kirim  = mail($to, $judul, $pesan, $dari)or die(mysql_error());
-
+ 
         if($kirim)
         {
             echo "<p class=info>Berhasil Dikirim</p>";
@@ -208,7 +201,7 @@
         {
             echo "<p class=infoGagal>Gagal Dikirim</p>";
         }
-
+                    
                 mysql_query("INSERT INTO hb_du_umum (nama_du, email_du, alamat, nama_provinsi, nama_kabupaten, nama_kecamatan, nama_kelurahan, no_kodepos, level, status,kode) VALUES('$nama','$email','$alamat','$provinsi', '$kabupaten', '$kecamatan', '$kelurahan', '$kodepos', 'perusahaan', 'Belum Aktif','$kode')");
                 ?>
                 <script>

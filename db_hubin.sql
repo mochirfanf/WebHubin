@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2016 at 12:27 PM
--- Server version: 5.6.20
--- PHP Version: 5.5.15
+-- Generation Time: 19 Sep 2016 pada 12.45
+-- Versi Server: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,51 +23,51 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `al_kabupaten`
+-- Struktur dari tabel `al_kabupaten`
 --
 
 CREATE TABLE IF NOT EXISTS `al_kabupaten` (
-`id_kabupaten` int(5) NOT NULL,
+  `id_kabupaten` int(5) NOT NULL,
   `nama_kabupaten` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `al_kecamatan`
+-- Struktur dari tabel `al_kecamatan`
 --
 
 CREATE TABLE IF NOT EXISTS `al_kecamatan` (
-`id_kecamatan` int(5) NOT NULL,
+  `id_kecamatan` int(5) NOT NULL,
   `nama_kecamatan` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `al_kelurahan`
+-- Struktur dari tabel `al_kelurahan`
 --
 
 CREATE TABLE IF NOT EXISTS `al_kelurahan` (
-`id_kelurahan` int(5) NOT NULL,
+  `id_kelurahan` int(5) NOT NULL,
   `nama_kelurahan` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `al_provinsi`
+-- Struktur dari tabel `al_provinsi`
 --
 
 CREATE TABLE IF NOT EXISTS `al_provinsi` (
-`id_provinsi` int(5) NOT NULL,
+  `id_provinsi` int(5) NOT NULL,
   `nama_provinsi` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `guru`
+-- Struktur dari tabel `guru`
 --
 
 CREATE TABLE IF NOT EXISTS `guru` (
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `guru` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `guru`
+-- Dumping data untuk tabel `guru`
 --
 
 INSERT INTO `guru` (`nip_guru`, `jenis`, `nama`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `agama`, `email`, `no_telepon`, `gol_darah`, `status`, `foto`) VALUES
@@ -123,11 +123,11 @@ INSERT INTO `guru` (`nip_guru`, `jenis`, `nama`, `jenis_kelamin`, `tempat_lahir`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hb_berita`
+-- Struktur dari tabel `hb_berita`
 --
 
 CREATE TABLE IF NOT EXISTS `hb_berita` (
-`id_berita` int(10) NOT NULL,
+  `id_berita` int(10) NOT NULL,
   `kategori` varchar(20) NOT NULL,
   `tgl_berita` date NOT NULL,
   `judul_berita` varchar(50) NOT NULL,
@@ -136,10 +136,10 @@ CREATE TABLE IF NOT EXISTS `hb_berita` (
   `hits_berita` int(20) NOT NULL,
   `foto_berita` text NOT NULL,
   `sumber` varchar(18) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `hb_berita`
+-- Dumping data untuk tabel `hb_berita`
 --
 
 INSERT INTO `hb_berita` (`id_berita`, `kategori`, `tgl_berita`, `judul_berita`, `isi_berita`, `keterangan`, `hits_berita`, `foto_berita`, `sumber`) VALUES
@@ -149,11 +149,11 @@ INSERT INTO `hb_berita` (`id_berita`, `kategori`, `tgl_berita`, `judul_berita`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hb_du`
+-- Struktur dari tabel `hb_du`
 --
 
 CREATE TABLE IF NOT EXISTS `hb_du` (
-`id_du` int(10) NOT NULL,
+  `id_du` int(10) NOT NULL,
   `tahun_ajaran` varchar(9) NOT NULL,
   `nama_du` varchar(50) NOT NULL,
   `alamat` text NOT NULL,
@@ -171,10 +171,10 @@ CREATE TABLE IF NOT EXISTS `hb_du` (
   `seleksi_du` varchar(5) NOT NULL,
   `seleksi_tempat` varchar(50) NOT NULL,
   `seleksi_tanggal` date NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `hb_du`
+-- Dumping data untuk tabel `hb_du`
 --
 
 INSERT INTO `hb_du` (`id_du`, `tahun_ajaran`, `nama_du`, `alamat`, `kota`, `status_du`, `email`, `nama_penanggung_jawab`, `mulai_pelaksanaan`, `berakhir_pelaksanaan`, `kerjasama_magang`, `kerjasama_tidak_langsung`, `permintaan_siswa`, `du_siswa`, `keterangan_du`, `seleksi_du`, `seleksi_tempat`, `seleksi_tanggal`) VALUES
@@ -217,19 +217,19 @@ INSERT INTO `hb_du` (`id_du`, `tahun_ajaran`, `nama_du`, `alamat`, `kota`, `stat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hb_du_penerima`
+-- Struktur dari tabel `hb_du_penerima`
 --
 
 CREATE TABLE IF NOT EXISTS `hb_du_penerima` (
-`id_du_penerima` int(10) NOT NULL,
+  `id_du_penerima` int(10) NOT NULL,
   `id_du` int(10) NOT NULL,
   `id_jurusan` int(10) NOT NULL,
   `jumlah_penerimaan` int(10) NOT NULL,
   `sisa_kuota_penerimaan` int(10) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=53 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `hb_du_penerima`
+-- Dumping data untuk tabel `hb_du_penerima`
 --
 
 INSERT INTO `hb_du_penerima` (`id_du_penerima`, `id_du`, `id_jurusan`, `jumlah_penerimaan`, `sisa_kuota_penerimaan`) VALUES
@@ -281,11 +281,11 @@ INSERT INTO `hb_du_penerima` (`id_du_penerima`, `id_du`, `id_jurusan`, `jumlah_p
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hb_du_permintaan_1`
+-- Struktur dari tabel `hb_du_permintaan_1`
 --
 
 CREATE TABLE IF NOT EXISTS `hb_du_permintaan_1` (
-`id_du_permintaan` int(10) NOT NULL,
+  `id_du_permintaan` int(10) NOT NULL,
   `id_du` int(10) NOT NULL,
   `permintaan_siswa` varchar(3) NOT NULL,
   `du_siswa` varchar(18) NOT NULL,
@@ -309,29 +309,29 @@ CREATE TABLE IF NOT EXISTS `hb_du_permintaan_1` (
   `fasilitas_3` varchar(3) NOT NULL,
   `fasilitas_4` varchar(3) NOT NULL,
   `fasilitas_lain` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hb_du_permintaan_du`
+-- Struktur dari tabel `hb_du_permintaan_du`
 --
 
 CREATE TABLE IF NOT EXISTS `hb_du_permintaan_du` (
-`id_du_permintaan_du` int(10) NOT NULL,
+  `id_du_permintaan_du` int(10) NOT NULL,
   `id_du` int(10) NOT NULL,
   `id_jurusan` int(10) NOT NULL,
   `jumlah_penerimaan` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hb_du_umum`
+-- Struktur dari tabel `hb_du_umum`
 --
 
 CREATE TABLE IF NOT EXISTS `hb_du_umum` (
-`id_du` int(10) NOT NULL,
+  `id_du` int(10) NOT NULL AUTO_INCREMENT,
   `nama_du` varchar(50) NOT NULL,
   `email_du` varchar(50) NOT NULL,
   `alamat` text NOT NULL,
@@ -341,36 +341,42 @@ CREATE TABLE IF NOT EXISTS `hb_du_umum` (
   `nama_kelurahan` int(5) NOT NULL,
   `no_kodepos` int(5) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(20) NOT NULL,
   `level` varchar(11) NOT NULL,
   `status` varchar(11) NOT NULL,
   `keterangan` text NOT NULL,
   `bidang_usaha` text NOT NULL,
-  `kode` varchar(100) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `kode` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_du`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data for table `hb_du_umum`
+-- Dumping data untuk tabel `hb_du_umum`
 --
 
 INSERT INTO `hb_du_umum` (`id_du`, `nama_du`, `email_du`, `alamat`, `nama_provinsi`, `nama_kabupaten`, `nama_kecamatan`, `nama_kelurahan`, `no_kodepos`, `username`, `password`, `level`, `status`, `keterangan`, `bidang_usaha`, `kode`) VALUES
-(1, 'Nama Perusahaan', 'deaemalia28@gmail.com', ' Jl.Rancabali', 32, 3277, 327703, 2147483647, 40514, '', '', 'perusahaan', 'Belum Aktif', '', '', 'bee0e5312d102c96f65467f181630c2a'),
-(2, 'TesLogin', 'deaemaliates@gmail.com', ' Jl.Rancabali', 32, 3277, 327703, 2147483647, 40514, 'deaperusahaan', '8baa4cf4b1aae1712dcd5dc3b0eca6b2', 'perusahaan', 'aktif', '', '', 'kodedeangasal');
+(1, '1', 'sds@f.com', 'wa', 0, 234, 0, 0, 564, '', '', 'perusahaan', 'Belum Aktif', '', '', ''),
+(2, 'dsfs', 'dfs@dfd.com', '', 32, 3271, 327103, 2147483647, 67, '', '', 'perusahaan', 'Belum Aktif', '', '', ''),
+(3, 'as', 'd@gm.com', '', 11, 1105, 110508, 1105082020, 34, '', '', 'perusahaan', 'Belum Aktif', '', '', ''),
+(4, 'dfd', 'ewp@g.om', '', 51, 5108, 510803, 2147483647, 2, '', '', 'perusahaan', 'Belum Aktif', '', '', ''),
+(5, 'mochi', 'mochi@gmail.com', 'hjg nkjk ', 32, 3211, 321102, 2147483647, 35, '', '', 'perusahaan', 'Belum Aktif', '', '', ''),
+(7, 'vv', 'irfanmochamad26@gmail.com', 'fdsgjh ', 34, 3404, 340409, 2147483647, 3, '', '', 'perusahaan', 'Belum Aktif', '', '', 'bfe029b0c05abc13d2937f0cf864e5d4'),
+(8, 'cc', 'cc@f.com', 'sfs ', 19, 1905, 190502, 1905022004, 2, '', '', 'perusahaan', 'Belum Aktif', '', '', '8a4df07b05dc5537591c1a61c087bfbb');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hb_guru_jurusan`
+-- Struktur dari tabel `hb_guru_jurusan`
 --
 
 CREATE TABLE IF NOT EXISTS `hb_guru_jurusan` (
-`id_guru_jurusan` int(10) NOT NULL,
+  `id_guru_jurusan` int(10) NOT NULL,
   `nip_guru` varchar(18) NOT NULL,
   `id_jurusan` int(10) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `hb_guru_jurusan`
+-- Dumping data untuk tabel `hb_guru_jurusan`
 --
 
 INSERT INTO `hb_guru_jurusan` (`id_guru_jurusan`, `nip_guru`, `id_jurusan`) VALUES
@@ -405,7 +411,7 @@ INSERT INTO `hb_guru_jurusan` (`id_guru_jurusan`, `nip_guru`, `id_jurusan`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hb_login_operator`
+-- Struktur dari tabel `hb_login_operator`
 --
 
 CREATE TABLE IF NOT EXISTS `hb_login_operator` (
@@ -414,7 +420,7 @@ CREATE TABLE IF NOT EXISTS `hb_login_operator` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `hb_login_operator`
+-- Dumping data untuk tabel `hb_login_operator`
 --
 
 INSERT INTO `hb_login_operator` (`nip_nis`, `password`) VALUES
@@ -433,11 +439,11 @@ INSERT INTO `hb_login_operator` (`nip_nis`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hb_monitoring`
+-- Struktur dari tabel `hb_monitoring`
 --
 
 CREATE TABLE IF NOT EXISTS `hb_monitoring` (
-`id_monitoring` int(10) NOT NULL,
+  `id_monitoring` int(10) NOT NULL,
   `id_du` int(10) NOT NULL,
   `nis` varchar(18) NOT NULL,
   `nip_guru` varchar(18) NOT NULL,
@@ -447,12 +453,12 @@ CREATE TABLE IF NOT EXISTS `hb_monitoring` (
   `nilai` varchar(15) NOT NULL,
   `masalah_yg_ditemukan` text NOT NULL,
   `saran` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hb_pengelola_hubin`
+-- Struktur dari tabel `hb_pengelola_hubin`
 --
 
 CREATE TABLE IF NOT EXISTS `hb_pengelola_hubin` (
@@ -474,7 +480,7 @@ CREATE TABLE IF NOT EXISTS `hb_pengelola_hubin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `hb_pengelola_hubin`
+-- Dumping data untuk tabel `hb_pengelola_hubin`
 --
 
 INSERT INTO `hb_pengelola_hubin` (`username`, `nama`, `jabatan`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `agama`, `email`, `no_telepon`, `gol_darah`, `status`, `nip`, `foto`, `motto_hidup`) VALUES
@@ -488,21 +494,21 @@ INSERT INTO `hb_pengelola_hubin` (`username`, `nama`, `jabatan`, `jenis_kelamin`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hb_prakerin`
+-- Struktur dari tabel `hb_prakerin`
 --
 
 CREATE TABLE IF NOT EXISTS `hb_prakerin` (
-`id_prakerin` int(10) NOT NULL,
+  `id_prakerin` int(10) NOT NULL,
   `nis` varchar(18) NOT NULL,
   `id_du` int(10) NOT NULL,
   `status_verifikasi` varchar(25) NOT NULL,
   `status_prakerin` varchar(25) NOT NULL,
   `nip_guru` varchar(18) NOT NULL,
   `saran_pembimbing` varchar(20) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `hb_prakerin`
+-- Dumping data untuk tabel `hb_prakerin`
 --
 
 INSERT INTO `hb_prakerin` (`id_prakerin`, `nis`, `id_du`, `status_verifikasi`, `status_prakerin`, `nip_guru`, `saran_pembimbing`) VALUES
@@ -515,11 +521,11 @@ INSERT INTO `hb_prakerin` (`id_prakerin`, `nis`, `id_du`, `status_verifikasi`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hb_riwayat_siswa`
+-- Struktur dari tabel `hb_riwayat_siswa`
 --
 
 CREATE TABLE IF NOT EXISTS `hb_riwayat_siswa` (
-`id_riwayat` int(10) NOT NULL,
+  `id_riwayat` int(10) NOT NULL,
   `nis` varchar(18) NOT NULL,
   `riwayat` varchar(10) NOT NULL,
   `nama_tempat` varchar(50) NOT NULL,
@@ -527,12 +533,12 @@ CREATE TABLE IF NOT EXISTS `hb_riwayat_siswa` (
   `alamat_tempat` text NOT NULL,
   `status` varchar(15) NOT NULL,
   `keterangan` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hb_user_admin`
+-- Struktur dari tabel `hb_user_admin`
 --
 
 CREATE TABLE IF NOT EXISTS `hb_user_admin` (
@@ -543,7 +549,7 @@ CREATE TABLE IF NOT EXISTS `hb_user_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `hb_user_admin`
+-- Dumping data untuk tabel `hb_user_admin`
 --
 
 INSERT INTO `hb_user_admin` (`username`, `password`, `level`, `status`) VALUES
@@ -554,12 +560,13 @@ INSERT INTO `hb_user_admin` (`username`, `password`, `level`, `status`) VALUES
 ('perusahaan', '21f57628aa8d2ba238f7a6db352195c8', 'perusahaan', 'aktif'),
 ('tedea', 'ab72e8f0f6419701edf03f24737f3aec', 'admin', 'aktif'),
 ('teeg', '372c331c7b8f8d7a3e7e01a4b6af7895', 'admin', 'aktif'),
-('tehdea', 'caf1a3dfb505ffed0d024130f58c5cfa', 'admin', 'aktif');
+('tehdea', 'caf1a3dfb505ffed0d024130f58c5cfa', 'admin', 'aktif'),
+('a', '7fc56270e7a70fa81a5935b72eacbe29', 'perusahaan', 'aktif');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis`
+-- Struktur dari tabel `jenis`
 --
 
 CREATE TABLE IF NOT EXISTS `jenis` (
@@ -568,7 +575,7 @@ CREATE TABLE IF NOT EXISTS `jenis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `jenis`
+-- Dumping data untuk tabel `jenis`
 --
 
 INSERT INTO `jenis` (`id_jenis`, `nama`) VALUES
@@ -580,46 +587,19 @@ INSERT INTO `jenis` (`id_jenis`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jurusan`
---
-
-CREATE TABLE IF NOT EXISTS `jurusan` (
-`id_jurusan` int(10) NOT NULL,
-  `nama_jurusan` varchar(50) NOT NULL,
-  `singkatan` varchar(4) NOT NULL,
-  `kapprog` varchar(18) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
-
---
--- Dumping data for table `jurusan`
---
-
-INSERT INTO `jurusan` (`id_jurusan`, `nama_jurusan`, `singkatan`, `kapprog`) VALUES
-(1, 'Rekayasa Perangkat Lunak', 'RPL', '111'),
-(2, 'Kontrol Mekanik', 'KM', '222'),
-(3, 'Kontrol Proses', 'KP', '333'),
-(4, 'Teknik Elektronika Industri', 'TEI', '444'),
-(5, 'Teknik Elektronika Komunikasi', 'TEK', '555'),
-(6, 'Teknik Komputer dan Jaringan', 'TKJ', '666'),
-(7, 'Teknik Otomasi Industri', 'TOI', '777'),
-(8, 'Teknik Produksi & Penyiaran Program Pertelevisian', 'TP4', '888'),
-(9, 'Teknik Pendingin dan Tata Udara', 'TPTU', '999');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `kabupaten`
+-- Struktur dari tabel `kabupaten`
 --
 
 CREATE TABLE IF NOT EXISTS `kabupaten` (
   `id_kab` char(4) NOT NULL,
   `id_prov` char(2) NOT NULL,
   `nama` tinytext NOT NULL,
-  `id_jenis` int(11) NOT NULL
+  `id_jenis` int(11) NOT NULL,
+  PRIMARY KEY (`id_kab`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kabupaten`
+-- Dumping data untuk tabel `kabupaten`
 --
 
 INSERT INTO `kabupaten` (`id_kab`, `id_prov`, `nama`, `id_jenis`) VALUES
@@ -1141,17 +1121,18 @@ INSERT INTO `kabupaten` (`id_kab`, `id_prov`, `nama`, `id_jenis`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kecamatan`
+-- Struktur dari tabel `kecamatan`
 --
 
 CREATE TABLE IF NOT EXISTS `kecamatan` (
   `id_kec` char(6) NOT NULL,
   `id_kab` char(4) NOT NULL,
-  `nama` tinytext NOT NULL
+  `nama` tinytext NOT NULL,
+  PRIMARY KEY (`id_kec`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kecamatan`
+-- Dumping data untuk tabel `kecamatan`
 --
 
 INSERT INTO `kecamatan` (`id_kec`, `id_kab`, `nama`) VALUES
@@ -8257,18 +8238,19 @@ INSERT INTO `kecamatan` (`id_kec`, `id_kab`, `nama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kelurahan`
+-- Struktur dari tabel `kelurahan`
 --
 
 CREATE TABLE IF NOT EXISTS `kelurahan` (
   `id_kel` char(10) NOT NULL,
   `id_kec` char(6) DEFAULT NULL,
   `nama` tinytext,
-  `id_jenis` int(11) NOT NULL
+  `id_jenis` int(11) NOT NULL,
+  PRIMARY KEY (`id_kel`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `kelurahan`
+-- Dumping data untuk tabel `kelurahan`
 --
 
 INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
@@ -90847,16 +90829,17 @@ INSERT INTO `kelurahan` (`id_kel`, `id_kec`, `nama`, `id_jenis`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `provinsi`
+-- Struktur dari tabel `provinsi`
 --
 
 CREATE TABLE IF NOT EXISTS `provinsi` (
   `id_prov` char(2) NOT NULL,
-  `nama` tinytext NOT NULL
+  `nama` tinytext NOT NULL,
+  PRIMARY KEY (`id_prov`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `provinsi`
+-- Dumping data untuk tabel `provinsi`
 --
 
 INSERT INTO `provinsi` (`id_prov`, `nama`) VALUES
@@ -90895,313 +90878,6 @@ INSERT INTO `provinsi` (`id_prov`, `nama`) VALUES
 ('91', 'Papua Barat'),
 ('92', 'Papua');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `siswa`
---
-
-CREATE TABLE IF NOT EXISTS `siswa` (
-  `nis` varchar(18) NOT NULL,
-  `id_jurusan` int(10) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `kelas` char(1) NOT NULL,
-  `tahun_ajaran` varchar(9) NOT NULL,
-  `jenis_kelamin` char(1) NOT NULL,
-  `tempat_lahir` varchar(50) NOT NULL,
-  `tanggal_lahir` date NOT NULL,
-  `alamat` text NOT NULL,
-  `agama` varchar(15) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `no_telepon` varchar(12) NOT NULL,
-  `gol_darah` char(2) NOT NULL,
-  `foto` varchar(70) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `siswa`
---
-
-INSERT INTO `siswa` (`nis`, `id_jurusan`, `nama`, `kelas`, `tahun_ajaran`, `jenis_kelamin`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `agama`, `email`, `no_telepon`, `gol_darah`, `foto`) VALUES
-('131', 1, 'Siswa RPL 1', 'A', '2013-2014', '', '', '0000-00-00', '', '', '', '', '', ''),
-('1310', 5, 'Siswa TEK 2', 'B', '2013-2014', '', '', '0000-00-00', '', '', '', '', '', ''),
-('1311', 6, 'Siswa TKJ 1', 'A', '2013-2014', '', '', '0000-00-00', '', '', '', '', '', ''),
-('1312', 6, 'Siswa TKJ 2', 'B', '2013-2014', '', '', '0000-00-00', '', '', '', '', '', ''),
-('1313', 7, 'Siswa TOI 1', 'A', '2013-2014', '', '', '0000-00-00', '', '', '', '', '', ''),
-('1314', 7, 'Siswa TOI 2', 'B', '2013-2014', '', '', '0000-00-00', '', '', '', '', '', ''),
-('1315', 8, 'Siswa TP4 1', 'A', '2013-2014', '', '', '0000-00-00', '', '', '', '', '', ''),
-('1316', 8, 'Siswa TP4 2', 'B', '2013-2014', '', '', '0000-00-00', '', '', '', '', '', ''),
-('1317', 9, 'Siswa TP 1', 'A', '2013-2014', '', '', '0000-00-00', '', '', '', '', '', ''),
-('1318', 9, 'Siswa TP 2', 'B', '2013-2014', '', '', '0000-00-00', '', '', '', '', '', ''),
-('132', 1, 'Siswa RPL 2', 'B', '2013-2014', '', '', '0000-00-00', '', '', '', '', '', ''),
-('133', 2, 'Siswa KM 1', 'A', '2013-2014', '', '', '0000-00-00', '', '', '', '', '', ''),
-('134', 2, 'Siswa KM 2', 'B', '2013-2014', '', '', '0000-00-00', '', '', '', '', '', ''),
-('135', 3, 'Siswa KP 1', 'A', '2013-2014', '', '', '0000-00-00', '', '', '', '', '', ''),
-('136', 3, 'Siswa KP 2', 'B', '2013-2014', '', '', '0000-00-00', '', '', '', '', '', ''),
-('137', 4, 'Siswa TEI 1', 'A', '2013-2014', '', '', '0000-00-00', '', '', '', '', '', ''),
-('138', 4, 'Siswa TEI 2', 'B', '2013-2014', '', '', '0000-00-00', '', '', '', '', '', ''),
-('139', 5, 'Siswa TEK 1', 'A', '2013-2014', '', '', '0000-00-00', '', '', '', '', '', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tahun_ajaran`
---
-
-CREATE TABLE IF NOT EXISTS `tahun_ajaran` (
-`id_tahun_ajaran` int(10) NOT NULL,
-  `tahun_ajaran` varchar(9) NOT NULL,
-  `angkatan` int(3) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `tahun_ajaran`
---
-
-INSERT INTO `tahun_ajaran` (`id_tahun_ajaran`, `tahun_ajaran`, `angkatan`) VALUES
-(1, '2013-2014', 40),
-(2, '2014-2015', 41),
-(3, '2015-2016', 42),
-(4, '2016-2017', 43);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `al_kabupaten`
---
-ALTER TABLE `al_kabupaten`
- ADD PRIMARY KEY (`id_kabupaten`);
-
---
--- Indexes for table `al_kecamatan`
---
-ALTER TABLE `al_kecamatan`
- ADD PRIMARY KEY (`id_kecamatan`);
-
---
--- Indexes for table `al_kelurahan`
---
-ALTER TABLE `al_kelurahan`
- ADD PRIMARY KEY (`id_kelurahan`);
-
---
--- Indexes for table `al_provinsi`
---
-ALTER TABLE `al_provinsi`
- ADD PRIMARY KEY (`id_provinsi`);
-
---
--- Indexes for table `guru`
---
-ALTER TABLE `guru`
- ADD PRIMARY KEY (`nip_guru`);
-
---
--- Indexes for table `hb_berita`
---
-ALTER TABLE `hb_berita`
- ADD PRIMARY KEY (`id_berita`);
-
---
--- Indexes for table `hb_du`
---
-ALTER TABLE `hb_du`
- ADD PRIMARY KEY (`id_du`);
-
---
--- Indexes for table `hb_du_penerima`
---
-ALTER TABLE `hb_du_penerima`
- ADD PRIMARY KEY (`id_du_penerima`);
-
---
--- Indexes for table `hb_du_permintaan_1`
---
-ALTER TABLE `hb_du_permintaan_1`
- ADD PRIMARY KEY (`id_du_permintaan`);
-
---
--- Indexes for table `hb_du_permintaan_du`
---
-ALTER TABLE `hb_du_permintaan_du`
- ADD PRIMARY KEY (`id_du_permintaan_du`);
-
---
--- Indexes for table `hb_du_umum`
---
-ALTER TABLE `hb_du_umum`
- ADD PRIMARY KEY (`id_du`);
-
---
--- Indexes for table `hb_guru_jurusan`
---
-ALTER TABLE `hb_guru_jurusan`
- ADD PRIMARY KEY (`id_guru_jurusan`);
-
---
--- Indexes for table `hb_login_operator`
---
-ALTER TABLE `hb_login_operator`
- ADD PRIMARY KEY (`nip_nis`);
-
---
--- Indexes for table `hb_monitoring`
---
-ALTER TABLE `hb_monitoring`
- ADD PRIMARY KEY (`id_monitoring`);
-
---
--- Indexes for table `hb_pengelola_hubin`
---
-ALTER TABLE `hb_pengelola_hubin`
- ADD PRIMARY KEY (`username`);
-
---
--- Indexes for table `hb_prakerin`
---
-ALTER TABLE `hb_prakerin`
- ADD PRIMARY KEY (`id_prakerin`);
-
---
--- Indexes for table `hb_riwayat_siswa`
---
-ALTER TABLE `hb_riwayat_siswa`
- ADD PRIMARY KEY (`id_riwayat`);
-
---
--- Indexes for table `hb_user_admin`
---
-ALTER TABLE `hb_user_admin`
- ADD PRIMARY KEY (`username`);
-
---
--- Indexes for table `jurusan`
---
-ALTER TABLE `jurusan`
- ADD PRIMARY KEY (`id_jurusan`);
-
---
--- Indexes for table `kabupaten`
---
-ALTER TABLE `kabupaten`
- ADD PRIMARY KEY (`id_kab`);
-
---
--- Indexes for table `kecamatan`
---
-ALTER TABLE `kecamatan`
- ADD PRIMARY KEY (`id_kec`);
-
---
--- Indexes for table `kelurahan`
---
-ALTER TABLE `kelurahan`
- ADD PRIMARY KEY (`id_kel`);
-
---
--- Indexes for table `provinsi`
---
-ALTER TABLE `provinsi`
- ADD PRIMARY KEY (`id_prov`);
-
---
--- Indexes for table `siswa`
---
-ALTER TABLE `siswa`
- ADD PRIMARY KEY (`nis`);
-
---
--- Indexes for table `tahun_ajaran`
---
-ALTER TABLE `tahun_ajaran`
- ADD PRIMARY KEY (`id_tahun_ajaran`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `al_kabupaten`
---
-ALTER TABLE `al_kabupaten`
-MODIFY `id_kabupaten` int(5) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `al_kecamatan`
---
-ALTER TABLE `al_kecamatan`
-MODIFY `id_kecamatan` int(5) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `al_kelurahan`
---
-ALTER TABLE `al_kelurahan`
-MODIFY `id_kelurahan` int(5) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `al_provinsi`
---
-ALTER TABLE `al_provinsi`
-MODIFY `id_provinsi` int(5) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `hb_berita`
---
-ALTER TABLE `hb_berita`
-MODIFY `id_berita` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `hb_du`
---
-ALTER TABLE `hb_du`
-MODIFY `id_du` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
---
--- AUTO_INCREMENT for table `hb_du_penerima`
---
-ALTER TABLE `hb_du_penerima`
-MODIFY `id_du_penerima` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
---
--- AUTO_INCREMENT for table `hb_du_permintaan_1`
---
-ALTER TABLE `hb_du_permintaan_1`
-MODIFY `id_du_permintaan` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `hb_du_permintaan_du`
---
-ALTER TABLE `hb_du_permintaan_du`
-MODIFY `id_du_permintaan_du` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `hb_du_umum`
---
-ALTER TABLE `hb_du_umum`
-MODIFY `id_du` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `hb_guru_jurusan`
---
-ALTER TABLE `hb_guru_jurusan`
-MODIFY `id_guru_jurusan` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
---
--- AUTO_INCREMENT for table `hb_monitoring`
---
-ALTER TABLE `hb_monitoring`
-MODIFY `id_monitoring` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `hb_prakerin`
---
-ALTER TABLE `hb_prakerin`
-MODIFY `id_prakerin` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
---
--- AUTO_INCREMENT for table `hb_riwayat_siswa`
---
-ALTER TABLE `hb_riwayat_siswa`
-MODIFY `id_riwayat` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `jurusan`
---
-ALTER TABLE `jurusan`
-MODIFY `id_jurusan` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT for table `tahun_ajaran`
---
-ALTER TABLE `tahun_ajaran`
-MODIFY `id_tahun_ajaran` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
