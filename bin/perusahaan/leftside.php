@@ -68,8 +68,8 @@
                 <li class="<?php echo "$active"; ?> "><a href="homepage.php"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
                 <li class="<?php echo "$active2"; ?> "><a href="identitas.php"><i class="fa fa-home"></i> <span>Identitas Perusahaan</span></a></li>
                 <li class="<?php echo "$active3"; ?> "><a href="prakerin.php"><i class="fa fa-home"></i> <span>Prakerin</span></a></li>
-                <li class="<?php echo "$active3"; ?> "><a href="kerja.php"><i class="fa fa-home"></i> <span>Kerja</span></a></li>
-                
+                <li class="<?php echo "$active4"; ?> "><a href="kerja.php"><i class="fa fa-home"></i> <span>Kerja</span></a></li>
+
 
 
             </ul>
@@ -78,7 +78,7 @@
         </div>
     </div>
     <!-- left side end-->
-    
+
     <!-- main content start-->
     <div class="main-content" >
 
@@ -95,7 +95,7 @@
                 <li>
                     <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="badge">3</span> <!-- iNI BUAT BERAPA - BERAPA NYA --> 
+                        <span class="badge">3</span> <!-- iNI BUAT BERAPA - BERAPA NYA -->
                     </a>
                     <div class="dropdown-menu dropdown-menu-head pull-right">
                         <h5 class="title"> 3 Pesan Masuk </h5>
@@ -145,7 +145,7 @@
                                     <span class="name">Server #1 overloaded.  </span>
                                     <em class="small">34 mins</em>
                                 </a>
-                            </li> 
+                            </li>
                             <li class="new">
                                 <a href="">
                                     <span class="label label-danger"><i class="fa fa-bolt"></i></span>
@@ -191,4 +191,4 @@
         </div>
         <!-- header section end-->
 
-       
+
