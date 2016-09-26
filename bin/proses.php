@@ -94,10 +94,14 @@
 
                 elseif($ruserperusahaan > 0) {
 
+                        $userperusahaan  = mysql_query("SELECT * FROM hb_du_umum WHERE username='$username' AND password='$password' AND level='perusahaan' AND status='aktif' ");
+                        $c  = mysql_fetch_array($userperusahaan);
 
                         $_SESSION['username'] = $username;
                         $_SESSION['level'] = 'perusahaan';
                         $_SESSION['password'] = $password;
+                        $_SESSION['id_du'] = $c["id_du"];
+                        $_SESSION['tahun_ajaran'] = "2013-2014";
 
                         header("location:perusahaan/index.php");
 

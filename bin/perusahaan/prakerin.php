@@ -27,14 +27,13 @@ if($_SESSION['level']=='perusahaan'){
         <div class="row">
             <div class="col-sm-12">
                 <section class="panel">
-                    <header class="panel-heading"> <big>Permintaan Siswa Untuk Prakerin</big> <span class="pull-right">
+                    <header class="panel-heading"> <big>Permintaan Siswa Untuk Prakerin </big> <span class="pull-right">
 
                      </span> </header>
-                    <form class="form-horizontal form-label-left" method="POST" action="prosesperusahaan.php?a=update-prakerin" enctype="multipart/form-data">
+                    <form class="form-horizontal form-label-left" method="POST" action="prosesperusahaan.php?a=permintaan_prakerin" enctype="multipart/form-data">
                         <div class="form-group">
                             <br><br>
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Permintaan Jurusan : </label>
-
                                                         <div class="input_fields_wrap col-lg-1">
                                                             <button class="btn btn-danger add_field_button"><i class='fa fa-plus-square'></i></button>
                                                         </div>
@@ -68,7 +67,7 @@ if($_SESSION['level']=='perusahaan'){
                             <br><br>
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Contact Person :</label>
                             <div class="col-lg-6 flat-green">
-                                <input type="text" class="form-control" name="nama_pj" placeholder="Contact Person ">
+                                <input type="text" class="form-control" name="contact" placeholder="Contact Person ">
                             </div>
                         </div>
                         <div class="form-group">
@@ -77,9 +76,9 @@ if($_SESSION['level']=='perusahaan'){
                             <div class="col-lg-6 flat-green">
                                 <?php
 
-                                                             echo "<select class='form-control m-bot15' name='jurusan[]'>
-                                                                      <option value='ya'> Ya </option>
-                                                                      <option value='tidak'> Tidak </option>
+                                                             echo "<select class='form-control m-bot15' name='seleksi'>
+                                                                      <option value='Ya'> Ya </option>
+                                                                      <option value='Tidak'> Tidak </option>
                                                                   </select><br>";
                                                             ?>
                             </div>
@@ -123,13 +122,13 @@ if($_SESSION['level']=='perusahaan'){
                             <br>
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Fasilitas Lain :</label>
                             <div class="col-lg-6 flat-green">
-                                <input type="text" class="form-control" name="nama_pj" placeholder=" Fasilitas Lain (Opsional)">
+                                <input type="text" class="form-control" name="fasilitas_lain" placeholder="Fasilitas Lain (Opsional)">
                             </div>
                         </div>
                         <div class="form-group">
                         <div class="col-lg-offset-8 col-lg-10">
                             <br><br>
-                                <button  type='submit' name='submit' class="btn btn-primary"> Submit </button>
+                                <button value='Tambahkan' name='Tambahkan' type='submit' name='submit' class="btn btn-primary"> Submit </button>
                             <br><br><br>
                         </div>
                     </div>
