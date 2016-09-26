@@ -80,46 +80,59 @@ if($_SESSION['level']=='perusahaan'){
                                                              echo "<select class='form-control m-bot15' name='jurusan[]'>
                                                                       <option value='ya'> Ya </option>
                                                                       <option value='tidak'> Tidak </option>
-                                                                  </select>";
+                                                                  </select><br>";
                                                             ?>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Fasilitas :</label>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"> Fasilitas :</label>
                             <div class=" flat-green">
-                                <div class="col-lg-1">
+                                <div class="col-lg-1  flat-green">
                                     <input name="uangsaku" value="Ya" type="checkbox" > </div>
-                                <label> Uang Saku</label>
-                                <select name='uangsaku2'>
+                                <label style="margin-left: -45px;"> Uang Saku</label>
+                                <!-- <select name='uangsaku2'>
                                     <option value='100.000-200.000' >100.000-200.000</option>
                                     <option value='200.000-300.000' >200.000-300.000</option>
-                                </select>
+                                </select>-->
                             </div>
                             <div class=" col-lg-offset-3 flat-green">
                                 <div class="col-lg-1">
                                     <input name="asrama" value="Ya" type="checkbox"  > </div>
-                                <label> &nbsp; Asrama/Mess</label>
+                                <label style="margin-left: -28px;"> &nbsp; Asrama/Mess</label>
                             </div>
                             <div class=" col-lg-offset-3 flat-green">
                                 <div class="col-lg-1">
                                     <input name="uangmakan" value="Ya" type="checkbox"> </div>
-                                <label> &nbsp; Uang Makan</label>
-                                <select name='uangmakan2'>
+                                <label style="margin-left: -28px;"> &nbsp; Uang Makan</label>
+                                <!--<select name='uangmakan2'>
                                     <option value='100.000-200.000'>100.000-200.000</option>
                                     <option value='200.000-300.000'>200.000-300.000</option>
-                                </select>
+                                </select>-->
                             </div>
                             <div class=" col-lg-offset-3 flat-green">
                                 <div class="col-lg-1">
                                     <input name="uangtransport" value="Ya" type="checkbox"> </div>
-                                <label> &nbsp; Uang Transport</label>
-                                <select name='uangtransport2'>
-                                    <option value='100.000-200.000'>100.000-200.000</option>
-                                    <option value='200.000-300.000' >200.000-300.000</option>
-                                </select>
+                                    <label style="margin-left: -28px;"> &nbsp; Uang Transport</label>
+                                    <!--<select name='uangtransport2'>
+                                        <option value='100.000-200.000'>100.000-200.000</option>
+                                        <option value='200.000-300.000' >200.000-300.000</option>
+                                    </select> -->
                             </div>
                         </div>
-                        <input type='submit' name='submit'> </form>
+                         <div class="form-group">
+                            <br>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Fasilitas Lain :</label>
+                            <div class="col-lg-6 flat-green">
+                                <input type="text" class="form-control" name="nama_pj" placeholder=" Fasilitas Lain (Opsional)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        <div class="col-lg-offset-8 col-lg-10">
+                            <br><br>
+                                <button  type='submit' name='submit' class="btn btn-primary"> Submit </button>
+                            <br><br><br>
+                        </div>
+                    </div>
                 </section>
             </div>
         </div>
@@ -132,3 +145,4 @@ if($_SESSION['level']=='perusahaan'){
 }
 
 ?>
+
