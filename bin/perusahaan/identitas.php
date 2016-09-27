@@ -59,6 +59,27 @@ if($_SESSION['level']=='perusahaan'){
                                 </div>
                         </div>
                     </div>
+
+                    <div class="panel-body">
+                        <div class="adv-table">
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Penanggung Jawab :<span class="required"></span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input name='npj' value='<?php echo $dl['nama_penanggung_jawab']?>' class="form-control col-md-7 col-xs-12" type="text" required>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="adv-table">
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Contact Person :<span class="required"></span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input name='cp' value='<?php echo $dl['contact_person']?>' class="form-control col-md-7 col-xs-12" type="text" required>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
                     <div class="panel-body">
                         <div class="adv-table">
                                 <div class="item form-group">
@@ -74,7 +95,24 @@ if($_SESSION['level']=='perusahaan'){
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Provinsi :<span class="required"></span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input name='provinsi' value='<?php echo $dl['nama_provinsi']?>' class="form-control col-md-7 col-xs-12" type="text" required>
+                                        <select name="prop" id="prop" onclick="ajaxkota(this.value)" class='form-control'>
+                                            <option value="">Pilih Provinsi</option>
+                                            <?php
+                                              include 'koneksi.php';
+                                              $query=$db->prepare("SELECT id_prov,nama FROM provinsi ORDER BY nama");
+                                              $query->execute();
+                                              while ($data=$query->fetchObject()){
+                                              echo '<option value="'.$data->id_prov.'"';
+
+                                                $x = mysql_fetch_array( mysql_query("SELECT id_prov FROM hb_du_umum WHERE id_du='$_SESSION[id_du]'"));
+
+                                                if( $x["id_prov"] == $data->id_prov){
+                                                    echo "selected";
+                                                }
+                                              echo '>'.$data->nama.'</option>';
+                                              }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
                         </div>
@@ -85,7 +123,13 @@ if($_SESSION['level']=='perusahaan'){
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Kota/Kabupaten :<span class="required"></span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input name='kabupaten' value='<?php echo $dl['nama_kabupaten']?>' class="form-control col-md-7 col-xs-12" type="text" required>
+                                        <select name="kota" id="kota" onchange="ajaxkec(this.value)" class='form-control'>
+                                            <?php
+                                                $ko = mysql_fetch_array( mysql_query("SELECT id_kab FROM hb_du_umum WHERE id_du='$_SESSION[id_du]'"));
+                                                $ta = mysql_fetch_array( mysql_query("SELECT * FROM kabupaten WHERE id_kab='$ko[id_kab]'"));
+                                            ?>
+                                            <option value="<?php echo "$ko[id_kab]";?>"><?php echo "$ta[nama]";?></option>
+                                        </select>
                                     </div>
                                 </div>
                         </div>
@@ -94,14 +138,36 @@ if($_SESSION['level']=='perusahaan'){
                     <div class="panel-body">
                         <div class="adv-table">
                                 <div class="item form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Kelurahan/Desa :<span class="required"></span></label>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number"> Kecamatan :<span class="required"></span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input name='kelurahan' value='<?php echo $dl['nama_kelurahan']?>' class="form-control col-md-7 col-xs-12" type="text" required>
+                                        <select name="kec" id="kec" onchange="ajaxkel(this.value)" class='form-control'>
+                                            <?php
+                                                $ke = mysql_fetch_array( mysql_query("SELECT id_kec FROM hb_du_umum WHERE id_du='$_SESSION[id_du]'"));
+                                                $ca = mysql_fetch_array( mysql_query("SELECT * FROM kecamatan WHERE id_kec='$ke[id_kec]'"));
+                                            ?>
+                                            <option value="<?php echo "$ke[id_kec]";?>"><?php echo "$ca[nama]";?></option>
+                                        </select>
                                     </div>
                                 </div>
                         </div>
                     </div>
 
+                    <div class="panel-body">
+                        <div class="adv-table">
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number"> Kelurahan :<span class="required"></span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <select name="kel" id="kel" onchange="showCoordinate();" class='form-control'>
+                                            <?php
+                                                $kelu = mysql_fetch_array( mysql_query("SELECT id_kel FROM hb_du_umum WHERE id_du='$_SESSION[id_du]'"));
+                                                $rahan = mysql_fetch_array( mysql_query("SELECT nama FROM kelurahan WHERE id_kel='$kelu[id_kel]'"));
+                                            ?>
+                                            <option value="<?php echo "$kelu[id_kel]";?>"><?php echo "$rahan[nama]";?></option>
+                                        </select>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
                     <div class="panel-body">
                         <div class="adv-table">
                                 <div class="item form-group">
@@ -112,11 +178,20 @@ if($_SESSION['level']=='perusahaan'){
                                 </div>
                         </div>
                     </div>
-
+                    <div class="panel-body">
+                        <div class="adv-table">
+                                <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number"> Deskripsi Perusahaan :<span class="required"></span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <textarea rows="8" class='form-control col-md-6 col-sm-6 col-xs-12' name='deskripsi' required='required' type='number'> <?php echo $dl['deskripsi_perusahaan']?> </textarea>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <div class="col-lg-offset-8 col-lg-10">
                             <br><br>
-                                <button  type='submit' name='submit' class="btn btn-primary"> Submit </button>
+                                <button  type='submit' name='UPDATEE' value="UPDATEE" class="btn btn-primary"> Submit </button>
                             <br><br>
                         </div>
                     </div>

@@ -88,7 +88,7 @@ include "header.php";
                         <div class='item form-group'>
                             <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Provinsi :<span class='required'></span> </label>
                             <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <select name="prop" id="prop" onchange="ajaxkota(this.value)" class='form-control'>
+                                <select name="prop" id="prop" onclick="ajaxkota(this.value)" class='form-control'>
                                     <option value="">Pilih Provinsi</option>
                                     <?php
                                       include 'koneksi.php';

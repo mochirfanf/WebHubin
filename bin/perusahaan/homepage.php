@@ -4,7 +4,7 @@ include "../koneksidb.php";
 
 if($_SESSION['level']=='perusahaan'){
 
-        $title="Homepage Kapprog";
+        $title="Homepage Perusahaan";
         $active = "active";
 		include "leftside.php"; ?>
 		 <!-- page heading start-->

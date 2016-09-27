@@ -18,76 +18,37 @@ if($_SESSION['level']=='perusahaan'){
 				}
 			break;
 			case "update-profil":
-				if(isset($_POST['submit'])){
-                    $nama = anti_injection($_POST['nama']);
-                    $bidang = anti_injection($_POST['bidang']);
-                    $alamat = anti_injection($_POST['alamat']);
-                    $kota = anti_injection($_POST['kota']);
-                    $penanggungjawab = anti_injection($_POST['penanggungjawab']);
-                    $email = anti_injection($_POST['email']);
-                    $telepon = anti_injection($_POST['telepon']);
-                    mysql_query("UPDATE hb_du SET nama_du='$nama',bidang='$bidang',alamat='$alamat',kota='$kota',nama_penanggung_jawab='$penanggungjawab',email='$email',telepon='$telepon' WHERE username='$_SESSION[username]'");
-					header("location:identitas.php");
-				}
+				if(isset($_POST['UPDATEE'])){
+
+            $nama = anti_injection($_POST['nama']);
+            $bidang = anti_injection($_POST['bidang']);
+            $npj = anti_injection($_POST['npj']);
+            $cp = anti_injection($_POST['cp']);
+            $alamat = anti_injection($_POST['alamat']);
+            $id_prov = anti_injection($_POST['prop']);
+            $id_kab = anti_injection($_POST['kota']);
+            $id_kec = anti_injection($_POST['kec']);
+            $id_kel = anti_injection($_POST['kel']);
+            $kodepos = anti_injection($_POST['kodepos']);
+            $deskripsi = anti_injection($_POST['deskripsi']);
+
+
+            mysql_query("UPDATE hb_du_umum SET nama_du='$nama', bidang_usaha ='$bidang', nama_penanggung_jawab='$npj', contact_person='$cp', alamat='$alamat', id_prov='$id_prov', id_kab='$id_kab', id_kec='$id_kec', id_kel='$id_kel', no_kodepos = '$kodepos', deskripsi_perusahaan='$deskripsi' WHERE id_du='$_SESSION[id_du]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+
+            ?>
+            <script>
+              alert(" Identitas Perusahaan Berhasil Diupdate ");
+              top.location='identitas.php';
+            </script><?php
+
+				}else{
+            ?>
+            <script>
+              alert(" Terjadi Kesalahan ");
+              top.location='identitas.php';
+            </script><?php
+        }
 			break;
-
-      case "update-prakerin":
-
-					$mulai		= anti_injection($_POST['mulai']);
-					$berakhir	= anti_injection($_POST['akhir']);
-
-					if(isset($_POST["seleksi"])){
-						$seleksi	= anti_injection($_POST['seleksi']);
-					}else{
-						$seleksi="Tidak";
-					}
-
-					if(isset($_POST["jurusan"])){
-						$no=0;
-					    foreach($_POST["jurusan"] as $jurusan){
-					    	$no= $no+1;
-					    	$ajur["$no"] = "$jurusan";
-					    }
-					}
-
-					if(isset($_POST["jumlah"])){
-						$no=0;
-					    foreach($_POST["jumlah"] as $jumlah){
-					    	$no= $no+1;
-					    	$ajum["$no"] = "$jumlah";
-					    }
-					}
-                    $qr = mysql_query("SELECT id_du FROM hb_du WHERE username='$_SESSION[username]'");
-                    $dd = mysql_fetch_array($qr);
-                    $id = $dd['id_du'];
-                    $qq = mysql_query("DELETE FROM hb_du_penerima WHERE id_du=$id");
-          					for ($i=1; $i<=$no; $i++) {
-
-          						mysql_query(" INSERT INTO hb_du_penerima(id_du, id_jurusan, jumlah_penerimaan, sisa_kuota_penerimaan) VALUES ('$id', '$ajur[$i]', '$ajum[$i]', '$ajum[$i]')")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
-          					}
-
-                    $us = "Tidak";
-                    $um = "Tidak";
-                    $as = "Tidak";
-                    $ut = "Tidak";
-
-					          if(isset($_POST['uangsaku'])){
-                        $us = $_POST['uangsaku2'];
-                    }
-                    if(isset($_POST['uangmakan'])){
-                        $um = $_POST['uangmakan2'];
-                    }
-                    if(isset($_POST['asrama'])){
-                        $as = $_POST['asrama'];
-                    }
-                    if(isset($_POST['uangtransport'])){
-                        $ut = $_POST['uangtransport2'];
-                    }
-
-
-               mysql_query(" UPDATE hb_du SET u_saku='$us', asrama='$as', u_transport='$ut', mulai_pelaksanaan='$mulai', berakhir_pelaksanaan = '$berakhir', seleksi_du = '$seleksi', u_makan='$um' WHERE id_du=$id") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
-                header('location:prakerin.php');
-      break;
 
       case "permintaan_prakerin":
         if (isset($_POST['Tambahkan'])){
@@ -154,10 +115,70 @@ if($_SESSION['level']=='perusahaan'){
 
         ?>
           <script>
-            alert(" Status Telah Diperbaharui ");
+            alert(" Terima Kasih Telah Mengirimkan Permintaan ");
+            top.location='prakerin.php';
           </script><?php
 
+
         }
+      break;
+
+      case "update-prakerin":
+
+					$mulai		= anti_injection($_POST['mulai']);
+					$berakhir	= anti_injection($_POST['akhir']);
+
+					if(isset($_POST["seleksi"])){
+						$seleksi	= anti_injection($_POST['seleksi']);
+					}else{
+						$seleksi="Tidak";
+					}
+
+					if(isset($_POST["jurusan"])){
+						$no=0;
+					    foreach($_POST["jurusan"] as $jurusan){
+					    	$no= $no+1;
+					    	$ajur["$no"] = "$jurusan";
+					    }
+					}
+
+					if(isset($_POST["jumlah"])){
+						$no=0;
+					    foreach($_POST["jumlah"] as $jumlah){
+					    	$no= $no+1;
+					    	$ajum["$no"] = "$jumlah";
+					    }
+					}
+                    $qr = mysql_query("SELECT id_du FROM hb_du WHERE username='$_SESSION[username]'");
+                    $dd = mysql_fetch_array($qr);
+                    $id = $dd['id_du'];
+                    $qq = mysql_query("DELETE FROM hb_du_penerima WHERE id_du=$id");
+          					for ($i=1; $i<=$no; $i++) {
+
+          						mysql_query(" INSERT INTO hb_du_penerima(id_du, id_jurusan, jumlah_penerimaan, sisa_kuota_penerimaan) VALUES ('$id', '$ajur[$i]', '$ajum[$i]', '$ajum[$i]')")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+          					}
+
+                    $us = "Tidak";
+                    $um = "Tidak";
+                    $as = "Tidak";
+                    $ut = "Tidak";
+
+					          if(isset($_POST['uangsaku'])){
+                        $us = $_POST['uangsaku2'];
+                    }
+                    if(isset($_POST['uangmakan'])){
+                        $um = $_POST['uangmakan2'];
+                    }
+                    if(isset($_POST['asrama'])){
+                        $as = $_POST['asrama'];
+                    }
+                    if(isset($_POST['uangtransport'])){
+                        $ut = $_POST['uangtransport2'];
+                    }
+
+
+               mysql_query(" UPDATE hb_du SET u_saku='$us', asrama='$as', u_transport='$ut', mulai_pelaksanaan='$mulai', berakhir_pelaksanaan = '$berakhir', seleksi_du = '$seleksi', u_makan='$um' WHERE id_du=$id") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
+                header('location:prakerin.php');
       break;
 
 		}

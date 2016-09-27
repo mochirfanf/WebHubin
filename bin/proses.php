@@ -129,107 +129,94 @@
 			break;
 
 
-      case "daftar-perusahaan":
-        $username = anti_injection($_POST['username']);
-				$password = anti_injection($_POST['password']);
-				$password = md5($password);
-        $nama = anti_injection($_POST['nama']);
-        $email = anti_injection($_POST['email']);
-        $bidang = anti_injection($_POST['bidang']);
-
-          $a = mysql_query("SELECT username FROM hb_user_admin");
-          $f = 0;
-
-            while($d=mysql_fetch_array($a)){
-              if($d['username']==$username){
-                        $f=1;
-              }
-            }
-
-            if($f==0){
-                mysql_query("INSERT INTO hb_user_admin VALUES('$username','$password','perusahaan','aktif')");
-                mysql_query("INSERT INTO hb_du(username,nama_du,email,bidang) VALUES('$username','$nama','$email','$bidang')");
-            }else{
-              ?>
-            <script>
-                alert('Username Telah Digunakan');
-            </script>
-            <?php
-            }
-      break;
-
-      case "register":
-        $nama = anti_injection($_POST['nama']);
-        $email = anti_injection($_POST['email']);
-        $alamat = anti_injection($_POST['alamat']);
-        $provinsi = anti_injection($_POST['prop']);
-        $kabupaten = anti_injection($_POST['kota']);
-        $kecamatan = anti_injection($_POST['kec']);
-        $kelurahan = anti_injection($_POST['kel']);
-        $kodepos = anti_injection($_POST['kodepos']);
+            case "register":
+                $nama = anti_injection($_POST['nama']);
+                $email = anti_injection($_POST['email']);
+                $alamat = anti_injection($_POST['alamat']);
+                $provinsi = anti_injection($_POST['prop']);
+                $kabupaten = anti_injection($_POST['kota']);
+                $kecamatan = anti_injection($_POST['kec']);
+                $kelurahan = anti_injection($_POST['kel']);
+                $kodepos = anti_injection($_POST['kodepos']);
 
 
-        if(mysql_fetch_array($d = mysql_query("SELECT id_prov FROM provinsi WHERE nama='$provinsi'"))){
-            $provinsi = $d['id_prov'];
-        }
-        if(mysql_fetch_array($d = mysql_query("SELECT id_kab FROM kabupaten WHERE nama='$kabupaten'"))){
-            $kabupaten = $d['id_kab'];
-        }
-        if(mysql_fetch_array($d = mysql_query("SELECT id_kec FROM kecamatan WHERE nama='$kecamatan'"))){
-            $provinsi = $d['id_kec'];
-        }
-        if(mysql_fetch_array($d = mysql_query("SELECT id_kel FROM kelurahan WHERE nama='$kelurahan'"))){
-            $kelurahan = $d['id_kel'];
-        }
-        $a = mysql_query("SELECT email_du FROM hb_du_umum");
-        $f = 0;
+                $a = mysql_query("SELECT email_du FROM hb_du_umum");
+                $f = 0;
 
-            while($d=mysql_fetch_array($a)){
-              if($d['email_du']==$email){
-                  $f=1;
-              }
-            }
+                    while($d=mysql_fetch_array($a)){
+                      if($d['email_du']==$email){
+                          $f=1;
+                      }
+                    }
 
-            if($f==0){
-                define('ROOT', 'http://localhost:8080/WebHubin/bin/landing/');
-                $kode   = md5(uniqid(rand()));
+                    if($f==0){
+                        define('ROOT', 'http://localhost:8080/WebHubin/bin/landing/');
+                        $kode   = md5(uniqid(rand()));
 
-        $to     = $email;
-        $judul  = "Aktivasi Akun Anda";
-        $dari   = "From: hubin.com\n";
-        $dari   .= "Content-type: text/html \r\n";
+                        $to     = $email;
+                        $judul  = "Aktivasi Akun Anda";
+                        $dari   = "From: hubin.com\n";
+                        $dari  .= "Content-type: text/html \r\n";
 
-        $pesan  = "Klik link berikut untuk mengaktifkan akun: <br />";
-        $pesan  .= "<a href='".ROOT."konfirm.php?email=".$_POST['email']."&kode=".$kode."'>".ROOT."konfirm.php?email=".$_POST['email']."&kode=$kode</a>";
+                        $pesan  = "Klik link berikut untuk mengaktifkan akun: <br />";
+                        $pesan .= "<a href='".ROOT."konfirm.php?email=".$_POST['email']."&kode=".$kode."'>".ROOT."konfirm.php?email=".$_POST['email']."&kode=$kode</a>";
 
-        $kirim  = mail($to, $judul, $pesan, $dari)or die(mysql_error());
+                        $kirim  = mail($to, $judul, $pesan, $dari)or die(mysql_error());
 
-        if($kirim)
-        {
-            echo "<p class=info>Berhasil Dikirim</p>";
-        }
-        else
-        {
-            echo "<p class=infoGagal>Gagal Dikirim</p>";
-        }
 
-                mysql_query("INSERT INTO hb_du_umum (nama_du, email_du, alamat, nama_provinsi, nama_kabupaten, nama_kecamatan, nama_kelurahan, no_kodepos, level, status,kode) VALUES('$nama','$email','$alamat','$provinsi', '$kabupaten', '$kecamatan', '$kelurahan', '$kodepos', 'perusahaan', 'Belum Aktif','$kode')");
-                ?>
-                <script>
-                    alert(" Register Berhasil! Cek Email untuk Verifikasi ");
-                    //top.location = 'register.php';
-                </script>
-                <?php
+                        if ($kirim) {
+                            mysql_query("INSERT INTO hb_du_umum (id_kel, nama_du, email_du, alamat, id_prov, id_kab, id_kec, no_kodepos, level, status, kode)
+                                VALUES('$kelurahan' ,'$nama','$email','$alamat','$provinsi', '$kabupaten', '$kecamatan',  '$kodepos', 'perusahaan', 'Belum Aktif', '$kode')");
 
-            }else{
-              ?>
+
+                        ?>
+                            <script>
+                                alert(" Register Berhasil! Cek Email untuk Verifikasi ");
+                                top.location = 'landing/index.php';
+                            </script>
+                            <?php
+                        }
+
+
+                    }else{
+                      ?>
+                            <script>
+                                alert('Gagal Dikirim ! Email Telah Digunakan');
+                                top.location = 'landing/index.php';
+                            </script>
+                            <?php
+                    }
+
+              break;
+
+              case "daftar-perusahaan":
+                $username = anti_injection($_POST['username']);
+        				$password = anti_injection($_POST['password']);
+        				$password = md5($password);
+                $nama = anti_injection($_POST['nama']);
+                $email = anti_injection($_POST['email']);
+                $bidang = anti_injection($_POST['bidang']);
+
+                  $a = mysql_query("SELECT username FROM hb_user_admin");
+                  $f = 0;
+
+                    while($d=mysql_fetch_array($a)){
+                      if($d['username']==$username){
+                                $f=1;
+                      }
+                    }
+
+                    if($f==0){
+                        mysql_query("INSERT INTO hb_user_admin VALUES('$username','$password','perusahaan','aktif')");
+                        mysql_query("INSERT INTO hb_du(username,nama_du,email,bidang) VALUES('$username','$nama','$email','$bidang')");
+                    }else{
+                      ?>
                     <script>
-                        alert('Email Telah Digunakan');
+                        alert('Username Telah Digunakan');
                     </script>
                     <?php
-            }
-
-      break;
+                    }
+              break;
 
 		}
 	}

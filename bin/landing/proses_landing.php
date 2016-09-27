@@ -16,20 +16,41 @@
 					$password			= anti_injection($_POST['password']);
 					$password 		= md5($password);
 
-					mysql_query(" UPDATE hb_du_umum SET username='$username', password='$password', status='aktif', level='perusahaan' WHERE kode='$_POST[kode]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+          $ada  = mysql_fetch_row(mysql_query("SELECT * FROM hb_du_umum WHERE username='$username'"));
+
+					if ($ada > 0) {
+						?>
+							<script>
+								alert(" Username Sudah Ada ");
+								window.history.go(-1);
+
+							</script><?php
+					}
+					else{
+							mysql_query(" UPDATE hb_du_umum SET username='$username', password='$password', status='aktif', level='perusahaan' WHERE kode='$_POST[kode]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
 
 
-						$_SESSION['username'] = $username;
-            $_SESSION['level'] = 'perusahaan';
-            $_SESSION['password'] = $password;
+						 						$userperusahaan  = mysql_query("SELECT * FROM hb_du_umum WHERE username='$username' AND password='$password' AND level='perusahaan' AND status='aktif' ");
+          							$c  = mysql_fetch_array($userperusahaan);
+
+                        $_SESSION['username'] = $username;
+                        $_SESSION['level'] = 'perusahaan';
+                        $_SESSION['password'] = $password;
+                        $_SESSION['id_du'] = $c["id_du"];
+                        $_SESSION['tahun_ajaran'] = "2013-2014";
+
+                        header("location:../perusahaan/index.php");
 
 
-					?>
-					<script>
-						alert(" Berhasil Menentukan Username dan Password ");
-            top.location = "../perusahaan/index.php";
+							?>
+							<script>
+								alert(" Berhasil Menentukan Username dan Password ");
+		            top.location = "../perusahaan/index.php";
 
-					</script><?php
+							</script><?php
+					}
+
+
 				}
 			break;
 		}
