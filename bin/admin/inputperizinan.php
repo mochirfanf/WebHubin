@@ -2,19 +2,19 @@
 
 include "../koneksidb.php";
 
-if($_SESSION['level']=='admin'){ 
+if($_SESSION['level']=='admin'){
 	if ($_SESSION['tahun_ajaran']!='') {
         $title="Permohonan Perizinan Prakerin";
         $active ="";
         $active1 = "active";
-        $navactive ="nav-active";
+        $navactive1 ="nav-active";
 
-        $data = mysql_query( "SELECT * from hb_du WHERE status_du='proses'");
-        $data2 = mysql_query( "SELECT * from hb_du WHERE status_du='proses'");
-        $data3 = mysql_query( "SELECT * from hb_du WHERE status_du='proses'");
+        $data = mysql_query( "SELECT * from hb_du WHERE status_du='Proses'");
+        $data2 = mysql_query( "SELECT * from hb_du WHERE status_du='Proses'");
+        $data3 = mysql_query( "SELECT * from hb_du WHERE status_du='Proses'");
 
 		include "leftside.php"; ?>
-		        
+
         <!--body wrapper start-->
         <div class="wrapper">
             <div class="row">
@@ -64,7 +64,7 @@ if($_SESSION['level']=='admin'){
                                                             <input class="form-control" name="keterangan" placeholder="Keterangan">
                                                         </div>
                                                     </div>
-                                                
+
                                             </div>
                                            <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
@@ -77,7 +77,7 @@ if($_SESSION['level']=='admin'){
                         <!-- Modal -->
                           <?php
                              while ($g = mysql_fetch_array($data3)) {
-                                
+
                                 ?>
                                 <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="<?php echo "edit$g[id_du]"; ?>" class="modal fade">
                                     <div class="modal-dialog">
@@ -118,7 +118,7 @@ if($_SESSION['level']=='admin'){
                                                             <input class="form-control" value="<?php echo "$g[keterangan_du]"; ?>" name="keterangan" placeholder="Keterangan">
                                                         </div>
                                                     </div>
-                                                
+
                                             </div>
                                            <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
@@ -132,7 +132,7 @@ if($_SESSION['level']=='admin'){
                         <!-- Modal -->
                          <?php
                              while ($t = mysql_fetch_array($data2)) {
-                                
+
                                 ?>
                                 <div style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="<?php echo "myModalT$t[id_du]"; ?>" class="modal fade">
                                     <div class="modal-dialog">
@@ -163,11 +163,11 @@ if($_SESSION['level']=='admin'){
                                                     </div>
                                                      <div class="form-group">
                                                         <label class="col-lg-4 col-sm-4 control-label">Jurusan</label>
-                                                        
+
                                                         <div class="input_fields_wrap col-lg-1">
                                                             <button class="btn  btn-danger add_field_button"><i class='fa fa-plus-square'></i></button>
                                                         </div>
-                                                        
+
                                                         <div class="col-lg-4">
                                                             <?php
                                                             $name = "";
@@ -175,7 +175,7 @@ if($_SESSION['level']=='admin'){
                                                                       <option value=''> * Pilih Jurusan * </option>";
                                                                         $jurusan = mysql_query("SELECT * FROM jurusan");
                                                                         while($j = mysql_fetch_array($jurusan)){
-                                                             echo " <option value='$j[id_jurusan]'> $j[nama_jurusan] </option>"; 
+                                                             echo " <option value='$j[id_jurusan]'> $j[nama_jurusan] </option>";
                                                                         }
                                                                      echo "
                                                                   </select>";
@@ -194,7 +194,7 @@ if($_SESSION['level']=='admin'){
                                                             </div><label> &nbsp; Menggunakan Seleksi</label>
                                                         </div>
                                                     </div>
-                                                     
+
                                             </div>
                                            <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
@@ -203,14 +203,14 @@ if($_SESSION['level']=='admin'){
                                         </div>
                                     </div>
                                 </div>
-                                <?php 
+                                <?php
                             }
                         ?>
                         <!-- modal -->
-                        
+
                      </span>
                     </header>
-                   
+
                     <div class="panel-body">
                     <div class="adv-table">
                     <table  class="display table table-bordered table-striped" id="dynamic-table">
@@ -226,7 +226,7 @@ if($_SESSION['level']=='admin'){
                     </tr>
                     </thead>
                     <tbody>
-                        <?php 
+                        <?php
                             $no =0;
                             while ($d = mysql_fetch_array($data)) {
                                 $no = $no+1;
@@ -238,9 +238,9 @@ if($_SESSION['level']=='admin'){
                                         <td> $d[kota]</td>
                                         <td> $d[email]</td>
                                         <td> $d[keterangan_du]</td>
-                                        <td class='center'>                                         
+                                        <td class='center'>
                                             <div class='btn-group'>
-                                                <button class='btn btn-sm btn-primary' type='button'>"; 
+                                                <button class='btn btn-sm btn-primary' type='button'>";
 
                                                 if($d["du_siswa"] == 'Yes'){
                                                     echo "DU Siswa";
@@ -257,7 +257,7 @@ if($_SESSION['level']=='admin'){
                                                     <li><a href='#myModalT$d[id_du]' data-toggle='modal'>&nbsp;&nbsp;&nbsp;Menerima</a></li>
                                                     <li><a href='#myModalM$d[id_du]' data-toggle='modal'>Menolak</a></li>
                                                 </ul>
-                                            </div> 
+                                            </div>
                                             <a href='#edit$d[id_du]' data-toggle='modal'>
                                                 <button class='btn btn-sm btn-danger' type='button'><i class='fa fa-trash-o'></i> Edit </button>
                                             </a>
@@ -265,7 +265,7 @@ if($_SESSION['level']=='admin'){
                                                 <button class='btn btn-sm btn-danger' type='button'><i class='fa fa-trash-o'></i> Hapus </button>
                                             </a>
                                         </td>
-                                            
+
                                             <div  style='text-transform:none' aria-hidden='true' aria-labelledby='myModalLabel' role='dialog' tabindex='-1' id='myModalM$d[id_du]' class='modal fade'>
                                                 <div class='modal-dialog'>
                                                     <div class='modal-content'>

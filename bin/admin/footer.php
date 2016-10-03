@@ -11,7 +11,7 @@
 </section>
 
 <!-- Placed js at the end of the document so the pages load faster -->
-<script src="../js/jquery-1.10.2.min.js"></script>
+<script src="../js/jquery-1.10.2.js"></script>
 <script src="../js/jquery-ui-1.9.2.custom.min.js"></script>
 <script src="../js/jquery-migrate-1.2.1.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
@@ -34,8 +34,35 @@
 <script type="text/javascript" src="../js/bootstrap-fileupload.min.js"></script>
 <script type="text/javascript" src="../js/ckeditor/ckeditor.js"></script>
 
+
+<script type="text/javascript" src="../js/ajax_daerah.js"></script>
+
  <script type="text/javascript">
 $(document).ready(function() {
+    $("#prop2").change(function(){
+        var id = $(this).val();
+        $.get('select_daerah.php',{prop : id},function(data){
+            $("#kota2").empty();
+            $("#kota2").html(data);
+        });
+    });
+
+    $("#kota2").change(function(){
+        var id = $(this).val();
+        $.get('select_daerah.php',{kab : id},function(data){
+            $("#kec2").empty();
+            $("#kec2").html(data);
+        });
+    });
+
+    $("#kec2").change(function(){
+        var id = $(this).val();
+        $.get('select_daerah.php',{kec : id},function(data){
+            $("#kel2").empty();
+            $("#kel2").html(data);
+        });
+    });
+
     var max_fields      = 10; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID

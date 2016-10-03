@@ -20,9 +20,11 @@
 
   <!--icheck-->
   <link href="../js/iCheck/skins/flat/green.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/jquery-ui_auto_complete.css">
 
   <link href="../css/style.css" rel="stylesheet">
   <link href="../css/style-responsive.css" rel="stylesheet">
+
 </head>
 
 <body class="sticky-header">
@@ -64,21 +66,29 @@
 
             <!--sidebar nav start-->
             <ul class="nav nav-pills nav-stacked custom-nav">
-                <li class="<?php echo "$active"; ?> "><a href="homepage.php"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
-                <li class="menu-list <?php echo "$navactive2"; ?>"><a href=""><i class="fa fa-cogs"></i> <span>Tempat Prakerin</span></a>
-                    <ul class="sub-menu-list"> 
-                        <li class="<?php echo "$active1"; ?> "><a href="dupenerima.php"><i class="fa fa-ticket"></i> <span> Tempat Prakerin yang Telah Menerima</span></a></li>
-                        <li class="<?php echo "$active3"; ?> "><a href="inputperizinan.php"><i class="fa fa-building-o"></i> <span> Input Permohonan Perizinan Prakerin </span></a></li>
-                        <li class="<?php echo "$active4"; ?> "><a href="duyangtelahdiizinkan.php"><i class="fa fa-building-o"></i> <span> DU yang telah diizinkan oleh Hubin </span> </a></li>
+                <li class="<?php echo "$active1"; ?> "><a href="homepage.php"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+                <li class="menu-list <?php echo "$navactive1"; ?>"><a href=""><i class="fa fa-cogs"></i> <span>Tempat Prakerin</span></a>
+                    <ul class="sub-menu-list">
+                        <li class="<?php echo "$active2"; ?> "><a href="dupenerima.php"><i class="fa fa-ticket"></i> <span> Tempat Prakerin yang Telah Menerima</span></a></li>
+                        <li class="<?php echo "$active3"; ?> "><a href="inputperizinan.php"><i class="fa fa-building-o"></i> <span> Tambahkan Permintaan Perizinan Prakerin </span></a></li>
+                        <li class="<?php echo "$active4"; ?> "><a href="duyangtelahdiizinkan.php"><i class="fa fa-building-o"></i> <span> DU yang Telah Diizinkan oleh Hubin </span> </a></li>
+                        <li class="<?php echo "$active12"; ?> "><a href="duyangtelahditolak.php"><i class="fa fa-building-o"></i> <span> DU yang Telah Ditolak oleh Hubin </span> </a></li>
+                    </ul>
+                </li>
+                <li class="menu-list <?php echo "$navactive2"; ?>"><a href=""><i class="fa fa-cogs"></i> <span>Kelola Penempatan Prakerin</span></a>
+                    <ul class="sub-menu-list">
+                        <li class="<?php echo "$active5"; ?> "><a href="kelola_prakerin.php"><i class="fa fa-ticket"></i> <span> Belum Terverifikasi </span></a></li>
+                        <li class="<?php echo "$active6"; ?> "><a href="belumterverifikasi.php"><i class="fa fa-ticket"></i> <span> Belum Terverifikasi </span></a></li>
+                        <li class="<?php echo "$active7"; ?> "><a href="terverifikasi.php"><i class="fa fa-building-o"></i> <span> Terverifikasi </span></a></li>
+                        <li class="<?php echo "$active8"; ?> "><a href="belumprakerin.php"><i class="fa fa-building-o"></i> <span> Siswa yang Belum Prakerin </span> </a></li>
                     </ul>
                 </li>
 
-                <li class="<?php echo "$active2"; ?> "><a href="kelola_prakerin.php"><i class="fa fa-puzzle-piece "></i> <span> Kelola Penempatan Prakerin </span></a></li>
-
-                <li class="menu-list <?php echo "$navactive1"; ?>"><a href=""><i class="fa fa-cogs"></i> <span>Monitoring</span></a>
+                <li class="menu-list <?php echo "$navactive3"; ?>"><a href=""><i class="fa fa-cogs"></i> <span>Monitoring</span></a>
                     <ul class="sub-menu-list">
-                        <li class="<?php echo "$active6"; ?> "><a href="daftarsiswa_monitoring.php"> Siswa yang Dimonitoring </a></li>
-                        <li class="<?php echo "$active7"; ?> "><a href="hasil_monitoring.php"> Hasil Monitoring </a></li>
+                        <li class="<?php echo "$active9"; ?> "><a href="daftarsiswa_monitoring.php"> Daftar Siswa </a></li>
+                        <li class="<?php echo "$active10"; ?> "><a href="daftarsiswa_monitoring.php"> Hasil Monitoring </a></li>
+                        <li class="<?php echo "$active11"; ?> "><a href="hasil_monitoring.php"> Siswa yang Belum di Monitoring </a></li>
                     </ul>
                 </li>
 
@@ -91,7 +101,7 @@
         </div>
     </div>
     <!-- left side end-->
-    
+
     <!-- main content start-->
     <div class="main-content" >
 
@@ -108,7 +118,7 @@
                 <li>
                     <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="badge">3</span> <!-- iNI BUAT BERAPA - BERAPA NYA --> 
+                        <span class="badge">3</span> <!-- iNI BUAT BERAPA - BERAPA NYA -->
                     </a>
                     <div class="dropdown-menu dropdown-menu-head pull-right">
                         <h5 class="title"> 3 Pesan Masuk </h5>
@@ -158,7 +168,7 @@
                                     <span class="name">Server #1 overloaded.  </span>
                                     <em class="small">34 mins</em>
                                 </a>
-                            </li> 
+                            </li>
                             <li class="new">
                                 <a href="">
                                     <span class="label label-danger"><i class="fa fa-bolt"></i></span>
@@ -204,4 +214,4 @@
         </div>
         <!-- header section end-->
 
-       
+

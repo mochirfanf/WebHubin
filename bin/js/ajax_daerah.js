@@ -93,9 +93,9 @@ function initialize() {
       position: myLatlng,
       map: map,
       title: 'Jakarta'
-  });  
+  });
   markersArray.push(marker);
-  google.maps.event.addListener(marker,"click",function(){});  
+  google.maps.event.addListener(marker,"click",function(){});
 }
 
 function clearOverlays() {
@@ -117,7 +117,7 @@ function showCoordinate(){
           +', '
           +kab.options[kab.selectedIndex].text
           +', '
-          +prop.options[prop.selectedIndex].text;   
+          +prop.options[prop.selectedIndex].text;
   geocoder.geocode( { 'address': s}, function(results, status) {
   document.getElementById("lat_box").style.display='table-row';
   document.getElementById("lng_box").style.display='table-row';
@@ -139,4 +139,5 @@ function showCoordinate(){
     }
   });
 }
+
 google.maps.event.addDomListener(window, 'load', initialize);

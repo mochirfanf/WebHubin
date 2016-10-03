@@ -2,11 +2,11 @@
 
 include "../koneksidb.php";
 
-if($_SESSION['level']=='kapprog'){
+if($_SESSION['level']=='admin'){
     if ($_SESSION['tahun_ajaran']!='') {
         $title="Permohonan Perizinan Prakerin Siswa";
         $active = "";
-        $active4 = "active";
+        $active2 = "active";
         $navactive1 ="nav-active";
 
         function judultabel(){
@@ -16,7 +16,8 @@ if($_SESSION['level']=='kapprog'){
                     <th>Nama Dunia Usaha</th>
                     <th>Alamat</th>
                     <th>Email</th>
-                    <th>Keterangan </th>";
+                    <th>Keterangan</th>
+                    <th>Aksi</th>";
         }
 
         function isinya($query){
@@ -31,6 +32,30 @@ if($_SESSION['level']=='kapprog'){
                         <td> $d[nama_du] </td>
                         <td> $d[alamat]</td>
                         <td> $d[email]</td>
+                        <td> $d[keterangan_du]</td>
+                        <td>
+                            <a href='#verifikasi$d[id_du]' data-toggle='modal'>
+                                <button class='btn btn-sm btn-success' type='button'><i class='fa fa-check-square-o'></i> Verifikasi </button>
+                            </a>
+                        </td>
+                            <div  style='text-transform:none' aria-hidden='true' aria-labelledby='myModalLabel' role='dialog' tabindex='-1' id='verifikasi$d[id_du]' class='modal fade'>
+                                <div class='modal-dialog'>
+                                    <div class='modal-content'>
+                                        <div class='modal-header'>
+                                            <button aria-hidden='true' data-dismiss='modal' class='close' type='button'>×</button>
+                                                <h5>Konfirmasi</h5>
+                                        </div>
+                                        <div class='modal-body'>
+                                            Verifikasi perizinan dengan Nama DU : $d[nama_du]?
+                                        </div>
+                                        <div class='modal-footer'>
+                                            <button type='button' class='btn btn-default' data-dismiss='modal'>Kembali</button>
+                                                <a href='proses_admin.php?a=verifikasiperizinan&id=$d[id_du]'>
+                                                <input type='submit' value='Ya' name='Ganti'class='btn btn-success'></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     </tr>";
                  }
         }
@@ -63,7 +88,7 @@ if($_SESSION['level']=='kapprog'){
                                         </thead>
                                         <tbody>
                                         <?php
-                                            $query = mysql_query("SELECT hb_du_umum.id_du, hb_du_umum.id_prov, hb_du_umum.id_kab, hb_du_umum.id_kec, hb_du_umum.id_kel, hb_du_umum.no_kodepos, siswa.nama_siswa, hb_du_umum.nama_du, hb_du_umum.alamat, hb_du_umum.id_kab, hb_du_umum.email_du, hb_du_permintaan.keterangan_permintaan, jurusan.singkatan, siswa.nama_siswa, siswa.kelas, siswa.nis FROM hb_du_umum, siswa, jurusan, hb_du_permintaan WHERE permintaan_siswa='Ya' AND status_permintaan='Terverifikasi' AND jurusan.id_jurusan='$_SESSION[tahun_ajaran]' AND siswa.id_jurusan = jurusan.id_jurusan AND hb_du_permintaan.du_siswa = siswa.nis AND hb_du_umum.id_du = hb_du_permintaan.id_du ");
+                                            $query = mysql_query("SELECT hb_du_umum.id_du, hb_du_umum.id_prov, hb_du_umum.id_kab, hb_du_umum.id_kec, hb_du_umum.id_kel, hb_du_umum.no_kodepos, siswa.nama_siswa, hb_du_umum.nama_du, hb_du_umum.alamat, hb_du_umum.id_kab, hb_du_umum.email_du, hb_du_permintaan.keterangan_permintaan, jurusan.singkatan, siswa.nama_siswa, siswa.kelas, siswa.nis FROM hb_du_umum, siswa, jurusan, hb_du_permintaan WHERE permintaan_siswa='Ya' AND status_permintaan='Belum Terverifikasi'AND siswa.id_jurusan = jurusan.id_jurusan AND hb_du_permintaan.du_siswa = siswa.nis AND hb_du_umum.id_du = hb_du_permintaan.id_du ");
                                             $no =0;
                                             while ($d = mysql_fetch_array($query)) {
                                                 $no = $no+1;

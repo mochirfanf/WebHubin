@@ -65,7 +65,7 @@ if($_SESSION['level']=='perusahaan'){
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Penanggung Jawab :<span class="required"></span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input name='npj' value='<?php echo $dl['nama_penanggung_jawab']?>' class="form-control col-md-7 col-xs-12" type="text" required>
+                                        <input name='npj' value='<?php echo $dl['nama_penanggung_jawab_umum']?>' class="form-control col-md-7 col-xs-12" type="text" required>
                                     </div>
                                 </div>
                         </div>
@@ -75,7 +75,7 @@ if($_SESSION['level']=='perusahaan'){
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Contact Person :<span class="required"></span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input name='cp' value='<?php echo $dl['contact_person']?>' class="form-control col-md-7 col-xs-12" type="text" required>
+                                        <input name='cp' value='<?php echo $dl['contact_person_umum']?>' class="form-control col-md-7 col-xs-12" type="text" required>
                                     </div>
                                 </div>
                         </div>

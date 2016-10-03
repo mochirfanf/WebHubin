@@ -2,15 +2,15 @@
 
 include "../koneksidb.php";
 
-if($_SESSION['level']=='admin'){ 
+if($_SESSION['level']=='admin'){
     if ($_SESSION['tahun_ajaran']!='') {
         $title="DU Sistem Seleksi";
         $active ="";
         $active17 = "active";
         $navactive ="nav-active";
 
-        $data = mysql_query( "SELECT * FROM hb_du WHERE seleksi_du ='Ya'");
-        $data2 = mysql_query( "SELECT * FROM hb_du WHERE seleksi_du ='Ya'");
+        $data = mysql_query( "SELECT * FROM hb_du_permintaan, hb_du_umum WHERE seleksi_du ='Ya' AND hb_du_permintaan.id_du=hb_du_umum.id_du");
+        $data2 = mysql_query( "SELECT * FROM hb_du_permintaan WHERE seleksi_du ='Ya'");
 
         function tanggal($tglnya){
             $asli = date($tglnya);
@@ -23,14 +23,14 @@ if($_SESSION['level']=='admin'){
 
             $array_bulan = array(1 => "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" );
             $bulan2 = $array_bulan[date($bulan)];
-            
+
             $hasil = "$tanggal $bulan2 $tahun";
             return $hasil;
         }
 
 
         include "leftside.php"; ?>
-                
+
         <!--body wrapper start-->
         <div class="wrapper">
             <div class="row">
@@ -59,16 +59,16 @@ if($_SESSION['level']=='admin'){
                                                                       <option value=''> Pilih Tempat Prakerin </option>";
                                                                           $du = mysql_query( "SELECT * FROM hb_du WHERE status_du='Menerima' AND seleksi_du='Tidak' ORDER BY nama_du ASC");
                                                                         while($z = mysql_fetch_array($du)){
-                                                                            
+
                                                                               echo "<option value='$z[id_du]'> $z[nama_du] </option>";
-                                                                            
+
                                                                         }
                                                                      echo "
                                                                   </select>";
                                                               ?>
                                                         </div>
                                                     </div>
-                                                
+
                                             </div>
                                            <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
@@ -81,7 +81,7 @@ if($_SESSION['level']=='admin'){
                         <!-- Modal -->
                          <?php
                              while ($t = mysql_fetch_array($data2)) {
-                                
+
                                 ?>
                                 <div style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="<?php echo "atur$t[id_du]"; ?>" class="modal fade">
                                     <div class="modal-dialog">
@@ -112,13 +112,13 @@ if($_SESSION['level']=='admin'){
                                         </div>
                                     </div>
                                 </div>
-                                <?php 
+                                <?php
                             }
                         ?>
                         <!-- modal -->
                      </span>
                     </header>
-                   
+
                     <div class="panel-body">
                     <div class="adv-table">
                     <table  class="display table table-bordered table-striped" id="dynamic-table">
@@ -133,7 +133,7 @@ if($_SESSION['level']=='admin'){
                     </tr>
                     </thead>
                     <tbody>
-                        <?php 
+                        <?php
                             $no =0;
                             while ($d = mysql_fetch_array($data)) {
                                 $no = $no+1;
@@ -141,7 +141,7 @@ if($_SESSION['level']=='admin'){
                                     <tr class='gradeA'>
                                         <td> $no </td>
                                         <td> $d[nama_du] </td>
-                                        <td> $d[email]</td>
+                                        <td> $d[email_du]</td>
                                         <td> $d[seleksi_tempat]</td>
                                         <td>";
                                         if ($d["seleksi_tanggal"] == 0000-00-00) {
@@ -150,9 +150,9 @@ if($_SESSION['level']=='admin'){
                                             $tanggal = tanggal($d["seleksi_tanggal"]);
                                             echo "$tanggal";
                                         }
-                                        
+
                                  echo " </td>
-                                        <td> 
+                                        <td>
                                             <a href='#atur$d[id_du]' data-toggle='modal'>
                                                 <button class='btn btn-sm btn-primary' type='button'><i class='fa fa-trash-o'></i> Atur </button>
                                             </a>
@@ -168,7 +168,7 @@ if($_SESSION['level']=='admin'){
                                                         <h5>Konfirmasi</h5>
                                                     </div>
                                                     <div class='modal-body'>
-                                                        Ganti Menjadi 'Tidak Menggunakan Sistem Seleksi' ? 
+                                                        Ganti Menjadi 'Tidak Menggunakan Sistem Seleksi' ?
                                                     </div>
                                                     <div class='modal-footer'>
                                                         <button type='button' class='btn btn-default' data-dismiss='modal'>Kembali</button>

@@ -2,12 +2,12 @@
 
 include "../koneksidb.php";
 
-if($_SESSION['level']=='admin'){ 
+if($_SESSION['level']=='admin'){
     if ($_SESSION['tahun_ajaran']!='') {
         $title="Yang Menerima Prakerin";
         $active = "";
-        $active2 = "active";
-        $navactive ="nav-active";
+        $active22 = "active";
+        $navactive2 ="nav-active";
 
 
         function tanggal($tglnya){
@@ -21,7 +21,7 @@ if($_SESSION['level']=='admin'){
 
             $array_bulan = array(1 => "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" );
             $bulan2 = $array_bulan[date($bulan)];
-            
+
             $hasil = "$tanggal $bulan2 $tahun";
             return $hasil;
         }
@@ -54,7 +54,7 @@ if($_SESSION['level']=='admin'){
                             }
                   echo "</td>
                         <td> $d[seleksi_du]</td>
-                        <td class='center'>                                         
+                        <td class='center'>
                             <a href='#jedit$d[id_du]-$d[id_jurusan]' data-toggle='modal'>
                                 <button class='btn btn-sm btn-primary' type='button'><i class='fa fa-trash-o'></i> Edit </button>
                             </a>
@@ -70,7 +70,7 @@ if($_SESSION['level']=='admin'){
                                             <h5>Konfirmasi</h5>
                                         </div>
                                         <div class='modal-body'>
-                                            Hapus Penerimaan '$d[nama_du]' untuk jurusan "; 
+                                            Hapus Penerimaan '$d[nama_du]' untuk jurusan ";
                                             $j = mysql_fetch_array(mysql_query("SELECT * FROM jurusan WHERE id_jurusan = $d[id_jurusan]"));
                                             echo "$j[singkatan]? <br>
 
@@ -90,10 +90,10 @@ if($_SESSION['level']=='admin'){
         }
 
         function isinyajur($query4){
-               
+
                              while ($t = mysql_fetch_array($query4)) {
                                 ?>
-                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="<?php echo "jedit$t[id_du]-$t[id_jurusan]"; 
+                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="<?php echo "jedit$t[id_du]-$t[id_jurusan]";
                                     $e = mysql_fetch_array(mysql_query("SELECT * FROM hb_du_penerima WHERE id_du = '$t[id_du]' AND id_jurusan = $t[id_jurusan]"))?>" class="modal fade">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -103,9 +103,9 @@ if($_SESSION['level']=='admin'){
                                             </div>
                                             <div class="modal-body">
                                                 <form method="POST" action="proses_admin.php?a=editjpenerima<?php echo "&id=$t[id_du]&id_jurusan=$t[id_jurusan]";?>"  enctype='multipart/form-data' class="form-horizontal" role="form">
-                                                   
+
                                                     <div class="form-group">
-                                                        
+
                                                         <div class="col-lg-offset-2 col-lg-8">
                                                             <input type="text" class="form-control" name="jpen" value="<?php echo "$e[jumlah_penerimaan]"; ?>" placeholder="Nama Dunia Usaha">
                                                         </div>
@@ -118,20 +118,20 @@ if($_SESSION['level']=='admin'){
                                         </div>
                                     </div>
                                 </div>
-                                <?php 
+                                <?php
                             }
-                        
+
         }
 
         include "leftside.php"; ?>
-                
+
         <!--body wrapper start-->
         <div class="wrapper">
             <div class="row">
                 <div class="col-sm-12">
                     <section class="panel">
                     <header class="panel-heading">
-                        <label><big>Permohonan Perizinan Prakerin Siswa</big></label>
+                        <label><big>DU/DI Penerima Prakerin Siswa</big></label>
                     </header>
 
                    <section class="panel">
@@ -200,11 +200,11 @@ if($_SESSION['level']=='admin'){
                         </header>
                         <!-- modal -->
                         <?php
-                             $data2 = mysql_query( "select * from hb_du WHERE status_du='Menerima'");
+                             $data2 = mysql_query( "SELECT * FROM hb_du_umum, hb_du_permintaan WHERE status_penerimaan='Menerima' AND hb_du_umum.id_du = hb_du_permintaan.id_du");
                              while ($t = mysql_fetch_array($data2)) {
                                 ?>
-                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="<?php echo "edit$t[id_du]"; 
-                                    $e = mysql_fetch_array(mysql_query("SELECT * FROM hb_du WHERE id_du = '$t[id_du]'"))?>" class="modal fade">
+                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="<?php echo "edit$t[id_du]";
+                                    $e = mysql_fetch_array(mysql_query("SELECT * FROM hb_du_umum WHERE id_du = '$t[id_du]'"))?>" class="modal fade">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -212,54 +212,96 @@ if($_SESSION['level']=='admin'){
                                                 <h5><big>Tambah Baru</big></h5>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST" action="proses_admin.php?a=editpenerima<?php echo "&id=$t[id_du]";?>"  enctype='multipart/form-data' class="form-horizontal" role="form">
-                                                   
+                                                <form method="POST" action="proses_admin.php?a=editperizinan<?php echo "&id=$t[id_du]";?>"  enctype='multipart/form-data' class="form-horizontal" role="form">
+
                                                     <div class="form-group">
-                                                        <label class="col-lg-2 col-sm-2 control-label">Nama DU</label>
-                                                        <div class="col-lg-10">
+                                                        <label class="col-lg-3 col-sm-3 control-label">Nama DU</label>
+                                                        <div class="col-lg-9">
                                                             <input type="text" class="form-control" name="nama_du" value="<?php echo "$e[nama_du]"; ?>" placeholder="Nama Dunia Usaha">
                                                         </div>
                                                     </div>
                                                      <div class="form-group">
-                                                        <label class="col-lg-2 col-sm-2 control-label">Alamat</label>
-                                                        <div class="col-lg-10">
-                                                            <input type="text" class="form-control" name="alamat" value="<?php echo "$e[alamat]"; ?>" placeholder="Alamat">
+                                                        <label class="col-lg-3 col-sm-3 control-label">Email</label>
+                                                        <div class="col-lg-9">
+                                                            <input type="email" readonly class="form-control" name="email_du" value="<?php echo "$e[email_du]"; ?>" placeholder="Email">
                                                         </div>
                                                     </div>
                                                      <div class="form-group">
-                                                        <label class="col-lg-2 col-sm-2 control-label">Kota</label>
-                                                        <div class="col-lg-10">
-                                                            <input type="text" class="form-control" name="kota" value="<?php echo "$e[kota]"; ?>"placeholder="Kota ">
+                                                        <label class="col-lg-3 col-sm-3 control-label">Alamat</label>
+                                                        <div class="col-lg-9">
+                                                            <textarea cols="3" class='form-control col-md-7 col-xs-13' name='alamat' required='required' placeholder='Alamat' type='number'>  <?php echo $e['alamat']?> </textarea>
                                                         </div>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-3 col-sm-3 control-label">Provinsi</label>
+                                                        <div class="col-lg-9">
+                                                            <select name="prop" id="prop2" class='form-control'>
+                                                                <option value="">Pilih Provinsi</option>
+                                                                <?php
+                                                                  include 'koneksi.php';
+                                                                  $query=$db->prepare("SELECT id_prov,nama FROM provinsi ORDER BY nama");
+                                                                  $query->execute();
+                                                                  while ($data=$query->fetchObject()){
+                                                                  echo '<option value="'.$data->id_prov.'"';
+
+                                                                    $x = mysql_fetch_array( mysql_query("SELECT id_prov FROM hb_du_umum WHERE hb_du_umum.id_du='$e[id_du]'"));
+
+                                                                    if( $x["id_prov"] == $data->id_prov){
+                                                                        echo "selected";
+                                                                    }
+                                                                  echo '>'.$data->nama.'</option>';
+                                                                  }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-3 col-sm-3 control-label">Kota/Kabupaten</label>
+                                                        <div class="col-lg-9">
+                                                            <select name="kota" id="kota2" onchange="ajaxkec2(this.value)" class='form-control'>
+                                                                <?php
+                                                                    $ko = mysql_fetch_array( mysql_query("SELECT id_kab FROM hb_du_umum WHERE id_du='$e[id_du]'"));
+                                                                    $ta = mysql_fetch_array( mysql_query("SELECT * FROM kabupaten WHERE id_kab='$ko[id_kab]'"));
+                                                                ?>
+                                                                <option value="<?php echo "$ko[id_kab]";?>"><?php echo "$ta[nama]";?></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-3 col-sm-3 control-label">Kecamatan</label>
+                                                        <div class="col-lg-9">
+                                                            <select name="kec" id="kec2" onchange="ajaxkel2(this.value)" class='form-control'>
+                                                                <?php
+                                                                    $ke = mysql_fetch_array( mysql_query("SELECT id_kec FROM hb_du_umum WHERE id_du='$e[id_du]'"));
+                                                                    $ca = mysql_fetch_array( mysql_query("SELECT * FROM kecamatan WHERE id_kec='$ke[id_kec]'"));
+                                                                ?>
+                                                                <option value="<?php echo "$ke[id_kec]";?>"><?php echo "$ca[nama]";?></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-3 col-sm-3 control-label">Kelurahan/Desa</label>
+                                                        <div class="col-lg-9">
+                                                            <select name="kel" id="kel2" onchange="showCoordinate2();" class='form-control'>
+                                                                <?php
+                                                                    $kelu = mysql_fetch_array( mysql_query("SELECT id_kel FROM hb_du_umum WHERE id_du='$e[id_du]'"));
+                                                                    $rahan = mysql_fetch_array( mysql_query("SELECT nama FROM kelurahan WHERE id_kel='$kelu[id_kel]'"));
+                                                                ?>
+                                                                <option value="<?php echo "$kelu[id_kel]";?>"><?php echo "$rahan[nama]";?></option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-3 col-sm-3 control-label">Kode Pos</label>
+                                                        <div class="col-lg-9">
+                                                            <input type="number" value='<?php echo $e['no_kodepos']?>'  class="form-control" name="kodepos" placeholder="Kodepos">
+                                                        </div>
+                                                    </div>
+
                                                      <div class="form-group">
-                                                        <label class="col-lg-2 col-sm-2 control-label">Email</label>
-                                                        <div class="col-lg-10">
-                                                            <input type="email" class="form-control" name="email" value="<?php echo "$e[email]"; ?>" placeholder="Email">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-2 col-sm-2 control-label">Keterangan</label>
-                                                        <div class="col-lg-10">
-                                                            <input class="form-control" value="<?php echo "$e[keterangan_du]"; ?>" name="keterangan" placeholder="Keterangan">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Nama Penanggung Jawab</label>
-                                                        <div class="col-lg-8">
-                                                            <input type="text" class="form-control" value="<?php echo "$e[nama_penanggung_jawab]"; ?>" name="nama_pj" placeholder="Nama Penanggung Jawab">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Mulai Pelaksanaan</label>
-                                                        <div class="col-lg-8">
-                                                            <input type="date" class="form-control" name="mulai" value="<?php echo "$e[mulai_pelaksanaan]"; ?>"placeholder="Alamat">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Berakhir Pelaksanaan</label>
-                                                        <div class="col-lg-8">
-                                                            <input type="date" class="form-control" name="berakhir" value="<?php echo "$e[berakhir_pelaksanaan]"; ?>"placeholder="Kota ">
+                                                        <label class="col-lg-3 col-sm-3 control-label">Tambah Keterangan</label>
+                                                        <div class="col-lg-9">
+                                                            <textarea cols="3" class='form-control col-md-7 col-xs-13' name='keterangan' required='required' placeholder='Alamat' type='number'>  <?php echo $e['keterangan']?> </textarea>
                                                         </div>
                                                     </div>
                                             </div>
@@ -270,13 +312,134 @@ if($_SESSION['level']=='admin'){
                                         </div>
                                     </div>
                                 </div>
-                                <?php 
+                                <?php
+                            }
+                        ?>
+                        <?php
+                             $data5 = mysql_query( "SELECT * FROM hb_du_umum, hb_du_permintaan WHERE status_penerimaan='Menerima' AND hb_du_umum.id_du = hb_du_permintaan.id_du");
+                             while ($o = mysql_fetch_array($data5)) {
+                                ?>
+                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="<?php echo "editprakerin$o[id_du]";
+                                    $e = mysql_fetch_array(mysql_query("SELECT * FROM hb_du_umum WHERE id_du = '$o[id_du]'"))?>" class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                                <h5><big>Tambah Baru</big></h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="POST" action="proses_admin.php?a=editperizinan<?php echo "&id=$o[id_du]";?>"  enctype='multipart/form-data' class="form-horizontal" role="form">
+
+                                                    <form method="POST" action="<?php echo "proses_admin.php?a=menerima&id=$o[id_du]"; ?>" enctype='multipart/form-data' class="form-horizontal" role="form">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-4 col-sm-4 control-label">Penanggung Jawab :</label>
+                                                        <div class="col-lg-8">
+                                                            <input type="text" value="<?php echo "$o[nama_penanggung_jawab]"; ?>" class="form-control" name="nama_pj" placeholder="Nama Penanggung Jawab">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-4 col-sm-4 control-label">Contact Person :</label>
+                                                        <div class="col-lg-8">
+                                                            <input type="text" value="<?php echo "$o[contact_person]"; ?>" class="form-control" name="cp" placeholder="Contact Person">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-4 col-sm-4 control-label">Mulai Pelaksanaan :</label>
+                                                        <div class="col-lg-8">
+                                                            <input type="date" value="<?php echo "$o[mulai_pelaksanaan]"; ?>"  class="form-control" name="mulai" placeholder="Alamat">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-4 col-sm-4 control-label">Berakhir Pelaksanaan :</label>
+                                                        <div class="col-lg-8">
+                                                            <input type="date"  value="<?php echo "$o[berakhir_pelaksanaan]"; ?>"  class="form-control" name="berakhir" placeholder="Kota ">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Jenis Seleksi :</label>
+                                                        <div class="col-lg-8 flat-green">
+                                                            <?php
+                                                                echo "<select class='form-control m-bot15' name='seleksi'>
+                                                                            <option value='Ya' "; if($o["seleksi_du"]=="Ya"){echo "selected";} echo "> Ya </option>
+                                                                            <option value='Tidak'"; if($o["seleksi_du"]=="Tidak"){echo "selected";} echo "> Tidak </option>
+                                                                      </select>";
+                                                            ?>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                           <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                                                <input type='submit' value='Perbaharui' name='Perbaharui'class='btn btn-success'>  </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php
                             }
                         ?>
                         <!-- modal -->
 
+                        <!-- modal -->
+                        <?php
+                            for ($i=1; $i < 10; $i++) {
+
+                                ?>
+                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="baru<?php echo "$i";?>" class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                                <h5><big>Tambahkan DU Penerima</big></h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="POST" action="proses_admin.php?a=tambahpenerimajur&id=<?php echo "$i";?>"  enctype='multipart/form-data' class="form-horizontal" role="form">
+
+                                                    <div class="form-group">
+                                                        <label class="col-lg-4 col-sm-4 control-label">Nama DU</label>
+                                                        <div class="col-lg-8">
+                                                            <?php
+
+                                                             echo "<select class='form-control m-bot15' name='id_du'>
+                                                                      <option value=''> Pilih Tempat Prakerin </option>";
+                                                                          $du = mysql_query( "SELECT * FROM hb_du_umum, hb_du_permintaan WHERE  hb_du_umum.id_du = hb_du_permintaan.id_du AND status_penerimaan='Menerima' ORDER BY nama_du ASC");
+                                                                        while($z = mysql_fetch_array($du)){
+                                                                            $data3 = mysql_query( "SELECT * FROM hb_du_penerima WHERE id_jurusan = '$i' AND id_du = '$z[id_du]'");
+                                                                            $jumlah = mysql_fetch_row($data3);
+                                                                            if ($jumlah > 0) {
+                                                                              continue;
+                                                                            }else{
+                                                                              echo "<option value='$z[id_du]'> $z[nama_du] </option>";
+                                                                            }
+                                                                        }
+                                                                     echo "
+                                                                  </select>";
+                                                              ?>
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-group">
+                                                        <label class="col-lg-4 col-sm-4 control-label">Jumlah Penerimaan</label>
+                                                        <div class="col-lg-8">
+                                                            <input type="text" class="form-control" name="jumlah" placeholder="Jumlah Penerimaan">
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                           <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                                                <input type='submit' value='Tambahkan' name='Tambahkan'class='btn btn-success'>  </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <?php
+                            }
+                        ?>
+
+                        <!-- modal -->
+
                         <div class="panel-body">
                             <div class="tab-content">
+
                                 <div id="home" class="tab-pane active">
                                     <div class="panel-body">
                                         <div class="adv-table">
@@ -293,32 +456,46 @@ if($_SESSION['level']=='admin'){
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php 
-                                            $query = mysql_query( "select * from hb_du WHERE status_du='Menerima'");
+                                        <?php
+                                            $query9 = mysql_query( "SELECT * FROM hb_du_umum, hb_du_permintaan WHERE status_penerimaan='Menerima' AND hb_du_umum.id_du = hb_du_permintaan.id_du");
                                             $no =0;
-                                            while ($d = mysql_fetch_array($query)) {
+                                            while ($d = mysql_fetch_array($query9)) {
                                                 $mulai = tanggal($d["mulai_pelaksanaan"]);
                                                 $berakhir = tanggal($d["berakhir_pelaksanaan"]);
+                                                $kel = mysql_fetch_array(mysql_query("SELECT nama FROM kelurahan WHERE id_kel='$d[id_kel]'"));
+                                                $kec = mysql_fetch_array(mysql_query("SELECT nama FROM kecamatan WHERE id_kec='$d[id_kec]'"));
+                                                $kab = mysql_fetch_array(mysql_query("SELECT nama FROM kabupaten WHERE id_kab='$d[id_kab]'"));
+                                                $prov = mysql_fetch_array(mysql_query("SELECT nama FROM provinsi WHERE id_prov='$d[id_prov]'"));
                                                 $no = $no+1;
                                                 echo "
                                                 <tr class='gradeA'>
                                                     <td> $no </td>
                                                     <td> $d[nama_du] </td>
                                                     <td> $mulai s/d $berakhir </td>
-                                                    <td> $d[alamat]</td>
-                                                    <td> $d[email]</td>
+                                                    <td> $d[alamat]
+                                                         <br> Kelurahan : $kel[nama]
+                                                         <br> Kecamatan : $kec[nama]
+                                                         <br> Kab/Kota : $kab[nama]
+                                                         <br> Provinsi : $prov[nama]
+                                                         <br> Kode Pos : $d[no_kodepos]
+                                                    </td>
+                                                    <td> $d[email_du]</td>
                                                     <td> ";
                                                         $juru = mysql_query("SELECT DISTINCT jurusan.singkatan FROM jurusan, hb_du_penerima WHERE jurusan.id_jurusan = hb_du_penerima.id_jurusan AND id_du = $d[id_du]");
                                                         while ($jur=mysql_fetch_array($juru)) {
                                                            echo "$jur[singkatan]; ";
                                                         }
                                             echo "  </td>
-                                                    <td class='center'>                                         
+                                                    <td class='center'>
                                                         <a href='#edit$d[id_du]' data-toggle='modal'>
-                                                            <button class='btn btn-sm btn-primary' type='button'><i class='fa fa-trash-o'></i> Lihat - Edit </button>
+                                                            <button class='btn btn-sm btn-primary' type='button'><i class='fa fa-trash-o'></i> Edit Identitas Perusahaan</button>
+                                                        </a>
+                                                        <br> <br>
+                                                        <a href='#editprakerin$d[id_du]' data-toggle='modal'>
+                                                            <button class='btn btn-sm btn-primary' type='button'><i class='fa fa-trash-o'></i> Edit Informasi Prakerin </button>
                                                         </a> <br> <br>
                                                         <a href='#hapus$d[id_du]' data-toggle='modal'>
-                                                            <button class='btn btn-sm btn-primary' type='button'><i class='fa fa-trash-o'></i> Hapus DU </button>
+                                                            <button class='btn btn-sm btn-primary' type='button'><i class='fa fa-trash-o'></i> Hapus Penerima Prakerin </button>
                                                         </a>
                                                     </td>
                                                         <div  style='text-transform:none' aria-hidden='true' aria-labelledby='myModalLabel' role='dialog' tabindex='-1' id='hapus$d[id_du]' class='modal fade'>
@@ -349,60 +526,12 @@ if($_SESSION['level']=='admin'){
                                         </div>
                                     </div>
                                 </div>
+
                                 <div id="rpl" class="tab-pane ">
                                     <div class="panel-body">
                                         <span class="pull-right">
                                             <a href="#baru1" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
                                         </span> <br><br><br>
-                                        <!-- modal -->
-                
-                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="baru1" class="modal fade">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                                <h5><big>Tambahkan DU Penerima</big></h5>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="proses_admin.php?a=tambahpenerimajur&id=1"  enctype='multipart/form-data' class="form-horizontal" role="form">
-                                                   
-                                                    <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Nama DU</label>
-                                                        <div class="col-lg-8">
-                                                            <?php
-
-                                                             echo "<select class='form-control m-bot15' name='id_du'>
-                                                                      <option value=''> Pilih Tempat Prakerin </option>";
-                                                                          $du = mysql_query( "SELECT * FROM hb_du WHERE status_du='Menerima' ORDER BY nama_du ASC");
-                                                                        while($z = mysql_fetch_array($du)){
-                                                                            $data3 = mysql_query( "SELECT * FROM hb_du_penerima WHERE id_jurusan = '1' AND id_du = '$z[id_du]'");
-                                                                            $jumlah = mysql_fetch_row($data3);
-                                                                            if ($jumlah > 0) {
-                                                                              continue;
-                                                                            }else{
-                                                                              echo "<option value='$z[id_du]'> $z[nama_du] </option>";
-                                                                            } 
-                                                                        }
-                                                                     echo "
-                                                                  </select>";
-                                                              ?>
-                                                        </div>
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Jumlah Penerimaan</label>
-                                                        <div class="col-lg-8">
-                                                            <input type="text" class="form-control" name="jumlah" placeholder="Jumlah Penerimaan">
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                           <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                                                <input type='submit' value='Tambahkan' name='Tambahkan'class='btn btn-success'>  </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        <!-- modal -->
 
                                         <div class="adv-table">
                                             <!--<a href='' class='btn btn-warning'> Cetak </a> <br><br> -->
@@ -413,9 +542,9 @@ if($_SESSION['level']=='admin'){
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <?php 
-                                                $query = mysql_query( "SELECT * from hb_du,hb_du_penerima WHERE hb_du.id_du = hb_du_penerima.id_du AND id_jurusan = 1 AND status_du='Menerima'");
-                                                $query4 = mysql_query( "SELECT * from hb_du,hb_du_penerima WHERE hb_du.id_du = hb_du_penerima.id_du AND id_jurusan = 1 AND status_du='Menerima'");
+                                            <?php
+                                                $query = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 1 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query4 = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 1 AND hb_du_permintaan.status_penerimaan='Menerima'");
                                                 isinya($query);
                                                 isinyajur($query4);
                                             ?>
@@ -429,55 +558,7 @@ if($_SESSION['level']=='admin'){
                                         <span class="pull-right">
                                             <a href="#baru7" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
                                         </span> <br><br><br>
-                                        <!-- modal -->
-                
-                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="baru7" class="modal fade">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                                <h5><big>Tambahkan DU Penerima</big></h5>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="proses_admin.php?a=tambahpenerimajur&id=7"  enctype='multipart/form-data' class="form-horizontal" role="form">
-                                                   
-                                                    <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Nama DU</label>
-                                                        <div class="col-lg-8">
-                                                            <?php
 
-                                                             echo "<select class='form-control m-bot15' name='id_du'>
-                                                                      <option value=''> Pilih Tempat Prakerin </option>";
-                                                                          $du = mysql_query( "SELECT * FROM hb_du WHERE status_du='Menerima' ORDER BY nama_du ASC");
-                                                                        while($z = mysql_fetch_array($du)){
-                                                                            $data3 = mysql_query( "SELECT * FROM hb_du_penerima WHERE id_jurusan = '7' AND id_du = '$z[id_du]'");
-                                                                            $jumlah = mysql_fetch_row($data3);
-                                                                            if ($jumlah > 0) {
-                                                                              continue;
-                                                                            }else{
-                                                                              echo "<option value='$z[id_du]'> $z[nama_du] </option>";
-                                                                            } 
-                                                                        }
-                                                                     echo "
-                                                                  </select>";
-                                                              ?>
-                                                        </div>
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Jumlah Penerimaan</label>
-                                                        <div class="col-lg-8">
-                                                            <input type="text" class="form-control" name="jumlah" placeholder="Jumlah Penerimaan">
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                           <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                                                <input type='submit' value='Tambahkan' name='Tambahkan'class='btn btn-success'>  </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        <!-- modal -->
 
                                         <div class="adv-table">
                                             <!--<a href='' class='btn btn-warning'> Cetak </a> <br><br> -->
@@ -488,9 +569,9 @@ if($_SESSION['level']=='admin'){
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <?php 
-                                                $query = mysql_query( "SELECT * from hb_du,hb_du_penerima WHERE hb_du.id_du = hb_du_penerima.id_du AND id_jurusan = 7 AND status_du='Menerima'");
-                                                $query4 = mysql_query( "SELECT * from hb_du,hb_du_penerima WHERE hb_du.id_du = hb_du_penerima.id_du AND id_jurusan = 7 AND status_du='Menerima'");
+                                            <?php
+                                                $query = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 7 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query4 = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 7 AND hb_du_permintaan.status_penerimaan='Menerima'");
                                                 isinya($query);
                                                 isinyajur($query4);
                                             ?>
@@ -505,55 +586,7 @@ if($_SESSION['level']=='admin'){
                                         <span class="pull-right">
                                             <a href="#baru2" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
                                         </span> <br><br><br>
-                                        <!-- modal -->
-                
-                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="baru2" class="modal fade">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                                <h5><big>Tambahkan DU Penerima</big></h5>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="proses_admin.php?a=tambahpenerimajur&id=2"  enctype='multipart/form-data' class="form-horizontal" role="form">
-                                                   
-                                                    <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Nama DU</label>
-                                                        <div class="col-lg-8">
-                                                            <?php
 
-                                                             echo "<select class='form-control m-bot15' name='id_du'>
-                                                                      <option value=''> Pilih Tempat Prakerin </option>";
-                                                                          $du = mysql_query( "SELECT * FROM hb_du WHERE status_du='Menerima' ORDER BY nama_du ASC");
-                                                                        while($z = mysql_fetch_array($du)){
-                                                                            $data3 = mysql_query( "SELECT * FROM hb_du_penerima WHERE id_jurusan = '2' AND id_du = '$z[id_du]'");
-                                                                            $jumlah = mysql_fetch_row($data3);
-                                                                            if ($jumlah > 0) {
-                                                                              continue;
-                                                                            }else{
-                                                                              echo "<option value='$z[id_du]'> $z[nama_du] </option>";
-                                                                            } 
-                                                                        }
-                                                                     echo "
-                                                                  </select>";
-                                                              ?>
-                                                        </div>
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Jumlah Penerimaan</label>
-                                                        <div class="col-lg-8">
-                                                            <input type="text" class="form-control" name="jumlah" placeholder="Jumlah Penerimaan">
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                           <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                                                <input type='submit' value='Tambahkan' name='Tambahkan'class='btn btn-success'>  </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        <!-- modal -->
 
                                         <div class="adv-table">
                                             <!--<a href='' class='btn btn-warning'> Cetak </a> <br><br> -->
@@ -564,9 +597,9 @@ if($_SESSION['level']=='admin'){
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <?php 
-                                                $query = mysql_query( "SELECT * from hb_du,hb_du_penerima WHERE hb_du.id_du = hb_du_penerima.id_du AND id_jurusan = 2 AND status_du='Menerima'");
-                                                $query4 = mysql_query( "SELECT * from hb_du,hb_du_penerima WHERE hb_du.id_du = hb_du_penerima.id_du AND id_jurusan = 2 AND status_du='Menerima'");
+                                            <?php
+                                                $query = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 2 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query4 = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 2 AND hb_du_permintaan.status_penerimaan='Menerima'");
                                                 isinya($query);
                                                 isinyajur($query4);
                                             ?>
@@ -581,55 +614,7 @@ if($_SESSION['level']=='admin'){
                                         <span class="pull-right">
                                             <a href="#baru3" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
                                         </span> <br><br><br>
-                                        <!-- modal -->
-                
-                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="baru3" class="modal fade">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                                <h5><big>Tambahkan DU Penerima</big></h5>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="proses_admin.php?a=tambahpenerimajur&id=3"  enctype='multipart/form-data' class="form-horizontal" role="form">
-                                                   
-                                                    <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Nama DU</label>
-                                                        <div class="col-lg-8">
-                                                            <?php
 
-                                                             echo "<select class='form-control m-bot15' name='id_du'>
-                                                                      <option value=''> Pilih Tempat Prakerin </option>";
-                                                                          $du = mysql_query( "SELECT * FROM hb_du WHERE status_du='Menerima' ORDER BY nama_du ASC");
-                                                                        while($z = mysql_fetch_array($du)){
-                                                                            $data3 = mysql_query( "SELECT * FROM hb_du_penerima WHERE id_jurusan = '3' AND id_du = '$z[id_du]'");
-                                                                            $jumlah = mysql_fetch_row($data3);
-                                                                            if ($jumlah > 0) {
-                                                                              continue;
-                                                                            }else{
-                                                                              echo "<option value='$z[id_du]'> $z[nama_du] </option>";
-                                                                            } 
-                                                                        }
-                                                                     echo "
-                                                                  </select>";
-                                                              ?>
-                                                        </div>
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Jumlah Penerimaan</label>
-                                                        <div class="col-lg-8">
-                                                            <input type="text" class="form-control" name="jumlah" placeholder="Jumlah Penerimaan">
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                           <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                                                <input type='submit' value='Tambahkan' name='Tambahkan'class='btn btn-success'>  </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        <!-- modal -->
 
                                         <div class="adv-table">
                                             <!--<a href='' class='btn btn-warning'> Cetak </a> <br><br> -->
@@ -640,9 +625,9 @@ if($_SESSION['level']=='admin'){
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <?php 
-                                                $query = mysql_query( "SELECT * from hb_du,hb_du_penerima WHERE hb_du.id_du = hb_du_penerima.id_du AND id_jurusan = 3 AND status_du='Menerima'");
-                                                $query4 = mysql_query( "SELECT * from hb_du,hb_du_penerima WHERE hb_du.id_du = hb_du_penerima.id_du AND id_jurusan = 3 AND status_du='Menerima'");
+                                            <?php
+                                                $query = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 3 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query4 = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 3 AND hb_du_permintaan.status_penerimaan='Menerima'");
                                                 isinya($query);
                                                 isinyajur($query4);
                                             ?>
@@ -657,55 +642,7 @@ if($_SESSION['level']=='admin'){
                                         <span class="pull-right">
                                             <a href="#baru5" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
                                         </span> <br><br><br>
-                                        <!-- modal -->
-                
-                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="baru5" class="modal fade">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                                <h5><big>Tambahkan DU Penerima</big></h5>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="proses_admin.php?a=tambahpenerimajur&id=5"  enctype='multipart/form-data' class="form-horizontal" role="form">
-                                                   
-                                                    <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Nama DU</label>
-                                                        <div class="col-lg-8">
-                                                            <?php
 
-                                                             echo "<select class='form-control m-bot15' name='id_du'>
-                                                                      <option value=''> Pilih Tempat Prakerin </option>";
-                                                                          $du = mysql_query( "SELECT * FROM hb_du WHERE status_du='Menerima' ORDER BY nama_du ASC");
-                                                                        while($z = mysql_fetch_array($du)){
-                                                                            $data3 = mysql_query( "SELECT * FROM hb_du_penerima WHERE id_jurusan = '5' AND id_du = '$z[id_du]'");
-                                                                            $jumlah = mysql_fetch_row($data3);
-                                                                            if ($jumlah > 0) {
-                                                                              continue;
-                                                                            }else{
-                                                                              echo "<option value='$z[id_du]'> $z[nama_du] </option>";
-                                                                            } 
-                                                                        }
-                                                                     echo "
-                                                                  </select>";
-                                                              ?>
-                                                        </div>
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Jumlah Penerimaan</label>
-                                                        <div class="col-lg-8">
-                                                            <input type="text" class="form-control" name="jumlah" placeholder="Jumlah Penerimaan">
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                           <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                                                <input type='submit' value='Tambahkan' name='Tambahkan'class='btn btn-success'>  </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        <!-- modal -->
 
                                         <div class="adv-table">
                                             <!--<a href='' class='btn btn-warning'> Cetak </a> <br><br> -->
@@ -716,9 +653,9 @@ if($_SESSION['level']=='admin'){
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <?php 
-                                                $query = mysql_query( "SELECT * from hb_du,hb_du_penerima WHERE hb_du.id_du = hb_du_penerima.id_du AND id_jurusan = 5 AND status_du='Menerima'");
-                                                $query4 = mysql_query( "SELECT * from hb_du,hb_du_penerima WHERE hb_du.id_du = hb_du_penerima.id_du AND id_jurusan = 5 AND status_du='Menerima'");
+                                            <?php
+                                                $query = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 5 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query4 = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 5 AND hb_du_permintaan.status_penerimaan='Menerima'");
                                                 isinya($query);
                                                 isinyajur($query4);
                                             ?>
@@ -733,55 +670,7 @@ if($_SESSION['level']=='admin'){
                                         <span class="pull-right">
                                             <a href="#baru4" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
                                         </span> <br><br><br>
-                                        <!-- modal -->
-                
-                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="baru4" class="modal fade">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                                <h5><big>Tambahkan DU Penerima</big></h5>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="proses_admin.php?a=tambahpenerimajur&id=4"  enctype='multipart/form-data' class="form-horizontal" role="form">
-                                                   
-                                                    <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Nama DU</label>
-                                                        <div class="col-lg-8">
-                                                            <?php
 
-                                                             echo "<select class='form-control m-bot15' name='id_du'>
-                                                                      <option value=''> Pilih Tempat Prakerin </option>";
-                                                                          $du = mysql_query( "SELECT * FROM hb_du WHERE status_du='Menerima' ORDER BY nama_du ASC");
-                                                                        while($z = mysql_fetch_array($du)){
-                                                                            $data3 = mysql_query( "SELECT * FROM hb_du_penerima WHERE id_jurusan = '4' AND id_du = '$z[id_du]'");
-                                                                            $jumlah = mysql_fetch_row($data3);
-                                                                            if ($jumlah > 0) {
-                                                                              continue;
-                                                                            }else{
-                                                                              echo "<option value='$z[id_du]'> $z[nama_du] </option>";
-                                                                            } 
-                                                                        }
-                                                                     echo "
-                                                                  </select>";
-                                                              ?>
-                                                        </div>
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Jumlah Penerimaan</label>
-                                                        <div class="col-lg-8">
-                                                            <input type="text" class="form-control" name="jumlah" placeholder="Jumlah Penerimaan">
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                           <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                                                <input type='submit' value='Tambahkan' name='Tambahkan'class='btn btn-success'>  </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        <!-- modal -->
 
                                         <div class="adv-table">
                                             <!--<a href='' class='btn btn-warning'> Cetak </a> <br><br> -->
@@ -792,9 +681,9 @@ if($_SESSION['level']=='admin'){
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <?php 
-                                                $query = mysql_query( "SELECT * from hb_du,hb_du_penerima WHERE hb_du.id_du = hb_du_penerima.id_du AND id_jurusan = 4 AND status_du='Menerima'");
-                                                $query4 = mysql_query( "SELECT * from hb_du,hb_du_penerima WHERE hb_du.id_du = hb_du_penerima.id_du AND id_jurusan = 4 AND status_du='Menerima'");
+                                            <?php
+                                                $query = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 4 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query4 = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 4 AND hb_du_permintaan.status_penerimaan='Menerima'");
                                                 isinya($query);
                                                 isinyajur($query4);
                                             ?>
@@ -808,55 +697,6 @@ if($_SESSION['level']=='admin'){
                                         <span class="pull-right">
                                             <a href="#baru6" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
                                         </span> <br><br><br>
-                                        <!-- modal -->
-                
-                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="baru6" class="modal fade">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                                <h5><big>Tambahkan DU Penerima</big></h5>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="proses_admin.php?a=tambahpenerimajur&id=6"  enctype='multipart/form-data' class="form-horizontal" role="form">
-                                                   
-                                                    <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Nama DU</label>
-                                                        <div class="col-lg-8">
-                                                            <?php
-
-                                                             echo "<select class='form-control m-bot15' name='id_du'>
-                                                                      <option value=''> Pilih Tempat Prakerin </option>";
-                                                                          $du = mysql_query( "SELECT * FROM hb_du WHERE status_du='Menerima' ORDER BY nama_du ASC");
-                                                                        while($z = mysql_fetch_array($du)){
-                                                                            $data3 = mysql_query( "SELECT * FROM hb_du_penerima WHERE id_jurusan = '6' AND id_du = '$z[id_du]'");
-                                                                            $jumlah = mysql_fetch_row($data3);
-                                                                            if ($jumlah > 0) {
-                                                                              continue;
-                                                                            }else{
-                                                                              echo "<option value='$z[id_du]'> $z[nama_du] </option>";
-                                                                            } 
-                                                                        }
-                                                                     echo "
-                                                                  </select>";
-                                                              ?>
-                                                        </div>
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Jumlah Penerimaan</label>
-                                                        <div class="col-lg-8">
-                                                            <input type="text" class="form-control" name="jumlah" placeholder="Jumlah Penerimaan">
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                           <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                                                <input type='submit' value='Tambahkan' name='Tambahkan'class='btn btn-success'>  </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        <!-- modal -->
 
                                         <div class="adv-table">
                                             <!--<a href='' class='btn btn-warning'> Cetak </a> <br><br> -->
@@ -867,9 +707,9 @@ if($_SESSION['level']=='admin'){
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <?php 
-                                                $query = mysql_query( "SELECT * from hb_du,hb_du_penerima WHERE hb_du.id_du = hb_du_penerima.id_du AND id_jurusan = 6 AND status_du='Menerima'");
-                                                $query4 = mysql_query( "SELECT * from hb_du,hb_du_penerima WHERE hb_du.id_du = hb_du_penerima.id_du AND id_jurusan = 6 AND status_du='Menerima'");
+                                            <?php
+                                                $query = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 6 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query4 = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 6 AND hb_du_permintaan.status_penerimaan='Menerima'");
                                                 isinya($query);
                                                 isinyajur($query4);
                                             ?>
@@ -884,55 +724,7 @@ if($_SESSION['level']=='admin'){
                                         <span class="pull-right">
                                             <a href="#baru8" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
                                         </span> <br><br><br>
-                                        <!-- modal -->
-                
-                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="baru8" class="modal fade">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                                <h5><big>Tambahkan DU Penerima</big></h5>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="proses_admin.php?a=tambahpenerimajur&id=8"  enctype='multipart/form-data' class="form-horizontal" role="form">
-                                                   
-                                                    <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Nama DU</label>
-                                                        <div class="col-lg-8">
-                                                            <?php
 
-                                                             echo "<select class='form-control m-bot15' name='id_du'>
-                                                                      <option value=''> Pilih Tempat Prakerin </option>";
-                                                                          $du = mysql_query( "SELECT * FROM hb_du WHERE status_du='Menerima' ORDER BY nama_du ASC");
-                                                                        while($z = mysql_fetch_array($du)){
-                                                                            $data3 = mysql_query( "SELECT * FROM hb_du_penerima WHERE id_jurusan = '8' AND id_du = '$z[id_du]'");
-                                                                            $jumlah = mysql_fetch_row($data3);
-                                                                            if ($jumlah > 0) {
-                                                                              continue;
-                                                                            }else{
-                                                                              echo "<option value='$z[id_du]'> $z[nama_du] </option>";
-                                                                            } 
-                                                                        }
-                                                                     echo "
-                                                                  </select>";
-                                                              ?>
-                                                        </div>
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Jumlah Penerimaan</label>
-                                                        <div class="col-lg-8">
-                                                            <input type="text" class="form-control" name="jumlah" placeholder="Jumlah Penerimaan">
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                           <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                                                <input type='submit' value='Tambahkan' name='Tambahkan'class='btn btn-success'>  </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        <!-- modal -->
 
                                         <div class="adv-table">
                                             <!--<a href='' class='btn btn-warning'> Cetak </a> <br><br> -->
@@ -943,9 +735,9 @@ if($_SESSION['level']=='admin'){
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <?php 
-                                                $query = mysql_query( "SELECT * from hb_du,hb_du_penerima WHERE hb_du.id_du = hb_du_penerima.id_du AND id_jurusan = 8 AND status_du='Menerima'");
-                                                $query4 = mysql_query( "SELECT * from hb_du,hb_du_penerima WHERE hb_du.id_du = hb_du_penerima.id_du AND id_jurusan = 8 AND status_du='Menerima'");
+                                            <?php
+                                                $query = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 8 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query4 = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 8 AND hb_du_permintaan.status_penerimaan='Menerima'");
                                                 isinya($query);
                                                 isinyajur($query4);
                                             ?>
@@ -960,55 +752,6 @@ if($_SESSION['level']=='admin'){
                                         <span class="pull-right">
                                             <a href="#baru9" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
                                         </span> <br><br><br>
-                                        <!-- modal -->
-                
-                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="baru9" class="modal fade">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                                <h5><big>Tambahkan DU Penerima</big></h5>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="proses_admin.php?a=tambahpenerimajur&id=9"  enctype='multipart/form-data' class="form-horizontal" role="form">
-                                                   
-                                                    <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Nama DU</label>
-                                                        <div class="col-lg-8">
-                                                            <?php
-
-                                                             echo "<select class='form-control m-bot15' name='id_du'>
-                                                                      <option value=''> Pilih Tempat Prakerin </option>";
-                                                                          $du = mysql_query( "SELECT * FROM hb_du WHERE status_du='Menerima' ORDER BY nama_du ASC");
-                                                                        while($z = mysql_fetch_array($du)){
-                                                                            $data3 = mysql_query( "SELECT * FROM hb_du_penerima WHERE id_jurusan = '9' AND id_du = '$z[id_du]'");
-                                                                            $jumlah = mysql_fetch_row($data3);
-                                                                            if ($jumlah > 0) {
-                                                                              continue;
-                                                                            }else{
-                                                                              echo "<option value='$z[id_du]'> $z[nama_du] </option>";
-                                                                            } 
-                                                                        }
-                                                                     echo "
-                                                                  </select>";
-                                                              ?>
-                                                        </div>
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Jumlah Penerimaan</label>
-                                                        <div class="col-lg-8">
-                                                            <input type="text" class="form-control" name="jumlah" placeholder="Jumlah Penerimaan">
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                           <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                                                <input type='submit' value='Tambahkan' name='Tambahkan'class='btn btn-success'>  </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        <!-- modal -->
 
                                         <div class="adv-table">
                                             <!--<a href='' class='btn btn-warning'> Cetak </a> <br><br> -->
@@ -1019,9 +762,9 @@ if($_SESSION['level']=='admin'){
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <?php 
-                                                $query = mysql_query( "SELECT * from hb_du,hb_du_penerima WHERE hb_du.id_du = hb_du_penerima.id_du AND id_jurusan = 9 AND status_du='Menerima'");
-                                                $query4 = mysql_query( "SELECT * from hb_du,hb_du_penerima WHERE hb_du.id_du = hb_du_penerima.id_du AND id_jurusan = 9 AND status_du='Menerima'");
+                                            <?php
+                                                $query = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 9 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query4 = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 1 AND hb_du_permintaan.status_penerimaan='Menerima'");
                                                 isinya($query);
                                                 isinyajur($query4);
                                             ?>
@@ -1034,7 +777,7 @@ if($_SESSION['level']=='admin'){
                         </div>
                     </section>
 
-                    
+
                     </section>
                 </div>
             </div>

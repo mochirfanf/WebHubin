@@ -2,7 +2,7 @@
 
 include "../koneksidb.php";
 
-if($_SESSION['level']=='kapprog'){
+if($_SESSION['level']=='admin'){
 	if ($_SESSION['tahun_ajaran']!='') {
         $title="Permohonan Perizinan Prakerin";
         $active = "";
@@ -10,9 +10,9 @@ if($_SESSION['level']=='kapprog'){
         $navactive1 ="nav-active";
 
 
-        $data2 = mysql_query("SELECT * FROM hb_du_umum,siswa,hb_du_permintaan WHERE permintaan_siswa='Ya' AND status_permintaan='Belum Terverifikasi' AND hb_du_permintaan.du_siswa = siswa.nis AND hb_du_permintaan.tahun_ajaran = '$_SESSION[tahun_ajaran]' AND siswa.tahun_ajaran = '$_SESSION[tahun_ajaran]'  AND id_jurusan='$_SESSION[jurusan]' AND hb_du_umum.id_du = hb_du_permintaan.id_du");
+        $data2 = mysql_query("SELECT * FROM hb_du_umum,hb_du_permintaan WHERE permintaan_hubin='Ya' AND hb_du_permintaan.tahun_ajaran = '$_SESSION[tahun_ajaran]' AND hb_du_umum.id_du = hb_du_permintaan.id_du");
 
-        $data3 = mysql_query("SELECT * FROM hb_du_umum,siswa,hb_du_permintaan WHERE permintaan_siswa='Ya' AND status_permintaan='Belum Terverifikasi' AND hb_du_permintaan.du_siswa = siswa.nis AND hb_du_permintaan.tahun_ajaran = '$_SESSION[tahun_ajaran]' AND siswa.tahun_ajaran = '$_SESSION[tahun_ajaran]'  AND id_jurusan='$_SESSION[jurusan]' AND hb_du_umum.id_du = hb_du_permintaan.id_du");
+        $data3 = mysql_query("SELECT * FROM hb_du_umum,hb_du_permintaan WHERE permintaan_hubin='Ya' AND hb_du_permintaan.tahun_ajaran = '$_SESSION[tahun_ajaran]' AND hb_du_umum.id_du = hb_du_permintaan.id_du");
 
 		include "leftside.php"; ?>
 
@@ -34,14 +34,7 @@ if($_SESSION['level']=='kapprog'){
                                                 <h5><big>Tambah Permintaan Perizinan Prakerin</big></h5>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST" action="proses_kapprog.php?a=inputperizinan"  enctype='multipart/form-data' class="form-horizontal" role="form">
-                                                    <div class="form-group">
-                                                        <label class="col-lg-5 col-sm-5 control-label"> Siswa dengan NIS</label>
-                                                        <div class="col-lg-7">
-                                                            <input name="nis" style="height: 30px;" placeholder=" N I S (Permintaan Siswa) " onmouseout="document.getElementById('namasiswa').innerHTML='Tes'" id="siswa">
-                                                            <br><br>
-                                                        </div>
-                                                    </div>
+                                                <form method="POST" action="proses_admin.php?a=inputperizinan"  enctype='multipart/form-data' class="form-horizontal" role="form">
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Nama DU</label>
                                                         <div class="col-lg-9">
@@ -134,14 +127,7 @@ if($_SESSION['level']=='kapprog'){
                                             </div>
                                             <div class="modal-body">
                                                 <?php $dl = mysql_fetch_array(mysql_query("SELECT * FROM hb_du_umum, hb_du_permintaan WHERE hb_du_umum.id_du='$t[id_du]' AND hb_du_umum.id_du = hb_du_permintaan.id_du")); ?>
-                                                <form method="POST" action="proses_kapprog.php?a=editperizinan<?php echo "&id=$t[id_du]";?>"  enctype='multipart/form-data' class="form-horizontal" role="form">
-                                                    <div class="form-group">
-                                                        <label class="col-lg-5 col-sm-5 control-label"> Siswa dengan NIS</label>
-                                                        <div class="col-lg-7">
-                                                            <input name="nis" disabled value='<?php echo $dl['du_siswa']?>' style="height: 30px;" placeholder=" N I S (Permintaan Siswa) " onmouseout="document.getElementById('namasiswa').innerHTML='Tes'" id="siswa">
-                                                            <br><br>
-                                                        </div>
-                                                    </div>
+                                                <form method="POST" action="proses_admin.php?a=editperizinan<?php echo "&id=$t[id_du]";?>"  enctype='multipart/form-data' class="form-horizontal" role="form">
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Nama DU</label>
                                                         <div class="col-lg-9">
@@ -252,7 +238,6 @@ if($_SESSION['level']=='kapprog'){
                     <thead>
                     <tr>
                         <th>No</th>
-                        <th>Permintaan</th>
                         <th>Nama DU/DI</th>
                         <th>Alamat dan Email</th>
                         <th>Keterangan</th>
@@ -272,10 +257,6 @@ if($_SESSION['level']=='kapprog'){
                                 echo "
                                     <tr class='gradeA'>
                                         <td> $no </td>
-                                        <td> NIS &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: $d[nis] <br>
-                                             Nama  &nbsp;&nbsp; &nbsp; : $d[nama_siswa] <br>
-                                             Kelas  &nbsp; &nbsp; &nbsp;&nbsp;: $d[kelas] <br>
-                                        </td>
                                         <td> $d[nama_du] </td>
                                         <td> $d[alamat]
                                              <br> Kelurahan : $kel[nama]
@@ -302,11 +283,11 @@ if($_SESSION['level']=='kapprog'){
                                                             <h5>Konfirmasi!</h5>
                                                         </div>
                                                         <div class='modal-body'>
-                                                            Anda yakin ingin menghapus permohonan perizinan? (Nama DU : $d[nama_du])?
+                                                            Anda yakin ingin menghapus? (Nama DU : $d[nama_du])?
                                                         </div>
                                                        <div class='modal-footer'>
                                                             <button type='button' class='btn btn-default' data-dismiss='modal'>Kembali</button>
-                                                            <a href='proses_kapprog.php?a=hapusdu&id=$d[id_du]'>
+                                                            <a href='proses_admin.php?a=hapusdu&id=$d[id_du]'>
                                                             <input type='submit' value='Hapus' name='Ganti'class='btn btn-success'></a>
                                                         </div>
                                                     </div>

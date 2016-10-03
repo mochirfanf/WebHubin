@@ -1,5 +1,5 @@
 <?php
-	
+
 	include "../koneksidb.php";
 
 	function anti_injection($param){
@@ -7,12 +7,14 @@
 		return $filter;
 	}
 
-if($_SESSION['level']=='admin'){ 
+if($_SESSION['level']=='admin'){
 	if (!empty($_GET ["a"])) {
 		switch ($_GET ["a"]){
+
 			case "update":
+
 				if (isset($_POST['MASUK'])){
-					
+
 
 					if(empty($_POST['jk'])) {
 						$jk = "";
@@ -45,10 +47,10 @@ if($_SESSION['level']=='admin'){
 					$foto 		    = $_FILES['foto']['name'];
 					$error 			= $_FILES['foto']['error'];
 					$temporary_sementara = $_FILES['foto']['tmp_name'];
-					
+
 					mysql_query(" UPDATE hb_user_admin SET username = '$username' WHERE username = '$_SESSION[username]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
 					mysql_query(" UPDATE hb_pengelola_hubin SET username = '$username', nama = '$nama', jabatan = '$jabatan', jenis_kelamin = '$jk', tempat_lahir = '$tempat_lahir', tanggal_lahir = '$tanggal_lahir' , alamat = '$alamat' , agama = '$agama', email = '$email', no_telepon= '$nomor', gol_darah = '$gol', status ='$status', motto_hidup = '$motto' WHERE nip = '$_SESSION[nip]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
-					
+
 					$_SESSION["username"] = $username;
 					?>
 					<script>
@@ -56,7 +58,7 @@ if($_SESSION['level']=='admin'){
 						top.location="updateprofile.php";
 					</script><?php
 
-					
+
 					if ($foto !=="" && $error == 0){
 
 						$replace_foto = mysql_fetch_array(mysql_query("SELECT * FROM hb_pengelola_hubin WHERE nip = '$_SESSION[nip]' LIMIT 1"));
@@ -66,7 +68,7 @@ if($_SESSION['level']=='admin'){
 							$move=move_uploaded_file($temporary_sementara, '../images/admin/'.$foto);
 							if($move){
 								mysql_query(" UPDATE hb_pengelola_hubin SET foto = '$foto' WHERE nip = '$_SESSION[nip]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
-	
+
 								?>
 								<script>
 									alert(" Foto Berhasil Diganti ");
@@ -82,7 +84,7 @@ if($_SESSION['level']=='admin'){
 							$move=move_uploaded_file($temporary_sementara, '../images/admin/'.$nama_foto);
 							if($move){
 								mysql_query(" UPDATE hb_pengelola_hubin SET foto = '$nama_foto' WHERE nip = '$_SESSION[nip]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
-	
+
 								?>
 								<script>
 									alert(" Foto Berhasil Diganti ");
@@ -94,27 +96,26 @@ if($_SESSION['level']=='admin'){
 										alert('Maaf Gagal Mengunggah Foto');
 									</script>";
 							}
-						}							
+						}
 					}
 				}
-				
-				
+
 			break;
 
 			case "gantipassword":
 				if (isset($_POST['GANTI'])){
 
 					$d = mysql_fetch_array(mysql_query("SELECT * FROM hb_user_admin WHERE username = '$_SESSION[username]'"));
-							
+
 					$passlama		= md5(anti_injection($_POST['pl']));
 					$passbaru		= anti_injection($_POST['pb']);
 					$passbaru2		= anti_injection($_POST['pb2']);
 
 					if ($passbaru == $passbaru2) {
-						
+
 						if ($_SESSION['password'] == $passlama) {
 							mysql_query(" UPDATE hb_user_admin SET password = MD5('$passbaru') WHERE username = '$_SESSION[username]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
-							
+
 							$_SESSION["password"] = $passbaru;
 							?>
 							<script>
@@ -141,23 +142,57 @@ if($_SESSION['level']=='admin'){
 			break;
 
 			case "inputperizinan":
+
 				if (isset($_POST['Tambahkan'])){
-		
-					$nama_du	= anti_injection($_POST['nama_du']);
-					$alamat		= anti_injection($_POST['alamat']);
-					$kota		= anti_injection($_POST['kota']);
-					$email		= anti_injection($_POST['email']);
-					$keterangan	= anti_injection($_POST['keterangan']);
+
+								$nama = anti_injection($_POST['nama_du']);
+                $email = anti_injection($_POST['email_du']);
+                $alamat = anti_injection($_POST['alamat']);
+                $provinsi = anti_injection($_POST['prop']);
+                $kabupaten = anti_injection($_POST['kota']);
+                $kecamatan = anti_injection($_POST['kec']);
+                $kelurahan = anti_injection($_POST['kel']);
+                $kodepos = anti_injection($_POST['kodepos']);
+								$keterangan	= anti_injection($_POST['keterangan']);
+
+										$a = mysql_query("SELECT email_du FROM hb_du_umum");
+               		  $f = 0;
+
+                    while($d=mysql_fetch_array($a)){
+                      if($d['email_du']==$email){
+                          $f=1;
+                      }
+                    }
+
+                    if($f==0){
+
+                        mysql_query("INSERT INTO hb_du_umum ( nama_du, email_du, alamat, id_prov, id_kab, id_kec, id_kel, no_kodepos)
+                                VALUES('$nama','$email','$alamat','$provinsi', '$kabupaten', '$kecamatan', '$kelurahan' , '$kodepos')") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+
+                        $x = mysql_fetch_array(mysql_query("SELECT id_du FROM hb_du_umum ORDER BY id_du DESC LIMIT 1")) ;
+
+               		  		mysql_query("INSERT INTO hb_du_permintaan (id_du, permintaan_hubin, tahun_ajaran, keterangan_permintaan, status_permintaan, status_penerimaan, status_penerimaan)
+                                VALUES('$x[id_du]' ,'Ya','$_SESSION[tahun_ajaran]', '$keterangan', 'Belum Terverifikasi', 'DU/DI dari Hubin', 'Proses')")  or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
 
 
-					mysql_query(" INSERT INTO hb_du(tahun_ajaran, nama_du, alamat, kota, status_du, email, keterangan_du ) VALUES ('$_SESSION[tahun_ajaran]', '$nama_du', '$alamat', '$kota', 'Proses', '$email', '$keterangan')")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+                        ?>
+                            <script>
+                                alert(" Berhasil Ditambahkan! ");
+                                top.location = 'dari_hubin.php';
+                            </script>
+                            <?php
 
-					?>
-					<script>
-						alert(" Berhasil Dimasukkan ");
-						top.location='inputperizinan.php';
-					</script><?php
-				}
+                    }else{
+                      ?>
+                            <script>
+                                alert('Gagal Dikirim ! Perusahaan Telah Ada');
+                                top.location = 'dari_hubin.php';
+                            </script>
+                            <?php
+                    }
+						}
+
+
 			break;
 
 			case "settahun_ajaran":
@@ -171,7 +206,7 @@ if($_SESSION['level']=='admin'){
 
 			case "menolak":
 				$id = $_GET["id"];
-				mysql_query(" UPDATE hb_du SET status_du='Menolak' WHERE id_du=$id") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
+				mysql_query(" UPDATE hb_du SET status_penerimaan='Menolak' WHERE id_du=$id") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
 				?>
 					<script>
 						alert(" Status Telah Diperbaharui ");
@@ -181,36 +216,30 @@ if($_SESSION['level']=='admin'){
 
 			case "hapusdu":
 				$id = $_GET["id"];
-				mysql_query("DELETE FROM hb_du WHERE id_du = $id")or die ("Ups! Gagal Dihapus, Silahkan Coba Lagi! ".mysql_error());
+				mysql_query("DELETE FROM hb_du_umum WHERE id_du = $id")or die ("Ups! Gagal Dihapus, Silahkan Coba Lagi! ".mysql_error());
+
+				mysql_query("DELETE FROM hb_du_permintaan WHERE id_du = $id")or die ("Ups! Gagal Dihapus, Silahkan Coba Lagi! ".mysql_error());
 				?>
 					<script>
-						alert(" DU Telah Dihapus ");
-						top.location='inputperizinan.php';
+						alert(" DU/DI Telah Dihapus ");
+						top.location='dari_hubin.php';
 					</script><?php
 			break;
 
 			case "menerima":
 				if (isset($_POST['Tambahkan'])){
-					
-					/*$jurusan = "jurusan$id";
-					$jumlah = "jumlah$id";
-					$jurusan1	= anti_injection($_POST[$jurusan]);
-					$jumlah1	= anti_injection($_POST[$jumlah]);*/
 
 					$id = $_GET["id"];
-					
+
 					$nama_pj	= anti_injection($_POST['nama_pj']);
+					$cp				= anti_injection($_POST['cp']);
 					$mulai		= anti_injection($_POST['mulai']);
 					$berakhir	= anti_injection($_POST['berakhir']);
+					$seleksi	= anti_injection($_POST['seleksi']);
 
 
-					if(isset($_POST["seleksi"])){ 
-						$seleksi	= anti_injection($_POST['seleksi']);
-					}else{
-						$seleksi="No";
-					}
 
-					if(isset($_POST["jurusan"])){  
+					if(isset($_POST["jurusan"])){
 						$no=0;
 					    foreach($_POST["jurusan"] as $jurusan){
 					    	$no= $no+1;
@@ -218,28 +247,28 @@ if($_SESSION['level']=='admin'){
 					    }
 					}
 
-					if(isset($_POST["jumlah"])){ 
-						$no=0;   
+					if(isset($_POST["jumlah"])){
+						$no=0;
 					    foreach($_POST["jumlah"] as $jumlah){
 					    	$no= $no+1;
 					    	$ajum["$no"] = "$jumlah";
 					    }
 					}
 
-					for ($i=1; $i<=$no; $i++) { 
-						
-						mysql_query(" INSERT INTO hb_du_penerima(id_du, id_jurusan, jumlah_penerimaan, sisa_kuota_penerimaan) VALUES ('$id', '$ajur[$i]', '$ajum[$i]', '$ajum[$i]')")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+					for ($i=1; $i<=$no; $i++) {
+
+						mysql_query(" INSERT INTO hb_du_penerima(id_du, id_jurusan, jumlah_penerimaan, sisa_kuota_penerimaan, tahun_ajaran) VALUES ('$id', '$ajur[$i]', '$ajum[$i]', '$ajum[$i]', '$_SESSION[tahun_ajaran]')")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
 					}
-					
-					mysql_query(" UPDATE hb_du SET nama_penanggung_jawab='$nama_pj', mulai_pelaksanaan='$mulai', berakhir_pelaksanaan = '$berakhir', status_du='Menerima', seleksi_du = '$seleksi' WHERE id_du=$id") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
+
+					mysql_query(" UPDATE hb_du_permintaan SET nama_penanggung_jawab='$nama_pj', contact_person='$cp', mulai_pelaksanaan='$mulai', berakhir_pelaksanaan = '$berakhir', status_penerimaan='Menerima', seleksi_du = '$seleksi' WHERE id_du=$id") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
 
 
 				?>
 					<script>
 						alert(" Status Telah Diperbaharui ");
-						top.location='inputperizinan.php';
-					</script><?php 
-					
+						top.location='penerima_prakerin.php';
+					</script><?php
+
 				}
 			break;
 
@@ -249,20 +278,20 @@ if($_SESSION['level']=='admin'){
 				$jumlah = anti_injection($_POST["jumlah"]);
 
 				mysql_query(" INSERT INTO hb_du_penerima(id_du, id_jurusan, jumlah_penerimaan, sisa_kuota_penerimaan) VALUES ('$id_du', '$id', '$jumlah', '$jumlah')")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
-					
+
 
 				?>
 					<script>
 						alert(" Berhasil Ditambahkan ");
 						top.location='dupenerima.php';
-					</script><?php 
-					
+					</script><?php
+
 
 			break;
 
 			case "editjpenerima":
 				if(isset($_POST['Perbaharui'])){
-					
+
 					$id = $_GET["id"];
 					$id_jur = $_GET["id_jurusan"];
 					$jpen = anti_injection($_POST["jpen"]);
@@ -270,7 +299,7 @@ if($_SESSION['level']=='admin'){
 					$j = mysql_fetch_array(mysql_query("SELECT * FROM hb_du_penerima WHERE id_du = '$id' AND id_jurusan = $id_jur"));
 
 					$selisih = $j["jumlah_penerimaan"] - $j["sisa_kuota_penerimaan"];
-					
+
 					if ($selisih <= $jpen) {
 						$hasil = $jpen - $selisih;
 						mysql_query(" UPDATE hb_du_penerima SET jumlah_penerimaan='$jpen', sisa_kuota_penerimaan='$hasil' WHERE id_du = '$id' AND id_jurusan = $id_jur") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
@@ -280,8 +309,8 @@ if($_SESSION['level']=='admin'){
 							<script>
 								alert(" Jumlah Penerimaan Telah Diperbaharui ");
 								top.location='dupenerima.php';
-							</script><?php 
-						
+							</script><?php
+
 					}
 
 					if ($selisih > $jpen) {
@@ -290,36 +319,45 @@ if($_SESSION['level']=='admin'){
 							<script>
 								alert(" Maaf Tidak Dapat Diperbaharui! \n Karena jumlah siswa yg terverifikasi sudah melebihi batas  jumlah penerimaan yang anda masukan! ");
 								top.location='dupenerima.php';
-							</script><?php 
-						
+							</script><?php
+
 					}
-					
+
 				}
 			break;
 
 			case "editperizinan":
-				if(isset($_POST['Perbaharui'])){
-					
-					$id = $_GET["id"];
-					$nama_du	= anti_injection($_POST['nama_du']);
-					$alamat		= anti_injection($_POST['alamat']);
-					$kota		= anti_injection($_POST['kota']);
-					$email		= anti_injection($_POST['email']);
-					$keterangan	= anti_injection($_POST['keterangan']);
+				if (isset($_POST['Perbaharui'])){
 
-					mysql_query(" UPDATE hb_du SET nama_du = '$nama_du', alamat = '$alamat', kota = '$kota', email = '$email', keterangan_du = '$keterangan' WHERE id_du = $id") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
+								$nama = anti_injection($_POST['nama_du']);
+                $email = anti_injection($_POST['email_du']);
+                $alamat = anti_injection($_POST['alamat']);
+                $provinsi = anti_injection($_POST['prop']);
+                $kabupaten = anti_injection($_POST['kota']);
+                $kecamatan = anti_injection($_POST['kec']);
+                $kelurahan = anti_injection($_POST['kel']);
+                $kodepos = anti_injection($_POST['kodepos']);
+								$keterangan	= anti_injection($_POST['keterangan']);
 
-					?>
-					<script>
-						alert(" Berhasil Diperbaharui ");
-						top.location='inputperizinan.php';
-					</script><?php 
+
+                        mysql_query("UPDATE hb_du_umum SET nama_du = '$nama', email_du = '$email', alamat = '$alamat', id_prov = '$provinsi', id_kab = '$kabupaten', id_kec = '$kecamatan', id_kel = '$kelurahan', no_kodepos='$kodepos' WHERE id_du='$_GET[id]'") or die ("Ups! Gagal Diupdate, Silahkan Coba Lagi! ".mysql_error());
+
+
+               		  		mysql_query("UPDATE hb_du_permintaan SET  keterangan_permintaan = '$keterangan' WHERE id_du='$_GET[id]' ")  or die ("Ups! Gagal Diupdate, Silahkan Coba Lagi! ".mysql_error());
+
+
+                        ?>
+                            <script>
+                                alert(" Berhasil Diupdate ");
+                                window.history.go(-1);
+                            </script>
+                     <?php
 				}
 			break;
 
 			case "editpenerima":
 				if(isset($_POST['Perbaharui'])){
-					
+
 					$id = $_GET["id"];
 
 					$nama_du	= anti_injection($_POST['nama_du']);
@@ -337,12 +375,12 @@ if($_SESSION['level']=='admin'){
 					<script>
 						alert(" Berhasil Diperbaharui ");
 						top.location='dupenerima.php';
-					</script><?php 
+					</script><?php
 				}
 			break;
 
 			case "gantisistem":
-				
+
 
 					mysql_query(" UPDATE hb_du SET seleksi_du = 'Tidak', seleksi_tempat = '', seleksi_tanggal = '' WHERE id_du = $_GET[id]") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
 
@@ -350,7 +388,7 @@ if($_SESSION['level']=='admin'){
 					<script>
 						alert(" Berhasil Diperbaharui ");
 						top.location='dusistemseleksi.php';
-					</script><?php 
+					</script><?php
 
 			break;
 
@@ -362,7 +400,7 @@ if($_SESSION['level']=='admin'){
 					<script>
 						alert(" Berhasil Ditambahkan ");
 						top.location='dusistemseleksi.php';
-					</script><?php 
+					</script><?php
 
 			break;
 
@@ -378,14 +416,14 @@ if($_SESSION['level']=='admin'){
 					<script>
 						alert(" Berhasil Ditambahkan ");
 						top.location='dusistemseleksi.php';
-					</script><?php 
+					</script><?php
 			break;
 
 			case "hapus_penerima":
 
 					$id = $_GET["id"];
 
-					mysql_query(" UPDATE hb_du SET nama_penanggung_jawab = ' ', mulai_pelaksanaan= '0000-00-00', berakhir_pelaksanaan = '0000-00-00', status_du='Proses' WHERE id_du = $id") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
+					mysql_query(" UPDATE hb_du SET nama_penanggung_jawab = ' ', mulai_pelaksanaan= '0000-00-00', berakhir_pelaksanaan = '0000-00-00', status_penerimaan='Proses' WHERE id_du = $id") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
 					mysql_query(" DELETE FROM hb_du_penerima WHERE id_du = $id") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
 					mysql_query(" DELETE FROM hb_prakerin WHERE id_du = $id") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
 					mysql_query(" DELETE FROM hb_monitoring WHERE id_du = $id") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
@@ -394,10 +432,10 @@ if($_SESSION['level']=='admin'){
 					<script>
 						alert(" Berhasil Diperbaharui ");
 						top.location='dupenerima.php';
-					</script><?php 
+					</script><?php
 
-				
-			break; 
+
+			break;
 
 			case "hapuspenerimajurusan":
 
@@ -410,51 +448,51 @@ if($_SESSION['level']=='admin'){
 					<script>
 						alert(" Berhasil Dihapus ");
 						top.location='dupenerima.php';
-					</script><?php 
+					</script><?php
 
-				
+
 			break;
 
 			case "verifikasiperizinan":
 				$id = $_GET["id"];
-				mysql_query(" UPDATE hb_du SET status_du='Proses' WHERE id_du=$id") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
+				mysql_query(" UPDATE hb_du SET status_penerimaan='Proses' WHERE id_du=$id") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
 
 				?>
 					<script>
 						alert(" DU telah diverifikasi ");
-						top.location='inputperizinansiswa.php';
-					</script><?php 
-				
+						top.location='dari_siswa.php';
+					</script><?php
+
 			break;
 
 			case "verifikasiprakerin":
 				if(isset($_POST['Verifikasi'])){
-					
+
 					$id = $_GET["id"];
 					$saran	= anti_injection($_POST['saran']);
-					
+
 					mysql_query(" UPDATE hb_prakerin SET status_verifikasi = 'Terverifikasi', status_prakerin = 'Menunggu Verifikasi Siswa', nip_guru = '$saran' WHERE id_prakerin = $id") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
 
 					?>
 					<script>
 						alert(" Berhasil Diperbaharui ");
 						top.location='rekapitulasikapprog.php';
-					</script><?php 
-				}		
+					</script><?php
+				}
 			break;
 
 			case "hapussiswaprakerin":
-					
+
 					$id = $_GET["id"];
-					
+
 					mysql_query(" UPDATE hb_prakerin SET status_verifikasi = 'Menunggu Verifikasi', status_prakerin = '' WHERE id_prakerin = $id") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
 
 					?>
 					<script>
 						alert(" Berhasil Dihapus ");
 						top.location='hasilrekapitulasi.php';
-					</script><?php 
-					
+					</script><?php
+
 			break;
 
 
@@ -485,7 +523,7 @@ if($_SESSION['level']=='admin'){
 
 			case "editberita":
 				if(isset($_POST['Perbaharui'])){
-					
+
 					$id = $_GET["id"];
 					$kategori		= anti_injection($_POST['kategori']);
 					$tgl_berita		= $_POST['tgl_berita'];
@@ -498,11 +536,11 @@ if($_SESSION['level']=='admin'){
 					$target_file 	= $target_dir . basename($_FILES["thumbnail"]["name"]);
 
 					if (file_exists($target_file)) {
-						$c = mysql_fetch_array(mysql_query("SELECT * FROM hb_berita WHERE id_berita='$id'"));    
+						$c = mysql_fetch_array(mysql_query("SELECT * FROM hb_berita WHERE id_berita='$id'"));
 						$foto_berita	= $c['foto_berita'];
 					}
 					else{
-						$c = mysql_fetch_array(mysql_query("SELECT * FROM hb_berita WHERE id_berita='$id'"));    
+						$c = mysql_fetch_array(mysql_query("SELECT * FROM hb_berita WHERE id_berita='$id'"));
 						$foto_berita_dulu	= "../images/uploads/".$c['foto_berita'];
 						if(file_exists($foto_berita_dulu)){unlink($foto_berita_dulu);}
 
@@ -515,7 +553,7 @@ if($_SESSION['level']=='admin'){
 					<script>
 						alert(" Berhasil Diperbaharui ");
 						top.location='inputberita.php';
-					</script><?php 
+					</script><?php
 				}
 			break;
 
@@ -523,12 +561,12 @@ if($_SESSION['level']=='admin'){
 			case "hapusberita":
 				$id = $_GET["id"];
 
-				$c = mysql_fetch_array(mysql_query("SELECT * FROM hb_berita WHERE id_berita='$id'"));    
+				$c = mysql_fetch_array(mysql_query("SELECT * FROM hb_berita WHERE id_berita='$id'"));
 				$foto_berita_dulu	= "../images/uploads/".$c['foto_berita'];
 				if(file_exists($foto_berita_dulu)){unlink($foto_berita_dulu);}
 
 				mysql_query("DELETE FROM hb_berita WHERE id_berita = $id")or die ("Ups! Gagal Dihapus, Silahkan Coba Lagi! ".mysql_error());
-				
+
 
 				?>
 					<script>
@@ -537,9 +575,46 @@ if($_SESSION['level']=='admin'){
 					</script><?php
 			break;
 
+			case "kembali_kepermintaan":
+				$id = $_GET["id"];
+
+				mysql_query("UPDATE hb_du_permintaan SET status_permintaan = 'Belum Terverifikasi', status_penerimaan=' ' WHERE id_du ='$id'")or die ("Ups! Gagal Dihapus, Silahkan Coba Lagi! ".mysql_error());
+
+				?>
+					<script>
+						alert("DU/DI telah dikembalikan ke-Permintaan Prakerin");
+						window.history.go(-1);
+					</script><?php
+			break;
+
+			case "verifikasi_permintaan_perusahaan":
+				$id = $_GET["id"];
+
+				mysql_query("UPDATE hb_du_permintaan SET status_permintaan = 'Terverifikasi', status_penerimaan='Proses' WHERE id_du ='$id'")or die ("Ups! Gagal Dihapus, Silahkan Coba Lagi! ".mysql_error());
+
+				?>
+					<script>
+						alert("Permintaan Prakerin Telah Diverifikasi");
+						window.history.go(-1);
+					</script><?php
+			break;
+
+			case "tolak_permintaan_perusahaan":
+
+				$id = $_GET["id"];
+
+				mysql_query("UPDATE hb_du_permintaan SET status_permintaan = 'Verifikasi Ditolak', alasan_menolak = '$_POST[alasan]' WHERE id_du ='$id'")or die ("Ups! Gagal Dihapus, Silahkan Coba Lagi! ".mysql_error());
+
+				?>
+					<script>
+						alert("Permintaan Prakerin Telah Ditolak");
+						window.history.go(-1);
+					</script><?php
+			break;
+
 		}
-	
-	}	
+
+	}
 }else{
 	header('location:../login.php');
 }

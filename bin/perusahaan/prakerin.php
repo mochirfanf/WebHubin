@@ -26,111 +26,140 @@ if($_SESSION['level']=='perusahaan'){
     <div class="wrapper">
         <div class="row">
             <div class="col-sm-12">
+
                 <section class="panel">
                     <?php
 
-                        $ada  = mysql_fetch_row(mysql_query("SELECT * FROM hb_du_jumlah_permintaan_du WHERE id_du='$_SESSION[id_du]'"));
+                    $ada  = mysql_fetch_row(mysql_query("SELECT * FROM hb_du_jumlah_permintaan_du WHERE id_du='$_SESSION[id_du]'"));
 
-                        if ($ada > 0) {
+                    if ($ada > 0) {
 
+                            $x = mysql_fetch_array(mysql_query("SELECT * FROM hb_du_permintaan WHERE id_du='$_SESSION[id_du]'"));
 
-                            $di  = mysql_fetch_array(mysql_query("SELECT * FROM hb_du_permintaan WHERE id_du='$_SESSION[id_du]'"));
- ?>
-                            <header class="panel-heading"> <big>Permintaan Siswa Untuk Prakerin </big> <span class="pull-right">
+                            if ($x["status_permintaan"] == "Verifikasi Ditolak" ) {
+                                $di  = mysql_fetch_array(mysql_query("SELECT * FROM hb_du_permintaan WHERE id_du='$_SESSION[id_du]'"));?>
 
-                             </span> </header>
-                            <form class="form-horizontal form-label-left" method="POST" action="prosesperusahaan.php?a=permintaan_prakerin" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <br><br>
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12"> Jurusan : </label>
-                                    <div class="col-lg-6 flat-green">
-                                        <table>
-                                        <?php
-                                        $query  = mysql_query("SELECT * FROM hb_du_jumlah_permintaan_du WHERE id_du='$_SESSION[id_du]' ");
-                                        while ($d = mysql_fetch_array($query)) {
-                                            $j = mysql_fetch_array(mysql_query("SELECT * FROM jurusan WHERE id_jurusan='$d[id_jurusan]'"));
-                                            echo " <tr>
-                                            <td> $j[nama_jurusan] </td>
-                                            <td> &nbsp;&nbsp; - &nbsp;&nbsp; </td>
-                                            <td> $d[jumlah_penerimaan] orang</td>
-                                            </tr> ";
-                                        }
+                                <header class="panel-heading"> <big> Permintaan Siswa Untuk Prakerin </big>
 
-                                        ?>
-                                        </table>
-                                    </div>
-                                </div>
+                               </header>
+                                <form class="form-horizontal form-label-left" method="POST" action="prosesperusahaan.php?a=permintaan_prakerin" enctype="multipart/form-data">
 
-                                <div class="form-group">
-                                    <br>
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Nama Penanggung Jawab :</label>
-                                    <div style="margin-top:7px" class="col-lg-6 flat-green">
-                                        <?php echo "$di[nama_penanggung_jawab]";?>
+                                    <div class="form-group">
+                                        <br>
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Status :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            Mohon maaf, permintaan siswa untuk prakerin anda ditolak.
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <br>
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Contact Person :</label>
-                                    <div style="margin-top:7px" class="col-lg-6 flat-green">
-                                        <?php echo "$di[contact_person]";?>
+                                    <div class="form-group">
+                                        <br>
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Dikarenakan :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <?php echo "$di[alasan_menolak]";?>
+                                            <br><br><br><br><br>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <br>
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Jenis Seleksi :</label>
-                                    <div style="margin-top:7px" class="col-lg-6 flat-green">
-                                        <?php echo "$di[seleksi_du]";?>
+                            <?php
+                            }
+                            else{
+                                $di  = mysql_fetch_array(mysql_query("SELECT * FROM hb_du_permintaan WHERE id_du='$_SESSION[id_du]'"));?>
+                                <form method="POST" action="prosesperusahaan.php?a=hapus_permintaan" enctype="multipart/form-data">
+                                <header class="panel-heading"> <big> Permintaan Siswa Untuk Prakerin </big>
+                                  <span class="pull-right">
+                                    <small>Status : <?php echo "$di[status_permintaan]";?></small> &nbsp; &nbsp; &nbsp;
+                                    <button  type='submit' name='HAPUSPERMINTAAN' value="HAPUSPERMINTAAN" class="pull-right btn btn-danger btn-xs"> HAPUS / EDIT PERMINTAAN </button>
+                                    </form>
+                                 </span>
+                               </header>
+                                <form class="form-horizontal form-label-left" method="POST" action="prosesperusahaan.php?a=permintaan_prakerin" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <br><br>
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12"> Jurusan : </label>
+                                        <div class="col-lg-6 flat-green">
+                                            <table>
+                                            <?php
+                                            $query  = mysql_query("SELECT * FROM hb_du_jumlah_permintaan_du WHERE id_du='$_SESSION[id_du]' ");
+                                            while ($d = mysql_fetch_array($query)) {
+                                                $j = mysql_fetch_array(mysql_query("SELECT * FROM jurusan WHERE id_jurusan='$d[id_jurusan]'"));
+                                                echo " <tr>
+                                                <td> $j[nama_jurusan] </td>
+                                                <td> &nbsp;&nbsp; - &nbsp;&nbsp; </td>
+                                                <td> $d[jumlah_penerimaan] orang</td>
+                                                </tr> ";
+                                            }
+
+                                            ?>
+                                            </table>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <br>
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12"> Fasilitas :</label>
-                                    <div class=" flat-green">
-                                        <div class="col-lg-1  flat-green">
-                                            <input name="uangsaku" value="Ya" type="checkbox"  <?php if( $di["uang_saku"]=="Ya"){echo "checked";} ?> > </div>
-                                        <label style="margin-left: -45px;"> Uang Saku</label>
-                                        <!-- <select name='uangsaku2'>
-                                            <option value='100.000-200.000' >100.000-200.000</option>
-                                            <option value='200.000-300.000' >200.000-300.000</option>
-                                        </select>-->
+
+                                    <div class="form-group">
+                                        <br>
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Nama Penanggung Jawab :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <?php echo "$di[nama_penanggung_jawab]";?>
+                                        </div>
                                     </div>
-                                    <div class=" col-lg-offset-4 flat-green">
-                                        <div class="col-lg-1">
-                                            <input name="asrama" value="Ya" type="checkbox"  <?php if( $di["asrama"]=="Ya"){echo "checked";} ?> > </div>
-                                        <label style="margin-left: -28px;"> &nbsp; Asrama/Mess</label>
+                                    <div class="form-group">
+                                        <br>
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Contact Person :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <?php echo "$di[contact_person]";?>
+                                        </div>
                                     </div>
-                                    <div class=" col-lg-offset-4 flat-green">
-                                        <div class="col-lg-1">
-                                            <input name="uangmakan" value="Ya" type="checkbox"  <?php if( $di["uang_makan"]=="Ya"){echo "checked";} ?>> </div>
-                                        <label style="margin-left: -28px;"> &nbsp; Uang Makan</label>
-                                        <!--<select name='uangmakan2'>
-                                            <option value='100.000-200.000'>100.000-200.000</option>
-                                            <option value='200.000-300.000'>200.000-300.000</option>
-                                        </select>-->
+                                    <div class="form-group">
+                                        <br>
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Jenis Seleksi :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <?php echo "$di[seleksi_du]";?>
+                                        </div>
                                     </div>
-                                    <div class=" col-lg-offset-4 flat-green">
-                                        <div class="col-lg-1">
-                                            <input name="uangtransport" value="Ya" type="checkbox"  <?php if( $di["uang_transport"]=="Ya"){echo "checked";} ?>> </div>
-                                            <label style="margin-left: -28px;"> &nbsp; Uang Transport</label>
-                                            <!--<select name='uangtransport2'>
-                                                <option value='100.000-200.000'>100.000-200.000</option>
+                                    <div class="form-group">
+                                        <br>
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12"> Fasilitas :</label>
+                                        <div class=" flat-green">
+                                            <div class="col-lg-1  flat-green">
+                                                <input name="uangsaku" value="Ya" type="checkbox"  <?php if( $di["uang_saku"]=="Ya"){echo "checked";} ?> > </div>
+                                                <label style="margin-left: -45px;"> Uang Saku</label>
+                                            <!-- <select name='uangsaku2'>
+                                                <option value='100.000-200.000' >100.000-200.000</option>
                                                 <option value='200.000-300.000' >200.000-300.000</option>
-                                            </select> -->
+                                            </select>-->
+                                        </div>
+                                        <div class=" col-lg-offset-4 flat-green">
+                                            <div class="col-lg-1">
+                                                <input name="asrama" value="Ya" type="checkbox"  <?php if( $di["asrama"]=="Ya"){echo "checked";} ?> > </div>
+                                            <label style="margin-left: -28px;"> &nbsp; Asrama/Mess</label>
+                                        </div>
+                                        <div class=" col-lg-offset-4 flat-green">
+                                            <div class="col-lg-1">
+                                                <input name="uangmakan" value="Ya" type="checkbox"  <?php if( $di["uang_makan"]=="Ya"){echo "checked";} ?>> </div>
+                                            <label style="margin-left: -28px;"> &nbsp; Uang Makan</label>
+                                            <!--<select name='uangmakan2'>
+                                                <option value='100.000-200.000'>100.000-200.000</option>
+                                                <option value='200.000-300.000'>200.000-300.000</option>
+                                            </select>-->
+                                        </div>
+                                        <div class=" col-lg-offset-4 flat-green">
+                                            <div class="col-lg-1">
+                                                <input name="uangtransport" value="Ya" type="checkbox" <?php if( $di["uang_transport"]=="Ya"){echo "checked";} ?>> </div>
+                                                <label style="margin-left: -28px;"> &nbsp; Uang Transport</label>
+                                                <!--<select name='uangtransport2'>
+                                                    <option value='100.000-200.000'>100.000-200.000</option>
+                                                    <option value='200.000-300.000' >200.000-300.000</option>
+                                                </select> -->
+                                        </div>
                                     </div>
-                                </div>
-                                 <div class="form-group">
-                                    <br>
-                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Fasilitas Lain :</label>
-                                    <div style="margin-top:7px" class="col-lg-6 flat-green">
-                                        <?php echo "$di[fasilitas_lain]";?>
-                                        <br><br><br><br><br>
+                                     <div class="form-group">
+                                        <br>
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Fasilitas Lain :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <?php echo "$di[fasilitas_lain]";?>
+                                            <br><br><br>
+                                        </div>
                                     </div>
-                                </div>
-
-
-                            </div>
-
                     <?php
+                            }
                     }
                     else{
 
@@ -185,11 +214,11 @@ if($_SESSION['level']=='perusahaan'){
                             <div class="col-lg-6 flat-green">
                                 <?php
 
-                                                             echo "<select class='form-control m-bot15' name='seleksi'>
-                                                                      <option value='Ya'> Ya </option>
-                                                                      <option value='Tidak'> Tidak </option>
-                                                                  </select><br>";
-                                                            ?>
+                                    echo "<select class='form-control m-bot15' name='seleksi'>
+                                                <option value='Ya'> Ya </option>
+                                                <option value='Tidak'> Tidak </option>
+                                          </select><br>";
+                                ?>
                             </div>
                         </div>
                         <div class="form-group">

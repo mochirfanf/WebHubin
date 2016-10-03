@@ -33,7 +33,7 @@ if($_SESSION['level']=='perusahaan'){
             $deskripsi = anti_injection($_POST['deskripsi']);
 
 
-            mysql_query("UPDATE hb_du_umum SET nama_du='$nama', bidang_usaha ='$bidang', nama_penanggung_jawab='$npj', contact_person='$cp', alamat='$alamat', id_prov='$id_prov', id_kab='$id_kab', id_kec='$id_kec', id_kel='$id_kel', no_kodepos = '$kodepos', deskripsi_perusahaan='$deskripsi' WHERE id_du='$_SESSION[id_du]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+            mysql_query("UPDATE hb_du_umum SET nama_du='$nama', bidang_usaha ='$bidang', nama_penanggung_jawab_umum='$npj', contact_person_umum='$cp', alamat='$alamat', id_prov='$id_prov', id_kab='$id_kab', id_kec='$id_kec', id_kel='$id_kel', no_kodepos = '$kodepos', deskripsi_perusahaan='$deskripsi' WHERE id_du='$_SESSION[id_du]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
 
             ?>
             <script>
@@ -109,13 +109,30 @@ if($_SESSION['level']=='perusahaan'){
             mysql_query("DELETE FROM hb_du_permintaan WHERE id_du = '$_SESSION[id_du]'");
           }
 
-          mysql_query(" INSERT INTO hb_du_permintaan(id_du, tahun_ajaran, permintaan_du, seleksi_du, status_permintaan, nama_penanggung_jawab, contact_person, uang_saku, asrama, uang_makan, uang_transport, fasilitas_lain)
-                                 VALUES ('$_SESSION[id_du]', '$_SESSION[tahun_ajaran]', 'Ya', '$seleksi',  'Belum Terverifikasi' , '$nama_pj', '$contact', '$us', '$as', '$um', '$ut', '$fasilitas_lain' )")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+          mysql_query(" INSERT INTO hb_du_permintaan(id_du, tahun_ajaran, permintaan_du, seleksi_du, status_permintaan, nama_penanggung_jawab, contact_person, uang_saku, asrama, uang_makan, uang_transport, fasilitas_lain, status_du)
+                                 VALUES ('$_SESSION[id_du]', '$_SESSION[tahun_ajaran]', 'Ya', '$seleksi',  'Belum Terverifikasi' , '$nama_pj', '$contact', '$us', '$as', '$um', '$ut', '$fasilitas_lain', 'DU/DI dari Perusahaan')")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
 
 
         ?>
           <script>
             alert(" Terima Kasih Telah Mengirimkan Permintaan ");
+            top.location='prakerin.php';
+          </script><?php
+
+
+        }
+      break;
+
+
+      case "hapus_permintaan":
+        if (isset($_POST['HAPUSPERMINTAAN'])){
+
+
+          mysql_query("DELETE FROM hb_du_jumlah_permintaan_du WHERE id_du='$_SESSION[id_du]'");
+          mysql_query("DELETE FROM hb_du_permintaan WHERE id_du='$_SESSION[id_du]'");
+
+        ?>
+          <script>
             top.location='prakerin.php';
           </script><?php
 

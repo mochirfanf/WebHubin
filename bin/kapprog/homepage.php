@@ -2,7 +2,7 @@
 
 include "../koneksidb.php";
 
-if($_SESSION['level']=='kapprog'){ 
+if($_SESSION['level']=='kapprog'){
 	if ($_SESSION['tahun_ajaran']!='') {
         $title="Homepage Kapprog";
         $active = "active";
@@ -18,9 +18,9 @@ if($_SESSION['level']=='kapprog'){
         <!--body wrapper start-->
         <div class="wrapper">
             <fieldset>
-                <legend> Hai Kaprog </legend> 
+                <legend> Hai Kaprog <?php echo "$_SESSION[jurusan]"; ?></legend>
                 <a href='../proses.php?a=logout'><input type='Submit' value='KELUAR'></a>
-            </fieldset> 
+            </fieldset>
         </div>
         <!--body wrapper end-->
 

@@ -69,8 +69,7 @@
                 <li class="<?php echo "$active2"; ?> "><a href="identitas.php"><i class="fa fa-home"></i> <span>Identitas Perusahaan</span></a></li>
                 <li class="<?php echo "$active3"; ?> "><a href="prakerin.php"><i class="fa fa-home"></i> <span>Prakerin</span></a></li>
                 <li class="<?php echo "$active4"; ?> "><a href="kerja.php"><i class="fa fa-home"></i> <span>Kerja</span></a></li>
-
-
+                <li class="<?php echo "$active5"; ?> "><a href="kerja.php"><i class="fa fa-home"></i> <span>Testimoni Perusahaan</span></a></li>
 
             </ul>
             <!--sidebar nav end-->
