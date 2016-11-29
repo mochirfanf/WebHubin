@@ -6,8 +6,8 @@ if($_SESSION['level']=='admin'){
     if ($_SESSION['tahun_ajaran']!='') {
         $title="Yang Menerima Prakerin";
         $active = "";
-        $active22 = "active";
-        $navactive2 ="nav-active";
+        $active12 = "active";
+        $navactive6 ="nav-active";
 
 
         function tanggal($tglnya){
@@ -107,7 +107,7 @@ if($_SESSION['level']=='admin'){
                                                     <div class="form-group">
 
                                                         <div class="col-lg-offset-2 col-lg-8">
-                                                            <input type="text" class="form-control" name="jpen" value="<?php echo "$e[jumlah_penerimaan]"; ?>" placeholder="Nama Dunia Usaha">
+                                                            <input type="text" required="" class="form-control" name="jpen" value="<?php echo "$e[jumlah_penerimaan]"; ?>" placeholder="Jumlah Penerimaan">
                                                         </div>
                                                     </div>
                                             </div>
@@ -135,7 +135,7 @@ if($_SESSION['level']=='admin'){
                     </header>
 
                    <section class="panel">
-                        <header class="panel-heading custom-tab blue-tab">
+                        <header class="panel-heading custom-tab turquoise-tab">
                             <ul class="nav nav-tabs">
                                 <li class="active">
                                     <a data-toggle="tab" href="#home">
@@ -199,124 +199,9 @@ if($_SESSION['level']=='admin'){
                             </ul>
                         </header>
                         <!-- modal -->
+                        
                         <?php
-                             $data2 = mysql_query( "SELECT * FROM hb_du_umum, hb_du_permintaan WHERE status_penerimaan='Menerima' AND hb_du_umum.id_du = hb_du_permintaan.id_du");
-                             while ($t = mysql_fetch_array($data2)) {
-                                ?>
-                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="<?php echo "edit$t[id_du]";
-                                    $e = mysql_fetch_array(mysql_query("SELECT * FROM hb_du_umum WHERE id_du = '$t[id_du]'"))?>" class="modal fade">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                                <h5><big>Tambah Baru</big></h5>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="proses_admin.php?a=editperizinan<?php echo "&id=$t[id_du]";?>"  enctype='multipart/form-data' class="form-horizontal" role="form">
-
-                                                    <div class="form-group">
-                                                        <label class="col-lg-3 col-sm-3 control-label">Nama DU</label>
-                                                        <div class="col-lg-9">
-                                                            <input type="text" class="form-control" name="nama_du" value="<?php echo "$e[nama_du]"; ?>" placeholder="Nama Dunia Usaha">
-                                                        </div>
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label class="col-lg-3 col-sm-3 control-label">Email</label>
-                                                        <div class="col-lg-9">
-                                                            <input type="email" readonly class="form-control" name="email_du" value="<?php echo "$e[email_du]"; ?>" placeholder="Email">
-                                                        </div>
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label class="col-lg-3 col-sm-3 control-label">Alamat</label>
-                                                        <div class="col-lg-9">
-                                                            <textarea cols="3" class='form-control col-md-7 col-xs-13' name='alamat' required='required' placeholder='Alamat' type='number'>  <?php echo $e['alamat']?> </textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-3 col-sm-3 control-label">Provinsi</label>
-                                                        <div class="col-lg-9">
-                                                            <select name="prop" id="prop2" class='form-control'>
-                                                                <option value="">Pilih Provinsi</option>
-                                                                <?php
-                                                                  include 'koneksi.php';
-                                                                  $query=$db->prepare("SELECT id_prov,nama FROM provinsi ORDER BY nama");
-                                                                  $query->execute();
-                                                                  while ($data=$query->fetchObject()){
-                                                                  echo '<option value="'.$data->id_prov.'"';
-
-                                                                    $x = mysql_fetch_array( mysql_query("SELECT id_prov FROM hb_du_umum WHERE hb_du_umum.id_du='$e[id_du]'"));
-
-                                                                    if( $x["id_prov"] == $data->id_prov){
-                                                                        echo "selected";
-                                                                    }
-                                                                  echo '>'.$data->nama.'</option>';
-                                                                  }
-                                                                ?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-3 col-sm-3 control-label">Kota/Kabupaten</label>
-                                                        <div class="col-lg-9">
-                                                            <select name="kota" id="kota2" onchange="ajaxkec2(this.value)" class='form-control'>
-                                                                <?php
-                                                                    $ko = mysql_fetch_array( mysql_query("SELECT id_kab FROM hb_du_umum WHERE id_du='$e[id_du]'"));
-                                                                    $ta = mysql_fetch_array( mysql_query("SELECT * FROM kabupaten WHERE id_kab='$ko[id_kab]'"));
-                                                                ?>
-                                                                <option value="<?php echo "$ko[id_kab]";?>"><?php echo "$ta[nama]";?></option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-3 col-sm-3 control-label">Kecamatan</label>
-                                                        <div class="col-lg-9">
-                                                            <select name="kec" id="kec2" onchange="ajaxkel2(this.value)" class='form-control'>
-                                                                <?php
-                                                                    $ke = mysql_fetch_array( mysql_query("SELECT id_kec FROM hb_du_umum WHERE id_du='$e[id_du]'"));
-                                                                    $ca = mysql_fetch_array( mysql_query("SELECT * FROM kecamatan WHERE id_kec='$ke[id_kec]'"));
-                                                                ?>
-                                                                <option value="<?php echo "$ke[id_kec]";?>"><?php echo "$ca[nama]";?></option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-3 col-sm-3 control-label">Kelurahan/Desa</label>
-                                                        <div class="col-lg-9">
-                                                            <select name="kel" id="kel2" onchange="showCoordinate2();" class='form-control'>
-                                                                <?php
-                                                                    $kelu = mysql_fetch_array( mysql_query("SELECT id_kel FROM hb_du_umum WHERE id_du='$e[id_du]'"));
-                                                                    $rahan = mysql_fetch_array( mysql_query("SELECT nama FROM kelurahan WHERE id_kel='$kelu[id_kel]'"));
-                                                                ?>
-                                                                <option value="<?php echo "$kelu[id_kel]";?>"><?php echo "$rahan[nama]";?></option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-3 col-sm-3 control-label">Kode Pos</label>
-                                                        <div class="col-lg-9">
-                                                            <input type="number" value='<?php echo $e['no_kodepos']?>'  class="form-control" name="kodepos" placeholder="Kodepos">
-                                                        </div>
-                                                    </div>
-
-                                                     <div class="form-group">
-                                                        <label class="col-lg-3 col-sm-3 control-label">Tambah Keterangan</label>
-                                                        <div class="col-lg-9">
-                                                            <textarea cols="3" class='form-control col-md-7 col-xs-13' name='keterangan' required='required' placeholder='Alamat' type='number'>  <?php echo $e['keterangan']?> </textarea>
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                           <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                                                <input type='submit' value='Perbaharui' name='Perbaharui'class='btn btn-success'>  </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php
-                            }
-                        ?>
-                        <?php
-                             $data5 = mysql_query( "SELECT * FROM hb_du_umum, hb_du_permintaan WHERE status_penerimaan='Menerima' AND hb_du_umum.id_du = hb_du_permintaan.id_du");
+                             $data5 = mysql_query( "SELECT * FROM hb_du_umum, hb_du_permintaan WHERE status_penerimaan='Menerima' AND permintaan_hubin = 'Ya' AND hb_du_umum.id_du = hb_du_permintaan.id_du");
                              while ($o = mysql_fetch_array($data5)) {
                                 ?>
                                 <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="<?php echo "editprakerin$o[id_du]";
@@ -328,34 +213,36 @@ if($_SESSION['level']=='admin'){
                                                 <h5><big>Tambah Baru</big></h5>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST" action="proses_admin.php?a=editperizinan<?php echo "&id=$o[id_du]";?>"  enctype='multipart/form-data' class="form-horizontal" role="form">
 
-                                                    <form method="POST" action="<?php echo "proses_admin.php?a=menerima&id=$o[id_du]"; ?>" enctype='multipart/form-data' class="form-horizontal" role="form">
+                                                    <form method="POST" action="<?php echo "proses_admin.php?a=editprakerin&id=$o[id_du]"; ?>" enctype='multipart/form-data' class="form-horizontal" role="form">
+
                                                     <div class="form-group">
+                                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">Pelaksanaan Prakerin (Mulai - Berakhir ):</label>
+                                                        <div class="col-lg-8">
+                                                            <div class="input-group input-large custom-date-range" data-date="2016/10/10" data-date-format="yyyy/mm/dd">
+                                                                <input type="text" class="form-control dpd1" data-date-format="yyyy/mm/dd" name="mulai" placeholder="Mulai Pelaksanaan" value="<?php echo "$o[mulai_pelaksanaan]"; ?>" required>
+                                                                <span class="input-group-addon"> - </span>
+                                                                <input type="text" class="form-control dpd2" data-date-format="yyyy/mm/dd" name="berakhir" value="<?php echo "$o[berakhir_pelaksanaan]"; ?>" placeholder="Berakhir Pelaksanaan " required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                    <br>
                                                         <label class="col-lg-4 col-sm-4 control-label">Penanggung Jawab :</label>
                                                         <div class="col-lg-8">
                                                             <input type="text" value="<?php echo "$o[nama_penanggung_jawab]"; ?>" class="form-control" name="nama_pj" placeholder="Nama Penanggung Jawab">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Contact Person :</label>
+                                                    <br>
+                                                        <label class="col-lg-4 col-sm-4 control-label">Kontak Penanggung Jawab :</label>
                                                         <div class="col-lg-8">
-                                                            <input type="text" value="<?php echo "$o[contact_person]"; ?>" class="form-control" name="cp" placeholder="Contact Person">
+                                                            <input type="text" value="<?php echo "$o[contact_person]"; ?>" class="form-control" name="contact" placeholder="Contact Person">
                                                         </div>
                                                     </div>
+
                                                     <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Mulai Pelaksanaan :</label>
-                                                        <div class="col-lg-8">
-                                                            <input type="date" value="<?php echo "$o[mulai_pelaksanaan]"; ?>"  class="form-control" name="mulai" placeholder="Alamat">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Berakhir Pelaksanaan :</label>
-                                                        <div class="col-lg-8">
-                                                            <input type="date"  value="<?php echo "$o[berakhir_pelaksanaan]"; ?>"  class="form-control" name="berakhir" placeholder="Kota ">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
+                                                    <br>
                                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">Jenis Seleksi :</label>
                                                         <div class="col-lg-8 flat-green">
                                                             <?php
@@ -381,51 +268,45 @@ if($_SESSION['level']=='admin'){
 
                         <!-- modal -->
                         <?php
-                            for ($i=1; $i < 10; $i++) {
-
+                             $data9 = mysql_query( "SELECT * FROM hb_du_umum, hb_du_permintaan WHERE status_penerimaan='Menerima' AND permintaan_hubin = 'Ya' AND hb_du_umum.id_du = hb_du_permintaan.id_du");
+                             while ($r = mysql_fetch_array($data9)) {
                                 ?>
-                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="baru<?php echo "$i";?>" class="modal fade">
+                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="baru<?php echo "$r[id_du]";?>" class="modal fade">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                                <h5><big>Tambahkan DU Penerima</big></h5>
+                                                <h5><big>Tambah Jurusan Penerima</big></h5>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST" action="proses_admin.php?a=tambahpenerimajur&id=<?php echo "$i";?>"  enctype='multipart/form-data' class="form-horizontal" role="form">
 
+                                                    <form method="POST" action="proses_admin.php?a=tambahpenerimajur&id=<?php echo "$r[id_du]";?>" enctype='multipart/form-data' class="form-horizontal" role="form">
                                                     <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Nama DU</label>
+                                                        <label class="col-lg-4 col-sm-4 control-label">Jurusan :</label>
                                                         <div class="col-lg-8">
                                                             <?php
-
-                                                             echo "<select class='form-control m-bot15' name='id_du'>
-                                                                      <option value=''> Pilih Tempat Prakerin </option>";
-                                                                          $du = mysql_query( "SELECT * FROM hb_du_umum, hb_du_permintaan WHERE  hb_du_umum.id_du = hb_du_permintaan.id_du AND status_penerimaan='Menerima' ORDER BY nama_du ASC");
-                                                                        while($z = mysql_fetch_array($du)){
-                                                                            $data3 = mysql_query( "SELECT * FROM hb_du_penerima WHERE id_jurusan = '$i' AND id_du = '$z[id_du]'");
-                                                                            $jumlah = mysql_fetch_row($data3);
-                                                                            if ($jumlah > 0) {
-                                                                              continue;
-                                                                            }else{
-                                                                              echo "<option value='$z[id_du]'> $z[nama_du] </option>";
-                                                                            }
+                                                            $name = "";
+                                                            echo "<select required class='form-control m-bot15' name='jurusan'>
+                                                                    <option value=''> * Pilih Jurusan * </option>";
+                                                                        $jurusan = mysql_query("SELECT * FROM jurusan");
+                                                                        while($j = mysql_fetch_array($jurusan)){
+                                                             echo " <option value='$j[id_jurusan]' > $j[nama_jurusan] </option>";
                                                                         }
-                                                                     echo "
-                                                                  </select>";
-                                                              ?>
+                                                            echo "</select>";?>
                                                         </div>
                                                     </div>
-                                                     <div class="form-group">
-                                                        <label class="col-lg-4 col-sm-4 control-label">Jumlah Penerimaan</label>
+
+                                                    <div class="form-group">
+                                                        <label class="col-lg-4 col-sm-4 control-label">Jumlah Penerimaan :</label>
                                                         <div class="col-lg-8">
-                                                            <input type="text" class="form-control" name="jumlah" placeholder="Jumlah Penerimaan">
+                                                            <input type="text" required="" class="form-control" name="jumlah" placeholder="Jumlah Penerimaan">
                                                         </div>
                                                     </div>
+                                                    
                                             </div>
                                            <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                                                <input type='submit' value='Tambahkan' name='Tambahkan'class='btn btn-success'>  </form>
+                                                <input type='submit' value='Tambah' name='Tambah'class='btn btn-success'>  </form>
                                             </div>
                                         </div>
                                     </div>
@@ -448,16 +329,16 @@ if($_SESSION['level']=='admin'){
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Dunia Usaha</th>
-                                            <th>Pelaksanaan</th>
-                                            <th>Alamat</th>
-                                            <th>Email</th>
+                                            <th>Pelaksanaan Prakerin</th>
+                                            <th>Jenis Seleksi</th>
+                                            <th>Penanggung Jawab</th>
                                             <th>Jurusan</th>
                                             <th>Aksi</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <?php
-                                            $query9 = mysql_query( "SELECT * FROM hb_du_umum, hb_du_permintaan WHERE status_penerimaan='Menerima' AND hb_du_umum.id_du = hb_du_permintaan.id_du");
+                                            $query9 = mysql_query( "SELECT * FROM hb_du_umum, hb_du_permintaan WHERE status_penerimaan='Menerima' AND permintaan_hubin = 'Ya' AND hb_du_umum.id_du = hb_du_permintaan.id_du");
                                             $no =0;
                                             while ($d = mysql_fetch_array($query9)) {
                                                 $mulai = tanggal($d["mulai_pelaksanaan"]);
@@ -472,14 +353,8 @@ if($_SESSION['level']=='admin'){
                                                     <td> $no </td>
                                                     <td> $d[nama_du] </td>
                                                     <td> $mulai s/d $berakhir </td>
-                                                    <td> $d[alamat]
-                                                         <br> Kelurahan : $kel[nama]
-                                                         <br> Kecamatan : $kec[nama]
-                                                         <br> Kab/Kota : $kab[nama]
-                                                         <br> Provinsi : $prov[nama]
-                                                         <br> Kode Pos : $d[no_kodepos]
-                                                    </td>
-                                                    <td> $d[email_du]</td>
+                                                    <td> $d[seleksi_du] </td>
+                                                    <td> $d[nama_penanggung_jawab] <br> $d[contact_person]</td>
                                                     <td> ";
                                                         $juru = mysql_query("SELECT DISTINCT jurusan.singkatan FROM jurusan, hb_du_penerima WHERE jurusan.id_jurusan = hb_du_penerima.id_jurusan AND id_du = $d[id_du]");
                                                         while ($jur=mysql_fetch_array($juru)) {
@@ -487,35 +362,38 @@ if($_SESSION['level']=='admin'){
                                                         }
                                             echo "  </td>
                                                     <td class='center'>
-                                                        <a href='#edit$d[id_du]' data-toggle='modal'>
-                                                            <button class='btn btn-sm btn-primary' type='button'><i class='fa fa-trash-o'></i> Edit Identitas Perusahaan</button>
-                                                        </a>
-                                                        <br> <br>
-                                                        <a href='#editprakerin$d[id_du]' data-toggle='modal'>
-                                                            <button class='btn btn-sm btn-primary' type='button'><i class='fa fa-trash-o'></i> Edit Informasi Prakerin </button>
+                                                        
+                                                        <a href='#baru$d[id_du]' data-toggle='modal'>
+                                                            <button class='btn btn-sm btn-info' type='button'><i class='fa fa-plus'></i> Tambah Penerima Jurusan </button>
                                                         </a> <br> <br>
-                                                        <a href='#hapus$d[id_du]' data-toggle='modal'>
-                                                            <button class='btn btn-sm btn-primary' type='button'><i class='fa fa-trash-o'></i> Hapus Penerima Prakerin </button>
+                                                        <a href='#editprakerin$d[id_du]' data-toggle='modal'>
+                                                            <button class='btn btn-sm btn-primary' type='button'><i class='fa fa-pencil'></i> Edit Informasi Prakerin </button>
+                                                        </a> <br> <br>
+                                                        <a href='#tolak$d[id_du]' data-toggle='modal'>
+                                                            <button class='btn btn-sm btn-danger' type='button'><i class='fa fa-trash-o'></i> Batalkan Verifikasi </button>
                                                         </a>
                                                     </td>
-                                                        <div  style='text-transform:none' aria-hidden='true' aria-labelledby='myModalLabel' role='dialog' tabindex='-1' id='hapus$d[id_du]' class='modal fade'>
+                                                        <div  style='text-transform:none' aria-hidden='true' aria-labelledby='myModalLabel' role='dialog' tabindex='-1' id='tolak$d[id_du]' class='modal fade'>
                                                             <div class='modal-dialog'>
                                                                 <div class='modal-content'>
                                                                     <div class='modal-header'>
                                                                         <button aria-hidden='true' data-dismiss='modal' class='close' type='button'>×</button>
-                                                                        <h5>Konfirmasi</h5>
+                                                                        <h5>Berikan Alasan! (Pesan akan disampaikan ke Perusahaan)</h5>
                                                                     </div>
                                                                     <div class='modal-body'>
-                                                                        Anda Yakin Ingin Menghapusnya?<br><br>
-                                                                        Jika Anda Menghapusnya, akan ada juga sistem yang terhapus dengan DU yang bersangkutan! Seperti siswa yang telah mendaftar untuk berprakerin di tempat ini!
+                                                                        <div class='form-group'>
+                                                                            <form method='POST' action='proses_admin.php?a=tolak_permintaan_perusahaan&id=$d[id_du]'>
+                                                                            <div class='col-lg-12'>
+                                                                                <input type='text' class='form-control' name='alasan' placeholder='Berikan Alasan ....' required>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class='modal-footer'>
-                                                                        <button type='button' class='btn btn-default' data-dismiss='modal'>Kembali</button>
-                                                                        <a href='proses_admin.php?a=hapus_penerima&id=$d[id_du]'>
-                                                                            <input type='submit' value='Hapus' name='Ganti'class='btn btn-success'>
-                                                                        </a>
+                                                                   <div class='modal-footer'>
+                                                                        <button type='button' class='btn btn-info' data-dismiss='modal'>Kembali</button>
+                                                                        <input type='submit' value='Batalkan Verifikasi dan Kirim Pesan' name='Ganti'class='btn btn-danger'>
                                                                     </div>
                                                                 </div>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                 </tr>";
@@ -529,9 +407,7 @@ if($_SESSION['level']=='admin'){
 
                                 <div id="rpl" class="tab-pane ">
                                     <div class="panel-body">
-                                        <span class="pull-right">
-                                            <a href="#baru1" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
-                                        </span> <br><br><br>
+                                        <br>
 
                                         <div class="adv-table">
                                             <!--<a href='' class='btn btn-warning'> Cetak </a> <br><br> -->
@@ -543,8 +419,8 @@ if($_SESSION['level']=='admin'){
                                         </thead>
                                         <tbody>
                                             <?php
-                                                $query = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 1 AND hb_du_permintaan.status_penerimaan='Menerima'");
-                                                $query4 = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 1 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du  AND permintaan_hubin = 'Ya' AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 1 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query4 = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND permintaan_hubin = 'Ya'  AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 1 AND hb_du_permintaan.status_penerimaan='Menerima'");
                                                 isinya($query);
                                                 isinyajur($query4);
                                             ?>
@@ -555,10 +431,7 @@ if($_SESSION['level']=='admin'){
                                 </div>
                                 <div id="toi" class="tab-pane "> <!-- id= 7 -->
                                     <div class="panel-body">
-                                        <span class="pull-right">
-                                            <a href="#baru7" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
-                                        </span> <br><br><br>
-
+                                        <br>
 
                                         <div class="adv-table">
                                             <!--<a href='' class='btn btn-warning'> Cetak </a> <br><br> -->
@@ -570,8 +443,8 @@ if($_SESSION['level']=='admin'){
                                         </thead>
                                         <tbody>
                                             <?php
-                                                $query = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 7 AND hb_du_permintaan.status_penerimaan='Menerima'");
-                                                $query4 = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 7 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du  AND permintaan_hubin = 'Ya' AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 7 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query4 = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du  AND permintaan_hubin = 'Ya' AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 7 AND hb_du_permintaan.status_penerimaan='Menerima'");
                                                 isinya($query);
                                                 isinyajur($query4);
                                             ?>
@@ -583,10 +456,7 @@ if($_SESSION['level']=='admin'){
 
                                 <div id="km" class="tab-pane "> <!-- id= 2 -->
                                     <div class="panel-body">
-                                        <span class="pull-right">
-                                            <a href="#baru2" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
-                                        </span> <br><br><br>
-
+                                        <br>
 
                                         <div class="adv-table">
                                             <!--<a href='' class='btn btn-warning'> Cetak </a> <br><br> -->
@@ -598,8 +468,8 @@ if($_SESSION['level']=='admin'){
                                         </thead>
                                         <tbody>
                                             <?php
-                                                $query = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 2 AND hb_du_permintaan.status_penerimaan='Menerima'");
-                                                $query4 = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 2 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du  AND permintaan_hubin = 'Ya' AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 2 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query4 = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du  AND permintaan_hubin = 'Ya' AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 2 AND hb_du_permintaan.status_penerimaan='Menerima'");
                                                 isinya($query);
                                                 isinyajur($query4);
                                             ?>
@@ -611,10 +481,7 @@ if($_SESSION['level']=='admin'){
 
                                 <div id="kp" class="tab-pane "> <!-- id= 3 -->
                                     <div class="panel-body">
-                                        <span class="pull-right">
-                                            <a href="#baru3" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
-                                        </span> <br><br><br>
-
+                                        <br>
 
                                         <div class="adv-table">
                                             <!--<a href='' class='btn btn-warning'> Cetak </a> <br><br> -->
@@ -626,8 +493,8 @@ if($_SESSION['level']=='admin'){
                                         </thead>
                                         <tbody>
                                             <?php
-                                                $query = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 3 AND hb_du_permintaan.status_penerimaan='Menerima'");
-                                                $query4 = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 3 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du  AND permintaan_hubin = 'Ya' AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 3 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query4 = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du  AND permintaan_hubin = 'Ya' AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 3 AND hb_du_permintaan.status_penerimaan='Menerima'");
                                                 isinya($query);
                                                 isinyajur($query4);
                                             ?>
@@ -639,10 +506,7 @@ if($_SESSION['level']=='admin'){
 
                                 <div id="tek" class="tab-pane "> <!-- id= 5 -->
                                     <div class="panel-body">
-                                        <span class="pull-right">
-                                            <a href="#baru5" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
-                                        </span> <br><br><br>
-
+                                        <br>
 
                                         <div class="adv-table">
                                             <!--<a href='' class='btn btn-warning'> Cetak </a> <br><br> -->
@@ -654,8 +518,8 @@ if($_SESSION['level']=='admin'){
                                         </thead>
                                         <tbody>
                                             <?php
-                                                $query = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 5 AND hb_du_permintaan.status_penerimaan='Menerima'");
-                                                $query4 = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 5 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du  AND permintaan_hubin = 'Ya' AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 5 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query4 = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du  AND permintaan_hubin = 'Ya' AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 5 AND hb_du_permintaan.status_penerimaan='Menerima'");
                                                 isinya($query);
                                                 isinyajur($query4);
                                             ?>
@@ -667,10 +531,7 @@ if($_SESSION['level']=='admin'){
 
                                 <div id="tei" class="tab-pane "> <!-- id= 4 -->
                                     <div class="panel-body">
-                                        <span class="pull-right">
-                                            <a href="#baru4" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
-                                        </span> <br><br><br>
-
+                                        <br>
 
                                         <div class="adv-table">
                                             <!--<a href='' class='btn btn-warning'> Cetak </a> <br><br> -->
@@ -682,8 +543,8 @@ if($_SESSION['level']=='admin'){
                                         </thead>
                                         <tbody>
                                             <?php
-                                                $query = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 4 AND hb_du_permintaan.status_penerimaan='Menerima'");
-                                                $query4 = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 4 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND permintaan_hubin = 'Ya'  AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 4 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query4 = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du  AND permintaan_hubin = 'Ya' AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 4 AND hb_du_permintaan.status_penerimaan='Menerima'");
                                                 isinya($query);
                                                 isinyajur($query4);
                                             ?>
@@ -694,9 +555,7 @@ if($_SESSION['level']=='admin'){
                                 </div>
                                 <div id="tkj" class="tab-pane "> <!-- id= 6 -->
                                     <div class="panel-body">
-                                        <span class="pull-right">
-                                            <a href="#baru6" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
-                                        </span> <br><br><br>
+                                        <br>
 
                                         <div class="adv-table">
                                             <!--<a href='' class='btn btn-warning'> Cetak </a> <br><br> -->
@@ -708,8 +567,8 @@ if($_SESSION['level']=='admin'){
                                         </thead>
                                         <tbody>
                                             <?php
-                                                $query = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 6 AND hb_du_permintaan.status_penerimaan='Menerima'");
-                                                $query4 = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 6 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du  AND permintaan_hubin = 'Ya' AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 6 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query4 = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du  AND permintaan_hubin = 'Ya' AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 6 AND hb_du_permintaan.status_penerimaan='Menerima'");
                                                 isinya($query);
                                                 isinyajur($query4);
                                             ?>
@@ -721,10 +580,7 @@ if($_SESSION['level']=='admin'){
 
                                 <div id="tp4" class="tab-pane "> <!-- id= 8 -->
                                     <div class="panel-body">
-                                        <span class="pull-right">
-                                            <a href="#baru8" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
-                                        </span> <br><br><br>
-
+                                        <br>
 
                                         <div class="adv-table">
                                             <!--<a href='' class='btn btn-warning'> Cetak </a> <br><br> -->
@@ -736,8 +592,8 @@ if($_SESSION['level']=='admin'){
                                         </thead>
                                         <tbody>
                                             <?php
-                                                $query = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 8 AND hb_du_permintaan.status_penerimaan='Menerima'");
-                                                $query4 = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 8 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du  AND permintaan_hubin = 'Ya' AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 8 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query4 = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du  AND permintaan_hubin = 'Ya' AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 8 AND hb_du_permintaan.status_penerimaan='Menerima'");
                                                 isinya($query);
                                                 isinyajur($query4);
                                             ?>
@@ -749,9 +605,7 @@ if($_SESSION['level']=='admin'){
 
                                 <div id="tptu" class="tab-pane "> <!-- id= 9 -->
                                     <div class="panel-body">
-                                        <span class="pull-right">
-                                            <a href="#baru9" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
-                                        </span> <br><br><br>
+                                        <br>
 
                                         <div class="adv-table">
                                             <!--<a href='' class='btn btn-warning'> Cetak </a> <br><br> -->
@@ -763,8 +617,9 @@ if($_SESSION['level']=='admin'){
                                         </thead>
                                         <tbody>
                                             <?php
-                                                $query = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 9 AND hb_du_permintaan.status_penerimaan='Menerima'");
-                                                $query4 = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 1 AND hb_du_permintaan.status_penerimaan='Menerima'");
+
+                                                $query = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND permintaan_hubin = 'Ya'  AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 9 AND hb_du_permintaan.status_penerimaan='Menerima'");
+                                                $query4 = mysql_query("SELECT * from hb_du_umum, hb_du_permintaan,hb_du_penerima WHERE hb_du_umum.id_du = hb_du_permintaan.id_du AND permintaan_hubin = 'Ya'  AND hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_penerima.id_jurusan = 9 AND hb_du_permintaan.status_penerimaan='Menerima'");
                                                 isinya($query);
                                                 isinyajur($query4);
                                             ?>

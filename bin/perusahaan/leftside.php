@@ -21,6 +21,13 @@
   <!--icheck-->
   <link href="../js/iCheck/skins/flat/green.css" rel="stylesheet">
 
+  <!--pickers css-->
+  <link rel="stylesheet" type="text/css" href="../css/datepicker-custom.css" />
+  <link rel="stylesheet" type="text/css" href="../css/timepicker.css" />
+  <link rel="stylesheet" type="text/css" href="../css/colorpicker.css" />
+  <link rel="stylesheet" type="text/css" href="../js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+  <link rel="stylesheet" type="text/css" href="../css/datetimepicker-custom.css" />
+
   <link href="../css/style.css" rel="stylesheet">
   <link href="../css/style.css" rel="stylesheet">
   <link href="../css/mycustom.css" rel="stylesheet">

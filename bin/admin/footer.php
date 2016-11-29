@@ -18,6 +18,8 @@
 <script src="../js/modernizr.min.js"></script>
 <script src="../js/jquery.nicescroll.js"></script>
 
+<script src="../js/jquery-ui_auto_complete.js"></script>
+
 <!--dynamic table-->
 <script type="text/javascript" language="javascript" src="../js/advanced-datatable/js/jquery.dataTables.js"></script>
 <script type="text/javascript" src="../js/data-tables/DT_bootstrap.js"></script>
@@ -35,31 +37,40 @@
 <script type="text/javascript" src="../js/ckeditor/ckeditor.js"></script>
 
 
-<script type="text/javascript" src="../js/ajax_daerah.js"></script>
+<!--pickers plugins-->
+<script type="text/javascript" src="../js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="../js/bootstrap-daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="../js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="../js/bootstrap-timepicker.js"></script>
 
- <script type="text/javascript">
+<!--pickers initialization-->
+<script src="../js/pickers-init.js"></script>
+
+<script type="text/javascript">
 $(document).ready(function() {
-    $("#prop2").change(function(){
+    $(".prop2").change(function(){
         var id = $(this).val();
         $.get('select_daerah.php',{prop : id},function(data){
-            $("#kota2").empty();
-            $("#kota2").html(data);
+            $(".kota2").empty();
+            $(".kota2").html(data);
         });
     });
 
-    $("#kota2").change(function(){
+    $(".kota2").change(function(){
         var id = $(this).val();
         $.get('select_daerah.php',{kab : id},function(data){
-            $("#kec2").empty();
-            $("#kec2").html(data);
+            $(".kec2").empty();
+            $(".kec2").html(data);
         });
     });
 
-    $("#kec2").change(function(){
+    $(".kec2").change(function(){
         var id = $(this).val();
         $.get('select_daerah.php',{kec : id},function(data){
-            $("#kel2").empty();
-            $("#kel2").html(data);
+            $(".kel2").empty();
+            $(".kel2").html(data);
         });
     });
 
@@ -83,6 +94,7 @@ $(document).ready(function() {
 
 </script>
 
+<script type="text/javascript" src="../js/ajax_daerah.js"></script>
   <link href="../css/admin.css" rel="stylesheet">
 </body>
 </html>

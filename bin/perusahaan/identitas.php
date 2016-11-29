@@ -73,7 +73,7 @@ if($_SESSION['level']=='perusahaan'){
                     <div class="panel-body">
                         <div class="adv-table">
                                 <div class="item form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Contact Person :<span class="required"></span></label>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number"> Kontak Penanggung Jawab :<span class="required"></span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input name='cp' value='<?php echo $dl['contact_person_umum']?>' class="form-control col-md-7 col-xs-12" type="text" required>
                                     </div>

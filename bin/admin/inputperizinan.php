@@ -259,7 +259,7 @@ if($_SESSION['level']=='admin'){
                                                 </ul>
                                             </div>
                                             <a href='#edit$d[id_du]' data-toggle='modal'>
-                                                <button class='btn btn-sm btn-danger' type='button'><i class='fa fa-trash-o'></i> Edit </button>
+                                                <button class='btn btn-sm btn-primary' type='button'><i class='fa fa-pencil'></i> Edit </button>
                                             </a>
                                             <a href='#myModalH$d[id_du]' data-toggle='modal'>
                                                 <button class='btn btn-sm btn-danger' type='button'><i class='fa fa-trash-o'></i> Hapus </button>

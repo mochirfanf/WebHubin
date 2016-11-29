@@ -10,8 +10,14 @@ include "koneksidb.php";
 			if($_SESSION['level']=='admin'){
 				header('location:admin/index.php');
 			}
-      if($_SESSION['level']=='perusahaan'){
+			if($_SESSION['level']=='kapprog'){
+				header('location:kapprog/index.php');
+			}
+      		if($_SESSION['level']=='perusahaan'){
 				header('location:perusahaan/index.php');
+			}
+      		if($_SESSION['level']=='siswa'){
+				header('location:siswa/index.php');
 			}
 	}else{
 		?>

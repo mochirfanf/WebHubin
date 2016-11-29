@@ -20,7 +20,7 @@ if($_SESSION['level']=='kapprog'){
 	                                        <div class='modal-dialog'>
 	                                            <div class='modal-content'>
 	                                                <div class='modal-header'>
-	                                                    <h4 class='modal-title'> Tahun Ajaran </h4>
+	                                                    <h4 class='modal-title'> Kelola Prakerin Angkatan? </h4>
 	                                                </div>
 	                                                <div class='modal-body'>
 	                                                  <form method='POST' action='proses_kapprog.php?a=settahun_ajaran' enctype='multipart/form-data'>
@@ -28,10 +28,10 @@ if($_SESSION['level']=='kapprog'){
 	                                                      <?php
 
 	                                                     echo "<select class='form-control m-bot15' name='tahun_ajaran'>
-	                                                              <option value=''> Pilih Tahun Ajaran </option>";
-	                                                                  $tahun_ajaran = mysql_query("SELECT tahun_ajaran FROM tahun_ajaran");
+	                                                              <option value=''> Pilih Angkatan </option>";
+	                                                                  $tahun_ajaran = mysql_query("SELECT tahun_ajaran,angkatan FROM tahun_ajaran");
 	                                                                while($d = mysql_fetch_array($tahun_ajaran)){
-	                                                     echo " <option value='$d[tahun_ajaran]'> $d[tahun_ajaran] </option>";
+	                                                     echo " <option value='$d[tahun_ajaran]'> Angkatan $d[angkatan] </option>";
 	                                                                }
 	                                                             echo "
 	                                                          </select>";

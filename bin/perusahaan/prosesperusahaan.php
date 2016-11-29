@@ -57,6 +57,8 @@ if($_SESSION['level']=='perusahaan'){
           $nama_pj        = anti_injection($_POST['nama_pj']);
           $contact        = anti_injection($_POST['contact']);
           $fasilitas_lain = anti_injection($_POST['fasilitas_lain']);
+          $mulai          = anti_injection($_POST['mulai']);
+          $berakhir       = anti_injection($_POST['berakhir']);
 
                     $us = "Tidak";
                     $um = "Tidak";
@@ -109,15 +111,15 @@ if($_SESSION['level']=='perusahaan'){
             mysql_query("DELETE FROM hb_du_permintaan WHERE id_du = '$_SESSION[id_du]'");
           }
 
-          mysql_query(" INSERT INTO hb_du_permintaan(id_du, tahun_ajaran, permintaan_du, seleksi_du, status_permintaan, nama_penanggung_jawab, contact_person, uang_saku, asrama, uang_makan, uang_transport, fasilitas_lain, status_du)
-                                 VALUES ('$_SESSION[id_du]', '$_SESSION[tahun_ajaran]', 'Ya', '$seleksi',  'Belum Terverifikasi' , '$nama_pj', '$contact', '$us', '$as', '$um', '$ut', '$fasilitas_lain', 'DU/DI dari Perusahaan')")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+          mysql_query(" INSERT INTO hb_du_permintaan(id_du, tahun_ajaran, permintaan_du, seleksi_du, status_permintaan, nama_penanggung_jawab, contact_person, uang_saku, asrama, uang_makan, uang_transport, fasilitas_lain, status_du, mulai_pelaksanaan, berakhir_pelaksanaan)
+                                 VALUES ('$_SESSION[id_du]', '$_SESSION[tahun_ajaran]', 'Ya', '$seleksi',  'Belum Terverifikasi' , '$nama_pj', '$contact', '$us', '$as', '$um', '$ut', '$fasilitas_lain', 'DU/DI dari Perusahaan', '$mulai', '$berakhir' )")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
 
 
-        ?>
-          <script>
-            alert(" Terima Kasih Telah Mengirimkan Permintaan ");
-            top.location='prakerin.php';
-          </script><?php
+            ?>
+            <script>
+              alert(" Terima kasih telah meminta siswa prakerin ");
+              top.location='prakerin.php';
+            </script><?php
 
 
         }
@@ -195,7 +197,8 @@ if($_SESSION['level']=='perusahaan'){
 
 
                mysql_query(" UPDATE hb_du SET u_saku='$us', asrama='$as', u_transport='$ut', mulai_pelaksanaan='$mulai', berakhir_pelaksanaan = '$berakhir', seleksi_du = '$seleksi', u_makan='$um' WHERE id_du=$id") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
-                header('location:prakerin.php');
+
+               header('location:prakerin.php');
       break;
 
 		}

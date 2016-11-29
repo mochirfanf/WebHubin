@@ -21,6 +21,7 @@
 <!--dynamic table-->
 <script type="text/javascript" language="javascript" src="../js/advanced-datatable/js/jquery.dataTables.js"></script>
 <script type="text/javascript" src="../js/data-tables/DT_bootstrap.js"></script>
+
 <!--dynamic table initialization -->
 <script src="../js/dynamic_table_init.js"></script>
 
@@ -30,6 +31,18 @@
 <!--icheck -->
 <script src="../js/iCheck/jquery.icheck.js"></script>
 <script src="../js/icheck-init.js"></script>
+
+<!--pickers plugins-->
+<script type="text/javascript" src="../js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="../js/bootstrap-daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="../js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="../js/bootstrap-timepicker.js"></script>
+
+<!--pickers initialization-->
+<script src="../js/pickers-init.js"></script>
+
 
 
 <script type="text/javascript" src="../js/ajax_daerah.js"></script>
@@ -45,7 +58,7 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append("<div class='form-inline'><br><div><?php echo "<select class='form-control m-bot15' name='jurusan[]'> <option value=''> * Pilih Jurusan * </option>";  $jurusan = mysql_query("SELECT * FROM jurusan"); while($j = mysql_fetch_array($jurusan)){ echo " <option value='$j[id_jurusan]'> $j[nama_jurusan] </option>"; } echo " </select>"; ?> <input type='text' class='form-control' name='jumlah[]' placeholder='Jumlah'> <a href='#' class='remove_field'><button style='margin-top: -69px; margin-left: 218px; 'class='btn btn-xs btn-danger add_field_button'><i class='fa fa-times-circle'></i></button></a></div></div>"); //add input box
+            $(wrapper).append("<div class='form-inline'><br><div><?php echo "<select required class='form-control m-bot15' name='jurusan[]'> <option value=''> * Pilih Jurusan * </option>";  $jurusan = mysql_query("SELECT * FROM jurusan"); while($j = mysql_fetch_array($jurusan)){ echo " <option value='$j[id_jurusan]'> $j[nama_jurusan] </option>"; } echo " </select>"; ?> <input type='number' class='form-control' name='jumlah[]' placeholder='Jumlah' required> <a href='#' class='remove_field'><button style='margin-top: -69px; margin-left: 218px; 'class='btn btn-xs btn-danger add_field_button'><i class='fa fa-times-circle'></i></button></a></div></div>"); //add input box
         }
     });
 

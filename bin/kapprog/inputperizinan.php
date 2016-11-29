@@ -10,9 +10,9 @@ if($_SESSION['level']=='kapprog'){
         $navactive1 ="nav-active";
 
 
-        $data2 = mysql_query("SELECT * FROM hb_du_umum,siswa,hb_du_permintaan WHERE permintaan_siswa='Ya' AND status_permintaan='Belum Terverifikasi' AND hb_du_permintaan.du_siswa = siswa.nis AND hb_du_permintaan.tahun_ajaran = '$_SESSION[tahun_ajaran]' AND siswa.tahun_ajaran = '$_SESSION[tahun_ajaran]'  AND id_jurusan='$_SESSION[jurusan]' AND hb_du_umum.id_du = hb_du_permintaan.id_du");
+        $data2 = mysql_query("SELECT * FROM hb_du_umum,hb_du_permintaan WHERE permintaan_kapprog='Ya' AND status_permintaan='Belum Terverifikasi' AND hb_du_permintaan.tahun_ajaran = '$_SESSION[tahun_ajaran]' AND du_id_jurusan='$_SESSION[jurusan]' AND hb_du_umum.id_du = hb_du_permintaan.id_du");
 
-        $data3 = mysql_query("SELECT * FROM hb_du_umum,siswa,hb_du_permintaan WHERE permintaan_siswa='Ya' AND status_permintaan='Belum Terverifikasi' AND hb_du_permintaan.du_siswa = siswa.nis AND hb_du_permintaan.tahun_ajaran = '$_SESSION[tahun_ajaran]' AND siswa.tahun_ajaran = '$_SESSION[tahun_ajaran]'  AND id_jurusan='$_SESSION[jurusan]' AND hb_du_umum.id_du = hb_du_permintaan.id_du");
+        $data3 = mysql_query("SELECT * FROM hb_du_umum,hb_du_permintaan WHERE permintaan_kapprog='Ya' AND status_permintaan='Belum Terverifikasi' AND hb_du_permintaan.tahun_ajaran = '$_SESSION[tahun_ajaran]' AND du_id_jurusan='$_SESSION[jurusan]' AND hb_du_umum.id_du = hb_du_permintaan.id_du");
 
 		include "leftside.php"; ?>
 
@@ -22,7 +22,7 @@ if($_SESSION['level']=='kapprog'){
                 <div class="col-sm-12">
                     <section class="panel">
                     <header class="panel-heading">
-                        <big>Permintaan Perizinan Prakerin</big>
+                        <big>Permohonan DU/DI</big>
                          <span class="pull-right">
                          <a href="#myModal" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
                          <!-- Modal -->
@@ -36,22 +36,15 @@ if($_SESSION['level']=='kapprog'){
                                             <div class="modal-body">
                                                 <form method="POST" action="proses_kapprog.php?a=inputperizinan"  enctype='multipart/form-data' class="form-horizontal" role="form">
                                                     <div class="form-group">
-                                                        <label class="col-lg-5 col-sm-5 control-label"> Siswa dengan NIS</label>
-                                                        <div class="col-lg-7">
-                                                            <input name="nis" style="height: 30px;" placeholder=" N I S (Permintaan Siswa) " onmouseout="document.getElementById('namasiswa').innerHTML='Tes'" id="siswa">
-                                                            <br><br>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Nama DU</label>
                                                         <div class="col-lg-9">
-                                                            <input type="text" class="form-control" name="nama_du" placeholder="Nama Dunia Usaha">
+                                                            <input required="" type="text" class="form-control" name="nama_du" placeholder="Nama Dunia Usaha">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Email</label>
                                                         <div class="col-lg-9">
-                                                            <input type="email" class="form-control" name="email_du" placeholder="Email">
+                                                            <input type="email" required="" class="form-control" name="email_du" placeholder="Email">
                                                         </div>
                                                     </div>
                                                      <div class="form-group">
@@ -63,7 +56,7 @@ if($_SESSION['level']=='kapprog'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Provinsi</label>
                                                         <div class="col-lg-9">
-                                                            <select name="prop" id="prop" onclick="ajaxkota(this.value)" class='form-control'>
+                                                            <select name="prop" id="prop" required="" onclick="ajaxkota(this.value)" class='form-control'>
                                                                 <option value="">Pilih Provinsi</option>
                                                                 <?php
                                                                   include 'koneksi.php';
@@ -79,7 +72,7 @@ if($_SESSION['level']=='kapprog'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Kota/Kabupaten</label>
                                                         <div class="col-lg-9">
-                                                            <select name="kota" id="kota" onchange="ajaxkec(this.value)" class='form-control'>
+                                                            <select name="kota" id="kota" required=""  onchange="ajaxkec(this.value)" class='form-control'>
                                                                 <option value="">Pilih Kota/Kabupaten</option>
                                                             </select>
                                                         </div>
@@ -87,7 +80,7 @@ if($_SESSION['level']=='kapprog'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Kecamatan</label>
                                                         <div class="col-lg-9">
-                                                            <select name="kec" id="kec" onchange="ajaxkel(this.value)" class='form-control'>
+                                                            <select name="kec" id="kec" required="" onchange="ajaxkel(this.value)" class='form-control'>
                                                                 <option value="">Pilih Kecamatan</option>
                                                             </select>
                                                         </div>
@@ -95,7 +88,7 @@ if($_SESSION['level']=='kapprog'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Kelurahan/Desa</label>
                                                         <div class="col-lg-9">
-                                                            <select name="kel" id="kel" onchange="showCoordinate();" class='form-control'>
+                                                            <select name="kel" id="kel" required="" onchange="showCoordinate();" class='form-control'>
                                                                 <option value="">Pilih Kelurahan/Desa</option>
                                                             </select>
                                                         </div>
@@ -103,7 +96,7 @@ if($_SESSION['level']=='kapprog'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Kode Pos</label>
                                                         <div class="col-lg-9">
-                                                            <input type="number" class="form-control" name="kodepos" placeholder="Kodepos">
+                                                            <input type="number" required="" class="form-control" name="kodepos" placeholder="Kodepos">
                                                         </div>
                                                     </div>
                                                      <div class="form-group">
@@ -134,24 +127,19 @@ if($_SESSION['level']=='kapprog'){
                                             </div>
                                             <div class="modal-body">
                                                 <?php $dl = mysql_fetch_array(mysql_query("SELECT * FROM hb_du_umum, hb_du_permintaan WHERE hb_du_umum.id_du='$t[id_du]' AND hb_du_umum.id_du = hb_du_permintaan.id_du")); ?>
+                                                
                                                 <form method="POST" action="proses_kapprog.php?a=editperizinan<?php echo "&id=$t[id_du]";?>"  enctype='multipart/form-data' class="form-horizontal" role="form">
-                                                    <div class="form-group">
-                                                        <label class="col-lg-5 col-sm-5 control-label"> Siswa dengan NIS</label>
-                                                        <div class="col-lg-7">
-                                                            <input name="nis" disabled value='<?php echo $dl['du_siswa']?>' style="height: 30px;" placeholder=" N I S (Permintaan Siswa) " onmouseout="document.getElementById('namasiswa').innerHTML='Tes'" id="siswa">
-                                                            <br><br>
-                                                        </div>
-                                                    </div>
+                                                    
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Nama DU</label>
                                                         <div class="col-lg-9">
-                                                            <input type="text" class="form-control" name="nama_du"  value='<?php echo $dl['nama_du']?>' placeholder="Nama Dunia Usaha">
+                                                            <input type="text" class="form-control" name="nama_du"  value='<?php echo $dl['nama_du']?>' placeholder="Nama Dunia Usaha" required="" >
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Email</label>
                                                         <div class="col-lg-9">
-                                                            <input type="email"  value='<?php echo $dl['email_du']?>'  class="form-control" name="email_du" placeholder="Email">
+                                                            <input type="email"  value='<?php echo $dl['email_du']?>'  class="form-control" name="email_du" placeholder="Email" required="" >
                                                         </div>
                                                     </div>
                                                      <div class="form-group">
@@ -163,7 +151,7 @@ if($_SESSION['level']=='kapprog'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Provinsi</label>
                                                         <div class="col-lg-9">
-                                                            <select name="prop" id="prop2" class='form-control'>
+                                                            <select name="prop" class='form-control prop2' required="" >
                                                                 <option value="">Pilih Provinsi</option>
                                                                 <?php
                                                                   include 'koneksi.php';
@@ -186,7 +174,7 @@ if($_SESSION['level']=='kapprog'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Kota/Kabupaten</label>
                                                         <div class="col-lg-9">
-                                                            <select name="kota" id="kota2" onchange="ajaxkec2(this.value)" class='form-control'>
+                                                            <select name="kota" onchange="ajaxkec2(this.value)" class='form-control kota2' required="" >
                                                                 <?php
                                                                     $ko = mysql_fetch_array( mysql_query("SELECT id_kab FROM hb_du_umum WHERE id_du='$dl[id_du]'"));
                                                                     $ta = mysql_fetch_array( mysql_query("SELECT * FROM kabupaten WHERE id_kab='$ko[id_kab]'"));
@@ -198,7 +186,7 @@ if($_SESSION['level']=='kapprog'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Kecamatan</label>
                                                         <div class="col-lg-9">
-                                                            <select name="kec" id="kec2" onchange="ajaxkel2(this.value)" class='form-control'>
+                                                            <select name="kec" onchange="ajaxkel2(this.value)" class='form-control kec2' required="" >
                                                                 <?php
                                                                     $ke = mysql_fetch_array( mysql_query("SELECT id_kec FROM hb_du_umum WHERE id_du='$dl[id_du]'"));
                                                                     $ca = mysql_fetch_array( mysql_query("SELECT * FROM kecamatan WHERE id_kec='$ke[id_kec]'"));
@@ -210,7 +198,7 @@ if($_SESSION['level']=='kapprog'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Kelurahan/Desa</label>
                                                         <div class="col-lg-9">
-                                                            <select name="kel" id="kel2" onchange="showCoordinate2();" class='form-control'>
+                                                            <select name="kel" onchange="showCoordinate2();" class='form-control kel2' required="" >
                                                                 <?php
                                                                     $kelu = mysql_fetch_array( mysql_query("SELECT id_kel FROM hb_du_umum WHERE id_du='$dl[id_du]'"));
                                                                     $rahan = mysql_fetch_array( mysql_query("SELECT nama FROM kelurahan WHERE id_kel='$kelu[id_kel]'"));
@@ -222,7 +210,7 @@ if($_SESSION['level']=='kapprog'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Kode Pos</label>
                                                         <div class="col-lg-9">
-                                                            <input type="number" value='<?php echo $dl['no_kodepos']?>'  class="form-control" name="kodepos" placeholder="Kodepos">
+                                                            <input type="number" value='<?php echo $dl['no_kodepos']?>'  class="form-control" name="kodepos" placeholder="Kodepos" required="" >
                                                         </div>
                                                     </div>
                                                      <div class="form-group">
@@ -252,9 +240,9 @@ if($_SESSION['level']=='kapprog'){
                     <thead>
                     <tr>
                         <th>No</th>
-                        <th>Permintaan</th>
                         <th>Nama DU/DI</th>
-                        <th>Alamat dan Email</th>
+                        <th>Alamat</th>
+                        <th>Email</th>
                         <th>Keterangan</th>
                         <th>Aksi</th>
                     </tr>
@@ -263,7 +251,7 @@ if($_SESSION['level']=='kapprog'){
                         <?php
                             $no =0;
                             while( $d = mysql_fetch_array($data2)) {
-                                $s = mysql_fetch_array(mysql_query("SELECT nama_siswa FROM siswa WHERE nis = '$d[du_siswa]'"));
+
                                 $kel = mysql_fetch_array(mysql_query("SELECT nama FROM kelurahan WHERE id_kel='$d[id_kel]'"));
                                 $kec = mysql_fetch_array(mysql_query("SELECT nama FROM kecamatan WHERE id_kec='$d[id_kec]'"));
                                 $kab = mysql_fetch_array(mysql_query("SELECT nama FROM kabupaten WHERE id_kab='$d[id_kab]'"));
@@ -272,10 +260,6 @@ if($_SESSION['level']=='kapprog'){
                                 echo "
                                     <tr class='gradeA'>
                                         <td> $no </td>
-                                        <td> NIS &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: $d[nis] <br>
-                                             Nama  &nbsp;&nbsp; &nbsp; : $d[nama_siswa] <br>
-                                             Kelas  &nbsp; &nbsp; &nbsp;&nbsp;: $d[kelas] <br>
-                                        </td>
                                         <td> $d[nama_du] </td>
                                         <td> $d[alamat]
                                              <br> Kelurahan : $kel[nama]
@@ -283,8 +267,8 @@ if($_SESSION['level']=='kapprog'){
                                              <br> Kab/Kota : $kab[nama]
                                              <br> Provinsi : $prov[nama]
                                              <br> Kode Pos : $d[no_kodepos]
-                                             <br><br> Email : $d[email_du]
                                         </td>
+                                        <td> $d[email_du]</td>
                                         <td> $d[keterangan_permintaan]</td>
                                         <td class='center'>
                                              <a href='#edit$d[id_du]' data-toggle='modal'>

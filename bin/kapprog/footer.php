@@ -29,6 +29,17 @@
 <!--common scripts for all pages-->
 <script src="../js/scripts.js"></script>
 
+<!--pickers plugins-->
+<script type="text/javascript" src="../js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="../js/bootstrap-daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="../js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="../js/bootstrap-timepicker.js"></script>
+
+<!--pickers initialization-->
+<script src="../js/pickers-init.js"></script>
+
 <!--icheck -->
 <script src="../js/iCheck/jquery.icheck.js"></script>
 <script src="../js/icheck-init.js"></script>
@@ -41,8 +52,6 @@
     $( "#siswa" ).autocomplete({
       source: '../autocomplete/siswa_perjurusan.php'
     });
-
-
   });
 </script>
 <script>
@@ -52,27 +61,27 @@
 </script>
  <script type="text/javascript">
 $(document).ready(function() {
-    $("#prop2").change(function(){
+    $(".prop2").change(function(){
         var id = $(this).val();
         $.get('select_daerah.php',{prop : id},function(data){
-            $("#kota2").empty();
-            $("#kota2").html(data);
+            $(".kota2").empty();
+            $(".kota2").html(data);
         });
     });
 
-    $("#kota2").change(function(){
+    $(".kota2").change(function(){
         var id = $(this).val();
         $.get('select_daerah.php',{kab : id},function(data){
-            $("#kec2").empty();
-            $("#kec2").html(data);
+            $(".kec2").empty();
+            $(".kec2").html(data);
         });
     });
 
-    $("#kec2").change(function(){
+    $(".kec2").change(function(){
         var id = $(this).val();
         $.get('select_daerah.php',{kec : id},function(data){
-            $("#kel2").empty();
-            $("#kel2").html(data);
+            $(".kel2").empty();
+            $(".kel2").html(data);
         });
     });
 

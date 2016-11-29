@@ -9,32 +9,6 @@ if($_SESSION['level']=='kapprog'){
         $active4 = "active";
         $navactive1 ="nav-active";
 
-        function judultabel(){
-            echo "  <th>No</th>
-                    <th>Permintaan Siswa </th>
-                    <th>Kelas</th>
-                    <th>Nama Dunia Usaha</th>
-                    <th>Alamat</th>
-                    <th>Email</th>
-                    <th>Keterangan </th>";
-        }
-
-        function isinya($query){
-                $no =0;
-                while ($d = mysql_fetch_array($query)) {
-                    $no = $no+1;
-                    echo "
-                    <tr class='gradeA'>
-                        <td> $no </td>
-                        <td> $d[nama] </td>
-                        <td> $d[kelas] </td>
-                        <td> $d[nama_du] </td>
-                        <td> $d[alamat]</td>
-                        <td> $d[email]</td>
-                    </tr>";
-                 }
-        }
-
         include "leftside.php"; ?>
 
         <!--body wrapper start-->
@@ -43,115 +17,53 @@ if($_SESSION['level']=='kapprog'){
                 <div class="col-sm-12">
                     <section class="panel">
                     <header class="panel-heading">
-                        <label><big>Permohonan Perizinan Prakerin Siswa</big></label>
+                        <label><big> DU / DI yang Telah Diizinkan </big></label>
                     </header>
 
                    <section class="panel">
                         <div class="panel-body">
-                                    <div class="panel-body">
-                                        <div class="adv-table">
-                                        <table  class="display table table-bordered table-striped" id="dynamic-table">
-                                        <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Permintaan</th>
-                                            <th>Nama DU/DI</th>
-                                            <th>Alamat dan Email</th>
-                                            <th>Keterangan</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php
-                                            $query = mysql_query("SELECT hb_du_umum.id_du, hb_du_umum.id_prov, hb_du_umum.id_kab, hb_du_umum.id_kec, hb_du_umum.id_kel, hb_du_umum.no_kodepos, siswa.nama_siswa, hb_du_umum.nama_du, hb_du_umum.alamat, hb_du_umum.id_kab, hb_du_umum.email_du, hb_du_permintaan.keterangan_permintaan, jurusan.singkatan, siswa.nama_siswa, siswa.kelas, siswa.nis FROM hb_du_umum, siswa, jurusan, hb_du_permintaan WHERE permintaan_siswa='Ya' AND status_permintaan='Terverifikasi' AND jurusan.id_jurusan='$_SESSION[tahun_ajaran]' AND siswa.id_jurusan = jurusan.id_jurusan AND hb_du_permintaan.du_siswa = siswa.nis AND hb_du_umum.id_du = hb_du_permintaan.id_du ");
-                                            $no =0;
-                                            while ($d = mysql_fetch_array($query)) {
-                                                $no = $no+1;
-                                                $kel = mysql_fetch_array(mysql_query("SELECT nama FROM kelurahan WHERE id_kel='$d[id_kel]'"));
-                                                $kec = mysql_fetch_array(mysql_query("SELECT nama FROM kecamatan WHERE id_kec='$d[id_kec]'"));
-                                                $kab = mysql_fetch_array(mysql_query("SELECT nama FROM kabupaten WHERE id_kab='$d[id_kab]'"));
-                                                $prov = mysql_fetch_array(mysql_query("SELECT nama FROM provinsi WHERE id_prov='$d[id_prov]'"));
-                                                echo "
-                                                <tr class='gradeA'>
-                                                    <td> $no </td>
-                                                    <td> Jurusan &nbsp; : $d[singkatan] <br>
-                                                         NIS &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: $d[nis] <br>
-                                                         Nama  &nbsp;&nbsp; &nbsp; : $d[nama_siswa] <br>
-                                                         Kelas  &nbsp; &nbsp; &nbsp;&nbsp;: $d[kelas] <br>
-                                                    </td>
-                                                    <td> $d[nama_du] </td>
-                                                    <td> $d[alamat]
-                                                         <br> Kelurahan : $kel[nama]
-                                                         <br> Kecamatan : $kec[nama]
-                                                         <br> Kab/Kota : $kab[nama]
-                                                         <br> Provinsi : $prov[nama]
-                                                         <br> Kode Pos : $d[no_kodepos]
-                                                         <br><br> Email : $d[email_du]
-                                                    </td>
-                                                    <td> $d[keterangan_permintaan]</td>
-                                                    <td>
-                                                        <a href='#verifikasi$d[id_du]' data-toggle='modal'>
-                                                            <button class='btn btn-sm btn-info' type='button'><i class='fa fa-check'></i> Verifikasi </button>
-                                                        </a>
-                                                        <a href='#tolak$d[id_du]' data-toggle='modal'>
-                                                            <button class='btn btn-sm btn-danger' type='button'><i class='fa fa-ban'></i> Tolak Permintaan </button>
-                                                        </a>
-                                                    </td>
-
-                                                        <div  style='text-transform:none' aria-hidden='true' aria-labelledby='myModalLabel' role='dialog' tabindex='-1' id='verifikasi$d[id_du]' class='modal fade'>
-                                                            <div class='modal-dialog'>
-                                                                <div class='modal-content'>
-                                                                    <div class='modal-header'>
-                                                                        <button aria-hidden='true' data-dismiss='modal' class='close' type='button'>×</button>
-                                                                        <h5>Verifikasi Permintaan Prakerin</h5>
-                                                                    </div>
-                                                                    <div class='modal-body'>
-                                                                        Apakah anda ingin menerima permintaan prakerin dari :  $d[nama_du] ?
-                                                                    </div>
-                                                                   <div class='modal-footer'>
-                                                                        <button type='button' class='btn btn-default' data-dismiss='modal'>Kembali</button>
-                                                                        <a href='proses_admin.php?a=verifikasi_permintaan_perusahaan&id=$d[id_du]'>
-                                                                        <input type='submit' value='Ya' name='Ganti'class='btn btn-success'></a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div  style='text-transform:none' aria-hidden='true' aria-labelledby='myModalLabel' role='dialog' tabindex='-1' id='tolak$d[id_du]' class='modal fade'>
-                                                            <div class='modal-dialog'>
-                                                                <div class='modal-content'>
-                                                                    <div class='modal-header'>
-                                                                        <button aria-hidden='true' data-dismiss='modal' class='close' type='button'>×</button>
-                                                                        <h5>Berikan Alasan! (Pesan akan disampaikan ke Ketua Pemrograman)</h5>
-                                                                    </div>
-                                                                    <div class='modal-body'>
-                                                                        <div class='form-group'>
-                                                                            <form method='POST' action='proses_admin.php?a=tolak_permintaan_perusahaan&id=$d[id_du]'>
-                                                                            <div class='col-lg-12'>
-                                                                                <input type='text' class='form-control' name='alasan' placeholder='Berikan Alasan ....'>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                   <div class='modal-footer'>
-                                                                        <button type='button' class='btn btn-info' data-dismiss='modal'>Kembali</button>
-                                                                        <input type='submit' value='Tolak Permintaan dan Kirim Pesan' name='Ganti'class='btn btn-danger'>
-                                                                    </div>
-                                                                </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                </tr>";
-                                             }
-                                        ?>
-                                        </tbody>
-                                        </table>
-                                        </div>
+                                    <div class="adv-table">
+                                    <table  class="display table table-bordered table-striped" id="dynamic-table">
+                                    <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama DU/DI</th>
+                                        <th>Alamat </th>
+                                        <th>Email</th>
+                                        <th>Keterangan</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                        $query = mysql_query("SELECT hb_du_umum.id_du, hb_du_umum.id_prov, hb_du_umum.id_kab, hb_du_umum.id_kec, hb_du_umum.id_kel, hb_du_umum.no_kodepos, hb_du_umum.nama_du, hb_du_umum.alamat, hb_du_umum.id_kab, hb_du_umum.email_du, hb_du_permintaan.keterangan_permintaan, jurusan.singkatan FROM hb_du_umum, jurusan, hb_du_permintaan WHERE permintaan_kapprog='Ya' AND status_permintaan='Terverifikasi' AND hb_du_permintaan.du_id_jurusan = jurusan.id_jurusan AND hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_permintaan.du_id_jurusan = '$_SESSION[jurusan]' ");
+                                        $no =0;
+                                        while ($d = mysql_fetch_array($query)) {
+                                            $no = $no+1;
+                                            $kel = mysql_fetch_array(mysql_query("SELECT nama FROM kelurahan WHERE id_kel='$d[id_kel]'"));
+                                            $kec = mysql_fetch_array(mysql_query("SELECT nama FROM kecamatan WHERE id_kec='$d[id_kec]'"));
+                                            $kab = mysql_fetch_array(mysql_query("SELECT nama FROM kabupaten WHERE id_kab='$d[id_kab]'"));
+                                            $prov = mysql_fetch_array(mysql_query("SELECT nama FROM provinsi WHERE id_prov='$d[id_prov]'"));
+                                            echo "
+                                            <tr class='gradeA'>
+                                                <td> $no </td>
+                                                <td> $d[nama_du] </td>
+                                                <td> $d[alamat]
+                                                     <br> Kelurahan : $kel[nama]
+                                                     <br> Kecamatan : $kec[nama]
+                                                     <br> Kab/Kota : $kab[nama]
+                                                     <br> Provinsi : $prov[nama]
+                                                     <br> Kode Pos : $d[no_kodepos]
+                                                </td>
+                                                <td> $d[email_du] </td>
+                                                <td> $d[keterangan_permintaan]</td>
+                                            </tr>";
+                                         }
+                                    ?>
+                                    </tbody>
+                                    </table>
                                     </div>
-                        </div>
+                                </div>
 
-                    <label> <br>
-                        &nbsp; &nbsp; ** Hati - hati jika anda menolak permintaan! <br><br>
-                    </label>
                     </section>
 
 

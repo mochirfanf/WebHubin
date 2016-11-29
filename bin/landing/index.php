@@ -72,23 +72,23 @@ include "header.php";
                         <div class='item form-group'>
                             <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Nama Perusahaan : <span class='required'></span> </label>
                             <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <input class='form-control col-md-7 col-xs-12' name='nama' required='required' placeholder='Nama Perusahaan' type='text' required> </div>
+                                <input class='form-control col-md-7 col-xs-12' name='nama'  placeholder='Nama Perusahaan' type='text' required> </div>
                         </div>
                         <div class='item form-group'>
                             <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Email :<span class='required'></span> </label>
                             <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <input class='form-control col-md-7 col-xs-12' name='email' required='required' placeholder='Email' type='email'> </div>
+                                <input class='form-control col-md-7 col-xs-12' name='email'  placeholder='Email' type='email' required> </div>
                         </div>
                         <div class='item form-group'>
                             <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Alamat :<span class='required'></span> </label>
                             <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <textarea class='form-control col-md-7 col-xs-12' name='alamat' required='required' placeholder='Alamat' type='number'> </textarea>
+                                <textarea class='form-control col-md-7 col-xs-12' name='alamat'  placeholder='Alamat' required></textarea>
                             </div>
                         </div>
                         <div class='item form-group'>
                             <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Provinsi :<span class='required'></span> </label>
                             <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <select name="prop" id="prop" onclick="ajaxkota(this.value)" class='form-control'>
+                                <select required name="prop" id="prop" onclick="ajaxkota(this.value)" class='form-control'>
                                     <option value="">Pilih Provinsi</option>
                                     <?php
                                       include 'koneksi.php';
@@ -104,7 +104,7 @@ include "header.php";
                         <div class='item form-group'>
                             <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Kota/Kabupaten :<span class='required'></span> </label>
                             <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <select name="kota" id="kota" onchange="ajaxkec(this.value)" class='form-control'>
+                                <select required name="kota" id="kota" onchange="ajaxkec(this.value)" class='form-control'>
                                     <option value="">Pilih Kota/Kabupaten</option>
                                 </select>
                             </div>
@@ -112,7 +112,7 @@ include "header.php";
                         <div class='item form-group'>
                             <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Kecamatan :<span class='required'></span> </label>
                             <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <select name="kec" id="kec" onchange="ajaxkel(this.value)" class='form-control'>
+                                <select required name="kec" id="kec" onchange="ajaxkel(this.value)" class='form-control'>
                                     <option value="">Pilih Kecamatan</option>
                                 </select>
                             </div>
@@ -120,7 +120,7 @@ include "header.php";
                         <div class='item form-group'>
                             <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Kelurahan/Desa :<span class='required'></span> </label>
                             <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <select name="kel" id="kel" onchange="showCoordinate();" class='form-control'>
+                                <select required name="kel" id="kel" onchange="showCoordinate();" class='form-control'>
                                     <option value="">Pilih Kelurahan/Desa</option>
                                 </select>
                             </div>
@@ -128,7 +128,7 @@ include "header.php";
                         <div class='item form-group'>
                             <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Kode Pos :<span class='required'></span> </label>
                             <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <input class='form-control col-md-7 col-xs-12' name='kodepos' required='required' placeholder='Kode Pos' type='number'> </div>
+                                <input required class='form-control col-md-7 col-xs-12' name='kodepos' placeholder='Kode Pos' type='number'> </div>
                         </div>
                 </div>
                 <div class='modal-footer'>

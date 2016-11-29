@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2016 at 05:04 AM
+-- Generation Time: Nov 29, 2016 at 04:14 AM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -111,18 +111,23 @@ INSERT INTO `hb_berita` (`id_berita`, `kategori`, `tgl_berita`, `judul_berita`, 
 CREATE TABLE IF NOT EXISTS `hb_du_jumlah_permintaan_du` (
 `id_du_permintaan_du` int(10) NOT NULL,
   `id_du` int(10) NOT NULL,
-  `tahun_ajaran` varchar(9) NOT NULL,
   `id_jurusan` int(10) NOT NULL,
-  `jumlah_penerimaan` int(5) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `jumlah_penerimaan` int(5) NOT NULL,
+  `tahun_ajaran` varchar(9) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `hb_du_jumlah_permintaan_du`
 --
 
-INSERT INTO `hb_du_jumlah_permintaan_du` (`id_du_permintaan_du`, `id_du`, `tahun_ajaran`, `id_jurusan`, `jumlah_penerimaan`) VALUES
-(1, 1, '2013-2014', 7, 3),
-(2, 1, '2013-2014', 1, 5);
+INSERT INTO `hb_du_jumlah_permintaan_du` (`id_du_permintaan_du`, `id_du`, `id_jurusan`, `jumlah_penerimaan`, `tahun_ajaran`) VALUES
+(1, 6, 9, 3, '2013-2014'),
+(2, 6, 1, 4, '2013-2014'),
+(3, 7, 6, 6, '2013-2014'),
+(4, 10, 4, 7, '2013-2014'),
+(5, 11, 1, 6, '2013-2014'),
+(6, 16, 2, 3, '2013-2014'),
+(7, 16, 1, 6, '2013-2014');
 
 -- --------------------------------------------------------
 
@@ -137,14 +142,24 @@ CREATE TABLE IF NOT EXISTS `hb_du_penerima` (
   `id_jurusan` int(10) NOT NULL,
   `jumlah_penerimaan` int(10) NOT NULL,
   `sisa_kuota_penerimaan` int(10) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
 
 --
 -- Dumping data for table `hb_du_penerima`
 --
 
 INSERT INTO `hb_du_penerima` (`id_du_penerima`, `id_du`, `tahun_ajaran`, `id_jurusan`, `jumlah_penerimaan`, `sisa_kuota_penerimaan`) VALUES
-(2, 1, '2013-2014', 1, 5, 5);
+(1, 1, '2013-2014', 6, 2, 2),
+(2, 1, '2013-2014', 3, 8, 8),
+(5, 6, '2013-2014', 9, 6, 6),
+(7, 10, '2013-2014', 4, 7, 7),
+(18, 11, '2013-2014', 1, 6, 6),
+(21, 6, '2013-2014', 9, 3, 3),
+(22, 6, '2013-2014', 1, 4, 3),
+(26, 3, '2013-2014', 3, 3, 3),
+(27, 15, '2013-2014', 1, 9, 9),
+(28, 16, '2013-2014', 2, 3, 3),
+(29, 16, '2013-2014', 1, 6, 5);
 
 -- --------------------------------------------------------
 
@@ -156,8 +171,8 @@ CREATE TABLE IF NOT EXISTS `hb_du_permintaan` (
 `id_du_permintaan` int(10) NOT NULL,
   `id_du` int(10) NOT NULL,
   `tahun_ajaran` varchar(9) NOT NULL,
-  `permintaan_siswa` varchar(5) NOT NULL,
-  `du_siswa` varchar(18) NOT NULL,
+  `permintaan_kapprog` varchar(5) NOT NULL,
+  `du_id_jurusan` int(10) NOT NULL,
   `permintaan_du` varchar(5) NOT NULL,
   `permintaan_hubin` varchar(5) NOT NULL,
   `status_du` varchar(30) NOT NULL,
@@ -180,16 +195,26 @@ CREATE TABLE IF NOT EXISTS `hb_du_permintaan` (
   `uang_makan` varchar(5) NOT NULL,
   `uang_transport` varchar(5) NOT NULL,
   `fasilitas_lain` text NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `hb_du_permintaan`
 --
 
-INSERT INTO `hb_du_permintaan` (`id_du_permintaan`, `id_du`, `tahun_ajaran`, `permintaan_siswa`, `du_siswa`, `permintaan_du`, `permintaan_hubin`, `status_du`, `status_penerimaan`, `seleksi_du`, `seleksi_tempat`, `seleksi_tanggal`, `nama_penanggung_jawab`, `contact_person`, `ket_contact_person`, `status_permintaan`, `alasan_menolak`, `mulai_pelaksanaan`, `berakhir_pelaksanaan`, `kerjasama_magang`, `kerjasama_tidak_langsung`, `keterangan_permintaan`, `uang_saku`, `asrama`, `uang_makan`, `uang_transport`, `fasilitas_lain`) VALUES
-(1, 1, '2013-2014', '', '', 'Ya', '', 'DU/DI dari Perusahaan', 'Menerima', 'Tidak', '', '0000-00-00', 'Dea Emalia', '08997777774', '', 'Terverifikasi', '', '2016-07-01', '2016-12-01', '', '', '   tes', 'Ya', 'Tidak', 'Ya', 'Tidak', 'Fasilitas Seru'),
-(2, 2, '2013-2014', 'Ya', '131', '', '', 'DU/DI dari Siswa', '', '', '', '0000-00-00', '', '', '', 'Belum Terverifikasi', '', '0000-00-00', '0000-00-00', '', '', ' Ini DU Siswa', '', '', '', '', ''),
-(3, 3, '2013-2014', 'Ya', '133', '', '', 'DU/DI dari Siswa', '', '', '', '0000-00-00', '', '', '', 'Verifikasi Ditolak', 'Jangan aja lah ', '0000-00-00', '0000-00-00', '', '', ' DU Siswa KP', '', '', '', '', '');
+INSERT INTO `hb_du_permintaan` (`id_du_permintaan`, `id_du`, `tahun_ajaran`, `permintaan_kapprog`, `du_id_jurusan`, `permintaan_du`, `permintaan_hubin`, `status_du`, `status_penerimaan`, `seleksi_du`, `seleksi_tempat`, `seleksi_tanggal`, `nama_penanggung_jawab`, `contact_person`, `ket_contact_person`, `status_permintaan`, `alasan_menolak`, `mulai_pelaksanaan`, `berakhir_pelaksanaan`, `kerjasama_magang`, `kerjasama_tidak_langsung`, `keterangan_permintaan`, `uang_saku`, `asrama`, `uang_makan`, `uang_transport`, `fasilitas_lain`) VALUES
+(1, 1, '2013-2014', 'Ya', 3, '', '', 'DU/DI dari Kapprog', 'Menerima', 'Tidak', '', '0000-00-00', 'Napeja KP', '089728162718', '', 'Terverifikasi', '', '2016-10-06', '2017-01-07', '', '', ' Ini DU dari KP', '', '', '', '', ''),
+(2, 2, '2013-2014', 'Ya', 3, '', '', 'DU/DI dari Kapprog', 'Menolak', '', '', '0000-00-00', '', '', '', 'Terverifikasi', '', '0000-00-00', '0000-00-00', '', '', ' Ini KP 2', '', '', '', '', ''),
+(3, 3, '2013-2014', '', 0, '', 'Ya', 'DU/DI dari Hubin', 'Menerima', 'Tidak', '', '0000-00-00', 'fff', '089728162718', '', '', 'hyyy', '2016-07-04', '2016-11-04', '', '', 'fff', '', '', '', '', ''),
+(4, 4, '2013-2014', '', 0, '', 'Ya', 'DU/DI dari Hubin', 'Menolak', '', '', '0000-00-00', '', '', '', '', '', '0000-00-00', '0000-00-00', '', '', 'Ini dari Pa Agus', '', '', '', '', ''),
+(5, 5, '2013-2014', 'Ya', 5, '', '', 'DU/DI dari Kapprog', '', '', '', '0000-00-00', '', '', '', 'Belum Terverifikasi', ' ', '0000-00-00', '0000-00-00', '', '', ' hm ditolak', '', '', '', '', ''),
+(6, 6, '2013-2014', '', 0, 'Ya', '', 'DU/DI dari Perusahaan', 'Menerima', 'Ya', '', '0000-00-00', 'Napeja Prakerin Perusahan Edited', '08972816271', '', 'Terverifikasi', '', '2016-01-01', '2016-12-31', '', '', '', 'Ya', 'Ya', 'Tidak', 'Ya', 'Nyaman'),
+(7, 7, '2013-2014', '', 0, 'Ya', '', 'DU/DI dari Perusahaan', '', 'Tidak', '', '0000-00-00', 'Kiki Ditolak', '08987888086', '', 'Verifikasi Ditolak', 'Jauh Soalnya Perusahaan bapa hehe', '2016-09-01', '2016-12-13', '', '', '', 'Tidak', 'Tidak', 'Tidak', 'Tidak', 'Ga ada '),
+(8, 8, '2013-2014', 'Ya', 1, '', '', 'DU/DI dari Kapprog', 'Menolak', '', '', '0000-00-00', '', '', '', 'Terverifikasi', '', '0000-00-00', '0000-00-00', '', '', ' tes', '', '', '', '', ''),
+(10, 10, '2013-2014', '', 0, 'Ya', '', 'DU/DI dari Perusahaan', 'Menerima', 'Ya', '', '0000-00-00', 'perdihapused', '09676464122', '', 'Terverifikasi', '', '2016-10-28', '2017-03-02', '', '', '', 'Tidak', 'Tidak', 'Tidak', 'Ya', ''),
+(11, 11, '2013-2014', '', 0, 'Ya', '', 'DU/DI dari Perusahaan', 'Menerima', 'Ya', '', '0000-00-00', 'Verifikasi Ah', '09676464122', '', 'Terverifikasi', '', '2016-08-01', '2017-01-11', '', '', '', 'Tidak', 'Ya', 'Tidak', 'Ya', 'Nyaman'),
+(12, 12, '2013-2014', 'Ya', 1, '', '', 'DU/DI dari Kapprog', 'Proses', 'Tidak', '', '0000-00-00', 'jujujued', '08972816271', '', 'Terverifikasi', 'tes', '2016-08-09', '2016-11-05', '', '', ' guuuu', '', '', '', '', ''),
+(15, 15, '2013-2014', '', 0, '', 'Ya', 'DU/DI dari Hubin', 'Menerima', 'Ya', '', '0000-00-00', 'dea', '089728162718', '', '', 'h', '2017-01-04', '2017-05-25', '', '', ' yer', '', '', '', '', ''),
+(16, 16, '2013-2014', '', 0, 'Ya', '', 'DU/DI dari Perusahaan', 'Menerima', 'Tidak', '', '0000-00-00', 'Fredai', '08968588553', '', 'Terverifikasi', '', '2016-07-04', '2016-11-01', '', '', '', 'Ya', 'Tidak', 'Ya', 'Tidak', 'nyaman');
 
 -- --------------------------------------------------------
 
@@ -199,7 +224,7 @@ INSERT INTO `hb_du_permintaan` (`id_du_permintaan`, `id_du`, `tahun_ajaran`, `pe
 
 CREATE TABLE IF NOT EXISTS `hb_du_umum` (
 `id_du` int(10) NOT NULL,
-  `nama_du` varchar(50) NOT NULL,
+  `nama_du` varchar(100) NOT NULL,
   `email_du` varchar(50) NOT NULL,
   `alamat` text NOT NULL,
   `id_prov` int(10) NOT NULL,
@@ -217,16 +242,26 @@ CREATE TABLE IF NOT EXISTS `hb_du_umum` (
   `nama_penanggung_jawab_umum` varchar(50) NOT NULL,
   `contact_person_umum` varchar(20) NOT NULL,
   `deskripsi_perusahaan` text NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `hb_du_umum`
 --
 
 INSERT INTO `hb_du_umum` (`id_du`, `nama_du`, `email_du`, `alamat`, `id_prov`, `id_kab`, `id_kec`, `id_kel`, `no_kodepos`, `username`, `password`, `level`, `status`, `keterangan`, `bidang_usaha`, `kode`, `nama_penanggung_jawab_umum`, `contact_person_umum`, `deskripsi_perusahaan`) VALUES
-(1, 'DU/DI Perusahaan', 'dunia@usaha.com', '          Kp. Rancabali RT.06/03 No.25     ', 17, 1709, 170901, '1709012013', 40514, 'deaperusahaan', '8baa4cf4b1aae1712dcd5dc3b0eca6b2', 'perusahaan', 'aktif', '', 'Teknologi', '7a217cfd51a645b450606b3de0564fea', 'Dea Emalia', '0897876515', '  Deskripsi'),
-(2, 'DU dari Siswa', 'dudi@siswa.com', ' Jl.Karangpawitan RT.05/03', 21, 2101, 210108, '2101082004', 50421, '', '', '', '', '', '', '', '', '', ''),
-(3, 'DU Siswa KP', 'dusiswa@siswakp.com', 'Jl.Hujan ', 32, 3210, 321001, '3210012007', 56412, '', '', '', '', '', '', '', '', '', '');
+(1, 'PT.Kontrol Proses', 'kontrol@proses.com', 'Jl.KP RT.03/65 ', 17, 1703, 170309, '1703092010', 78097, '', '', '', '', '', '', '', '', '', ''),
+(2, 'PT.Kontrol Proses 2', 'kontrol2@proses.com', ' JL. KP RT.67/54', 34, 3401, 340103, '3401032005', 70951, '', '', '', '', '', '', '', '', '', ''),
+(3, 'PT Hubin te', 'pt@hubin.co', '     Jl. Hubin RT. 87/54   ', 34, 3401, 340111, '3401112005', 809522, '', '', '', '', '', '', '', '', '', ''),
+(4, 'PT. Hubin tuk Ditolak', 'pt@hubin.com', ' Jl. Hubin RT. 87/59', 31, 3174, 317407, '3174071004', 80680, '', '', '', '', '', '', '', '', '', ''),
+(5, 'DU/DI Ditolak', 'du@di.ditolak', 'Jl. Ditolak Hubin ', 15, 1507, 150709, '1507091001', 70356, '', '', '', '', '', '', '', '', '', ''),
+(6, 'PT. Perusahaan', 'pt@perusahaan.com', '  Jl.Perusahaan RT.04/65', 51, 5106, 510603, '5106032006', 674882, 'deaperusahaan', '8baa4cf4b1aae1712dcd5dc3b0eca6b2', 'perusahaan', 'aktif', '', 'Teknologi', 'e329b7b6b34a00f7e512943cce7fb195', 'Dea Perusahaan', '089533575213', 'Deskripsi '),
+(7, 'PT. Perusahaan Ditolak', 'ditolak@hubin.com', ' Jl. Hubin Ditolak  ', 63, 6308, 630806, '6308062003', 70790, 'perusahaanditolak', '8270c15897c048ae2a94d483e10741b9', 'perusahaan', 'aktif', '', 'Teknologi', 'aa7b54552b4bb4a71c926faaf059a7b2', 'Saya Ditolak', '089533575213', '  Deskripsi'),
+(8, 'tes', 'tes@tes.c', 'Jl.tes ', 34, 3401, 340112, '3401122004', 877532, '', '', '', '', '', '', '', '', '', ''),
+(10, 'PT. Perusahaan Dihapus', 'perusahaan@dihapus', 'Jl. Dihapus', 64, 6409, 640904, '6409042015', 70936, 'perdihapus', 'e717f911d27381445625264cc8d6ae16', 'perusahaan', 'aktif', '', '', 'c3d36786ee040b38d18e11a018781b91', '', '', ''),
+(11, 'Belom Diverifikasi', 'belum@diferifikasi.com', 'Jl.Verifiasi aja Belum', 65, 6501, 650106, '6501062002', 90767, 'deaperusahaan2', 'f10a13c84c4e4dada5edfdcf91df807a', 'perusahaan', 'aktif', '', '', 'c14fa9625cd9b734e31eb5609557ac7b', '', '', ''),
+(12, 'iniperusahaan', 'iniperusahaan@a.c', 'jl.perusa ', 17, 1708, 170803, '1708032019', 80535, '', '', '', '', '', '', '', '', '', ''),
+(15, 'yey', 'tes@tes.ca', ' thfhd', 34, 3404, 340416, '3404162003', 785543, '', '', '', '', '', '', '', '', '', ''),
+(16, 'INI SEDANG DIPAKE', 'dea_emalia@yahoo.com', ' Jalan ', 32, 3217, 321709, '3217092004', 40561, 'perusahaan2', '21f57628aa8d2ba238f7a6db352195c8', 'perusahaan', 'aktif', '', 'TEK', '96279ac4b9eff8431f0fab1a794ab49e', 'HFH', '08989998', '  ');
 
 -- --------------------------------------------------------
 
@@ -368,22 +403,22 @@ CREATE TABLE IF NOT EXISTS `hb_prakerin` (
   `tahun_ajaran` varchar(9) NOT NULL,
   `nis` varchar(18) NOT NULL,
   `id_du` int(10) NOT NULL,
-  `status_verifikasi` varchar(25) NOT NULL,
-  `status_prakerin` varchar(25) NOT NULL,
+  `status_verifikasi` varchar(30) NOT NULL,
+  `status_verifikasi_hubin` varchar(30) NOT NULL,
+  `status_prakerin` varchar(30) NOT NULL,
   `nip_guru` varchar(18) NOT NULL,
-  `saran_pembimbing` varchar(20) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+  `saran_pembimbing` varchar(20) NOT NULL,
+  `alasan_memilih` text NOT NULL,
+  `alasan_ditolak_kapprog` text NOT NULL,
+  `dipilih_kapprog` varchar(5) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `hb_prakerin`
 --
 
-INSERT INTO `hb_prakerin` (`id_prakerin`, `tahun_ajaran`, `nis`, `id_du`, `status_verifikasi`, `status_prakerin`, `nip_guru`, `saran_pembimbing`) VALUES
-(11, '', '1311', 23, 'Terverifikasi', 'Menunggu Verifikasi Siswa', '111', '333'),
-(13, '', '1312', 12, 'Menunggu Verifikasi', '', '91', '91'),
-(14, '', '131', 24, 'Terverifikasi', 'Menunggu Verifikasi Siswa', '92', '91'),
-(15, '', '133', 22, 'Terverifikasi', 'Menunggu Verifikasi Siswa', '93', '333'),
-(16, '', '134', 19, 'Terverifikasi', 'Menunggu Verifikasi Siswa', '111', '333');
+INSERT INTO `hb_prakerin` (`id_prakerin`, `tahun_ajaran`, `nis`, `id_du`, `status_verifikasi`, `status_verifikasi_hubin`, `status_prakerin`, `nip_guru`, `saran_pembimbing`, `alasan_memilih`, `alasan_ditolak_kapprog`, `dipilih_kapprog`) VALUES
+(6, '2013-2014', '131', 16, 'Terverifikasi Kapprog', '', '', '', '', 'Portofoio', '', '');
 
 -- --------------------------------------------------------
 
@@ -394,13 +429,21 @@ INSERT INTO `hb_prakerin` (`id_prakerin`, `tahun_ajaran`, `nis`, `id_du`, `statu
 CREATE TABLE IF NOT EXISTS `hb_riwayat_siswa` (
 `id_riwayat` int(10) NOT NULL,
   `nis` varchar(18) NOT NULL,
-  `riwayat` varchar(10) NOT NULL,
-  `nama_tempat` varchar(50) NOT NULL,
-  `tanggal_riwayat` date NOT NULL,
+  `nama_kegiatan` varchar(10) NOT NULL,
+  `nama_tempat` text NOT NULL,
+  `tanggal_awal_riwayat` date NOT NULL,
+  `tanggal_selesai_riwayat` date NOT NULL,
   `alamat_tempat` text NOT NULL,
   `status` varchar(15) NOT NULL,
   `keterangan` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `hb_riwayat_siswa`
+--
+
+INSERT INTO `hb_riwayat_siswa` (`id_riwayat`, `nis`, `nama_kegiatan`, `nama_tempat`, `tanggal_awal_riwayat`, `tanggal_selesai_riwayat`, `alamat_tempat`, `status`, `keterangan`) VALUES
+(5, '131', 'Kuliah', 'dsss', '2016-07-12', '2017-05-18', '  Jalan Diama', 'Selesai', '');
 
 -- --------------------------------------------------------
 
@@ -90974,22 +91017,22 @@ MODIFY `id_berita` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT for table `hb_du_jumlah_permintaan_du`
 --
 ALTER TABLE `hb_du_jumlah_permintaan_du`
-MODIFY `id_du_permintaan_du` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id_du_permintaan_du` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `hb_du_penerima`
 --
 ALTER TABLE `hb_du_penerima`
-MODIFY `id_du_penerima` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id_du_penerima` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `hb_du_permintaan`
 --
 ALTER TABLE `hb_du_permintaan`
-MODIFY `id_du_permintaan` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id_du_permintaan` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `hb_du_umum`
 --
 ALTER TABLE `hb_du_umum`
-MODIFY `id_du` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id_du` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `hb_guru_jurusan`
 --
@@ -91004,12 +91047,12 @@ MODIFY `id_monitoring` int(10) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `hb_prakerin`
 --
 ALTER TABLE `hb_prakerin`
-MODIFY `id_prakerin` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+MODIFY `id_prakerin` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `hb_riwayat_siswa`
 --
 ALTER TABLE `hb_riwayat_siswa`
-MODIFY `id_riwayat` int(10) NOT NULL AUTO_INCREMENT;
+MODIFY `id_riwayat` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `jurusan`
 --

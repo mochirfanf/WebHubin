@@ -38,13 +38,13 @@ if($_SESSION['level']=='admin'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Nama DU</label>
                                                         <div class="col-lg-9">
-                                                            <input type="text" class="form-control" name="nama_du" placeholder="Nama Dunia Usaha">
+                                                            <input type="text" class="form-control" name="nama_du" placeholder="Nama Dunia Usaha" required="">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Email</label>
                                                         <div class="col-lg-9">
-                                                            <input type="email" class="form-control" name="email_du" placeholder="Email">
+                                                            <input type="email" class="form-control" name="email_du" placeholder="Email" required="">
                                                         </div>
                                                     </div>
                                                      <div class="form-group">
@@ -56,7 +56,7 @@ if($_SESSION['level']=='admin'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Provinsi</label>
                                                         <div class="col-lg-9">
-                                                            <select name="prop" id="prop" onclick="ajaxkota(this.value)" class='form-control'>
+                                                            <select name="prop" id="prop" onclick="ajaxkota(this.value)" class='form-control' required="">
                                                                 <option value="">Pilih Provinsi</option>
                                                                 <?php
                                                                   include 'koneksi.php';
@@ -72,7 +72,7 @@ if($_SESSION['level']=='admin'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Kota/Kabupaten</label>
                                                         <div class="col-lg-9">
-                                                            <select name="kota" id="kota" onchange="ajaxkec(this.value)" class='form-control'>
+                                                            <select name="kota" id="kota" onchange="ajaxkec(this.value)" class='form-control' required="">
                                                                 <option value="">Pilih Kota/Kabupaten</option>
                                                             </select>
                                                         </div>
@@ -80,7 +80,7 @@ if($_SESSION['level']=='admin'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Kecamatan</label>
                                                         <div class="col-lg-9">
-                                                            <select name="kec" id="kec" onchange="ajaxkel(this.value)" class='form-control'>
+                                                            <select name="kec" id="kec" onchange="ajaxkel(this.value)" class='form-control' required="">
                                                                 <option value="">Pilih Kecamatan</option>
                                                             </select>
                                                         </div>
@@ -88,7 +88,7 @@ if($_SESSION['level']=='admin'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Kelurahan/Desa</label>
                                                         <div class="col-lg-9">
-                                                            <select name="kel" id="kel" onchange="showCoordinate();" class='form-control'>
+                                                            <select name="kel" id="kel" onchange="showCoordinate();" class='form-control' required="">
                                                                 <option value="">Pilih Kelurahan/Desa</option>
                                                             </select>
                                                         </div>
@@ -96,7 +96,7 @@ if($_SESSION['level']=='admin'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Kode Pos</label>
                                                         <div class="col-lg-9">
-                                                            <input type="number" class="form-control" name="kodepos" placeholder="Kodepos">
+                                                            <input type="number" class="form-control" name="kodepos" placeholder="Kodepos" required="">
                                                         </div>
                                                     </div>
                                                      <div class="form-group">
@@ -131,13 +131,13 @@ if($_SESSION['level']=='admin'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Nama DU</label>
                                                         <div class="col-lg-9">
-                                                            <input type="text" class="form-control" name="nama_du"  value='<?php echo $dl['nama_du']?>' placeholder="Nama Dunia Usaha">
+                                                            <input type="text" class="form-control" name="nama_du" required=""value='<?php echo $dl['nama_du']?>' placeholder="Nama Dunia Usaha" >
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Email</label>
                                                         <div class="col-lg-9">
-                                                            <input type="email"  value='<?php echo $dl['email_du']?>'  class="form-control" name="email_du" placeholder="Email">
+                                                            <input type="email" required="" value='<?php echo $dl['email_du']?>'  class="form-control" name="email_du" placeholder="Email">
                                                         </div>
                                                     </div>
                                                      <div class="form-group">
@@ -149,7 +149,7 @@ if($_SESSION['level']=='admin'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Provinsi</label>
                                                         <div class="col-lg-9">
-                                                            <select name="prop" id="prop2" class='form-control'>
+                                                            <select name="prop" class='form-control prop2' required="">
                                                                 <option value="">Pilih Provinsi</option>
                                                                 <?php
                                                                   include 'koneksi.php';
@@ -172,7 +172,7 @@ if($_SESSION['level']=='admin'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Kota/Kabupaten</label>
                                                         <div class="col-lg-9">
-                                                            <select name="kota" id="kota2" onchange="ajaxkec2(this.value)" class='form-control'>
+                                                            <select name="kota" onchange="ajaxkec2(this.value)" class='form-control kota2' required="">
                                                                 <?php
                                                                     $ko = mysql_fetch_array( mysql_query("SELECT id_kab FROM hb_du_umum WHERE id_du='$dl[id_du]'"));
                                                                     $ta = mysql_fetch_array( mysql_query("SELECT * FROM kabupaten WHERE id_kab='$ko[id_kab]'"));
@@ -184,7 +184,7 @@ if($_SESSION['level']=='admin'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Kecamatan</label>
                                                         <div class="col-lg-9">
-                                                            <select name="kec" id="kec2" onchange="ajaxkel2(this.value)" class='form-control'>
+                                                            <select name="kec" onchange="ajaxkel2(this.value)" class='form-control kec2' required="">
                                                                 <?php
                                                                     $ke = mysql_fetch_array( mysql_query("SELECT id_kec FROM hb_du_umum WHERE id_du='$dl[id_du]'"));
                                                                     $ca = mysql_fetch_array( mysql_query("SELECT * FROM kecamatan WHERE id_kec='$ke[id_kec]'"));
@@ -196,7 +196,7 @@ if($_SESSION['level']=='admin'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Kelurahan/Desa</label>
                                                         <div class="col-lg-9">
-                                                            <select name="kel" id="kel2" onchange="showCoordinate2();" class='form-control'>
+                                                            <select name="kel" onchange="showCoordinate2();" class='form-control kel2' required="">
                                                                 <?php
                                                                     $kelu = mysql_fetch_array( mysql_query("SELECT id_kel FROM hb_du_umum WHERE id_du='$dl[id_du]'"));
                                                                     $rahan = mysql_fetch_array( mysql_query("SELECT nama FROM kelurahan WHERE id_kel='$kelu[id_kel]'"));
@@ -208,7 +208,7 @@ if($_SESSION['level']=='admin'){
                                                     <div class="form-group">
                                                         <label class="col-lg-3 col-sm-3 control-label">Kode Pos</label>
                                                         <div class="col-lg-9">
-                                                            <input type="number" value='<?php echo $dl['no_kodepos']?>'  class="form-control" name="kodepos" placeholder="Kodepos">
+                                                            <input type="number" value='<?php echo $dl['no_kodepos']?>' class="form-control"  name="kodepos" placeholder="Kodepos" required="">
                                                         </div>
                                                     </div>
                                                      <div class="form-group">
@@ -239,7 +239,8 @@ if($_SESSION['level']=='admin'){
                     <tr>
                         <th>No</th>
                         <th>Nama DU/DI</th>
-                        <th>Alamat dan Email</th>
+                        <th>Alamat </th>
+                        <th>Email</th>
                         <th>Keterangan</th>
                         <th>Aksi</th>
                     </tr>
@@ -248,7 +249,6 @@ if($_SESSION['level']=='admin'){
                         <?php
                             $no =0;
                             while( $d = mysql_fetch_array($data2)) {
-                                $s = mysql_fetch_array(mysql_query("SELECT nama_siswa FROM siswa WHERE nis = '$d[du_siswa]'"));
                                 $kel = mysql_fetch_array(mysql_query("SELECT nama FROM kelurahan WHERE id_kel='$d[id_kel]'"));
                                 $kec = mysql_fetch_array(mysql_query("SELECT nama FROM kecamatan WHERE id_kec='$d[id_kec]'"));
                                 $kab = mysql_fetch_array(mysql_query("SELECT nama FROM kabupaten WHERE id_kab='$d[id_kab]'"));
@@ -264,8 +264,8 @@ if($_SESSION['level']=='admin'){
                                              <br> Kab/Kota : $kab[nama]
                                              <br> Provinsi : $prov[nama]
                                              <br> Kode Pos : $d[no_kodepos]
-                                             <br><br> Email : $d[email_du]
                                         </td>
+                                        <td> $d[email_du]</td>
                                         <td> $d[keterangan_permintaan]</td>
                                         <td class='center'>
                                              <a href='#edit$d[id_du]' data-toggle='modal'>
@@ -300,6 +300,9 @@ if($_SESSION['level']=='admin'){
                     </tbody>
                     </table>
                     </div>
+                                <label> <br>
+                                    &nbsp; &nbsp; ** Pastikan DU/DI yang akan ditambahkan adalah data <b><i>BARU</i></b>.<br><br>
+                                </label>
                     </div>
                     </section>
                 </div>

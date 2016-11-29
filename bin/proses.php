@@ -78,6 +78,7 @@
 
 						$j = mysql_fetch_array(mysql_query("SELECT * FROM siswa WHERE nis = '$username'"));
 						$_SESSION['jurusan'] = $j["id_jurusan"];
+                        $_SESSION['tahun_ajaran'] = $j["tahun_ajaran"];
 
 						header("location:siswa/index.php");
 					}

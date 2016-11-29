@@ -6,11 +6,11 @@ if($_SESSION['level']=='admin'){
     if ($_SESSION['tahun_ajaran']!='') {
         $title="DU Sistem Seleksi";
         $active ="";
-        $active17 = "active";
-        $navactive ="nav-active";
+        $active11 = "active";
+        $navactive5 ="nav-active";
 
-        $data = mysql_query( "SELECT * FROM hb_du_permintaan, hb_du_umum WHERE seleksi_du ='Ya' AND hb_du_permintaan.id_du=hb_du_umum.id_du");
-        $data2 = mysql_query( "SELECT * FROM hb_du_permintaan WHERE seleksi_du ='Ya'");
+        $data = mysql_query( "SELECT * FROM hb_du_permintaan, hb_du_umum WHERE seleksi_du ='Ya' AND hb_du_permintaan.id_du=hb_du_umum.id_du AND status_penerimaan!='Menolak' AND status_permintaan!='Belum Terverifikasi' AND status_permintaan!='Verifikasi Ditolak'");
+        $data2 = mysql_query( "SELECT * FROM hb_du_permintaan WHERE seleksi_du ='Ya' AND status_penerimaan!='Menolak' AND status_permintaan!='Belum Terverifikasi' AND status_permintaan!='Verifikasi Ditolak'");
 
         function tanggal($tglnya){
             $asli = date($tglnya);
