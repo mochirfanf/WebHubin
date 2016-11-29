@@ -103,7 +103,24 @@ $(document).ready(function() {
     })
 });
   </script>
+<script>
 
+    $('#pilihpem').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget); // Button that triggered the modal
+
+        var recipient = button.data('nis'); // Extract info from data-* attributes
+
+      
+
+        var modal = $(this);
+
+        modal.find("#nis").val(recipient);
+
+
+    });
+
+    </script>
   <link href="../css/admin.css" rel="stylesheet">
 </body>
 </html>

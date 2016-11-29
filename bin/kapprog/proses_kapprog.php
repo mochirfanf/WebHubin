@@ -10,7 +10,13 @@
 if($_SESSION['level']=='kapprog'){
 	if (!empty($_GET ["a"])) {
 		switch ($_GET ["a"]){
+			case "pilihpem" :
+				if(isset($_POST['pilih'])){
+					mysql_query("UPDATE hb_prakerin SET saran_pembimbing='$_POST[pembimbing]' WHERE nis='$_POST[nis]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+					header("location:semuasiswa.php");
+				}
 
+			break;
 			case "settahun_ajaran":
 				if(isset($_POST['Oke'])){
 					$tahun_ajaran	= $_POST['tahun_ajaran'];

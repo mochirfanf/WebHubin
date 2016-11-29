@@ -112,6 +112,8 @@
                     </ul>
                 </li>
 
+                <li class="<?php echo "$active16"; ?> "><a href="semuasiswa.php"><i class="fa fa-building-o"></i> <span> Siswa Prakerin </span></a></li>
+
                 <li class="menu-list <?php echo "$navactive4"; ?>"><a href=""><i class="fa fa-building-o"></i> <span>Monitoring</span></a>
                     <ul class="sub-menu-list">
                         <li class="<?php echo "$active13"; ?> "><a href="daftarsiswa_monitoring.php"> Daftar Siswa </a></li>
