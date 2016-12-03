@@ -50,7 +50,7 @@
  <script type="text/javascript">
 $(document).ready(function() {
     var max_fields      = 10; //maximum input boxes allowed
-    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+    var wrapper         = $(".input_fields"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
 
     var x = 1; //initlal text box count
@@ -58,7 +58,7 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append("<div class='form-inline'><br><div><?php echo "<select required class='form-control m-bot15' name='jurusan[]'> <option value=''> * Pilih Jurusan * </option>";  $jurusan = mysql_query("SELECT * FROM jurusan"); while($j = mysql_fetch_array($jurusan)){ echo " <option value='$j[id_jurusan]'> $j[nama_jurusan] </option>"; } echo " </select>"; ?> <input type='number' class='form-control' name='jumlah[]' placeholder='Jumlah' required> <a href='#' class='remove_field'><button style='margin-top: -69px; margin-left: 218px; 'class='btn btn-xs btn-danger add_field_button'><i class='fa fa-times-circle'></i></button></a></div></div>"); //add input box
+            $(wrapper).append("<div class='form-inline' style='width:800px;;float:left'><br><div><?php echo "<select required class='form-control m-bot15' name='jurusan[]' id='jur[]' style='float:left'> <option value=''> * Pilih Jurusan * </option>";  $jurusan = mysql_query("SELECT * FROM jurusan"); while($j = mysql_fetch_array($jurusan)){ echo " <option value='$j[id_jurusan]'> $j[nama_jurusan] </option>"; } echo " </select>"; ?> <input type='number' class='form-control' style='width:80px;float:left' name='jumlah[]' id='jl[]' placeholder='Jumlah' required> <a href='#' class='remove_field'><button style=' margin-left:10px; 'class='btn btn-xs btn-danger add_field_button'><i class='fa fa-times-circle'></i></button></a></div></div><div class='col-md-9 col-md-offset-3' id='skill[]'></div>"); //add input box
         }
     });
 
@@ -67,7 +67,122 @@ $(document).ready(function() {
     })
 });
   </script>
+    <script>
 
+    $('#detaillamar').on('show.bs.modal', function (event) {
+
+      var button = $(event.relatedTarget); // Button that triggered the modal
+      var recipient = button.data('id'); // Extract info from data-* attributes
+      var modal = $(this);
+        $.ajax({
+            type: 'POST',
+            url: 'detlamar.php',
+            data: 'id='+recipient,
+            dataType: 'json',
+            success: function(result) {
+                modal.find("#id").val(recipient);
+                modal.find("#namasiswa").text(result['nama_siswa']);
+                modal.find("#jur").text(result['nama_jurusan']);
+                modal.find("#ttl").text(result['tempat_lahir']);
+                modal.find("#tgl").text(result['tanggal_lahir']);
+                modal.find("#agama").text(result['agama']);
+                modal.find("#goldar").text(result['gol_darah']);
+                modal.find("#porto").text(result['portofolio']);
+                modal.find("#jk").text(result['jenis_kelamin']);
+                modal.find("#email").text(result['email_siswa']);
+                modal.find("#notelp").text(result['no_telepon']);
+                if(result['lampiran']!=""){
+                    modal.find("#lam").attr("href", "../siswa/"+result['lampiran']);
+                }else{
+
+                modal.find("#lam").text("");
+                modal.find("#text").text("");
+                }
+            }
+        })
+     
+
+    });
+
+    
+
+    </script>
+    <script>
+
+    $('#terima').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget); // Button that triggered the modal
+
+        var recipient = button.data('id'); // Extract info from data-* attributes
+
+        var recipient2 = button.data('nama'); // Extract info from data-* attributes
+
+        var modal = $(this);
+
+        modal.find("#id").val(recipient);
+        modal.find("#namasiswa").text(recipient2);
+
+    });
+
+    </script>
+    <script>
+
+    $('#tolak').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget); // Button that triggered the modal
+
+        var recipient = button.data('id'); // Extract info from data-* attributes
+
+      
+
+        var modal = $(this);
+
+        modal.find("#id").val(recipient);
+
+
+    });
+
+    $( "#sel" ).change(function() {
+    if(this.value=="Ya"){
+        $("#selek").css("display","block");
+    }else{
+        $("#selek").css("display","none");
+    }
+});
+/*
+$( "#jur" ).change(function() {
+    alert("a");
+    if(this.value==1){
+        $("#skill1").empty();
+        $("#skill1").append("<label class='control-label'>Skill : </label><table><tr><td><input type='checkbox' name='skill1[] value='Desain Grafis'> Desain Grafis</td><td>&emsp;</td><td><input type='checkbox' name='skill1[]' value='Web Desain'> Web Desain</td><td><input type='text' name='skill1[]' placeholder='Skill Lain'></tr></table><br><br>");
+    }else if(this.value==2){
+        $("#skill1").empty();
+        $("#skill1").append("<label class='control-label'>Skill : </label><table><tr><td><input type='checkbox'> Gambar Mekanik</td><td>&emsp;</td><td><input type='checkbox'> Proses</td></tr></table>");
+    }
+});
+*//*
+$('select').live('change', function() {
+    var index = $('select').index(this);
+    if(this.value==1){
+        $("#skill1").empty();
+        $("#skill1").append("<label class='control-label'>Skill : </label><table><tr><td><input type='checkbox' name='skill1[] value='Desain Grafis'> Desain Grafis</td><td>&emsp;</td><td><input type='checkbox' name='skill1[]' value='Web Desain'> Web Desain</td><td><input type='text' name='skill1[]' placeholder='Skill Lain'></tr></table><br><br>");
+    }else if(this.value==2){
+        $("#skill1").empty();
+        $("#skill1").append("<label class='control-label'>Skill : </label><table><tr><td><input type='checkbox'> Gambar Mekanik</td><td>&emsp;</td><td><input type='checkbox'> Proses</td></tr></table>");
+    }
+});
+/*
+$('input').live('change', function() {
+    var index = $('input').index(this);
+    $('input').each(function(i) {
+        alert(index);
+    });
+});
+*/
+$("#plus1").click(function(){
+    $("#p2").append("<div class='form-inline' style='width:800px;;float:left'><br><div><?php echo "<select required class='form-control m-bot15' name='jurusan[]' style='float:left'> <option value=''> * Pilih Jurusan * </option>";  $jurusan = mysql_query("SELECT * FROM jurusan"); while($j = mysql_fetch_array($jurusan)){ echo " <option value='$j[id_jurusan]'> $j[nama_jurusan] </option>"; } echo " </select>"; ?> <input type='number' class='form-control' style='width:80px;float:left' name='jumlah[]' placeholder='Jumlah' required></div></div>");
+});
+    </script>
   <link href="../css/admin.css" rel="stylesheet">
 </body>
 </html>

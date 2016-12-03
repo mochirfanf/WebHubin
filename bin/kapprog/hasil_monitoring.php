@@ -6,8 +6,8 @@ if($_SESSION['level']=='kapprog'){
     if ($_SESSION['tahun_ajaran']!='') {
         $title ="Hasil Monitoring";
         $active ="";
-        $active7 = "active";
-        $navactive1 ="nav-active";
+        $active14 = "active";
+        $navactive7 ="nav-active";
 
         function tanggal($tglnya){
             $asli = date($tglnya);
@@ -218,6 +218,8 @@ if($_SESSION['level']=='kapprog'){
                                         </div>
                                     </div>
                                 </div>
+                                </form>
+                                
                                 <?php 
                             }
                         ?>
@@ -238,7 +240,6 @@ if($_SESSION['level']=='kapprog'){
                         <th>Masalah yang Ditemukan</th>
                         <th>Saran</th>
                         <th>Nilai</th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody>

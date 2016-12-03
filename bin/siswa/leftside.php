@@ -91,6 +91,21 @@
                     </ul>
                 </li>
 
+                <li class="<?php echo "$active99"; ?> "><a href="bimbingan.php"><i class="fa fa-building-o"></i> <span> Bimbingan </span></a></li>
+
+                <li class="menu-list <?php echo "$navactive30"; ?>"><a href=""><i class="fa fa-building-o"></i> <span> Kegiatan Prakerin</span></a>
+                    <ul class="sub-menu-list">
+                        <li class="<?php echo "$active31"; ?> "><a href="kegiatanprakerin.php"> Program Kegiatan Prakerin </a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-list <?php echo "$navactive22"; ?>"><a href=""><i class="fa fa-building-o"></i> <span> Lowongan Pekerjaan</span></a>
+                    <ul class="sub-menu-list">
+                        <li class="<?php echo "$active19"; ?> "><a href="lowongankerja.php"> Pilih Tempat Kerja </a></li>
+                    </ul>
+                </li>
+
+
                 <li class="menu-list <?php echo "$navactive3"; ?>"><a href=""><i class="fa fa-building-o"></i> <span> Update Riwayat Kegiatan </span></a>
                     <ul class="sub-menu-list">
                         <li class="<?php echo "$active7"; ?> "><a href="tambah_kegiatan.php"> Tambah Kegiatan </a></li>

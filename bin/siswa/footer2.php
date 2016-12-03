@@ -131,32 +131,6 @@ $(document).ready(function() {
 
 <script>
 
-    $('#update').on('show.bs.modal', function (event) {
-
-      var button = $(event.relatedTarget); // Button that triggered the modal
-      var recipient = button.data('id'); // Extract info from data-* attributes
-      var modal = $(this);
-        $.ajax({
-            type: 'POST',
-            url: 'kegiatan.php',
-            data: 'id='+recipient,
-            dataType: 'json',
-            success: function(result) {
-                modal.find("#id").val(recipient);
-                modal.find("#kegiatan").text(result['jenis_kegiatan']);
-                modal.find("#mk").val(result['mingguke']);
-            }
-        })
-     
-
-    });
-
-    
-
-    </script>
-
-<script>
-
     $('#apply').on('show.bs.modal', function (event) {
 
         var button = $(event.relatedTarget); // Button that triggered the modal
@@ -173,26 +147,6 @@ $(document).ready(function() {
     });
 
     </script>
-
-    <script>
-
-    $('#hapus').on('show.bs.modal', function (event) {
-
-        var button = $(event.relatedTarget); // Button that triggered the modal
-
-        var recipient = button.data('id'); // Extract info from data-* attributes
-
-      
-
-        var modal = $(this);
-
-        modal.find("#id").val(recipient);
-
-
-    });
-
-    </script>
-
     <script>
 $('#lampiran').bind('change', function() {
 
@@ -205,6 +159,48 @@ $('#lampiran').bind('change', function() {
 
 
 </script>
+
+
+    <script>
+        function ajax(){
+        
+        var req = new XMLHttpRequest();
+        
+        req.onreadystatechange = function(){
+        
+        if(req.readyState == 4 && req.status == 200){
+        
+        document.getElementById('chat').innerHTML = req.responseText;
+        } 
+        }
+        req.open('GET','chat.php',true); 
+        req.send();
+
+        }
+        
+        function ajax2(){
+        var req = new XMLHttpRequest();
+        
+        req.onreadystatechange = function(){
+        
+        if(req.readyState == 4 && req.status == 200){
+        
+        document.getElementById('chat').innerHTML = req.responseText;
+        } 
+        }
+        req.open('GET','chat.php',true); 
+        req.send();
+        scrolling();
+        }
+        function scrolling(){
+
+            $('#cb').animate({
+            scrollTop: $('#cb').get(0).scrollHeight}, 10);
+
+        }
+        setInterval(function(){ajax()},1000);
+        
+    </script>
   <link href="../css/admin.css" rel="stylesheet">
 </body>
 </html>

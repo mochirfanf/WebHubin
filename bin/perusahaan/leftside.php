@@ -75,7 +75,15 @@
                 <li class="<?php echo "$active"; ?> "><a href="homepage.php"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
                 <li class="<?php echo "$active2"; ?> "><a href="identitas.php"><i class="fa fa-home"></i> <span>Identitas Perusahaan</span></a></li>
                 <li class="<?php echo "$active3"; ?> "><a href="prakerin.php"><i class="fa fa-home"></i> <span>Prakerin</span></a></li>
-                <li class="<?php echo "$active4"; ?> "><a href="kerja.php"><i class="fa fa-home"></i> <span>Kerja</span></a></li>
+                
+                <li class="menu-list <?php echo "$navactive6"; ?>"><a href=""><i class="fa fa-building-o"></i> <span>Permintaan Kerja</span></a>
+                    <ul class="sub-menu-list">
+                        <li class="<?php echo "$active12"; ?> "><a href="kerja.php"> Permintaan Kerja </a></li>
+                        <li class="<?php echo "$active13"; ?> "><a href="lamaranaktif.php"> Lamaran Aktif </a></li>
+                        <li class="<?php echo "$active14"; ?> "><a href="informasi_penerima_kapprog.php"> Riwayat Permintaan </a></li>
+                    </ul>
+                </li>
+
                 <li class="<?php echo "$active5"; ?> "><a href="kerja.php"><i class="fa fa-home"></i> <span>Testimoni Perusahaan</span></a></li>
 
             </ul>

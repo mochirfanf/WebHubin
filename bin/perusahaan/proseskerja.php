@@ -10,16 +10,25 @@
 if($_SESSION['level']=='perusahaan'){
 	if (!empty($_GET ["a"])) {
 		switch ($_GET ["a"]){
+      case "terima_kerja":
+      mysql_query(" UPDATE hb_lamar_kerja SET status='Lamaran Diterima' WHERE id_lamar=$_POST[id]") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
+                header('location:lamaranaktif.php');
+
+      break;
       case "update-prakerin":
 
 					$mulai		= anti_injection($_POST['mulai']);
 					$berakhir	= anti_injection($_POST['akhir']);
+          $seleksi  = anti_injection($_POST['seleksi']);
 
-					if(isset($_POST["seleksi"])){
-						$seleksi	= anti_injection($_POST['seleksi']);
+					if($seleksi=="Ya"){
+						$tanggal = $_POST['tanggal_seleksi'];
+            $tempat = anti_injection($_POST['tempat_seleksi']);
 					}else{
-						$seleksi="Tidak";
+            $tanggal = "0000-00-00";
+            $tempat = "-";
 					}
+
 
 					if(isset($_POST["jurusan"])){
 						$no=0;
@@ -78,11 +87,15 @@ if($_SESSION['level']=='perusahaan'){
 
                     $gaji = "Tidak";
                     $as = "Tidak";
-                    $seleksi="Tidak";
+                    $seleksi= anti_injection($_POST['seleksi']);
 
-                    if(isset($_POST["seleksi"])){
-                      $seleksi  = anti_injection($_POST['seleksi']);
-                    }
+                    if($seleksi=="Ya"){
+                        $tanggal = $_POST['tanggal_seleksi'];
+                        $tempat = anti_injection($_POST['tempat_seleksi']);
+                      }else{
+                        $tanggal = "0000-00-00";
+                        $tempat = "-";
+                      }
 
                     if(isset($_POST['gaji'])){
                         $gaji = $_POST['gaji'];
@@ -90,8 +103,6 @@ if($_SESSION['level']=='perusahaan'){
                     if(isset($_POST['asrama'])){
                         $as = $_POST['asrama'];
                     }
-
-
 
           if(isset($_POST["jurusan"])){
             $no=0;
@@ -108,22 +119,26 @@ if($_SESSION['level']=='perusahaan'){
                 $ajum["$no"] = "$jumlah";
               }
           }
-          
+          /*
           $c  = mysql_fetch_array(mysql_query("SELECT id_du FROM hb_du_permintaan_kerja WHERE id_du = '$_SESSION[id_du]' "));
           if (isset($c["id_du"])) {
             mysql_query("DELETE FROM hb_du_permintaan_kerja WHERE id_du = '$_SESSION[id_du]'");
             mysql_query("DELETE FROM hb_du_jumlah_permintaan_du_kerja WHERE id_du = '$_SESSION[id_du]'");
-          }
+          }*/
           for ($i=1; $i<=$no; $i++) {
-             mysql_query(" INSERT INTO hb_du_jumlah_permintaan_du_kerja(id_du, id_jurusan, jumlah_penerimaan, tahun_ajaran) VALUES ('$_SESSION[id_du]', '$ajur[$i]', '$ajum[$i]', '$_SESSION[tahun_ajaran]')")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+             mysql_query(" INSERT INTO hb_du_jumlah_permintaan_du_kerja(id_du, id_jurusan, jumlah_penerimaan, tahun_ajaran) VALUES ('$_SESSION[id_du]', '$ajur[$i]', '$ajur[$i]', '$_SESSION[tahun_ajaran]')")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
           }
 
+          mysql_query(" INSERT INTO hb_du_permintaan_kerja(id_du, tahun_ajaran, seleksi, status_permintaan, penanggung_jawab, cp, gaji, asrama, tempat_seleksi, tanggal_seleksi)
+                                 VALUES ('$_SESSION[id_du]', '$_SESSION[tahun_ajaran]', '$seleksi',  'Belum Terverifikasi' , '$nama_pj', '$contact', '$gaji', '$as', '$tempat', '$tanggal' )")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
 
+            $c  = mysql_fetch_array(mysql_query("SELECT id_du_kerja FROM hb_du_permintaan_kerja WHERE id_du = '$_SESSION[id_du]' ORDER BY id_du_kerja DESC LIMIT 1"));
 
-          mysql_query(" INSERT INTO hb_du_permintaan_kerja(id_du, tahun_ajaran, seleksi, status_permintaan, penanggung_jawab, cp, gaji, asrama)
-                                 VALUES ('$_SESSION[id_du]', '$_SESSION[tahun_ajaran]', '$seleksi',  'Belum Terverifikasi' , '$nama_pj', '$contact', '$gaji', '$as' )")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+            /*foreach($_POST["skill1"] as $skill){
+             mysql_query(" INSERT INTO hb_skill(id_du_kerja_prakerin,skill) VALUES ('$c[id_du_kerja]', '$skill')")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+           }*/
 
-
+          header('location:kerja.php');
         ?>
           <script>
             alert(" Status Telah Diperbaharui ");

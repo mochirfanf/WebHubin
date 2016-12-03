@@ -2,14 +2,14 @@
 
 include "../koneksidb.php";
 
-if($_SESSION['level']=='kapprog'){ 
+if($_SESSION['level']=='guru'){ 
     if ($_SESSION['tahun_ajaran']!='') {
         $title="Daftar Siswa yang Dimonitoring";
         $active ="";
         $active13 = "active";
         $navactive7 ="nav-active";
 
-        $data = mysql_query( "SELECT * FROM hb_prakerin WHERE saran_pembimbing = $_SESSION[username]");
+        $data = mysql_query( "SELECT * FROM hb_prakerin WHERE saran_pembimbing = $_SESSION[username] AND tahun_ajaran='$_SESSION[tahun_ajaran]'");
        
         include "leftside.php"; ?>
                 

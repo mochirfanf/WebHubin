@@ -93,7 +93,42 @@ $(document).ready(function() {
 });
 
 </script>
+<script>
 
+    $('#verifikasi_kerja').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget); // Button that triggered the modal
+
+        var recipient = button.data('iddu'); // Extract info from data-* attributes
+
+      
+
+        var modal = $(this);
+
+        modal.find("#iddu").val(recipient);
+
+
+    });
+
+    </script>
+    <script>
+
+    $('#tolak_kerja').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget); // Button that triggered the modal
+
+        var recipient = button.data('iddu'); // Extract info from data-* attributes
+
+      
+
+        var modal = $(this);
+
+        modal.find("#iddu").val(recipient);
+
+
+    });
+
+    </script>
 <script type="text/javascript" src="../js/ajax_daerah.js"></script>
   <link href="../css/admin.css" rel="stylesheet">
 </body>

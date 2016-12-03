@@ -2,14 +2,13 @@
 
 include "../koneksidb.php";
 
-if($_SESSION['level']=='kapprog'){ 
+if($_SESSION['level']=='guru'){ 
     if ($_SESSION['tahun_ajaran']!='') {
         $title="Daftar Siswa yang Dimonitoring";
         $active ="";
-        $active13 = "active";
-        $navactive7 ="nav-active";
-
-        $data = mysql_query( "SELECT * FROM hb_prakerin WHERE saran_pembimbing = $_SESSION[username]");
+        $active19 = "active";
+        $ac = "active";
+        $data = mysql_query( "SELECT * FROM hb_prakerin WHERE saran_pembimbing = $_SESSION[username] AND tahun_ajaran='$_SESSION[tahun_ajaran]'");
        
         include "leftside.php"; ?>
                 
@@ -35,7 +34,7 @@ if($_SESSION['level']=='kapprog'){
                         <th>Tempat Prakerin</th>
                         <th>Alamat Tempat Prakerin</th>
                         <th>Kota</th>
-                        <th>Penanggung Jawab</th>
+                        <th>Aksi</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -57,7 +56,9 @@ if($_SESSION['level']=='kapprog'){
                                         <td> $d4[nama_du]</td>
                                         <td> $d4[alamat]</td>
                                         <td> $d4[namakab]</td>
-                                        <td> $d4[nama_penanggung_jawab_umum]</td>
+                                        <td> <a href='detail_bimbingan.php?id=$d[nis]'>
+                                                            <button class='btn btn-sm btn-primary' type='button'><i class='fa fa-edit'></i> Bimbingan </button>
+                                                        </a></td>
                                     </tr>
                                     ";
                             }

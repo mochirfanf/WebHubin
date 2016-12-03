@@ -23,6 +23,9 @@
 				$siswa = mysql_query("SELECT * FROM siswa WHERE nis = '$username'");
 				$rsiswa = mysql_fetch_row($siswa);
 
+                $guru = mysql_query("SELECT * FROM guru WHERE nip_guru = '$username'");
+                $rguru = mysql_fetch_row($guru);
+
                 $userperusahaan  = mysql_query("SELECT * FROM hb_du_umum WHERE username='$username' AND password='$password' AND level='perusahaan' AND status='aktif' ");
                 $ruserperusahaan = mysql_fetch_row($userperusahaan);
 
@@ -107,7 +110,31 @@
                         header("location:perusahaan/index.php");
 
                 }
+                elseif($rguru > 0) {
 
+                    $c  = mysql_query("SELECT * FROM hb_login_operator WHERE nip_nis = '$username' and password='$password'");
+                    $crow = mysql_fetch_row($c);
+
+                    if ($crow>0) {
+                        $_SESSION['level'] = "guru";
+                        $_SESSION['username'] = $username;
+                        $_SESSION['password'] = $password;
+
+                        $j = mysql_fetch_array(mysql_query("SELECT * FROM hb_guru_jurusan WHERE nip_guru = '$username'"));
+                        $_SESSION['jurusan'] = $j["id_jurusan"];
+
+                        header("location:guru/index.php");
+                    }
+                    else{
+                        ?>
+                        <script>
+                            alert("LOGIN GAGAL\nUsername atau Password Salah");
+                            top.location = "login.php";
+                        </script>
+                        <?php
+                    }
+
+                }
 				else{
 					?>
                     <script>
@@ -125,6 +152,7 @@
 				$_SESSION['password']="";
 				$_SESSION['nip'] = "";
 				$_SESSION['tahun_ajaran'] ='';
+                $_SESSION['nis'] ='';
 				session_destroy();
 				header('location:login.php');
 			break;

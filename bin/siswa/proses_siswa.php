@@ -10,7 +10,58 @@
 if($_SESSION['level']=='siswa'){ 
 	if (!empty($_GET ["a"])) {
 		switch ($_GET ["a"]){
+			case "hapuskegiatan":
+				mysql_query("DELETE FROM hb_kegiatan_prakerin WHERE id_kegiatan ='$_POST[id]'")or die ("Ups! Gagal Dihapus, Silahkan Coba Lagi! ".mysql_error());
+
+				?>
+					<script>
+						alert("Kegiatan tersebut telah dihapus!");
+						window.history.go(-1);
+					</script><?php
+
+			break;
+			case "ubahkegiatanprakerin":
+		        $kegiatan = anti_injection($_POST['kegiatan']);
+		        $mingguke = anti_injection($_POST['mingguke']);
+
+		        mysql_query("UPDATE hb_kegiatan_prakerin SET jenis_kegiatan='$kegiatan', mingguke='$mingguke' WHERE id_kegiatan='$_POST[id]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+		        ?>
+					<script>
+						alert("Kegiatan tersebut telah diperbarui!");
+						window.history.go(-1);
+					</script><?php
+
+		     break;
+			case "tambahkegiatanprakerin":
+		        $kegiatan = anti_injection($_POST['kegiatan']);
+		        $mingguke = anti_injection($_POST['mingguke']);
+
+		        mysql_query(" INSERT INTO hb_kegiatan_prakerin(nis,jenis_kegiatan,mingguke) VALUES ('$_SESSION[username]','$kegiatan','$mingguke')") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+		        header("location:kegiatanprakerin.php");
+
+		     break;
+
+			case "lamarkerja":
+		        $iddukerja = anti_injection($_POST['id']);
+		        $portofolio = anti_injection($_POST['portofolio']);
+		        $tgl = date('Y-m-d');
+
+		        $namafolder="lampiran/";
+				$file_ext = substr($_FILES["lampiran"]["name"], strripos($_FILES["lampiran"]["name"], '.')); // strip name
+				    
+					$lam1 = $namafolder . basename($_FILES["lampiran"]["name"]);
+					$lam2 = $namafolder . basename($iddukerja."-".$tgl). $file_ext;				
+					if (!move_uploaded_file($_FILES['lampiran']['tmp_name'], $lam2))
+					{
+					   die("Failed Upload the File");
+					}
 			
+				
+
+		        mysql_query(" INSERT INTO hb_lamar_kerja(id_du_kerja, nis, tgl, portofolio, status,lampiran) VALUES ('$iddukerja','$_SESSION[username]', '$tgl', '$portofolio','Belum Diterima','$lam2')") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+		        header("location:lowongankerja.php");
+		     break;
+
 			case "pilihtempat":
 				if(isset($_POST['Tambahkan'])){
 					$id_du = anti_injection($_POST["id_du"]);

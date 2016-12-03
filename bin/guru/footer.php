@@ -103,22 +103,67 @@ $(document).ready(function() {
     })
 });
   </script>
+<script>
 
-      <script>
+    $('#pilihpem').on('show.bs.modal', function (event) {
 
-    $('#detail').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+
+        var recipient = button.data('nis'); // Extract info from data-* attributes
+
+      
+
+        var modal = $(this);
+
+        modal.find("#nis").val(recipient);
+
+
+    });
+
+    </script>
+    <script>
+
+    $('#tgl').on('show.bs.modal', function (event) {
 
       var button = $(event.relatedTarget); // Button that triggered the modal
-      var recipient = button.data('id'); // Extract info from data-* attributes
+      var recipient = button.data('du'); // Extract info from data-* attributes
       var modal = $(this);
         $.ajax({
             type: 'POST',
-            url: 'detailpekerjaan.php',
+            url: 'nilai.php',
             data: 'id='+recipient,
             dataType: 'json',
             success: function(result) {
-                modal.find("#id").val(recipient);
-                modal.find("#namadu").text(result['nama_du']);
+                modal.find("#id_du").val(recipient);
+                modal.find("#tgl").val(result['tgl_monitoring']);
+            }
+        })
+     
+
+    });
+
+    
+
+    </script>
+            <script>
+
+    $('#nilai').on('show.bs.modal', function (event) {
+
+      var button = $(event.relatedTarget); // Button that triggered the modal
+      var recipient = button.data('iddu'); // Extract info from data-* attributes
+      var modal = $(this);
+        $.ajax({
+            type: 'POST',
+            url: 'nilai.php',
+            data: 'id='+recipient,
+            dataType: 'json',
+            success: function(result) {
+                modal.find("#iddu").val(recipient);
+                modal.find("#nilai").val(result['nilai']);
+                modal.find("#kegiatan").val(result['kegiatan_siswa']);
+                modal.find("#yg_menerima").val(result['yang_menerima']);
+                modal.find("#masalah").val(result['masalah_yg_ditemukan']);
+                modal.find("#saran").val(result['saran']);
             }
         })
      
@@ -129,82 +174,7 @@ $(document).ready(function() {
 
     </script>
 
-<script>
-
-    $('#update').on('show.bs.modal', function (event) {
-
-      var button = $(event.relatedTarget); // Button that triggered the modal
-      var recipient = button.data('id'); // Extract info from data-* attributes
-      var modal = $(this);
-        $.ajax({
-            type: 'POST',
-            url: 'kegiatan.php',
-            data: 'id='+recipient,
-            dataType: 'json',
-            success: function(result) {
-                modal.find("#id").val(recipient);
-                modal.find("#kegiatan").text(result['jenis_kegiatan']);
-                modal.find("#mk").val(result['mingguke']);
-            }
-        })
-     
-
-    });
-
     
-
-    </script>
-
-<script>
-
-    $('#apply').on('show.bs.modal', function (event) {
-
-        var button = $(event.relatedTarget); // Button that triggered the modal
-
-        var recipient = button.data('id'); // Extract info from data-* attributes
-
-      
-
-        var modal = $(this);
-
-        modal.find("#id").val(recipient);
-
-
-    });
-
-    </script>
-
-    <script>
-
-    $('#hapus').on('show.bs.modal', function (event) {
-
-        var button = $(event.relatedTarget); // Button that triggered the modal
-
-        var recipient = button.data('id'); // Extract info from data-* attributes
-
-      
-
-        var modal = $(this);
-
-        modal.find("#id").val(recipient);
-
-
-    });
-
-    </script>
-
-    <script>
-$('#lampiran').bind('change', function() {
-
-  //this.files[0].size gets the size of your file.
-  if(this.files[0].size>5000000){
-        alert("File harus kurang dari 5Mb !");
-        $('#lampiran').val("");
-    }
-});
-
-
-</script>
   <link href="../css/admin.css" rel="stylesheet">
 </body>
 </html>
