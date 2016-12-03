@@ -1,6 +1,6 @@
 <?php 
 
 function formatDate($date){
-	return date('g:i a', strtotime($date));
+	return date('d M, g:i a', strtotime($date));
 }
 ?>

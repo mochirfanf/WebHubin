@@ -63,7 +63,7 @@ if($_SESSION['level']=='admin'){
                                         <td> $d[penanggung_jawab] <br> $d[cp]</td>
                                         <td>";
 
-                                                $query  = mysql_query("SELECT * FROM hb_du_jumlah_permintaan_du_kerja WHERE id_du='$d[id_du]' ");
+                                                $query  = mysql_query("SELECT * FROM hb_du_jumlah_permintaan_du_kerja WHERE id_du_kerja='$d[id_du_kerja]' ");
                                                 while ($x = mysql_fetch_array($query)) {
                                                     $j = mysql_fetch_array(mysql_query("SELECT * FROM jurusan WHERE id_jurusan='$x[id_jurusan]'"));
                                                     echo " $j[nama_jurusan] - $x[jumlah_penerimaan] orang <br>";

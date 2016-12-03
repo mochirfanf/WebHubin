@@ -10,6 +10,17 @@
 if($_SESSION['level']=='perusahaan'){
 	if (!empty($_GET ["a"])) {
 		switch ($_GET ["a"]){
+      case "tutup":
+
+      $qr = mysql_query("SELECT id_du_kerja FROM hb_du_permintaan_kerja WHERE id_du='$_SESSION[id_du]' ORDER BY id_du_kerja DESC LIMIT 1");
+      $dd = mysql_fetch_array($qr)or die(mysql_error());;
+
+      mysql_query(" UPDATE hb_du_permintaan_kerja SET status_permintaan='Ditutup' WHERE id_du_kerja='$dd[id_du_kerja]'") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
+      
+      header('location:kerja.php');
+
+      break;
+
       case "terima_kerja":
       mysql_query(" UPDATE hb_lamar_kerja SET status='Lamaran Diterima' WHERE id_lamar=$_POST[id]") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
                 header('location:lamaranaktif.php');
@@ -125,14 +136,16 @@ if($_SESSION['level']=='perusahaan'){
             mysql_query("DELETE FROM hb_du_permintaan_kerja WHERE id_du = '$_SESSION[id_du]'");
             mysql_query("DELETE FROM hb_du_jumlah_permintaan_du_kerja WHERE id_du = '$_SESSION[id_du]'");
           }*/
-          for ($i=1; $i<=$no; $i++) {
-             mysql_query(" INSERT INTO hb_du_jumlah_permintaan_du_kerja(id_du, id_jurusan, jumlah_penerimaan, tahun_ajaran) VALUES ('$_SESSION[id_du]', '$ajur[$i]', '$ajur[$i]', '$_SESSION[tahun_ajaran]')")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
-          }
+          
 
           mysql_query(" INSERT INTO hb_du_permintaan_kerja(id_du, tahun_ajaran, seleksi, status_permintaan, penanggung_jawab, cp, gaji, asrama, tempat_seleksi, tanggal_seleksi)
                                  VALUES ('$_SESSION[id_du]', '$_SESSION[tahun_ajaran]', '$seleksi',  'Belum Terverifikasi' , '$nama_pj', '$contact', '$gaji', '$as', '$tempat', '$tanggal' )")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
 
             $c  = mysql_fetch_array(mysql_query("SELECT id_du_kerja FROM hb_du_permintaan_kerja WHERE id_du = '$_SESSION[id_du]' ORDER BY id_du_kerja DESC LIMIT 1"));
+
+            for ($i=1; $i<=$no; $i++) {
+             mysql_query(" INSERT INTO hb_du_jumlah_permintaan_du_kerja(id_du_kerja, id_jurusan, jumlah_penerimaan, tahun_ajaran) VALUES ('$c[id_du_kerja]', '$ajur[$i]', '$ajur[$i]', '$_SESSION[tahun_ajaran]')")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+          }
 
             /*foreach($_POST["skill1"] as $skill){
              mysql_query(" INSERT INTO hb_skill(id_du_kerja_prakerin,skill) VALUES ('$c[id_du_kerja]', '$skill')")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());

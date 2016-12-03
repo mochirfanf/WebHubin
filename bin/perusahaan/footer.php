@@ -81,6 +81,8 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(result) {
                 modal.find("#id").val(recipient);
+                var add = '../images/uploads/'+result["foto"];
+                modal.find("#poto").attr('src',add);
                 modal.find("#namasiswa").text(result['nama_siswa']);
                 modal.find("#jur").text(result['nama_jurusan']);
                 modal.find("#ttl").text(result['tempat_lahir']);

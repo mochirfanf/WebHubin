@@ -45,7 +45,7 @@ if($_SESSION['level']=='siswa'){
         if(isset($_POST['submit'])){ 
         
         $msg = $_POST['msg'];
-        $tgl = date('Y-m-d');
+        $tgl = date('Y-m-d H:i:s');
         $query = "INSERT INTO hb_bimbingan (pengirim,penerima,pesan,tanggal) values ('$_SESSION[username]','$id','$msg','$tgl')";
         
         mysql_query($query);

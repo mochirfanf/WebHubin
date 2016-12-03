@@ -9,7 +9,7 @@ if($_SESSION['level']=='siswa'){
         $active19 = "active";
         $navactive22 ="nav-active";
 
-        $data = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan_kerja, hb_du_jumlah_permintaan_du_kerja WHERE status_permintaan='Sudah Terverifikasi' AND hb_du_umum.id_du=hb_du_permintaan_kerja.id_du AND hb_du_jumlah_permintaan_du_kerja.id_du=hb_du_permintaan_kerja.id_du AND hb_du_jumlah_permintaan_du_kerja.id_jurusan=$_SESSION[jurusan]");
+        $data = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan_kerja, hb_du_jumlah_permintaan_du_kerja WHERE status_permintaan='Sudah Terverifikasi' AND hb_du_umum.id_du=hb_du_permintaan_kerja.id_du AND hb_du_jumlah_permintaan_du_kerja.id_du_kerja=hb_du_permintaan_kerja.id_du_kerja AND hb_du_jumlah_permintaan_du_kerja.id_jurusan=$_SESSION[jurusan]");
         $data2 = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan  WHERE status_permintaan='Belum Terverifikasi' AND permintaan_du='Ya' AND hb_du_umum.id_du=hb_du_permintaan.id_du");
         $data3 = mysql_query( "SELECT * from hb_du_umum, hb_du_permintaan  WHERE status_permintaan='Belum Terverifikasi' AND permintaan_du='Ya'  AND hb_du_umum.id_du=hb_du_permintaan.id_du");
 
@@ -68,7 +68,7 @@ if($_SESSION['level']=='siswa'){
                                         <td> $d[penanggung_jawab] <br> $d[cp]</td>
                                         <td>";
 
-                                                $query  = mysql_query("SELECT * FROM hb_du_jumlah_permintaan_du_kerja WHERE id_du='$d[id_du]' ");
+                                                $query  = mysql_query("SELECT * FROM hb_du_jumlah_permintaan_du_kerja WHERE id_du_kerja='$d[id_du_kerja]' ");
                                                 while ($x = mysql_fetch_array($query)) {
                                                     $j = mysql_fetch_array(mysql_query("SELECT * FROM jurusan WHERE id_jurusan='$x[id_jurusan]'"));
                                                     echo " $j[nama_jurusan] - $x[jumlah_penerimaan] orang <br>";

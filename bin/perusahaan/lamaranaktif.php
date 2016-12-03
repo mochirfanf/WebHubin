@@ -8,7 +8,7 @@ if($_SESSION['level']=='perusahaan'){
         $active13 = "active";
         $navactive6 ="nav-active";
 
-        $terbr = mysql_query( "SELECT id_du_kerja from hb_du_permintaan_kerja WHERE id_du='$_SESSION[id_du]' ORDER BY id_du_kerja DESC LIMIT 1")or die(mysql_error());
+        $terbr = mysql_query( "SELECT id_du_kerja from hb_du_permintaan_kerja WHERE id_du='$_SESSION[id_du]' AND status_permintaan!='Ditutup'ORDER BY id_du_kerja DESC LIMIT 1 ")or die(mysql_error());
         $aa = mysql_fetch_array($terbr);
         $data = mysql_query( "SELECT * from hb_lamar_kerja INNER JOIN siswa ON hb_lamar_kerja.nis = siswa.nis WHERE id_du_kerja='$aa[id_du_kerja]'")or die(mysql_error());
 
@@ -113,7 +113,7 @@ if($_SESSION['level']=='perusahaan'){
                     <form class='form-horizontal form-label-left' method='POST' action='proses_siswa.php?a=lamarkerja' enctype='multipart/form-data'>
                         <div class='col-md-12'>
                             <div class='col-md-3'>
-                                <img src='../images/uploads/131.png'>
+                                <img id='poto' class='img-responsive' >
                             </div>
                             <div class='col-md-8 img-responsive'>
                                 <strong><h4 id='namasiswa'>Muhammad MuhMuhMuh</h4></strong>

@@ -729,7 +729,7 @@ if($_SESSION['level']=='admin'){
 			case "verifikasi_kerja":
 				$id=$_POST['iddu'];
 
-				mysql_query("UPDATE hb_du_permintaan_kerja SET status_permintaan='Sudah Terverifikasi' WHERE id_du='$id'")or die(mysql_error());
+				mysql_query("UPDATE hb_du_permintaan_kerja SET status_permintaan='Sudah Terverifikasi' WHERE id_du_kerja='$id'")or die(mysql_error());
 				?>
 				<script>
 						alert("Permintaan DU/DI Telah Diperbaharui");
@@ -740,7 +740,7 @@ if($_SESSION['level']=='admin'){
 			case "tolak_kerja":
 				$id=$_POST['iddu'];
 
-				mysql_query("UPDATE hb_du_permintaan_kerja SET status_permintaan='Verifikasi Ditolak' WHERE id_du='$id'");
+				mysql_query("UPDATE hb_du_permintaan_kerja SET status_permintaan='Verifikasi Ditolak' WHERE id_du_kerja='$id'");
 				?>
 				<script>
 						alert("Permintaan DU/DI Telah Diperbaharui");

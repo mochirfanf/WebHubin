@@ -33,13 +33,9 @@ if($_SESSION['level']=='perusahaan'){
             <div class="col-sm-12">
                 <section class="panel">
                 <?php
-                $ada  = mysql_fetch_row(mysql_query("SELECT * FROM hb_du_jumlah_permintaan_du_kerja WHERE id_du='$_SESSION[id_du]'"));
-
-                    if ($ada > 0) {
-
                             // Ini Informasi Kalo Perusahaan Udah Input 
 
-                            $x = mysql_fetch_array(mysql_query("SELECT * FROM hb_du_permintaan_kerja WHERE id_du='$_SESSION[id_du]'"));
+                            $x = mysql_fetch_array(mysql_query("SELECT * FROM hb_du_permintaan_kerja WHERE id_du='$_SESSION[id_du]' ORDER BY id_du_kerja DESC"));
 
                             if ($x["status_permintaan"] == "Verifikasi Ditolak" ) {
 
@@ -50,7 +46,7 @@ if($_SESSION['level']=='perusahaan'){
                                 <header class="panel-heading"> <big> Permintaan Lowongan Pekerjaan </big>
 
                                </header>
-                                <form class="form-horizontal form-label-left" method="POST" action="prosesperusahaan.php?a=permintaan_prakerin" enctype="multipart/form-data">
+                               <a href='#tutup' data-toggle='modal'><span style='margin: 10px' class='pull-right btn btn-danger btn-xs'> TUTUP PERMINTAAN </span></a><br>
 
                                     <div class="form-group">
                                         <br>
@@ -61,25 +57,20 @@ if($_SESSION['level']=='perusahaan'){
                                     </div><br><br>
                             <?php
                             }
-                            else{
+                            else if(($x["status_permintaan"] == "Sudah Terverifikasi" || $x["status_permintaan"] == "Belum Terverifikasi")){
 
                                 // Ini Yang Diterima 
 
-                                $di  = mysql_fetch_array(mysql_query("SELECT * FROM hb_du_permintaan_kerja WHERE id_du='$_SESSION[id_du]'"));?>
+                                $di  = mysql_fetch_array(mysql_query("SELECT * FROM hb_du_permintaan_kerja WHERE id_du='$_SESSION[id_du]' ORDER BY id_du_kerja DESC LIMIT 1"));?>
                                 <form method="POST" action="prosesperusahaan.php?a=hapus_permintaan" enctype="multipart/form-data">
                                 <header class="panel-heading"> <big> Permintaan Siswa Untuk Prakerin </big>
                                   <span class="pull-right">
                                     <small>Status : <?php echo "$di[status_permintaan]";?></small> &nbsp; &nbsp; &nbsp;
-                                    <?php 
-                                        if ($di["status_permintaan"] != "Terverifikasi") {
-                                           echo " <button  type='submit' name='HAPUSPERMINTAAN' value='HAPUSPERMINTAAN' class='pull-right btn btn-danger btn-xs'> HAPUS / EDIT PERMINTAAN </button>";
-                                        }
-                                    
-                                    ?>
+                                    <a href='#tutup' data-toggle='modal'><span class='pull-right btn btn-danger btn-xs'> TUTUP PERMINTAAN </span></a><br>
                                     </form>
                                  </span>
                                </header>
-                                <form class="form-horizontal form-label-left" method="POST" action="prosesperusahaan.php?a=permintaan_prakerin" enctype="multipart/form-data">
+                                <span class="form-horizontal form-label-left">
                                     <div class="form-group">
                                         <br><br>
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12"> Jurusan : </label>
@@ -87,7 +78,7 @@ if($_SESSION['level']=='perusahaan'){
                                             <table style="margin-top: 7px">
                                                 <?php
 
-                                                $query  = mysql_query("SELECT * FROM hb_du_jumlah_permintaan_du_kerja WHERE id_du='$_SESSION[id_du]' ");
+                                                $query  = mysql_query("SELECT * FROM hb_du_jumlah_permintaan_du_kerja WHERE id_du_kerja='$di[id_du_kerja]'");
 
                                                 if ($di["status_permintaan"] == "Terverifikasi") {
                                                     $query  = mysql_query("SELECT * FROM hb_du_penerima WHERE id_du='$_SESSION[id_du]' ");
@@ -104,14 +95,6 @@ if($_SESSION['level']=='perusahaan'){
 
                                                 ?>
                                             </table>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <br>
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Pelaksanaan Prakerin :</label>
-                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
-                                            
                                         </div>
                                     </div>
 
@@ -157,7 +140,7 @@ if($_SESSION['level']=='perusahaan'){
                                     </div>
                     <?php
                             }
-                        }else{
+                        else{
                             ?><?php
                         
                         ?>
@@ -274,7 +257,44 @@ if($_SESSION['level']=='perusahaan'){
             </div>
         </div>
     </div>
-<?php }?>
+
+
+
+
+
+<?php }
+?>
+                    <div class='modal fade' id='tutup' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+<?php
+
+                                    
+
+?>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                    <h4 class='modal-title' id='myModalLabel'>Tutup Lamaran</h4> </div>
+                <div class='modal-body'>
+                    <form class='form-horizontal form-label-left' method='POST' action='proseskerja.php?a=tutup' enctype='multipart/form-data'>
+                        
+                                    <div class='col-md-12'>
+                                        <b>Tutup Permintaan ?</span></b>
+                                    </div><?php
+                                    ?>
+                </div>
+                <div class='modal-footer'>
+                    <div class='form-group'>
+                        <div class='col-md-4 col-md-offset-8'>
+                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                            <button style=' margin-top: -5px;' value='Ya' id='send' type='submit' class='btn btn-success' name='pilih'>Ya</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--body wrapper end-->
     <?php       include "footer.php";
 
