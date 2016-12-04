@@ -39,10 +39,19 @@
 <section>
     <!-- left side start-->
     <div class="baru left-side sticky-left-side">
+<?php 
+    include "../koneksidb.php";
+    $iden = mysql_fetch_array(mysql_query("SELECT * FROM siswa WHERE nis='$_SESSION[nis]'"));
 
+?>
         <!--logo and iconic logo start-->
         <div class="logo">
-            <a href=""><img src="../images/logo.png" alt=""></a>
+            <div class='crc'></div>
+            <div class='leftcrc'><?php echo $iden['nama_siswa']?><br><br>
+                <div class='text-center'>
+                    <div class='levell'><?php echo strtoupper($_SESSION['level'])?></div>
+                </div>
+            </div>
         </div>
 
         <div class="logo-icon text-center">

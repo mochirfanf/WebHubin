@@ -41,7 +41,12 @@
 
         <!--logo and iconic logo start-->
         <div class="logo">
-            <a href=""><img src="../images/logo.png" alt=""></a>
+            <div class='crc'></div>
+            <div class='leftcrc'><?php echo "Muhammad Rahmatullah"?><br><br>
+                <div class='text-center'>
+                    <div class='levell'><?php echo strtoupper($_SESSION['level'])?></div>
+                </div>
+            </div>
         </div>
 
         <div class="logo-icon text-center">

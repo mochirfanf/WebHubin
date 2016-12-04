@@ -94,10 +94,10 @@ if($_SESSION['level']=='perusahaan'){
 
           $nama_pj        = anti_injection($_POST['nama_pj']);
           $contact        = anti_injection($_POST['contact']);
+          $gaji        = anti_injection($_POST['gaji']);
+          $lainnya        = anti_injection($_POST['lainnya']);
           //$fasilitas_lain = anti_injection($_POST['fasilitas_lain']);
 
-                    $gaji = "Tidak";
-                    $as = "Tidak";
                     $seleksi= anti_injection($_POST['seleksi']);
 
                     if($seleksi=="Ya"){
@@ -108,12 +108,6 @@ if($_SESSION['level']=='perusahaan'){
                         $tempat = "-";
                       }
 
-                    if(isset($_POST['gaji'])){
-                        $gaji = $_POST['gaji'];
-                    }
-                    if(isset($_POST['asrama'])){
-                        $as = $_POST['asrama'];
-                    }
 
           if(isset($_POST["jurusan"])){
             $no=0;
@@ -138,8 +132,8 @@ if($_SESSION['level']=='perusahaan'){
           }*/
           
 
-          mysql_query(" INSERT INTO hb_du_permintaan_kerja(id_du, tahun_ajaran, seleksi, status_permintaan, penanggung_jawab, cp, gaji, asrama, tempat_seleksi, tanggal_seleksi)
-                                 VALUES ('$_SESSION[id_du]', '$_SESSION[tahun_ajaran]', '$seleksi',  'Belum Terverifikasi' , '$nama_pj', '$contact', '$gaji', '$as', '$tempat', '$tanggal' )")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+          mysql_query(" INSERT INTO hb_du_permintaan_kerja(id_du, tahun_ajaran, seleksi, status_permintaan, penanggung_jawab, cp, gaji, lainnya, tempat_seleksi, tanggal_seleksi)
+                                 VALUES ('$_SESSION[id_du]', '$_SESSION[tahun_ajaran]', '$seleksi',  'Belum Terverifikasi' , '$nama_pj', '$contact', '$gaji', '$lainnya', '$tempat', '$tanggal' )")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
 
             $c  = mysql_fetch_array(mysql_query("SELECT id_du_kerja FROM hb_du_permintaan_kerja WHERE id_du = '$_SESSION[id_du]' ORDER BY id_du_kerja DESC LIMIT 1"));
 

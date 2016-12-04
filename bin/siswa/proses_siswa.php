@@ -10,6 +10,26 @@
 if($_SESSION['level']=='siswa'){ 
 	if (!empty($_GET ["a"])) {
 		switch ($_GET ["a"]){
+			case "update_profil":
+		        $tempat = anti_injection($_POST['tempat']);
+		        $tanggal = anti_injection($_POST['tanggal']);
+		        $jk = anti_injection($_POST['jk']);
+		        $alamat = anti_injection($_POST['alamat']);
+		        $agama = anti_injection($_POST['agama']);
+		        $goldar = anti_injection($_POST['goldar']);
+		        $email = anti_injection($_POST['email']);
+		        $no_telp = anti_injection($_POST['no_telp']);
+
+
+		        mysql_query("UPDATE siswa SET tempat_lahir='$tempat', tanggal_lahir='$tanggal', jenis_kelamin='$jk', alamat_siswa='$alamat', agama='$agama', gol_darah = '$goldar', email_siswa='$email', no_telepon='$no_telp' WHERE nis='$_SESSION[username]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+		        ?>
+					<script>
+						alert("Profil telah diperbarui!");
+						window.history.go(-1);
+					</script><?php
+
+		     
+			break;
 			case "hapuskegiatan":
 				mysql_query("DELETE FROM hb_kegiatan_prakerin WHERE id_kegiatan ='$_POST[id]'")or die ("Ups! Gagal Dihapus, Silahkan Coba Lagi! ".mysql_error());
 

@@ -40,9 +40,23 @@
     <!-- left side start-->
     <div class="baru left-side sticky-left-side">
 
+        <?php 
+    include_once("../koneksidb.php");
+    $iden = mysql_fetch_array(mysql_query("SELECT * FROM siswa WHERE nis='$_SESSION[username]'"));
+    if($iden['foto']==''){
+        $poto = '../images/uploads/img.png';
+    }else{
+        $poto = '../images/uploads/'.$iden['foto'];
+    }
+?>
         <!--logo and iconic logo start-->
         <div class="logo">
-            <a href=""><img src="../images/logo.png" alt=""></a>
+            <div class='crc' style="background-image:url('<?php echo $poto;?>')")></div>
+            <div class='leftcrc'><?php echo $iden['nama_siswa']?><br><br>
+                <div class='text-center'>
+                    <div class='levell'><?php echo strtoupper($_SESSION['level'])?></div>
+                </div>
+            </div>
         </div>
 
         <div class="logo-icon text-center">
@@ -75,7 +89,7 @@
             <ul class="nav nav-pills nav-stacked custom-nav">
                 <li class="<?php echo "$active"; ?> "><a href="homepage.php"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
 
-                <li class="<?php echo "$active1"; ?> "><a href=""><i class="fa fa-user"></i> <span> Edit Profile </span></a></li>
+                <li class="<?php echo "$active1"; ?> "><a href="identitas.php"><i class="fa fa-user"></i> <span> Edit Profile </span></a></li>
 
                 <li class="menu-list <?php echo "$navactive2"; ?>"><a href=""><i class="fa fa-building-o"></i> <span> Sistem Seleksi </span></a>
                     <ul class="sub-menu-list">

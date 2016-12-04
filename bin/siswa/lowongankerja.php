@@ -159,17 +159,70 @@ if($_SESSION['level']=='siswa'){
                     <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
                     <h4 class='modal-title' id='myModalLabel'>Detail Pekerjaan Kerja</h4> </div>
                 <div class='modal-body'>
-                    <form class='form-horizontal form-label-left' method='POST' action='proses_admin.php?a=tolak_kerja' enctype='multipart/form-data'>
+                    <form class='form-horizontal form-label-left' method='POST' action='' enctype='multipart/form-data'>
                         
-                        <div class="col-lg-8"><?php
+                        <div class="col-lg-12"><?php
                                     echo "<input type='hidden' id='id' name='id'>";
                                     ?>
-                                    <div class='col-md-8'>
-                                        <b><p id='namadu'></p></b>
+                                    <div class='col-md-12'>
+                                        <h3 id='namadu'></h3><br>
+
+                                <span class="form-horizontal form-label-left">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12"> Jurusan : </label>
+                                        <div class="col-lg-6 flat-green">
+                                            <span id='jurusan'></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Nama Penanggung Jawab :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <span id='penanggung'></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Kontak Penanggung Jawab :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                           <span id='cp'></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Jenis Seleksi :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <span id='jenis_seleksi'></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Tempat Seleksi :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <span id='tempat'></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Tanggal Seleksi :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <span id='tanggal'></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Gaji :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <span id='gaji'></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Lainnya :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <span id='lain'></span>
+                                        </div>
+                                    </div>
+
                                     </div>
                                 </div>
                 </div>
-                <div class='modal-footer'>
+                <div class='modal-footer' style='border: 0'>
                     <div class='form-group'>
                         <div class='col-md-4 col-md-offset-8'>
                             <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>

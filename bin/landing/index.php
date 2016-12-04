@@ -45,12 +45,12 @@ include "header.php";
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="scroll active"><a href="#home">Home</a></li>
+                        <li class="scroll"><a href="#lowongankerja">Lowongan Kerja</a></li>
                         <li class="scroll"><a href="#visi">Visi</a></li>
                         <li class="scroll"><a href="#misi">Misi</a></li>
                         <li class="scroll"><a href="#tentang-kami">Tentang Hubin</a></li>
                         <li class="scroll"><a href="#tujuan">Tujuan Prakerin</a></li>
                         <li class="scroll"><a href="#perusahaan">Perusahaan</a></li>
-                        <li class="scroll"><a href="#berita">Berita</a></li>
                         <li class="scroll"><a href="#kontak-kami">Kontak Kami</a></li>
                     </ul>
                 </div>
@@ -143,6 +143,50 @@ include "header.php";
             </div>
         </div>
     </div>
+    <section id="lowongankerja">
+        <div class="container">
+            <div class="heading wow fadeInDown" data-wow-duration="2000ms" data-wow-delay="500ms">
+                <div class="row">
+                    <div class="text-center col-md-12">
+                        
+              </div>
+            </div>
+          </div>
+
+            <div class="row">
+              <div class='col-md-12'>
+              <h2>Lowongan Pekerjaan</h2>
+              </div>
+              <div class='col-md-12 bxlow'>
+                    <?php
+                        $data = mysql_query("SELECT * FROM hb_du_permintaan_kerja WHERE status_permintaan='Sudah Terverifikasi' LIMIT 5");
+                        while($d = mysql_fetch_array($data)){
+                            ?>
+
+                            <div class='col-md-12 krj'>
+                                <span class='col-md-10 nmpt'><h4>PT. SENTRA KDSJNVDFNJBH</h4></span><span class='btn btn-primary col-md-2'>Detail Pekerjaan</span>
+                                <span class='col-md-10 det'>Mencari dfsdjknds vdvdsv sdvdsvsdv sefesfcsefc sefsedfs fefefcesdc</span><span class='btn btn-info col-md-2'>Lamar Pekerjaan</span>
+                            </div>
+                            <?php
+                        }
+                    ?>
+              </div>
+
+              <div class='col-md-12'>
+                <ul class="pagination" style='float: right;'>
+                  <li><a href="#">1</a></li>
+                  <li class="active"><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">5</a></li>
+                </ul>
+              </div>
+            </div>
+
+
+      </div>
+  </section>
+
     <section id="visi">
         <div class="container">
             <div class="heading wow fadeInDown" data-wow-duration="2000ms" data-wow-delay="500ms">

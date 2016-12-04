@@ -119,25 +119,44 @@ if($_SESSION['level']=='perusahaan'){
                                             <?php echo "$di[seleksi]";?>
                                         </div>
                                     </div>
+                                    <?php if($di['seleksi']=='Ya'){
+                                        ?>
                                     <div class="form-group">
                                         <br>
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12"> Fasilitas :</label>
-                                        <div class=" flat-green">
-                                            <div class="col-lg-1  flat-green">
-                                                <input name="gaji" value="Ya" type="checkbox"  <?php if( $di["gaji"]=="Ya"){echo "checked";} ?> > </div>
-                                                <label style="margin-left: -45px;"> Uang Saku</label>
-                                            <!-- <select name='uangsaku2'>
-                                                <option value='100.000-200.000' >100.000-200.000</option>
-                                                <option value='200.000-300.000' >200.000-300.000</option>
-                                            </select>-->
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Tempat Seleksi :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <?php echo "$di[tempat_seleksi]";?>
                                         </div>
-                                        <div class=" col-lg-offset-4 flat-green">
-                                            <div class="col-lg-1">
-                                                <input name="asrama" value="Ya" type="checkbox"  <?php if( $di["asrama"]=="Ya"){echo "checked";} ?> > </div>
-                                            <label style="margin-left: -28px;"> &nbsp; Asrama/Mess</label>
-                                        </div>
-                                        
                                     </div>
+                                    <div class="form-group">
+                                        <br>
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Tanggal Seleksi :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <?php echo "$di[tanggal_seleksi]";?>
+                                        </div>
+                                    </div>
+                                    
+                                    <?php
+                                    }
+                                    ?>
+                                    <div class="form-group">
+                                        <br>
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Gaji :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <?php echo "$di[gaji]";?>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <br>
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Deskripsi Pekerjaan :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <?php echo "$di[lainnya]";?>
+                                        </div>
+                                    </div>
+
+
+                                    <br>
                     <?php
                             }
                         else{
@@ -229,23 +248,28 @@ if($_SESSION['level']=='perusahaan'){
                             </div>
                         </div>
                         </div>
-                        <div class="form-group"><br><br>
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12"> Fasilitas :</label>
+                        <div class="form-group"><br>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12"> Gaji :</label>
                             <div class=" flat-green">
-                                <div class="col-lg-1  flat-green">
-                                    <input name="gaji" value="Ya" type="checkbox" > </div>
-                                <label style="margin-left: -45px;"> Uang Saku</label>
-                                <!--<select name='uangsaku2'>
-                                    <option value='100.000-200.000' >100.000-200.000</option>
-                                    <option value='200.000-300.000' >200.000-300.000</option>
-                                </select>-->
-                            </div>
-                            <div class=" col-lg-offset-3 flat-green">
-                                <div class="col-lg-1">
-                                    <input name="asrama" value="Ya" type="checkbox"  > </div>
-                                <label style="margin-left: -28px;"> &nbsp; Asrama/Mess</label>
+                                <div class="col-lg-6  flat-green">
+                                <select name='gaji' class="form-control">
+                                    <option value='Belum Ditentukan' > Belum Ditentukan</option>
+                                    <option value='100.000-200.000' >1000.000-2000.000</option>
+                                    <option value='200.000-300.000' >2000.000-3000.000</option>
+                                    <option value='>3000.000' > >3000.000</option>
+                                </select>
                             </div>
                         </div>
+                        </div>
+
+                        <div class="form-group">
+                            <br>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Keterangan Lainnya :</label>
+                            <div class="col-lg-6 flat-green">
+                                <textarea type="text" class="form-control" name="lainnya" placeholder="Keterangan Lainnya"></textarea>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                         <div class="col-lg-offset-8 col-lg-10">
                             <br><br>
