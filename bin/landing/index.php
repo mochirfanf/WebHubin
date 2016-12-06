@@ -11,8 +11,19 @@ include "header.php";
                   <div class="caption">
                     <h1 style="margin-bottom: 20px; margin-top: 75px; font-size: 50px;" class="animated fadeInLeftBig">Selamat Datang <font style="text-transform:lowercase" > di </font> <span style="color:#1DD8A5">HUBIN</span></h1>
                     <p style="color: #fff; text-transform: capitalize;" class="animated fadeInRightBig"><font style="font-weight:400; color: #37ae8e;">HUBUNGAN INDUSTRI</font> SMKN 1 CIMAHI</p>
-                    <a data-scroll class="btn btn-start animated fadeInUpBig" href="#visi">Lihat Selengkapnya</a>
+                    <?php
+                        if(isset($_SESSION['level'])){
+                            ?>
+                            <a data-scroll class="btn btn-start animated fadeInUpBig" href='<?php echo'../'. $_SESSION['level'].'/index.php';?>'>Dashboard</a>
+                            <?php
+                        }
+                        else{
+                    ?>
+                    <a data-scroll class="btn btn-start animated fadeInUpBig" data-toggle="modal" data-target="#login">Login</a>
                     <a data-scroll class="btn btn-start animated fadeInUpBig"  data-toggle="modal" data-target="#register">Lakukan Kerjasama</a>
+                    <?php
+                }
+                ?>
                   </div>
                 </div>
                 <div class="item" style="background-image: url(images/slider/2.jpg)">
@@ -21,16 +32,38 @@ include "header.php";
                     <h1 style=" color:#fff; margin-top:-20px; font-size: 40px; margin-bottom:60px; " class="animated fadeInRightBig"> Praktek Kerja Industri </h1>
                     <p style="color: #fff; text-transform: capitalize;" class="animated fadeInLeftBig"><font style="font-weight:400; color: #1EF2B8;">HUBUNGAN INDUSTRI</font> SMKN 1 CIMAHI</p>
 
-                    <a data-scroll class="btn btn-start animated fadeInUpBig" href="#visi">Lihat Selengkapnya</a>
+                    <?php
+                        if(isset($_SESSION['level'])){
+                            ?>
+                            <a data-scroll class="btn btn-start animated fadeInUpBig" href='<?php echo'../'. $_SESSION['level'].'/index.php';?>'>Dashboard</a>
+                            <?php
+                        }
+                        else{
+                    ?>
+                    <a data-scroll class="btn btn-start animated fadeInUpBig" data-toggle="modal" data-target="#login">Login</a>
                     <a data-scroll class="btn btn-start animated fadeInUpBig"  data-toggle="modal" data-target="#register">Lakukan Kerjasama</a>
+                    <?php
+                }
+                ?>
                   </div>
                 </div>
                 <div class="item" style="background-image: url(images/slider/3.jpg)">
                   <div class="caption">
                     <h1 class="animated fadeInLeftBig">SESUATU YANG <span style="color:#1DD8A5">BARU</span></h1>
                     <p style="color: #fff; text-transform: capitalize;" class="animated fadeInRightBig"><font style="font-weight:400; color: #1EF2B8;">HUBUNGAN INDUSTRI</font> SMKN 1 CIMAHI</p>
-                    <a data-scroll class="btn btn-start animated fadeInUpBig" href="#visi">Lihat Selengkapnya</a>
+                    <?php
+                        if(isset($_SESSION['level'])){
+                            ?>
+                            <a data-scroll class="btn btn-start animated fadeInUpBig" href='<?php echo'../'. $_SESSION['level'].'/index.php';?>'>Dashboard</a>
+                            <?php
+                        }
+                        else{
+                    ?>
+                    <a data-scroll class="btn btn-start animated fadeInUpBig" data-toggle="modal" data-target="#login">Login</a>
                     <a data-scroll class="btn btn-start animated fadeInUpBig"  data-toggle="modal" data-target="#register">Lakukan Kerjasama</a>
+                    <?php
+                }
+                ?>
                   </div>
                 </div>
             </div> <a class="left-control" href="#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a> <a class="right-control" href="#home-slider" data-slide="next"><i class="fa fa-angle-right"></i></a> <a id="tohash" href="#services"><i class="fa fa-angle-down"></i></a> </div>
@@ -143,6 +176,133 @@ include "header.php";
             </div>
         </div>
     </div>
+
+
+
+
+
+    <div class='modal fade' id='login' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                    <h4 class='modal-title' id='myModalLabel'>Login</h4> </div>
+                <div class='modal-body'>
+                    <form class='form-horizontal form-label-left' method='POST' action='../proses.php?a=login' enctype='multipart/form-data'>
+                        <div class='item form-group'>
+                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Username : <span class='required'></span> </label>
+                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <input class='form-control col-md-7 col-xs-12' name='username'  placeholder='Username' type='text' required> </div>
+                        </div>
+                        <div class='item form-group'>
+                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Password :<span class='required'></span> </label>
+                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <input class='form-control col-md-7 col-xs-12' name='password'  placeholder='Password' type='password' required> </div>
+                        </div>
+                        <div class='modal-footer'>
+                    <div class='form-group'>
+                        <div class='col-md-4 col-md-offset-8'>
+                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                            <button style=' margin-top: -5px;' value='login' id='send' type='submit' class='btn btn-success' name='login'>Login</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+            <div class='modal fade' id='detail' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+<?php
+
+                                    
+
+?>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                    <h4 class='modal-title' id='myModalLabel'>Detail Pekerjaan Kerja</h4> </div>
+                <div class='modal-body'>
+                    <form class='form-horizontal form-label-left' method='POST' action='' enctype='multipart/form-data'>
+                        
+                        <div class="col-lg-12"><?php
+                                    echo "<input type='hidden' id='id' name='id'>";
+                                    ?>
+                                    <div class='col-md-12'>
+                                        <h3 id='namadu'></h3><br>
+
+                                <span class="form-horizontal form-label-left">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12"> Jurusan : </label>
+                                        <div class="col-lg-6 flat-green">
+                                            <span id='jurusan'></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Nama Penanggung Jawab :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <span id='penanggung'></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Kontak Penanggung Jawab :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                           <span id='cp'></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Jenis Seleksi :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <span id='jenis_seleksi'></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Tempat Seleksi :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <span id='tempat'></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Tanggal Seleksi :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <span id='tanggal'></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Gaji :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <span id='gaji'></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Lainnya :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <span id='lain'></span>
+                                        </div>
+                                    </div>
+
+                                    </div>
+                                </div>
+                </div>
+                <div class='modal-footer' style='border: 0'>
+                    <div class='form-group'>
+                        <div class='col-md-4 col-md-offset-8'>
+                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                            <button style=' margin-top: -5px;' value='pilih' id='send' type='submit' class='btn btn-success' name='pilih'>Pilih</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <section id="lowongankerja">
         <div class="container">
             <div class="heading wow fadeInDown" data-wow-duration="2000ms" data-wow-delay="500ms">
@@ -159,13 +319,15 @@ include "header.php";
               </div>
               <div class='col-md-12 bxlow'>
                     <?php
-                        $data = mysql_query("SELECT * FROM hb_du_permintaan_kerja WHERE status_permintaan='Sudah Terverifikasi' LIMIT 5");
+                        $data = mysql_query("SELECT * FROM hb_du_permintaan_kerja INNER JOIN hb_du_umum ON hb_du_permintaan_kerja.id_du = hb_du_umum.id_du WHERE status_permintaan='Sudah Terverifikasi' LIMIT 3");
                         while($d = mysql_fetch_array($data)){
                             ?>
 
                             <div class='col-md-12 krj'>
-                                <span class='col-md-10 nmpt'><h4>PT. SENTRA KDSJNVDFNJBH</h4></span><span class='btn btn-primary col-md-2'>Detail Pekerjaan</span>
-                                <span class='col-md-10 det'>Mencari dfsdjknds vdvdsv sdvdsvsdv sefesfcsefc sefsedfs fefefcesdc</span><span class='btn btn-info col-md-2'>Lamar Pekerjaan</span>
+                                <span class='col-md-10 nmpt'><h4><?php echo $d['nama_du']?></h4></span>
+                                <a href='#detail' data-toggle='modal' data-id='<?php echo $d['id_du_kerja']?>'><span class='btn btn-primary col-md-2'>Detail Pekerjaan</a>
+                                </span>
+                                <span class='col-md-10 det'><?php echo substr($d['lainnya'],0,50)?></span><span class='btn btn-info col-md-2'>Lamar Pekerjaan</span>
                             </div>
                             <?php
                         }
@@ -174,11 +336,15 @@ include "header.php";
 
               <div class='col-md-12'>
                 <ul class="pagination" style='float: right;'>
-                  <li><a href="#">1</a></li>
-                  <li class="active"><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
+                <?php
+                    $jm = mysql_num_rows(mysql_query("SELECT * FROM hb_du_permintaan_kerja INNER JOIN hb_du_umum ON hb_du_permintaan_kerja.id_du = hb_du_umum.id_du WHERE status_permintaan='Sudah Terverifikasi'"));
+                    $total = ceil($jm/3);
+                    for($a=0;$a<$total;$a++){
+                ?>
+                  <li><a class="active" href="#">1</a></li>
+                  <?php
+                    }
+                  ?>
                 </ul>
               </div>
             </div>

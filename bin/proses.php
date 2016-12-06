@@ -154,7 +154,7 @@
 				$_SESSION['tahun_ajaran'] ='';
                 $_SESSION['nis'] ='';
 				session_destroy();
-				header('location:login.php');
+				header('location:landing/index.php');
 			break;
 
 

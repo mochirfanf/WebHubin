@@ -39,12 +39,20 @@
 <section>
     <!-- left side start-->
     <div class="baru left-side sticky-left-side">
+<?php 
+    include_once("../koneksidb.php");
+    $iden = mysql_fetch_array(mysql_query("SELECT * FROM guru WHERE nip_guru='$_SESSION[username]'"));
 
+?>
         <!--logo and iconic logo start-->
         <div class="logo">
-            <a href=""><img src="../images/logo.png" alt=""></a>
+            <div class='crc'></div>
+            <div class='leftcrc'><?php echo $iden['nama_guru']?><br><br>
+                <div class='text-center'>
+                    <div class='levell'><?php echo strtoupper($_SESSION['level'])?></div>
+                </div>
+            </div>
         </div>
-
         <div class="logo-icon text-center">
             <a href=""><img src="../images/logo_icon.png" alt=""></a>
         </div>
@@ -73,6 +81,7 @@
 
             <!--sidebar nav start-->
             <ul class="nav nav-pills nav-stacked custom-nav">
+            <li><a href="../landing/index.php"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
                 <li class="<?php echo "$active1"; ?> "><a href="homepage.php"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
                 <li class="menu-list <?php echo "$navactive5"; ?>"><a href=""><i class="fa fa-building-o"></i> <span> Data DU / DI</span></a>
                     <ul class="sub-menu-list">

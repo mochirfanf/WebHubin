@@ -86,6 +86,7 @@
 
              <!--sidebar nav start-->
             <ul class="nav nav-pills nav-stacked custom-nav">
+            <li><a href="../landing/index.php"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
                 <li class="<?php echo "$active"; ?> "><a href="homepage.php"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
 
                 <li class="<?php echo "$active1"; ?> "><a href="identitas.php"><i class="fa fa-user"></i> <span> Edit Profile </span></a></li>
@@ -126,7 +127,7 @@
                     </ul>
                 </li> -->
 
-                <li class="<?php echo "$active10"; ?> "><a href=""><i class="fa fa-building-o"></i> <span>Lain - Lain </span></a></li>
+                <li class="<?php echo "$active10"; ?> "><a href="../proses.php?a=logout"><i class="fa fa-building-o"></i> <span>Logout </span></a></li>
 
             </ul>
             <!--sidebar nav end-->

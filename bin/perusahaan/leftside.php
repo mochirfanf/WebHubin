@@ -39,10 +39,20 @@
     <!-- left side start-->
     <div class="baru left-side sticky-left-side">
 
+
+        <?php 
+    include_once("../koneksidb.php");
+    $iden = mysql_fetch_array(mysql_query("SELECT * FROM hb_du_umum WHERE username='$_SESSION[username]'"));
+    //if($iden['foto']==''){
+        $poto = '../images/uploads/img.png';
+   // }else{
+    //    $poto = '../images/uploads/'.$iden['foto'];
+    //}
+?>
         <!--logo and iconic logo start-->
         <div class="logo">
-            <div class='crc'></div>
-            <div class='leftcrc'><?php echo "Muhammad Rahmatullah"?><br><br>
+            <div class='crc' style="background-image:url('<?php echo $poto;?>')")></div>
+            <div class='leftcrc'><?php echo $iden['nama_du']?><br><br>
                 <div class='text-center'>
                     <div class='levell'><?php echo strtoupper($_SESSION['level'])?></div>
                 </div>
@@ -77,6 +87,7 @@
 
             <!--sidebar nav start-->
             <ul class="nav nav-pills nav-stacked custom-nav">
+            <li><a href="../landing/index.php"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
                 <li class="<?php echo "$active"; ?> "><a href="homepage.php"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
                 <li class="<?php echo "$active2"; ?> "><a href="identitas.php"><i class="fa fa-home"></i> <span>Identitas Perusahaan</span></a></li>
                 <li class="<?php echo "$active3"; ?> "><a href="prakerin.php"><i class="fa fa-home"></i> <span>Prakerin</span></a></li>

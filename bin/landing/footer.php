@@ -55,6 +55,43 @@
         });
     });
 </script>
+
+     <script>
+
+    $('#detail').on('show.bs.modal', function (event) {
+
+      var button = $(event.relatedTarget); // Button that triggered the modal
+      var recipient = button.data('id'); // Extract info from data-* attributes
+      var modal = $(this);
+        $.ajax({
+            type: 'POST',
+            url: 'detailpekerjaan.php',
+            data: 'id='+recipient,
+            dataType: 'json',
+            success: function(result) {
+                modal.find("#id").val(recipient);
+                modal.find("#namadu").text(result['nama_du']);
+                var data = result['jur'];
+                var arr = data.split(',');
+                modal.find("#jurusan").html(arr[0]+"<br>"+arr[1]);
+                modal.find("#penanggung").text(result['penanggung_jawab']);
+                modal.find("#cp").text(result['cp']);
+                modal.find("#jenis_seleksi").text(result['seleksi']);
+                modal.find("#tempat").text(result['tempat_seleksi']);
+                modal.find("#tanggal").text(result['tanggal_seleksi']);
+                modal.find("#gaji").text(result['gaji']);
+                modal.find("#lain").text(result['lainnya']);
+
+            }
+        })
+     
+
+    });
+
+    
+
+    </script>
+    
 </body>
 
 </html>

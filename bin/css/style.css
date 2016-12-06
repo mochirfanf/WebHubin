@@ -445,7 +445,7 @@ h5.left-nav-title {
 
 .left-side-collapsed .custom-nav li a span {
     position: absolute;
-    background: #fff;
+    background: #57c1a2;
     padding: 10px;
     left: 52px;
     top: 0;
@@ -4729,4 +4729,27 @@ ol.comment-list {
     font-size: 8pt;
     padding: 2px 5px;
     border-radius: 10px;
+}
+.bpk{
+    background-color: #aee1d2;
+    height: 200px;
+    border-radius: 10px;
+}
+.pp{
+    padding: 10px;
+}
+.hdl{
+    font-size: 15pt;
+    color: #fff;
+    font-weight: 100;
+    padding-top:20px;
+}
+.hpt{
+    border-bottom: 2px dotted #fff;
+    padding-top: 10px;
+}
+.blam{
+    color:#3c3c3c;
+    padding: 15px;
+    font-size: 12pt;
 }
