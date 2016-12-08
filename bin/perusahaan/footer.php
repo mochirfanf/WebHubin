@@ -58,7 +58,7 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append("<div class='form-inline' style='width:800px;;float:left'><br><div><?php echo "<select required class='form-control m-bot15' name='jurusan[]' id='jur[]' style='float:left'> <option value=''> * Pilih Jurusan * </option>";  $jurusan = mysql_query("SELECT * FROM jurusan"); while($j = mysql_fetch_array($jurusan)){ echo " <option value='$j[id_jurusan]'> $j[nama_jurusan] </option>"; } echo " </select>"; ?> <input type='number' class='form-control' style='width:80px;float:left' name='jumlah[]' id='jl[]' placeholder='Jumlah' required> <a href='#' class='remove_field'><button style=' margin-left:10px; 'class='btn btn-xs btn-danger add_field_button'><i class='fa fa-times-circle'></i></button></a></div></div><div class='col-md-9 col-md-offset-3' id='skill[]'></div>"); //add input box
+            $(wrapper).append("<div class='form-inline' style='width:800px;;float:left'><br><div><?php echo "<select required class='form-control m-bot15 sk' name='jurusan[]' id='jur[]' style='float:left'> <option value=''> * Pilih Jurusan * </option>";  $jurusan = mysql_query("SELECT * FROM jurusan"); while($j = mysql_fetch_array($jurusan)){ echo " <option value='$j[id_jurusan]'> $j[nama_jurusan] </option>"; } echo " </select>"; ?> <input type='number' class='form-control' style='width:80px;float:left' name='jumlah[]' id='jl[]' placeholder='Jumlah' required> <a href='#' class='remove_field'><button style=' margin-left:10px; 'class='btn btn-xs btn-danger add_field_button'><i class='fa fa-times-circle'></i></button></a></div></div></div><div class='col-md-12' style='padding:0'><div class='col-md-9' style='padding:0 10px 0 0'><input type='text' name='skill[]' placeholder='Web,Teknisi,Android' class='form-control'></div><div class='col-md-1'  style='padding:0'><button class='btn btn-info'>RPL</button></div><div class='col-md-12' style='padding:0'><small style='color: #D9534F'>Pisahkan Skill dengan Koma</small></div></div>"); //add input box
         }
     });
 
@@ -151,36 +151,16 @@ $(document).ready(function() {
         $("#selek").css("display","none");
     }
 });
-/*
-$( "#jur" ).change(function() {
-    alert("a");
-    if(this.value==1){
-        $("#skill1").empty();
-        $("#skill1").append("<label class='control-label'>Skill : </label><table><tr><td><input type='checkbox' name='skill1[] value='Desain Grafis'> Desain Grafis</td><td>&emsp;</td><td><input type='checkbox' name='skill1[]' value='Web Desain'> Web Desain</td><td><input type='text' name='skill1[]' placeholder='Skill Lain'></tr></table><br><br>");
-    }else if(this.value==2){
-        $("#skill1").empty();
-        $("#skill1").append("<label class='control-label'>Skill : </label><table><tr><td><input type='checkbox'> Gambar Mekanik</td><td>&emsp;</td><td><input type='checkbox'> Proses</td></tr></table>");
-    }
-});
-*//*
-$('select').live('change', function() {
+
+$('select.sk').live('change', function() {
     var index = $('select').index(this);
     if(this.value==1){
-        $("#skill1").empty();
-        $("#skill1").append("<label class='control-label'>Skill : </label><table><tr><td><input type='checkbox' name='skill1[] value='Desain Grafis'> Desain Grafis</td><td>&emsp;</td><td><input type='checkbox' name='skill1[]' value='Web Desain'> Web Desain</td><td><input type='text' name='skill1[]' placeholder='Skill Lain'></tr></table><br><br>");
+        
     }else if(this.value==2){
-        $("#skill1").empty();
-        $("#skill1").append("<label class='control-label'>Skill : </label><table><tr><td><input type='checkbox'> Gambar Mekanik</td><td>&emsp;</td><td><input type='checkbox'> Proses</td></tr></table>");
+        
     }
 });
-/*
-$('input').live('change', function() {
-    var index = $('input').index(this);
-    $('input').each(function(i) {
-        alert(index);
-    });
-});
-*/
+
 $("#plus1").click(function(){
     $("#p2").append("<div class='form-inline' style='width:800px;;float:left'><br><div><?php echo "<select required class='form-control m-bot15' name='jurusan[]' style='float:left'> <option value=''> * Pilih Jurusan * </option>";  $jurusan = mysql_query("SELECT * FROM jurusan"); while($j = mysql_fetch_array($jurusan)){ echo " <option value='$j[id_jurusan]'> $j[nama_jurusan] </option>"; } echo " </select>"; ?> <input type='number' class='form-control' style='width:80px;float:left' name='jumlah[]' placeholder='Jumlah' required></div></div>");
 });

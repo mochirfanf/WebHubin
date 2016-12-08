@@ -213,24 +213,30 @@ if($_SESSION['level']=='perusahaan'){
                         <div class="form-group">
                             <br><br>
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Permintaan Jurusan : </label>
-                                <div class="input_fields_wrap col-lg-1">
-                                    <button class="btn btn-danger add_field_button"><i class='fa fa-plus-square'></i></button>
-                                </div>
+                                                        <div class="input_fields_wrap col-lg-1">
+                                                            <button class="btn btn-danger add_field_button"><i class='fa fa-plus-square'></i></button>
+                                                        </div>
 
-                                <div style="margin-left: -50px;"  class="col-lg-4"><?php
-                                    $name = "";
-                                    echo "<select required class='form-control m-bot15' name='jurusan[]'>
-                                            <option value=''> * Pilih Jurusan * </option>";
-                                                $jurusan = mysql_query("SELECT * FROM jurusan");
-                                                while($j = mysql_fetch_array($jurusan)){
-                                     echo " <option value='$j[id_jurusan]'> $j[nama_jurusan] </option>";
-                                                }
-                                    echo "</select>";?>
-                                </div>
+                                                        <div style="margin-left: -50px;"  class="col-lg-4">
+                                                            <?php
+                                                            $name = "";
+                                                             echo "<select class='form-control m-bot15' name='jurusan[]'>
+                                                                      <option value=''> * Pilih Jurusan * </option>";
+                                                                        $jurusan = mysql_query("SELECT * FROM jurusan");
+                                                                        while($j = mysql_fetch_array($jurusan)){
+                                                             echo " <option value='$j[id_jurusan]'> $j[nama_jurusan] </option>";
+                                                                        }
+                                                                     echo "
+                                                                  </select>";
+                                                            ?>
 
-                                <div style="margin-left: -25px;"  class="col-lg-2">
-                                    <input type="number" class="form-control" name="jumlah[]" placeholder="Jumlah" required>
-                                </div>
+                                                        </div>
+                                                        <div style="margin-left: -25px;"  class="col-lg-1">
+                                                            <input type="text" class="form-control" name="jumlah[]" placeholder="Jumlah">
+                                                        </div>
+                                                        <div class="input_fields col-md-6 col-md-offset-3">
+                                                            
+                                                        </div>
                         </div>
                         <div class="form-group">
                             <br>

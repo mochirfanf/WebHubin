@@ -95,9 +95,9 @@ if($_SESSION['level']=='siswa'){
                             </div>
                             <div class="form-group">
                                 <br>
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12"> Alasan Memilih :</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12"> Portofolio :</label>
                                 <div class="col-lg-6 flat-green">
-                                    <textarea class="form-control" name="alasan" rows="10"> Alasan saya memilih Prakerin di tempat ini karena ... </textarea>
+                                    <textarea class="form-control" name="alasan" rows="10"> Berikut Portofolio yang saya miliki : </textarea>
                                 </div>
                             </div>
                             <div class="form-group">

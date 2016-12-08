@@ -178,7 +178,7 @@ if($_SESSION['level']=='perusahaan'){
                                                         <div style="margin-left: -50px;"  class="col-lg-4">
                                                             <?php
                                                             $name = "";
-                                                             echo "<select class='form-control m-bot15' name='jurusan[]'>
+                                                             echo "<select class='form-control m-bot15 sk' name='jurusan[]'>
                                                                       <option value=''> * Pilih Jurusan * </option>";
                                                                         $jurusan = mysql_query("SELECT * FROM jurusan");
                                                                         while($j = mysql_fetch_array($jurusan)){
@@ -191,6 +191,17 @@ if($_SESSION['level']=='perusahaan'){
                                                         </div>
                                                         <div style="margin-left: -25px;"  class="col-lg-1">
                                                             <input type="text" class="form-control" name="jumlah[]" placeholder="Jumlah">
+                                                        </div>
+                                                        <div class='col-md-5 col-md-offset-3'>
+                                                            <div class='col-md-11' style='padding:0 10px 0 0'>
+                                                                <input type="text" name="skill[]" placeholder="Web,Teknisi,Android" class="form-control">
+                                                            </div>
+                                                            <div class='col-md-1'  style='padding:0'>
+                                                                <button class='btn btn-info'>RPL</button>
+                                                            </div>
+                                                            <div class='col-md-12' style='padding:0'>
+                                                                <small style='color: #D9534F'>Pisahkan Skill dengan Koma</small>
+                                                            </div>
                                                         </div>
                                                         <div class="input_fields col-md-6 col-md-offset-3">
                                                             

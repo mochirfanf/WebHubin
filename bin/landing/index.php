@@ -78,12 +78,8 @@ include "header.php";
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="scroll active"><a href="#home">Home</a></li>
+                        <li class="scroll"><a href="#prakerin">Prakerin</a></li>
                         <li class="scroll"><a href="#lowongankerja">Lowongan Kerja</a></li>
-                        <li class="scroll"><a href="#visi">Visi</a></li>
-                        <li class="scroll"><a href="#misi">Misi</a></li>
-                        <li class="scroll"><a href="#tentang-kami">Tentang Hubin</a></li>
-                        <li class="scroll"><a href="#tujuan">Tujuan Prakerin</a></li>
-                        <li class="scroll"><a href="#perusahaan">Perusahaan</a></li>
                         <li class="scroll"><a href="#kontak-kami">Kontak Kami</a></li>
                     </ul>
                 </div>
@@ -302,6 +298,25 @@ include "header.php";
             </div>
         </div>
     </div>
+
+    <section id="prakerin">
+        <div class="container">
+            <div class="heading wow fadeInDown" data-wow-duration="2000ms" data-wow-delay="500ms">
+                <div class="row">
+                    <div class="text-center col-md-12">
+                        
+              </div>
+            </div>
+          </div>
+
+            <div class="row">
+              <div class='col-md-12'>
+              <h2>Prakerin</h2>
+              </div>
+              <div class='col-md-12 bxlow'>
+            </div>
+            </div>
+  </section>
 
     <section id="lowongankerja">
         <div class="container">
@@ -539,37 +554,6 @@ include "header.php";
             </div>
         </div>
     </section>
-    <section id="perusahaan">
-        <div class="container">
-            <div class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                <div class="row">
-                    <div class="text-center col-sm-8 col-sm-offset-2">
-                        <h2>Kerjasama dengan SMKN 1 Cimahi</h2> </div>
-                </div>
-            </div>
-            <div class="text-center our-services">
-                <div class="row">
-                    <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="650ms">
-                        <div class="rounded service-icon"> <i class="fa fa-suitcase"></i> </div>
-                        <div class="service-info">
-                            <h3>Prakerin</h3>
-                            <p>Bekerja Sama dalam hal menempatkan Siswa SMKN 1 Cimahi untuk Praktek Kerja Industri ( Prakerin )</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="750ms">
-                        <div class="rounded service-icon"> <i class="fa fa-user-plus"></i> </div>
-                        <div class="service-info">
-                            <h3>Kerja</h3>
-                            <p>Bekerja Sama untuk memperkerjakan Siswa SMKN 1 Cimahi</div>
-                    </div>
-                    <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="850ms" style='border-left:2px solid #000;background-color:#c2c2c2'>
-                        <div class="service-info">
-                            <h3>Lakukan Permohonan Kerja Sama</h3> <a class='btn btn-primary' data-toggle="modal" data-target="#register">Register</a> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <section id="berita">
         <div class="container">
             <div class="row">
@@ -691,7 +675,6 @@ include "header.php";
                 </div>
             </div>
         </div>
-        <div id="google-map" class="wow fadeIn" data-latitude="-6.900218" data-longitude="107.548232" data-wow-duration="1000ms" data-wow-delay="400ms"></div>
     </section>
     <!--/#contact-->
     <?php

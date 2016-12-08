@@ -75,7 +75,7 @@ if($_SESSION['level']=='admin'){
                                             <b> Fasilitas : </b><br>
 
                                                 Gaji  &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; : $d[gaji] <br>
-                                                Asrama  &nbsp; &nbsp;  &nbsp; &nbsp;: $d[asrama] <br>
+                                                Asrama  &nbsp; &nbsp;  &nbsp; &nbsp;: <br>
                                             </div>
                                         </td>
                                         <td class='center'>

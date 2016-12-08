@@ -24,7 +24,7 @@ input, select, textarea {
 }
 
 a {
-    color: #fff;
+    color: #41AF8E;
 }
 
 a:focus, a:active, a:hover {
@@ -1906,7 +1906,7 @@ ul.user-states li {
 }
 
 .custom-tab.turquoise-tab {
-    background: #fff !important;
+    background: #41AF8E !important;
 }
 
 .custom-tab.blue-tab {
@@ -1928,7 +1928,7 @@ ul.user-states li {
 
 .custom-tab.turquoise-tab li a:hover,
 .custom-tab.turquoise-tab li.active a {
-    color: #fff !important;
+    color: #41AF8E !important;
 }
 
 .custom-tab.blue-tab li a:hover,

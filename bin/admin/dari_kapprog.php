@@ -44,7 +44,7 @@ if($_SESSION['level']=='admin'){
                             <div id="home" class="tab-pane ">
                                 <div class="panel-body">
                                     <div class="adv-table">
-                                    <table  class="display table table-bordered table-striped" id="dynamic-table">
+                                    <table  class="display table table-bordered table-striped aa" id="dynamic-table">
                                     <thead>
                                     <tr>
                                         <th>No</th>
@@ -114,7 +114,7 @@ if($_SESSION['level']=='admin'){
                             <div id="permohonan" class="tab-pane active">
                                 <div class="panel-body">
                                     <div class="adv-table">
-                                    <table  class="display table table-bordered table-striped" id="dynamic-table">
+                                    <table  class="display table table-bordered table-striped aa" id="dynamic-table">
                                     <thead>
                                     <tr>
                                         <th>No</th>
@@ -266,7 +266,10 @@ if($_SESSION['level']=='admin'){
                                                     </a>
                                                 </td>
 
-                                                    <div  style='text-transform:none' aria-hidden='true' aria-labelledby='myModalLabel' role='dialog' tabindex='-1' id='tolak$d[id_du]' class='modal fade'>
+                                                    
+
+                                                </tr>";
+                                                echo "<div  style='text-transform:none' aria-hidden='true' aria-labelledby='myModalLabel' role='dialog' tabindex='-1' id='tolak$d[id_du]' class='modal fade'>
                                                         <div class='modal-dialog'>
                                                             <div class='modal-content'>
                                                                 <div class='modal-header'>
@@ -283,9 +286,7 @@ if($_SESSION['level']=='admin'){
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-
-                                                </tr>";
+                                                    </div>";
                                             }
 
                                             $nol = mysql_num_rows($query);
