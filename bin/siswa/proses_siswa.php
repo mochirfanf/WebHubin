@@ -60,6 +60,30 @@ if($_SESSION['level']=='siswa'){
 					</script><?php
 
 		     break;
+		     case "hapusbim":
+				mysql_query("DELETE FROM hb_bimbingan_tatap WHERE id_bimbingan_tatap ='$_POST[id]'")or die ("Ups! Gagal Dihapus, Silahkan Coba Lagi! ".mysql_error());
+
+				?>
+					<script>
+						alert("Kegiatan tersebut telah dihapus!");
+						window.history.go(-1);
+					</script><?php
+
+			break;
+			case "ubahbim":
+		        $materi = anti_injection($_POST['materi']);
+		        $tanggal = anti_injection($_POST['tanggal']);
+
+		        mysql_query("UPDATE hb_bimbingan_tatap SET materi='$materi', tanggal_bimbingan='$tanggal' WHERE id_bimbingan_tatap='$_POST[id]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+		        
+		        ?>
+		        <script>
+						alert("Kegiatan tersebut telah diperbarui!");
+						window.history.go(-1);
+					</script>
+					<?php
+
+		     break;
 			case "tambahkegiatanprakerin":
 		        $kegiatan = anti_injection($_POST['kegiatan']);
 		        $mingguke = anti_injection($_POST['mingguke']);

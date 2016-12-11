@@ -66,12 +66,51 @@ if($_SESSION['level']=='siswa'){
                                             <a href='#hapus2' data-toggle='modal' data-id='$d[id_bimbingan_tatap]'>
                                                 <button class='btn btn-sm btn-danger' type='button'><i class='fa fa-trash'></i> Hapus </button>
                                             </a>
-                                            <a href='#update2' data-toggle='modal' data-id='$d[id_bimbingan_tatap]'>
+                                            <a href='#ubah$d[id_bimbingan_tatap]' data-toggle='modal'>
                                                 <button class='btn btn-sm btn-info' type='button'><i class='fa fa-check'></i> Ubah </button>
                                             </a>
                                         </td>
                                     </tr>
                                     ";
+                                    echo "
+                <div class='modal fade' id='ubah$d[id_bimbingan_tatap]' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                    <h4 class='modal-title' id='myModalLabel'>Update Kegiatan</h4> </div>
+                <div class='modal-body'>
+                    <form class='form-horizontal form-label-left' method='POST' action='proses_siswa.php?a=ubahbim' enctype='multipart/form-data'>
+                        <div class='item form-group'>
+                        <input type='hidden' id='id' name='id' value='$d[id_bimbingan_tatap]'>
+                                <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Materi : <span class='required'></span> </label>
+                                <div class='col-md-7 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <textarea class='form-control col-md-12 col-xs-12' id='materi' name='materi' required>$d[materi]</textarea>
+                                 </div>
+
+                            </div>
+                        <div class='item form-group'>
+                                <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Tanggal : <span class='required'></span> </label>
+                                <div class='col-md-7 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <input type='text' class='form-control col-md-12 col-xs-12 dpd1' id='tanggal' name='tanggal' required data-date-format='yyyy/mm/dd' value='$d[tanggal_bimbingan]'>
+
+                                 </div>
+                            </div>
+                </div>
+                <div class='modal-footer'>
+                    <div class='form-group'>
+                        <div class='col-md-4 col-md-offset-8'>
+                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                            <button style=' margin-top: -5px;' value='pilih' id='send' type='submit' class='btn btn-success' name='pilih'>Ubah</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>";
+
+
                             }
                         ?>
                     </tbody>
@@ -138,12 +177,12 @@ if($_SESSION['level']=='siswa'){
                     <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
                     <h4 class='modal-title' id='myModalLabel'>Terima Lamaran Pekerjaan</h4> </div>
                 <div class='modal-body'>
-                    <form class='form-horizontal form-label-left' method='POST' action='proses_siswa.php?a=hapuskegiatan' enctype='multipart/form-data'>
+                    <form class='form-horizontal form-label-left' method='POST' action='proses_siswa.php?a=hapusbim' enctype='multipart/form-data'>
                         
                                     <div class='col-md-12'>
                                         <b>Hapus Kegiatan ?</span> ?</b>
                                     </div><?php
-                                    echo "<input type='hidden' id='id' name='id'>";
+                                    echo "<input type='text' id='id' name='id'>";
                                     ?>
                 </div>
                 <div class='modal-footer'>
@@ -160,47 +199,6 @@ if($_SESSION['level']=='siswa'){
     </div>
 
 
-                <div class='modal fade' id='update2' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
-<?php
-
-                                    
-
-?>
-        <div class='modal-dialog'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-                    <h4 class='modal-title' id='myModalLabel'>Update Kegiatan</h4> </div>
-                <div class='modal-body'>
-                    <form class='form-horizontal form-label-left' method='POST' action='proses_siswa.php?a=ubahkegiatanprakerin' enctype='multipart/form-data'>
-                        <div class='item form-group'>
-                        <input type='hidden' id='id' name='id'>
-                                <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Kegiatan : <span class='required'></span> </label>
-                                <div class='col-md-7 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <textarea class='form-control col-md-12 col-xs-12' id='kegiatan' name='kegiatan' required></textarea>
-                                 </div>
-
-                            </div>
-                        <div class='item form-group'>
-                                <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Minggu Ke : <span class='required'></span> </label>
-                                <div class='col-md-7 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <input type='text' class='form-control col-md-12 col-xs-12' id='mk' name='mingguke' required>
-
-                                 </div>
-                            </div>
-                </div>
-                <div class='modal-footer'>
-                    <div class='form-group'>
-                        <div class='col-md-4 col-md-offset-8'>
-                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
-                            <button style=' margin-top: -5px;' value='pilih' id='send' type='submit' class='btn btn-success' name='pilih'>Ubah</button>
-                        </div>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
         <!--body wrapper end-->
 
 <?php       include "footer.php";

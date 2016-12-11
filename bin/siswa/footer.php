@@ -165,7 +165,31 @@ $(document).ready(function() {
     
 
     </script>
+<script>
 
+    $('#update2').on('show.bs.modal', function (event) {
+
+      var button = $(event.relatedTarget); // Button that triggered the modal
+      var recipient = button.data('id'); // Extract info from data-* attributes
+      var modal = $(this);
+        $.ajax({
+            type: 'POST',
+            url: 'det_bim.php',
+            data: 'id='+recipient,
+            dataType: 'json',
+            success: function(result) {
+                modal.find("#id").val(recipient);
+                modal.find("#materi").text(result['materi']);
+                modal.find("#tanggal").val(result['tanggal_bimbingan']);
+            }
+        })
+     
+
+    });
+
+    
+
+    </script>
 <script>
 
     $('#apply').on('show.bs.modal', function (event) {
@@ -203,7 +227,24 @@ $(document).ready(function() {
     });
 
     </script>
+    <script>
 
+    $('#hapus2').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget); // Button that triggered the modal
+
+        var recipient = button.data('id'); // Extract info from data-* attributes
+
+      
+
+        var modal = $(this);
+
+        modal.find("#id").val(recipient);
+
+
+    });
+
+    </script>
     <script>
 $('#lampiran').bind('change', function() {
 

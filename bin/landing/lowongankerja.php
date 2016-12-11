@@ -106,7 +106,7 @@ echo $get_total_rows[0];
 
         </div> 
          <div class="col col-sm-3">
-                
+                <br>
                 <div id="sidebar">
                     <ul class="nav nav-stacked">
                         <div class="mprofiles plus">
@@ -118,8 +118,35 @@ echo $get_total_rows[0];
                                     <form class="form-horizontal form-label-left" method="POST" action="proses_landing.php?a=search" enctype="multipart/form-data" >
                                     <input type="text" name="src" class="form-control" placeholder="Cari"><br><input value='Cari' type="submit" class='col-md-12 btn btn-info'><br><br>
                                 </li>
+                                <li class="your">
+                                    <a href="lowongankerja.php"><i class='fa fa-caret-right'></i>SEMUA</a>
+                                </li>
                                  <li class="your">
-                                    <a href="?q=rekayasa perangkat lunak"><i class='fa fa-caret-right'></i>RPL</a>
+                                    <a href="lowongankerja.php?q=rekayasa perangkat lunak"><i class='fa fa-caret-right'></i>RPL</a>
+                                </li>
+                                <li class="your">
+                                    <a href="lowongankerja.php?q=teknik komputer dan jaringan"><i class='fa fa-caret-right'></i>TKJ</a>
+                                </li>
+                                <li class="your">
+                                    <a href="lowongankerja.php?q=teknik otomasi industri"><i class='fa fa-caret-right'></i>TOI</a>
+                                </li>
+                                <li class="your">
+                                    <a href="lowongankerja.php?q=teknik elektronika komunikasi"><i class='fa fa-caret-right'></i>TEK</a>
+                                </li>
+                                <li class="your">
+                                    <a href="lowongankerja.php?q=teknik elektronika industri"><i class='fa fa-caret-right'></i>TEI</a>
+                                </li>
+                                <li class="your">
+                                    <a href="lowongankerja.php?q=teknik pendingin"><i class='fa fa-caret-right'></i>TP</a>
+                                </li>
+                                <li class="your">
+                                    <a href="lowongankerja.php?q=kontrol proses"><i class='fa fa-caret-right'></i>KP</a>
+                                </li>
+                                <li class="your">
+                                    <a href="lowongankerja.php?q=kontrol mekanik"><i class='fa fa-caret-right'></i>KM</a>
+                                </li>
+                                <li class="your">
+                                    <a href="lowongankerja.php?q=Teknik Produksi & Penyiaran Program Pertelevisian"><i class='fa fa-caret-right'></i>TP4</a>
                                 </li>
                             </ul>
                             </form>

@@ -89,3 +89,51 @@ table.tpp tr td{
 .btn-info.disabled, .btn-info.disabled.active, .btn-info.disabled.focus, .btn-info.disabled:active, .btn-info.disabled:focus, .btn-info.disabled:hover, .btn-info[disabled], .btn-info[disabled].active, .btn-info[disabled].focus, .btn-info[disabled]:active, .btn-info[disabled]:focus, .btn-info[disabled]:hover, fieldset[disabled] .btn-info, fieldset[disabled] .btn-info.active, fieldset[disabled] .btn-info.focus, fieldset[disabled] .btn-info:active, fieldset[disabled] .btn-info:focus, fieldset[disabled] .btn-info:hover{
    background-color: #77ACA2;
 }
+.pendaf{
+   padding: 0;
+}
+.pendaf li {
+    overflow: hidden;
+    background-color: #e9e9e9;
+    list-style: none;
+    white-space:nowrap;
+    margin-right: 10px;
+    border-radius: 50px;
+    display: inline-block;
+}
+    .pendaf li a {
+        opacity: 0;
+        color: #666;
+        max-width: 0;
+        display: inline-block;
+        text-decoration: none;
+        transition: max-width 1s ease-out .1s, opacity 1s ease-out .1s, color;
+    }
+        .pendaf li a:hover {
+            color: #77ACA2;
+        }
+        .pendaf li a i {
+            float:right;
+            display: block;
+            padding-right: 1em;
+            font:1em/1 'rokkitt', sans-serif;
+        }
+    .pendaf li b {
+        color: #c33;
+        line-height:1;
+        font-size: 25px;
+        display: inline-block;
+        padding:5px;
+    }
+    .pendaf li:hover {}
+        .pendaf li:hover a {
+            opacity: 1;
+            max-width: 150px;
+            transition: max-width 1s ease-out .1s, opacity 1s ease-out .1s, color .2s;
+        }
+.up{
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+
+}
