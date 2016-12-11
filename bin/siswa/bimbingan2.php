@@ -63,10 +63,10 @@ if($_SESSION['level']=='siswa'){
                                         <td> $d[tanggal_bimbingan] </td>
                                         <td> $d[status] </td>
                                         <td class='center'>
-                                            <a href='#hapus' data-toggle='modal' data-id='$d[id_bimbingan_tatap]'>
+                                            <a href='#hapus2' data-toggle='modal' data-id='$d[id_bimbingan_tatap]'>
                                                 <button class='btn btn-sm btn-danger' type='button'><i class='fa fa-trash'></i> Hapus </button>
                                             </a>
-                                            <a href='#update' data-toggle='modal' data-id='$d[id_bimbingan_tatap]'>
+                                            <a href='#update2' data-toggle='modal' data-id='$d[id_bimbingan_tatap]'>
                                                 <button class='btn btn-sm btn-info' type='button'><i class='fa fa-check'></i> Ubah </button>
                                             </a>
                                         </td>
@@ -126,7 +126,7 @@ if($_SESSION['level']=='siswa'){
     </div>
 
 
-                <div class='modal fade' id='hapus' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+                <div class='modal fade' id='hapus2' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
 <?php
 
                                     
@@ -160,7 +160,7 @@ if($_SESSION['level']=='siswa'){
     </div>
 
 
-                <div class='modal fade' id='update' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+                <div class='modal fade' id='update2' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
 <?php
 
                                     
