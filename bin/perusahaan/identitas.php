@@ -41,6 +41,17 @@ if($_SESSION['level']=='perusahaan'){
                     <div class="panel-body">
                         <div class="adv-table">
                                 <div class="item form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Logo :<span class="required"></span></label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input name='logo' class="form-control col-md-7 col-xs-12" type="file">
+                                    </div>
+
+                                </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="adv-table">
+                                <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Email Perusahaan :<span class="required"></span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input name='email' value='<?php echo $dl['email_du']?>' class="form-control col-md-7 col-xs-12" type="text" required disabled>
@@ -85,7 +96,7 @@ if($_SESSION['level']=='perusahaan'){
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number"> Alamat :<span class="required"></span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <textarea class='form-control col-md-6 col-sm-6 col-xs-12' name='alamat' required='required' placeholder='Alamat' type='number'> <?php echo $dl['alamat']?> </textarea>
+                                        <textarea class='form-control col-md-6 col-sm-6 col-xs-12' name='alamat' required='required' placeholder='Alamat' type='text'><?php echo $dl['alamat']?></textarea>
                                     </div>
                                 </div>
                         </div>
@@ -183,7 +194,7 @@ if($_SESSION['level']=='perusahaan'){
                                 <div class="item form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number"> Deskripsi Perusahaan :<span class="required"></span></label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <textarea rows="8" class='form-control col-md-6 col-sm-6 col-xs-12' name='deskripsi' required='required' type='number'> <?php echo $dl['deskripsi_perusahaan']?> </textarea>
+                                        <textarea rows="8" class='form-control col-md-6 col-sm-6 col-xs-12' name='deskripsi' required='required' type='number'><?php echo $dl['deskripsi_perusahaan']?></textarea>
                                     </div>
                                 </div>
                         </div>

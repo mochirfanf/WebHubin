@@ -32,12 +32,31 @@ if($_SESSION['level']=='perusahaan'){
             $kodepos = anti_injection($_POST['kodepos']);
             $deskripsi = anti_injection($_POST['deskripsi']);
 
+            if($_FILES['logo']['name']!=''){
+            $namafolder="../images/uploads/";
+            $jenis_gambar = $_FILES["logo"]["type"];
+            if($jenis_gambar=="image/jpeg" || $jenis_gambar=="image/jpg" || $jenis_gambar=="image/gif" || $jenis_gambar=="image/png")
+            {
+              $file_ext = substr($_FILES["logo"]["name"], strripos($_FILES["logo"]["name"], '.')); // strip name
+                  
+                $lam1 = $namafolder . basename('du'.$_FILES["logo"]["name"]);
+                $lam2 = $namafolder . basename('du'.$_SESSION['id_du']). $file_ext;
+                $lam3 = basename('du'.$_SESSION['id_du']). $file_ext;   
+                if (!move_uploaded_file($_FILES['logo']['tmp_name'], $lam2))
+                {
+                   die("Failed Upload the File");
+                }
+              }
+              mysql_query("UPDATE hb_du_umum SET logo='$lam3', nama_du='$nama', bidang_usaha ='$bidang', nama_penanggung_jawab_umum='$npj', contact_person_umum='$cp', alamat='$alamat', id_prov='$id_prov', id_kab='$id_kab', id_kec='$id_kec', id_kel='$id_kel', no_kodepos = '$kodepos', deskripsi_perusahaan='$deskripsi' WHERE id_du='$_SESSION[id_du]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+            }else{
+              mysql_query("UPDATE hb_du_umum SET nama_du='$nama', bidang_usaha ='$bidang', nama_penanggung_jawab_umum='$npj', contact_person_umum='$cp', alamat='$alamat', id_prov='$id_prov', id_kab='$id_kab', id_kec='$id_kec', id_kel='$id_kel', no_kodepos = '$kodepos', deskripsi_perusahaan='$deskripsi' WHERE id_du='$_SESSION[id_du]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+            }
 
-            mysql_query("UPDATE hb_du_umum SET nama_du='$nama', bidang_usaha ='$bidang', nama_penanggung_jawab_umum='$npj', contact_person_umum='$cp', alamat='$alamat', id_prov='$id_prov', id_kab='$id_kab', id_kec='$id_kec', id_kel='$id_kel', no_kodepos = '$kodepos', deskripsi_perusahaan='$deskripsi' WHERE id_du='$_SESSION[id_du]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
 
+            
             ?>
             <script>
-              alert(" Identitas Perusahaan Berhasil Diupdate ");
+              alert(" Berhasil ");
               top.location='identitas.php';
             </script><?php
 

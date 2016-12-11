@@ -43,11 +43,11 @@
         <?php 
     include_once("../koneksidb.php");
     $iden = mysql_fetch_array(mysql_query("SELECT * FROM hb_du_umum WHERE username='$_SESSION[username]'"));
-    //if($iden['foto']==''){
+    if($iden['logo']==''){
         $poto = '../images/uploads/img.png';
-   // }else{
-    //    $poto = '../images/uploads/'.$iden['foto'];
-    //}
+    }else{
+        $poto = '../images/uploads/'.$iden['logo'];
+    }
 ?>
         <!--logo and iconic logo start-->
         <div class="logo">
