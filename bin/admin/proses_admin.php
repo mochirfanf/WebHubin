@@ -753,6 +753,19 @@ if($_SESSION['level']=='admin'){
 					</script><?php
 
 			break;
+
+			case "verifikasi_prakerin_siswa":
+				$id = $_GET["id"];
+
+				mysql_query("UPDATE hb_prakerin SET status_verifikasi_hubin = 'Terverifikasi Hubin' WHERE id_du ='$id' AND status_verifikasi = 'Terverifikasi Kapprog'")or die ("Ups! Gagal Dihapus, Silahkan Coba Lagi! ".mysql_error());
+
+				?>
+				<script>
+					alert("Prakerin Siswa di Tempat ini Telah Diverifikasi");
+					window.history.go(-1);
+				</script><?php
+			break;
+
 		}
 
 	}

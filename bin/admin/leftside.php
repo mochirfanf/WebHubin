@@ -132,17 +132,17 @@
                     </ul>
                 </li>
 
-                <li class="menu-list <?php echo "$navactive9"; ?>"><a href=""><i class="fa fa-puzzle-piece"></i> <span>Rekapitulasi Kapprog </span></a>
+                <li class="menu-list <?php echo "$navactive9"; ?>"><a href=""><i class="fa fa-puzzle-piece"></i> <span>Verifikasi Prakerin Siswa </span></a>
                     <ul class="sub-menu-list">
-                        <li class="<?php echo "$active16"; ?> "><a href="rekap_kapprog.php?jurusan=RPL"> RPL </a></li>
-                        <li class="<?php echo "$active17"; ?> "><a href="rekap_kapprog.php?jurusan=KM"> KM </a></li>
-                        <li class="<?php echo "$active18"; ?> "><a href="rekap_kapprog.php?jurusan=KP"> KP </a></li>
-                        <li class="<?php echo "$active19"; ?> "><a href="rekap_kapprog.php?jurusan=TEI"> TEI </a></li>
-                        <li class="<?php echo "$active20"; ?> "><a href="rekap_kapprog.php?jurusan=TEK"> TEK </a></li>
-                        <li class="<?php echo "$active21"; ?> "><a href="rekap_kapprog.php?jurusan=TKJ"> TKJ </a></li>
-                        <li class="<?php echo "$active22"; ?> "><a href="rekap_kapprog.php?jurusan=TOI"> TOI </a></li>
-                        <li class="<?php echo "$active23"; ?> "><a href="rekap_kapprog.php?jurusan=TP4"> TP4 </a></li>
-                        <li class="<?php echo "$active24"; ?> "><a href="rekap_kapprog.php?jurusan=TPTU"> TPTU </a></li>
+                        <li class="<?php echo "$active16"; ?> "><a href="verifikasi_siswa.php?jurusan=RPL"> RPL </a></li>
+                        <li class="<?php echo "$active17"; ?> "><a href="verifikasi_siswa.php?jurusan=KM"> KM </a></li>
+                        <li class="<?php echo "$active18"; ?> "><a href="verifikasi_siswa.php?jurusan=KP"> KP </a></li>
+                        <li class="<?php echo "$active19"; ?> "><a href="verifikasi_siswa.php?jurusan=TEI"> TEI </a></li>
+                        <li class="<?php echo "$active20"; ?> "><a href="verifikasi_siswa.php?jurusan=TEK"> TEK </a></li>
+                        <li class="<?php echo "$active21"; ?> "><a href="verifikasi_siswa.php?jurusan=TKJ"> TKJ </a></li>
+                        <li class="<?php echo "$active22"; ?> "><a href="verifikasi_siswa.php?jurusan=TOI"> TOI </a></li>
+                        <li class="<?php echo "$active23"; ?> "><a href="verifikasi_siswa.php?jurusan=TP4"> TP4 </a></li>
+                        <li class="<?php echo "$active24"; ?> "><a href="verifikasi_siswa.php?jurusan=TPTU"> TPTU </a></li>
                     </ul>
                 </li>
 

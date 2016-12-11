@@ -47,6 +47,7 @@ if($_SESSION['level']=='siswa'){
 					</script><?php
 
 			break;
+			
 			case "ubahkegiatanprakerin":
 		        $kegiatan = anti_injection($_POST['kegiatan']);
 		        $mingguke = anti_injection($_POST['mingguke']);

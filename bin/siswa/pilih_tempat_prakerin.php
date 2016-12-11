@@ -86,7 +86,7 @@ if($_SESSION['level']=='siswa'){
                                     $name = "";
                                     echo "<select required class='form-control m-bot15' name='id_du'>
                                             <option value=''> * Pilih Tempat Prakerin * </option>";
-                                                $tempat = mysql_query("SELECT * FROM hb_du_umum, hb_du_penerima, hb_du_permintaan WHERE hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_penerima.id_jurusan = '$_SESSION[jurusan]' AND status_penerimaan='Menerima'  AND hb_du_penerima.tahun_ajaran='$_SESSION[tahun_ajaran]'");
+                                                $tempat = mysql_query("SELECT * FROM hb_du_umum, hb_du_penerima, hb_du_permintaan WHERE hb_du_umum.id_du = hb_du_penerima.id_du AND hb_du_umum.id_du = hb_du_permintaan.id_du AND hb_du_penerima.id_jurusan = '$_SESSION[jurusan]' AND status_penerimaan='Menerima'  AND hb_du_penerima.tahun_ajaran='$_SESSION[tahun_ajaran]' AND hb_du_penerima.sisa_kuota_penerimaan!=0");
                                                 while($j = mysql_fetch_array($tempat)){
                                      echo " <option value='$j[id_du]'> $j[nama_du] </option>";
                                                 }
