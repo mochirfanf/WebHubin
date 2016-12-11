@@ -10,6 +10,13 @@
 if($_SESSION['level']=='siswa'){ 
 	if (!empty($_GET ["a"])) {
 		switch ($_GET ["a"]){
+			case "tambahbimbingan":
+				$materi = anti_injection($_POST['materi']);
+				$tanggal = $_POST['tanggal'];
+				mysql_query(" INSERT INTO hb_bimbingan_tatap(nis,materi,tanggal_bimbingan,status) VALUES ('$_SESSION[username]','$materi','$tanggal','Belum Terverifikasi')") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+		        header("location:bimbingan2.php");
+
+			break;
 			case "update_profil":
 		        $tempat = anti_injection($_POST['tempat']);
 		        $tanggal = anti_injection($_POST['tanggal']);
