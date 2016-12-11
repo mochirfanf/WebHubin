@@ -16,11 +16,8 @@ if($_SESSION['level']=='guru'){
 					$ada= mysql_query("SELECT tgl_monitoring FROM hb_monitoring WHERE id_du='$_POST[iddu]'");
 					$c = mysql_fetch_array($ada);
 
-					if(!empty($c)){
 						mysql_query("UPDATE hb_monitoring SET tgl_monitoring='$_POST[tgl_monitoring]' WHERE id_du='$_POST[iddu]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
-					}else{
-						mysql_query("INSERT INTO hb_monitoring (id_du,tgl_monitoring) VALUES('$_POST[iddu]','$_POST[tgl_monitoring]')") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
-					}
+					
 					
 					header("location:jadwalmonitoring.php");
 				}

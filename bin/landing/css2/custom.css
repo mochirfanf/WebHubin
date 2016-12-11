@@ -1,0 +1,91 @@
+
+@font-face {
+         font-family: "lato";
+         src: url('../fonts/Lato-Regular.ttf');
+         }
+         @font-face {
+         font-family: "latol";
+         src: url('../fonts/Lato-Light.ttf');
+         }
+body,h1,h2,h3,h4,h5, .btn{
+	font-family: "lato";
+   color: #424251;
+}
+.btn{
+   color: #fff;
+}
+.jobs-nm-text{
+	font-family: "latol";
+}
+.is{
+	background-color: red;
+}
+
+.isi{
+	background-color: #000;
+}
+.navbar-default .navbar-nav>li>a, .navbar-brand{
+	font-family: "latol";
+}
+table.tpp tr td{
+	padding: 10px 0;
+}
+.skills{
+   background-color: #83af9a;
+   padding: 5px;
+   margin: 0px 5px;
+   border-radius: 5px;
+   color: #fff;
+   font-size: 8pt;
+}
+.navbar-default{
+   border:0;
+   background-color: #77ACA2;
+   box-shadow: 0 4px 2px -2px #c2c2c2;
+
+}
+.row .bty{
+   text-align: right;
+   background-color: #fff;
+   color:#fff;
+   border-bottom:1px solid #77ACA2;
+}
+.search{
+   border:1px solid #E0E0E0;
+   height: 100px;
+   background-color: #fff;
+}
+.company-nm-text{
+   color: #5b9589;
+}
+.btn-info{
+   background-color: #77ACA2;
+   border:0;
+}
+.btn-info:hover{
+   background-color: #99c1b9;
+
+}
+.pem{
+   padding: 10px;
+   color: #A5B5C3;
+}
+.ats{
+   padding: 8px;
+}.farr{
+   border: 0;
+}
+.navbar-nav>li{
+   padding-top: 11px;
+   padding-bottom: 11px;
+}
+.ac{
+   background-color: #5b9589;
+   color: #fff;
+}
+.navbar-header{
+   padding-top: 10px;
+}
+.btn-info.disabled, .btn-info.disabled.active, .btn-info.disabled.focus, .btn-info.disabled:active, .btn-info.disabled:focus, .btn-info.disabled:hover, .btn-info[disabled], .btn-info[disabled].active, .btn-info[disabled].focus, .btn-info[disabled]:active, .btn-info[disabled]:focus, .btn-info[disabled]:hover, fieldset[disabled] .btn-info, fieldset[disabled] .btn-info.active, fieldset[disabled] .btn-info.focus, fieldset[disabled] .btn-info:active, fieldset[disabled] .btn-info:focus, fieldset[disabled] .btn-info:hover{
+   background-color: #77ACA2;
+}

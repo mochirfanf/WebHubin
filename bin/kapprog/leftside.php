@@ -125,6 +125,7 @@
 
                 <li class="menu-list <?php echo "$navactive7"; ?>"><a href=""><i class="fa fa-building-o"></i> <span>Monitoring</span></a>
                     <ul class="sub-menu-list">
+                        <li class="<?php echo "$active19"; ?> "><a href="pilihguru.php"> Pilih Guru untuk Monitoring </a></li>
                         <li class="<?php echo "$active13"; ?> "><a href="daftarsiswa_monitoring.php"> Daftar Siswa </a></li>
                         <li class="<?php echo "$active14"; ?> "><a href="hasil_monitoring.php"> Hasil Monitoring </a></li>
                         <li class="<?php echo "$active15"; ?> "><a href="belum_monitoring.php"> Siswa yang Belum di Monitoring </a></li>

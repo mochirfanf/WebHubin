@@ -10,11 +10,16 @@
 if($_SESSION['level']=='admin'){
 	if (!empty($_GET ["a"])) {
 		switch ($_GET ["a"]){
+			case "petugasmon":
+
+				mysql_query("INSERT INTO hb_monitoring (id_du,nip_guru,tahun_ajaran) VALUES('$_POST[id_du]','$_POST[nip_guru]','$_SESSION[tahun_ajaran]')") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+
+				header("location:pilihguru.php");
+			break;
 
 			case "update":
 
 				if (isset($_POST['MASUK'])){
-
 
 					if(empty($_POST['jk'])) {
 						$jk = "";

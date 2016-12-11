@@ -148,6 +148,7 @@ if($_SESSION['level']=='perusahaan'){
                                             <?php echo "$di[contact_person]";?>
                                         </div>
                                     </div>
+                                    
                                     <div class="form-group">
                                         <br>
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12">Jenis Seleksi :</label>
@@ -155,6 +156,26 @@ if($_SESSION['level']=='perusahaan'){
                                             <?php echo "$di[seleksi_du]";?>
                                         </div>
                                     </div>
+                                    <?php if($di['seleksi_du']=='Ya'){
+                                        ?>
+                                    <div class="form-group">
+                                        <br>
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Tempat Seleksi :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <?php echo "$di[seleksi_tempat]";?>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <br>
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Tanggal Seleksi :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <?php echo "$di[seleksi_tanggal]";?>
+                                        </div>
+                                    </div>
+                                    
+                                    <?php
+                                    }
+                                    ?>
                                     <div class="form-group">
                                         <br>
                                         <label class="control-label col-md-4 col-sm-4 col-xs-12"> Fasilitas :</label>
@@ -234,6 +255,14 @@ if($_SESSION['level']=='perusahaan'){
                                                         <div style="margin-left: -25px;"  class="col-lg-1">
                                                             <input type="text" class="form-control" name="jumlah[]" placeholder="Jumlah">
                                                         </div>
+                                                        <div class='col-md-5 col-md-offset-3'>
+                                                            <div class='col-md-12' style='padding:0 10px 0 0'>
+                                                                <input type="text" name="skill[]" placeholder="Web,Teknisi,Android" class="form-control">
+                                                            </div>
+                                                            <div class='col-md-12' style='padding:0'>
+                                                                <small style='color: #D9534F'>Pisahkan Skill dengan Koma</small>
+                                                            </div>
+                                                        </div>
                                                         <div class="input_fields col-md-6 col-md-offset-3">
                                                             
                                                         </div>
@@ -263,18 +292,44 @@ if($_SESSION['level']=='perusahaan'){
                                 <input type="text" class="form-control" name="contact" placeholder="Kontak Penanggung Jawab" required>
                             </div>
                         </div>
+                        
                         <div class="form-group">
                             <br><br>
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Jenis Seleksi :</label>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Recruitment melalui :</label>
                             <div class="col-lg-6 flat-green">
                                 <?php
 
-                                    echo "<select class='form-control m-bot15' name='seleksi'>
-                                                <option value='Ya'> Ya </option>
-                                                <option value='Tidak'> Tidak </option>
-                                          </select><br>";
-                                ?>
+                                                             echo "<select class='form-control m-bot15' name='seleksi' id='sel'>
+                                                                      <option value='Tidak'> Tanpa Seleksi </option>
+                                                                      <option value='Ya'> Seleksi </option>
+                                                                  </select>";
+                                                            ?>
                             </div>
+                        </div>
+                        <div id='selek' style='display: none'>
+                        <div class="form-group">
+                            <br>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Tempat Seleksi :</label>
+                            <div class="col-lg-6 flat-green">
+                                <input type="text" class="form-control" name="seleksi_tempat" placeholder="Tempat Seleksi">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <br><br>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal Seleksi :</label>
+                            <div class="col-lg-6 flat-green">
+                                <input type="text" class="form-control dpd1"  data-date-format='yyyy/mm/dd' name="seleksi_tanggal" placeholder="Tanggal Seleksi">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <br><br>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ketentuan :</label>
+                            <div class="col-lg-6 flat-green">
+                                <span class='btn btn-info'>Baca Ketentuan</span>
+                            </div>
+                        </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12"> Fasilitas :</label>

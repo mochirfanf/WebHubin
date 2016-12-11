@@ -7,8 +7,8 @@ include "../koneksidb.php";
 if($_SESSION['level']=='siswa'){ 
         $title="Daftar Siswa yang Dimonitoring";
         $active ="";
-        $active99 = "active";
-
+        $active89 = "active";
+        $navactive78 ="nav-active";
         include "leftside2.php";
         ?>
         <!--body wrapper start-->
@@ -65,7 +65,7 @@ if($_SESSION['level']=='siswa'){
                     <form class='form-horizontal form-label-left' method='POST' action='proses_siswa.php?a=lamarkerja' enctype='multipart/form-data'>
                         <div class='col-md-12'>
                             <div class='col-md-3'>
-                                <img id='poto' class='img-responsive' src='../images/uploads/132.png' >
+                                <img id='poto' class='img-responsive' src='../images/uploads/<?php echo $dl['foto'];?>' >
                             </div>
                             <div class='col-md-8 img-responsive'>
                                 <strong><h4 id='namasiswa'><?php echo $dl['nama_guru']?></h4></strong>
@@ -109,7 +109,9 @@ if($_SESSION['level']=='siswa'){
         
         $msg = $_POST['msg'];
         $tgl = date('Y-m-d H:i:s');
-        $query = "INSERT INTO hb_bimbingan (pengirim,penerima,pesan,tanggal) values ('$_SESSION[username]','$id','$msg','$tgl')";
+        $f = mysql_fetch_array(mysql_query("SELECT saran_pembimbing FROM hb_prakerin WHERE nis='$_SESSION[username]'"))or die(mysql_error());
+
+        $query = "INSERT INTO hb_bimbingan (pengirim,penerima,pesan,tanggal) values ('$_SESSION[username]','$f[saran_pembimbing]','$msg','$tgl')";
         
         mysql_query($query);
         

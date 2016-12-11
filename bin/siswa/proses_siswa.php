@@ -65,7 +65,7 @@ if($_SESSION['level']=='siswa'){
 		        $iddukerja = anti_injection($_POST['id']);
 		        $portofolio = anti_injection($_POST['portofolio']);
 		        $tgl = date('Y-m-d');
-
+		        if(!empty($_FILES['lampiran'])){
 		        $namafolder="lampiran/";
 				$file_ext = substr($_FILES["lampiran"]["name"], strripos($_FILES["lampiran"]["name"], '.')); // strip name
 				    
@@ -76,10 +76,15 @@ if($_SESSION['level']=='siswa'){
 					   die("Failed Upload the File");
 					}
 			
-				
+				}
 
 		        mysql_query(" INSERT INTO hb_lamar_kerja(id_du_kerja, nis, tgl, portofolio, status,lampiran) VALUES ('$iddukerja','$_SESSION[username]', '$tgl', '$portofolio','Belum Diterima','$lam2')") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
-		        header("location:lowongankerja.php");
+		        if($_GET['lan']=='ya'){
+		        	$hl = "location:../landing/detail.php?id=".$iddukerja;
+		    	header($hl);
+		    	}else{
+		    	header("location:lowongankerja.php");
+		    	}
 		     break;
 
 			case "pilihtempat":

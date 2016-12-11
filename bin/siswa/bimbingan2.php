@@ -6,7 +6,7 @@ if($_SESSION['level']=='siswa'){
     if ($_SESSION['tahun_ajaran']!='') {
         $title="Permohonan Perizinan Prakerin";
         $active ="";
-        $active31 = "active";
+        $active90 = "active";
         $navactive78 ="nav-active";
 
         $data = mysql_query( "SELECT * from hb_kegiatan_prakerin WHERE nis='$_SESSION[username]'");

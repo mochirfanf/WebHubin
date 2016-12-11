@@ -79,7 +79,7 @@ include "header.php";
                     <ul class="nav navbar-nav navbar-right">
                         <li class="scroll active"><a href="#home">Home</a></li>
                         <li class="scroll"><a href="#prakerin">Prakerin</a></li>
-                        <li class="scroll"><a href="#lowongankerja">Lowongan Kerja</a></li>
+                        <li class="scroll"><a href="lowongankerja.php">Lowongan Kerja</a></li>
                         <li class="scroll"><a href="#kontak-kami">Kontak Kami</a></li>
                     </ul>
                 </div>
@@ -299,74 +299,6 @@ include "header.php";
         </div>
     </div>
 
-    <section id="prakerin">
-        <div class="container">
-            <div class="heading wow fadeInDown" data-wow-duration="2000ms" data-wow-delay="500ms">
-                <div class="row">
-                    <div class="text-center col-md-12">
-                        
-              </div>
-            </div>
-          </div>
-
-            <div class="row">
-              <div class='col-md-12'>
-              <h2>Prakerin</h2>
-              </div>
-              <div class='col-md-12 bxlow'>
-            </div>
-            </div>
-  </section>
-
-    <section id="lowongankerja">
-        <div class="container">
-            <div class="heading wow fadeInDown" data-wow-duration="2000ms" data-wow-delay="500ms">
-                <div class="row">
-                    <div class="text-center col-md-12">
-                        
-              </div>
-            </div>
-          </div>
-
-            <div class="row">
-              <div class='col-md-12'>
-              <h2>Lowongan Pekerjaan</h2>
-              </div>
-              <div class='col-md-12 bxlow'>
-                    <?php
-                        $data = mysql_query("SELECT * FROM hb_du_permintaan_kerja INNER JOIN hb_du_umum ON hb_du_permintaan_kerja.id_du = hb_du_umum.id_du WHERE status_permintaan='Sudah Terverifikasi' LIMIT 3");
-                        while($d = mysql_fetch_array($data)){
-                            ?>
-
-                            <div class='col-md-12 krj'>
-                                <span class='col-md-10 nmpt'><h4><?php echo $d['nama_du']?></h4></span>
-                                <a href='#detail' data-toggle='modal' data-id='<?php echo $d['id_du_kerja']?>'><span class='btn btn-primary col-md-2'>Detail Pekerjaan</a>
-                                </span>
-                                <span class='col-md-10 det'><?php echo substr($d['lainnya'],0,50)?></span><span class='btn btn-info col-md-2'>Lamar Pekerjaan</span>
-                            </div>
-                            <?php
-                        }
-                    ?>
-              </div>
-
-              <div class='col-md-12'>
-                <ul class="pagination" style='float: right;'>
-                <?php
-                    $jm = mysql_num_rows(mysql_query("SELECT * FROM hb_du_permintaan_kerja INNER JOIN hb_du_umum ON hb_du_permintaan_kerja.id_du = hb_du_umum.id_du WHERE status_permintaan='Sudah Terverifikasi'"));
-                    $total = ceil($jm/3);
-                    for($a=0;$a<$total;$a++){
-                ?>
-                  <li><a class="active" href="#">1</a></li>
-                  <?php
-                    }
-                  ?>
-                </ul>
-              </div>
-            </div>
-
-
-      </div>
-  </section>
 
     <section id="visi">
         <div class="container">

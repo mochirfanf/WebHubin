@@ -105,13 +105,15 @@
                     </ul>
                 </li>
 
-                <li class="<?php echo "$active99"; ?> "><a href="bimbingan.php"><i class="fa fa-building-o"></i> <span> Bimbingan </span></a></li>
 
-                <li class="menu-list <?php echo "$navactive30"; ?>"><a href=""><i class="fa fa-building-o"></i> <span> Kegiatan Prakerin</span></a>
+                <li class="menu-list <?php echo "$navactive78"; ?>"><a href=""><i class="fa fa-building-o"></i> <span> Kegiatan Prakerin</span></a>
                     <ul class="sub-menu-list">
                         <li class="<?php echo "$active31"; ?> "><a href="kegiatanprakerin.php"> Program Kegiatan Prakerin </a></li>
+                        <li class="<?php echo "$active89"; ?> "><a href="bimbingan.php"> Bimbingan disini </a></li>
+                        <li class="<?php echo "$active90"; ?> "><a href="bimbingan2.php"> List Bimbingan Tatap Muka </a></li>
                     </ul>
                 </li>
+
 
                 <li class="menu-list <?php echo "$navactive22"; ?>"><a href=""><i class="fa fa-building-o"></i> <span> Lowongan Pekerjaan</span></a>
                     <ul class="sub-menu-list">

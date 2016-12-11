@@ -9,6 +9,13 @@
 
 	if (!empty($_GET ["a"])) {
 		switch ($_GET ["a"]){
+			case "search":
+			$s = str_replace(' ', '-', $_POST['src']);
+			$s = anti_injection($s);
+			
+
+			header("location:lowongankerja.php?q=$s");
+			break;
 			case "input":
 				if (isset($_POST['MASUK'])){
 

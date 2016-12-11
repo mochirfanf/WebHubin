@@ -114,7 +114,7 @@ if($_SESSION['level']=='siswa'){
                     <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
                     <h4 class='modal-title' id='myModalLabel'>Lamaran Pekerjaan</h4> </div>
                 <div class='modal-body'>
-                    <form class='form-horizontal form-label-left' method='POST' action='proses_siswa.php?a=lamarkerja' enctype='multipart/form-data'>
+                    <form class='form-horizontal form-label-left' method='POST' action='proses_siswa.php?a=lamarkerja&lan=tidak' enctype='multipart/form-data'>
                         <div class='item form-group'>
                                 <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Portofolio : <span class='required'></span> </label>
                                 <div class='col-md-7 col-sm-9 col-xs-12' style='margin-bottom:20px;'>

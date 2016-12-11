@@ -129,6 +129,78 @@ $(document).ready(function() {
     });
 
     </script>
+    <script>
+
+    $('#pilihmon').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget); // Button that triggered the modal
+
+        var recipient = button.data('id'); // Extract info from data-* attributes
+
+      
+
+        var modal = $(this);
+
+        modal.find("#id").val(recipient);
+
+        var cityOptions = new Array();
+
+          $.get("namaguru.php?id=" + 1, function(data) {
+
+                eval(data);
+                if(cityOptions.length > 0) {
+                   $("#petugas").removeAttr("disabled");
+                   $("#petugas").html('');
+                   //repopulate child list with array from helper page
+                   var city = document.getElementById('petugas');
+                   for(var i = 0; i < cityOptions.length; i++) {
+                      city.options[i] = new Option(cityOptions[i].text, cityOptions[i].value);
+                   }
+                }
+             }
+          );
+
+    });
+
+    </script>
+
+    <script>
+
+    $('#jurusan').change(function () {
+    $("#petugas").attr("disabled", true);
+       //clear child select list's options
+       $("#petugas").html('');
+     
+       //querystring value is selected value of parent drop down list
+       var qs = $("#jurusan").val();
+       //if user selected a separator, show error
+       if(qs == '') {
+          alert('You cannot select this option. Please make a different selection.');
+       }
+       else {
+          //show message indicating we're getting new values
+          $("#petugas").append(new Option('Getting city list ...'));
+          //declare options array and populate
+          var cityOptions = new Array();
+
+          $.get("namaguru.php?id=" + qs, function(data) {
+
+                eval(data);
+                if(cityOptions.length > 0) {
+                   $("#petugas").removeAttr("disabled");
+                   $("#petugas").html('');
+                   //repopulate child list with array from helper page
+                   var city = document.getElementById('petugas');
+                   for(var i = 0; i < cityOptions.length; i++) {
+                      city.options[i] = new Option(cityOptions[i].text, cityOptions[i].value);
+                   }
+                }
+             }
+          );
+       }
+
+});
+    </script>
 <script type="text/javascript" src="../js/ajax_daerah.js"></script>
   <link href="../css/admin.css" rel="stylesheet">
 </body>

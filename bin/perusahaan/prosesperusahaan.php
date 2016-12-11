@@ -100,9 +100,31 @@ if($_SESSION['level']=='perusahaan'){
                 $ajum["$no"] = "$jumlah";
               }
           }
+          if(isset($_POST["skill"])){
+            $no=0;
+              foreach($_POST["skill"] as $skill){
+                $no= $no+1;
+                $askill["$no"] = $skill;
+              }
+          }
+          $seleksi= anti_injection($_POST['seleksi']);
+
+                    if($seleksi=="Ya"){
+                        $tanggal = $_POST['seleksi_tanggal'];
+                        $tempat = anti_injection($_POST['seleksi_tempat']);
+                      }else{
+                        $tanggal = "0000-00-00";
+                        $tempat = "-";
+                      }
+
+          $c  = mysql_fetch_array(mysql_query("SELECT id_du_permintaan FROM hb_du_permintaan WHERE id_du = '$_SESSION[id_du]' ORDER BY id_du_permintaan DESC LIMIT 1"));
 
           for ($i=1; $i<=$no; $i++) {
              mysql_query(" INSERT INTO hb_du_jumlah_permintaan_du(id_du, id_jurusan, jumlah_penerimaan, tahun_ajaran) VALUES ('$_SESSION[id_du]', '$ajur[$i]', '$ajum[$i]', '$_SESSION[tahun_ajaran]')")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+             $sk = explode(',', $askill[$i]);
+             foreach($sk as $skill){
+                mysql_query(" INSERT INTO hb_detail_skill(id_du_kerja,id_jurusan,kode_skill) VALUES ('$c[id_du_kerja]', '$ajur[$i]', '$skill')")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+              }
           }
 
           $c  = mysql_fetch_array(mysql_query("SELECT id_du FROM hb_du_permintaan WHERE id_du = '$_SESSION[id_du]' "));
@@ -111,8 +133,8 @@ if($_SESSION['level']=='perusahaan'){
             mysql_query("DELETE FROM hb_du_permintaan WHERE id_du = '$_SESSION[id_du]'");
           }
 
-          mysql_query(" INSERT INTO hb_du_permintaan(id_du, tahun_ajaran, permintaan_du, seleksi_du, status_permintaan, nama_penanggung_jawab, contact_person, uang_saku, asrama, uang_makan, uang_transport, fasilitas_lain, status_du, mulai_pelaksanaan, berakhir_pelaksanaan)
-                                 VALUES ('$_SESSION[id_du]', '$_SESSION[tahun_ajaran]', 'Ya', '$seleksi',  'Belum Terverifikasi' , '$nama_pj', '$contact', '$us', '$as', '$um', '$ut', '$fasilitas_lain', 'DU/DI dari Perusahaan', '$mulai', '$berakhir' )")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+          mysql_query(" INSERT INTO hb_du_permintaan(id_du, seleksi_tanggal, seleksi_tempat, tahun_ajaran, permintaan_du, seleksi_du, status_permintaan, nama_penanggung_jawab, contact_person, uang_saku, asrama, uang_makan, uang_transport, fasilitas_lain, status_du, mulai_pelaksanaan, berakhir_pelaksanaan)
+                                 VALUES ('$_SESSION[id_du]', '$tanggal', '$tempat', '$_SESSION[tahun_ajaran]', 'Ya', '$seleksi',  'Belum Terverifikasi' , '$nama_pj', '$contact', '$us', '$as', '$um', '$ut', '$fasilitas_lain', 'DU/DI dari Perusahaan', '$mulai', '$berakhir' )")or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
 
 
             ?>

@@ -168,6 +168,13 @@ if($_SESSION['level']=='perusahaan'){
                      </span> </header>
                      
                     <form class="form-horizontal form-label-left" method="POST" action="proseskerja.php?a=permintaan_kerja" enctype="multipart/form-data">
+                    <div class="form-group">
+                            <br>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Judul Pekerjaan :</label>
+                            <div class="col-lg-6 flat-green">
+                                <input type="text" class="form-control" name="judul" placeholder="Judul">
+                            </div>
+                        </div>
                         <div class="form-group">
                             <br><br>
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Permintaan Jurusan : </label>
@@ -189,15 +196,14 @@ if($_SESSION['level']=='perusahaan'){
                                                             ?>
 
                                                         </div>
+                                                        
                                                         <div style="margin-left: -25px;"  class="col-lg-1">
                                                             <input type="text" class="form-control" name="jumlah[]" placeholder="Jumlah">
                                                         </div>
+
                                                         <div class='col-md-5 col-md-offset-3'>
-                                                            <div class='col-md-11' style='padding:0 10px 0 0'>
+                                                            <div class='col-md-12' style='padding:0 10px 0 0'>
                                                                 <input type="text" name="skill[]" placeholder="Web,Teknisi,Android" class="form-control">
-                                                            </div>
-                                                            <div class='col-md-1'  style='padding:0'>
-                                                                <button class='btn btn-info'>RPL</button>
                                                             </div>
                                                             <div class='col-md-12' style='padding:0'>
                                                                 <small style='color: #D9534F'>Pisahkan Skill dengan Koma</small>
@@ -209,9 +215,9 @@ if($_SESSION['level']=='perusahaan'){
                         </div>
                         <div class="form-group">
                             <br>
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama Penanggung Jawab :</label>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nama Perwakilan Perusahaan :</label>
                             <div class="col-lg-6 flat-green">
-                                <input type="text" class="form-control" name="nama_pj" placeholder="Nama Penanggung Jawab">
+                                <input type="text" class="form-control" name="nama_pj" placeholder="Nama Perwakilan">
                             </div>
                         </div>
                         <div class="form-group">
@@ -219,6 +225,13 @@ if($_SESSION['level']=='perusahaan'){
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Contact Person :</label>
                             <div class="col-lg-6 flat-green">
                                 <input type="text" class="form-control" name="contact" placeholder="Contact Person ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <br>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Lokasi Kerja :</label>
+                            <div class="col-lg-6 flat-green">
+                                <input type="text" class="form-control" name="lokasi" placeholder="Lokasi Kerja">
                             </div>
                         </div>
                         <div class="form-group">

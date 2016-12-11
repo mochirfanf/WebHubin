@@ -165,7 +165,7 @@
 
                 <li class="menu-list <?php echo "$navactive7"; ?>"><a href=""><i class="fa fa-cogs"></i> <span>Monitoring</span></a>
                     <ul class="sub-menu-list">
-                        <li class="<?php echo "$active12"; ?> "><a href=""> Daftar Petugas Prakerin</a></li>
+                        <li class="<?php echo "$active12"; ?> "><a href="pilihguru.php"> Daftar Petugas Prakerin</a></li>
                         <li class="<?php echo "$active13"; ?> "><a href=""> Buat Surat Tugas Monitoring</a></li>
                         <li class="<?php echo "$active14"; ?> "><a href=""> Hasil Monitoring</a></li>
                     </ul>

@@ -100,7 +100,15 @@ if($_SESSION['level']=='guru'){
                             <div class='item form-group'>
                                 <label class='control-label col-md-5 col-sm-3 col-xs-12' for='name'>Nilai : <span class='required'></span> </label>
                                 <div class='col-md-7 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <input class='form-control col-md-7 col-xs-12' name='nilai'  id='nilai' placeholder='Nilai' type='text' required> </div>
+
+                                <select class='form-control col-md-7 col-xs-12' name='nilai' id='nilai' required>
+                                    <option value='A' selected>A</option>
+                                    <option value='B'>B</option>
+                                    <option value='C'>C</option>
+                                    <option value='D'>D</option>
+                                    <option value='E'>E</option>
+                                </select>
+                                </div>
                             </div>
                             <div class='item form-group'>
                                 <label class='control-label col-md-5 col-sm-3 col-xs-12' for='name'>Masalah yang Ditemukan : <span class='required'></span> </label>
