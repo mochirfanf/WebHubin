@@ -1,0 +1,9 @@
+RewriteEngine On
+
+RewriteRule ^beranda$                  				    		index.php [L]
+RewriteRule ^lowongan-kerja$                  				    bin/landing/lowongankerja.php [L]
+RewriteRule ^lowongan-kerja?q-(.*)$                  			bin/landing/lowongankerja.php?q=$1 [L]
+RewriteRule ^pland-(.*)$                  				    	bin/landing/proses_landing.php?a=$1 [L]
+RewriteRule ^detail-loker-(.*)$                  				bin/landing/detail.php?id=$1 [L]
+
+Options All -Indexes

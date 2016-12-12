@@ -42,7 +42,7 @@ $_GET['q'] = str_replace('-', ' ', $_GET['q']);
                                     echo "<i class='fa fa-caret-right'></i> $dd[nama_jurusan]&emsp;";
                                     $dt = mysql_query("SELECT * FROM hb_detail_skill WHERE id_du_kerja = '$d[id_du_kerja]' AND id_jurusan=$dd[id_jurusan]");
                                     while($d2 = mysql_fetch_array($dt)){
-                                        echo "<a href='lowongankerja.php?q=$d2[kode_skill]' style='text-decoration:none'><span class='skills'>".$d2['kode_skill'].'</span></a>';
+                                        echo "<a href='lowongan-kerja?q=$d2[kode_skill]' style='text-decoration:none'><span class='skills'>".$d2['kode_skill'].'</span></a>';
                                         }
 
                                     echo "<br><br>";
@@ -56,7 +56,7 @@ $_GET['q'] = str_replace('-', ' ', $_GET['q']);
 
                     </div>
 
-                    <a href='detail.php?id=<?php echo $d['id_du_kerja']?>' class="btn btn-default dropdown-toggle btn-jobs"  aria-haspopup="true" aria-expanded="false" style='float: right;background-color: #749593'>
+                    <a href='detail-loker-<?php echo $d['id_du_kerja']?>' class="btn btn-default dropdown-toggle btn-jobs"  aria-haspopup="true" aria-expanded="false" style='float: right;background-color: #749593'>
                         Lebih Detail
                     </a>
                     <br><br>

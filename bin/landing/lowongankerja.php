@@ -23,20 +23,20 @@ echo $get_total_rows[0];
     <title>LOKER HUBIN</title>
 
        <!-- Bootstrap Core CSS -->
-    <link href="css2/styles.css" rel="stylesheet">
-    <link href="css2/bootstrap-job.min.css" rel="stylesheet">
+    <link href="bin/landing/css2/styles.css" rel="stylesheet">
+    <link href="bin/landing/css2/bootstrap-job.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css2/landing-page.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css2/overwrite.css" rel="stylesheet">
+    <link href="bin/landing/css2/landing-page.css" rel="stylesheet">
+    <link href="bin/landing/css/font-awesome.min.css" rel="stylesheet">
+    <link href="bin/landing/css2/overwrite.css" rel="stylesheet">
 
 
     <!-- Custom Fonts -->
-    <link href="../fonts/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="bin/landing/fonts/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
-    <link href="css2/custom.css" rel="stylesheet">
+    <link href="bin/landing/css2/custom.css" rel="stylesheet">
 </head>
 
 <body>
@@ -115,38 +115,38 @@ echo $get_total_rows[0];
                         <div class="profile-usermenu plus">
                             <ul class="nav notnav fornav">
                                  <li class='ats'>
-                                    <form class="form-horizontal form-label-left" method="POST" action="proses_landing.php?a=search" enctype="multipart/form-data" >
+                                    <form class="form-horizontal form-label-left" method="POST" action="pland-search" enctype="multipart/form-data" >
                                     <input type="text" name="src" class="form-control" placeholder="Cari"><br><input value='Cari' type="submit" class='col-md-12 btn btn-info'><br><br>
                                 </li>
                                 <li class="your">
-                                    <a href="lowongankerja.php"><i class='fa fa-caret-right'></i>SEMUA</a>
+                                    <a href="lowongan-kerja"><i class='fa fa-caret-right'></i>SEMUA</a>
                                 </li>
                                  <li class="your">
-                                    <a href="lowongankerja.php?q=rekayasa perangkat lunak"><i class='fa fa-caret-right'></i>RPL</a>
+                                    <a href="lowongan-kerja?q=rekayasa perangkat lunak"><i class='fa fa-caret-right'></i>RPL</a>
                                 </li>
                                 <li class="your">
-                                    <a href="lowongankerja.php?q=teknik komputer dan jaringan"><i class='fa fa-caret-right'></i>TKJ</a>
+                                    <a href="lowongan-kerja?q=teknik komputer dan jaringan"><i class='fa fa-caret-right'></i>TKJ</a>
                                 </li>
                                 <li class="your">
-                                    <a href="lowongankerja.php?q=teknik otomasi industri"><i class='fa fa-caret-right'></i>TOI</a>
+                                    <a href="lowongan-kerja?q=teknik otomasi industri"><i class='fa fa-caret-right'></i>TOI</a>
                                 </li>
                                 <li class="your">
-                                    <a href="lowongankerja.php?q=teknik elektronika komunikasi"><i class='fa fa-caret-right'></i>TEK</a>
+                                    <a href="lowongan-kerja?q=teknik elektronika komunikasi"><i class='fa fa-caret-right'></i>TEK</a>
                                 </li>
                                 <li class="your">
-                                    <a href="lowongankerja.php?q=teknik elektronika industri"><i class='fa fa-caret-right'></i>TEI</a>
+                                    <a href="lowongan-kerja?q=teknik elektronika industri"><i class='fa fa-caret-right'></i>TEI</a>
                                 </li>
                                 <li class="your">
-                                    <a href="lowongankerja.php?q=teknik pendingin"><i class='fa fa-caret-right'></i>TP</a>
+                                    <a href="lowongan-kerja?q=teknik pendingin"><i class='fa fa-caret-right'></i>TP</a>
                                 </li>
                                 <li class="your">
-                                    <a href="lowongankerja.php?q=kontrol proses"><i class='fa fa-caret-right'></i>KP</a>
+                                    <a href="lowongan-kerja?q=kontrol proses"><i class='fa fa-caret-right'></i>KP</a>
                                 </li>
                                 <li class="your">
-                                    <a href="lowongankerja.php?q=kontrol mekanik"><i class='fa fa-caret-right'></i>KM</a>
+                                    <a href="lowongan-kerja?q=kontrol mekanik"><i class='fa fa-caret-right'></i>KM</a>
                                 </li>
                                 <li class="your">
-                                    <a href="lowongankerja.php?q=Teknik Produksi & Penyiaran Program Pertelevisian"><i class='fa fa-caret-right'></i>TP4</a>
+                                    <a href="lowongan-kerja?q=Teknik Produksi & Penyiaran Program Pertelevisian"><i class='fa fa-caret-right'></i>TP4</a>
                                 </li>
                             </ul>
                             </form>
@@ -172,12 +172,12 @@ echo $get_total_rows[0];
     </footer>
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="bin/landing/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
+    <script src="bin/landing/js/bootstrap.min.js"></script>
+    <script src="bin/landing/js/scripts.js"></script>
     <script>
 
 $(document).ready(function() {
@@ -191,7 +191,7 @@ $(document).ready(function() {
         $q='';
     }
     ?>
-    $('.farr').load("fetch_page.php?q=<?php echo $q;?>", {'page':track_click}, function() {track_click++;}); //initial data to load
+    $('.farr').load("bin/landing/fetch_page.php?q=<?php echo $q;?>", {'page':track_click}, function() {track_click++;}); //initial data to load
 
     $(".load_more").click(function (e) { //user clicks on button
     
@@ -208,7 +208,7 @@ $(document).ready(function() {
                     $q='';
                 }
                 ?>
-            $.post('fetch_page.php?q=<?php echo $q;?>',{'page': track_click}, function(data) {
+            $.post('bin/landing/fetch_page.php?q=<?php echo $q;?>',{'page': track_click}, function(data) {
             
                 $(".load_more").show(); //bring back load more button
                 

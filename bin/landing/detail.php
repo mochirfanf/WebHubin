@@ -14,18 +14,18 @@ include "../koneksidb.php";
     <title>LOKER HUBIN</title>
 
        <!-- Bootstrap Core CSS -->
-    <link href="css2/styles.css" rel="stylesheet">
-    <link href="css2/bootstrap-job.min.css" rel="stylesheet">
+    <link href="bin/landing/css2/styles.css" rel="stylesheet">
+    <link href="bin/landing/css2/bootstrap-job.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css2/landing-page.css" rel="stylesheet">
+    <link href="bin/landing/css2/landing-page.css" rel="stylesheet">
 
-    <link href="css2/overwrite.css" rel="stylesheet">
-    <link href="css2/custom.css" rel="stylesheet">
+    <link href="bin/landing/css2/overwrite.css" rel="stylesheet">
+    <link href="bin/landing/css2/custom.css" rel="stylesheet">
 
 
     <!-- Custom Fonts -->
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="bin/landing/css/font-awesome.min.css" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -82,7 +82,7 @@ include "../koneksidb.php";
     <div class="row fmargin"> 
 <?php
 
-                        $data = mysql_query("SELECT *, GROUP_CONCAT(nama_jurusan) as juru FROM hb_du_permintaan_kerja INNER JOIN hb_du_umum ON hb_du_permintaan_kerja.id_du = hb_du_umum.id_du INNER JOIN hb_du_jumlah_permintaan_du_kerja ON hb_du_jumlah_permintaan_du_kerja.id_du_kerja=hb_du_permintaan_kerja.id_du_kerja INNER JOIN jurusan ON jurusan.id_jurusan = hb_du_jumlah_permintaan_du_kerja.id_jurusan WHERE hb_du_permintaan_kerja.id_du_kerja=$_GET[id]");
+                        $data = mysql_query("SELECT *, GROUP_CONCAT(nama_jurusan) as juru FROM hb_du_permintaan_kerja INNER JOIN hb_du_umum ON hb_du_permintaan_kerja.id_du = hb_du_umum.id_du INNER JOIN hb_du_jumlah_permintaan_du_kerja ON hb_du_jumlah_permintaan_du_kerja.id_du_kerja=hb_du_permintaan_kerja.id_du_kerja INNER JOIN jurusan ON jurusan.id_jurusan = hb_du_jumlah_permintaan_du_kerja.id_jurusan WHERE hb_du_permintaan_kerja.id_du_kerja=$_GET[id]")or die(mysql_error());
                         $d = mysql_fetch_array($data);
                             ?>
             <div class="col col-sm-9">
@@ -133,7 +133,7 @@ include "../koneksidb.php";
                                     echo "<i class='fa fa-caret-right'></i> $dd[nama_jurusan]&emsp;";
                                     $dt = mysql_query("SELECT * FROM hb_detail_skill WHERE id_du_kerja = '$d[id_du_kerja]' AND id_jurusan=$dd[id_jurusan]");
                                     while($d2 = mysql_fetch_array($dt)){
-                                        echo "<a href='lowongankerja.php?q=$d2[kode_skill]' style='text-decoration:none'><span class='skills'>".$d2['kode_skill'].'</span></a>';
+                                        echo "<a href='lowongan-kerja?q=$d2[kode_skill]' style='text-decoration:none'><span class='skills'>".$d2['kode_skill'].'</span></a>';
                                         }
 
                                     echo "<br><br>";
@@ -151,7 +151,7 @@ include "../koneksidb.php";
                                 $pl = mysql_query("SELECT * FROM hb_lamar_kerja INNER JOIN siswa ON hb_lamar_kerja.nis = siswa.nis WHERE id_du_kerja = '$d[id_du_kerja]'");
                                     while($dm = mysql_fetch_array($pl)){
                             ?>
-                                    <li><b><img style="background-image: url('../images/uploads/132.png');background-size: cover;" class='up'></b><a href="#"><i><?php echo $dm['nama_siswa']?></i></a></li>
+                                    <li><b><img style="background-image: url('<?php echo 'bin/images/uploads/'.$dm['foto'];?>');background-size: cover;" class='up'></b><a href="#"><i><?php echo $dm['nama_siswa']?></i></a></li>
                                     <?php
 
                                 }
@@ -204,38 +204,38 @@ include "../koneksidb.php";
                         <div class="profile-usermenu plus">
                             <ul class="nav notnav fornav">
                                  <li class='ats'>
-                                    <form class="form-horizontal form-label-left" method="POST" action="proses_landing.php?a=search" enctype="multipart/form-data" >
+                                    <form class="form-horizontal form-label-left" method="POST" action="pland-search" enctype="multipart/form-data" >
                                     <input type="text" name="src" class="form-control" placeholder="Cari"><br><input value='Cari' type="submit" class='col-md-12 btn btn-info'><br><br>
                                 </li>
                                 <li class="your">
-                                    <a href="lowongankerja.php?q=rekayasa perangkat lunak"><i class='fa fa-caret-right'></i>SEMUA</a>
+                                    <a href="lowongan-kerja"><i class='fa fa-caret-right'></i>SEMUA</a>
                                 </li>
                                  <li class="your">
-                                    <a href="lowongankerja.php?q=rekayasa perangkat lunak"><i class='fa fa-caret-right'></i>RPL</a>
+                                    <a href="lowongan-kerja?q=rekayasa perangkat lunak"><i class='fa fa-caret-right'></i>RPL</a>
                                 </li>
                                 <li class="your">
-                                    <a href="lowongankerja.php?q=teknik komputer dan jaringan"><i class='fa fa-caret-right'></i>TKJ</a>
+                                    <a href="lowongan-kerja?q=teknik komputer dan jaringan"><i class='fa fa-caret-right'></i>TKJ</a>
                                 </li>
                                 <li class="your">
-                                    <a href="lowongankerja.php?q=teknik otomasi industri"><i class='fa fa-caret-right'></i>TOI</a>
+                                    <a href="lowongan-kerja?q=teknik otomasi industri"><i class='fa fa-caret-right'></i>TOI</a>
                                 </li>
                                 <li class="your">
-                                    <a href="lowongankerja.php?q=teknik elektronika komunikasi"><i class='fa fa-caret-right'></i>TEK</a>
+                                    <a href="lowongan-kerja?q=teknik elektronika komunikasi"><i class='fa fa-caret-right'></i>TEK</a>
                                 </li>
                                 <li class="your">
-                                    <a href="lowongankerja.php?q=teknik elektronika industri"><i class='fa fa-caret-right'></i>TEI</a>
+                                    <a href="lowongan-kerja?q=teknik elektronika industri"><i class='fa fa-caret-right'></i>TEI</a>
                                 </li>
                                 <li class="your">
-                                    <a href="lowongankerja.php?q=teknik pendingin"><i class='fa fa-caret-right'></i>TP</a>
+                                    <a href="lowongan-kerja?q=teknik pendingin"><i class='fa fa-caret-right'></i>TP</a>
                                 </li>
                                 <li class="your">
-                                    <a href="lowongankerja.php?q=kontrol proses"><i class='fa fa-caret-right'></i>KP</a>
+                                    <a href="lowongan-kerja?q=kontrol proses"><i class='fa fa-caret-right'></i>KP</a>
                                 </li>
                                 <li class="your">
-                                    <a href="lowongankerja.php?q=kontrol mekanik"><i class='fa fa-caret-right'></i>KM</a>
+                                    <a href="lowongan-kerja?q=kontrol mekanik"><i class='fa fa-caret-right'></i>KM</a>
                                 </li>
                                 <li class="your">
-                                    <a href="lowongankerja.php?q=Teknik Produksi & Penyiaran Program Pertelevisian"><i class='fa fa-caret-right'></i>TP4</a>
+                                    <a href="lowongan-kerja?q=Teknik Produksi & Penyiaran Program Pertelevisian"><i class='fa fa-caret-right'></i>TP4</a>
                                 </li>
                             </ul>
                             </form>
@@ -305,12 +305,12 @@ include "../koneksidb.php";
     </footer>
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="bin/landing/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
+    <script src="bin/landing/js/bootstrap.min.js"></script>
+    <script src="bin/landing/js/scripts.js"></script>
         <script>
 $('#lampiran').bind('change', function() {
 
