@@ -17,7 +17,7 @@ if($_SESSION['level']=='siswa'){
                 <section class="panel">
                     <header class="panel-heading"> <big> Tambah Kegiatan </big> </header>
                     <div class="panel-body">
-                        <form class="form-horizontal form-label-left" method="POST" action="<?php echo "proses_siswa.php?a=tambah_kegiatan"; ?>" enctype="multipart/form-data">
+                        <form class="form-horizontal form-label-left" method="POST" action="<?php echo "bin/siswa/proses_siswa.php?a=tambah_kegiatan"; ?>" enctype="multipart/form-data">
                             <div class="form-group">
                                 <br>
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12"> Kegiatan Sekarang : </label>
@@ -86,7 +86,7 @@ if($_SESSION['level']=='siswa'){
 <?php       include "footer.php";
     
 }else{
-    header('location:../login.php');
+    header('location:beranda');
 }
 
 ?>

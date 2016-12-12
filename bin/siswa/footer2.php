@@ -11,41 +11,40 @@
 </section>
 
 <!-- Placed js at the end of the document so the pages load faster -->
-<script src="../js/jquery-1.10.2.js"></script>
-<script src="../js/jquery-ui-1.9.2.custom.min.js"></script>
-<script src="../js/jquery-migrate-1.2.1.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/modernizr.min.js"></script>
-<script src="../js/jquery.nicescroll.js"></script>
+<script src="bin/js/jquery-1.10.2.js"></script>
+<script src="bin/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="bin/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="bin/js/bootstrap.min.js"></script>
+<script src="bin/js/modernizr.min.js"></script>
+<script src="bin/js/jquery.nicescroll.js"></script>
 
-<script src="../js/jquery-ui_auto_complete.js"></script>
+<script src="bin/js/jquery-ui_auto_complete.js"></script>
 
 <!--dynamic table-->
-<script type="text/javascript" language="javascript" src="../js/advanced-datatable/js/jquery.dataTables.js"></script>
-<script type="text/javascript" src="../js/data-tables/DT_bootstrap.js"></script>
+<script type="text/javascript" language="javascript" src="bin/js/advanced-datatable/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="bin/js/data-tables/DT_bootstrap.js"></script>
 <!--dynamic table initialization -->
-<script src="../js/dynamic_table_init.js"></script>
+<script src="bin/js/dynamic_table_init.js"></script>
 
 <!--common scripts for all pages-->
-<script src="../js/scripts.js"></script>
+<script src="bin/js/scripts.js"></script>
 
 <!--pickers plugins-->
-<script type="text/javascript" src="../js/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="../js/bootstrap-datetimepicker.js"></script>
-<script type="text/javascript" src="../js/bootstrap-daterangepicker/moment.min.js"></script>
-<script type="text/javascript" src="../js/bootstrap-daterangepicker/daterangepicker.js"></script>
-<script type="text/javascript" src="../js/bootstrap-colorpicker.js"></script>
-<script type="text/javascript" src="../js/bootstrap-timepicker.js"></script>
+<script type="text/javascript" src="bin/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="bin/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="bin/js/bootstrap-daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="bin/js/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="bin/js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="bin/js/bootstrap-timepicker.js"></script>
 
 <!--pickers initialization-->
-<script src="../js/pickers-init.js"></script>
+<script src="bin/js/pickers-init.js"></script>
 
 <!--icheck -->
-<script src="../js/iCheck/jquery.icheck.js"></script>
-<script src="../js/icheck-init.js"></script>
+<script src="bin/js/iCheck/jquery.icheck.js"></script>
+<script src="bin/js/icheck-init.js"></script>
 
-<script type="text/javascript" src="../js/ajax_daerah.js"></script>
-
+<script type="text/javascript" src="bin/js/ajax_daerah.js"></script>
 
 <script>
   $(function() {
@@ -173,7 +172,7 @@ $('#lampiran').bind('change', function() {
         document.getElementById('chat').innerHTML = req.responseText;
         } 
         }
-        req.open('GET','chat.php',true); 
+        req.open('GET','bin/siswa/chat.php',true); 
         req.send();
 
         }
@@ -188,7 +187,7 @@ $('#lampiran').bind('change', function() {
         document.getElementById('chat').innerHTML = req.responseText;
         } 
         }
-        req.open('GET','chat.php',true); 
+        req.open('GET','bin/siswa/chat.php',true); 
         req.send();
         scrolling();
         }

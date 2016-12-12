@@ -99,7 +99,7 @@ if($_SESSION['level']=='siswa'){
 <?php       include "footer.php";
     
 }else{
-    header('location:../login.php');
+    header('location:beranda');
 }
 
 ?>

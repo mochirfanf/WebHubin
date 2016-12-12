@@ -205,6 +205,40 @@ if($_SESSION['level']=='perusahaan'){
             </div>
         </div>
     </div>
+
+
+                <div class='modal fade' id='tolak' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+<?php
+
+                                    
+
+?>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                    <h4 class='modal-title' id='myModalLabel'>Tolak Lamaran Pekerjaan</h4> </div>
+                <div class='modal-body'>
+                    <form class='form-horizontal form-label-left' method='POST' action='proseskerja.php?a=tolak_kerja' enctype='multipart/form-data'>
+                        
+                                    <div class='col-md-12'>
+                                        <b>Tolak <span id='namasiswa'></span> ?</b>
+                                    </div><?php
+                                    echo "<input type='hidden' id='id' name='id'>";
+                                    ?>
+                </div>
+                <div class='modal-footer'>
+                    <div class='form-group'>
+                        <div class='col-md-4 col-md-offset-8'>
+                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                            <button style=' margin-top: -5px;' value='Ya' id='send' type='submit' class='btn btn-success' name='pilih'>Ya</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
         <!--body wrapper end-->
 
 <?php       include "footer.php";

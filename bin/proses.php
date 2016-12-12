@@ -83,7 +83,7 @@
 						$_SESSION['jurusan'] = $j["id_jurusan"];
                         $_SESSION['tahun_ajaran'] = $j["tahun_ajaran"];
 
-						header("location:siswa/index.php");
+						header("location:homepagesiswa");
 					}
 					else{
 						?>
@@ -154,7 +154,7 @@
 				$_SESSION['tahun_ajaran'] ='';
                 $_SESSION['nis'] ='';
 				session_destroy();
-				header('location:landing/index.php');
+				header('location:beranda');
 			break;
 
 
@@ -179,7 +179,7 @@
                     }
 
                     if($f==0){
-                        define('ROOT', 'http://localhost:8080/WebHubin/bin/landing/');
+                        define('ROOT', 'sdrcstudio.com/sims/hubin/bin/landing/');
                         $kode   = md5(uniqid(rand()));
 
                         $to     = $email;
@@ -188,12 +188,12 @@
                         $dari  .= "Content-type: text/html \r\n";
 
                         $pesan  = "Klik link berikut untuk mengaktifkan akun: <br />";
-                        $pesan .= "<a href='".ROOT."konfirm.php?email=".$_POST['email']."&kode=".$kode."'>".ROOT."konfirm.php?email=".$_POST['email']."&kode=$kode</a>";
+                        $pesan .= "<a href='".ROOT."verifikasiakun.php?kode=".$kode."'>Verifikasi Akun</a>";
 
-                        //$kirim  = mail($to, $judul, $pesan, $dari)or die(mysql_error());
+                        $kirim  = mail($to, $judul, $pesan, $dari)or die(mysql_error());
 
 
-                        //if ($kirim) {
+                        if ($kirim) {
                             mysql_query("INSERT INTO hb_du_umum (id_kel, nama_du, email_du, alamat, id_prov, id_kab, id_kec, no_kodepos, level, status, kode)
                                 VALUES('$kelurahan' ,'$nama','$email','$alamat','$provinsi', '$kabupaten', '$kecamatan',  '$kodepos', 'perusahaan', 'Belum Aktif', '$kode')")  or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
 
@@ -204,7 +204,7 @@
                                 top.location = 'landing/index.php';
                             </script>
                             <?php
-                        //}
+                        }
 
 
                     }else{

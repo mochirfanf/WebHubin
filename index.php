@@ -1,3 +1,3 @@
 <?php
-	header('location:bin/index.php');
+	header('location:beranda');
 ?>

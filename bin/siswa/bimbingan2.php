@@ -80,7 +80,7 @@ if($_SESSION['level']=='siswa'){
                     <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
                     <h4 class='modal-title' id='myModalLabel'>Update Kegiatan</h4> </div>
                 <div class='modal-body'>
-                    <form class='form-horizontal form-label-left' method='POST' action='proses_siswa.php?a=ubahbim' enctype='multipart/form-data'>
+                    <form class='form-horizontal form-label-left' method='POST' action='bin/siswa/proses_siswa.php?a=ubahbim' enctype='multipart/form-data'>
                         <div class='item form-group'>
                         <input type='hidden' id='id' name='id' value='$d[id_bimbingan_tatap]'>
                                 <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Materi : <span class='required'></span> </label>
@@ -136,7 +136,7 @@ if($_SESSION['level']=='siswa'){
                     <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
                     <h4 class='modal-title' id='myModalLabel'>Tambah Bimbingan</h4> </div>
                 <div class='modal-body'>
-                    <form class='form-horizontal form-label-left' method='POST' action='proses_siswa.php?a=tambahbimbingan' enctype='multipart/form-data'>
+                    <form class='form-horizontal form-label-left' method='POST' action='bin/siswa/proses_siswa.php?a=tambahbimbingan' enctype='multipart/form-data'>
                         <div class='item form-group'>
                                 <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Materi : <span class='required'></span> </label>
                                 <div class='col-md-7 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
@@ -175,14 +175,14 @@ if($_SESSION['level']=='siswa'){
             <div class='modal-content'>
                 <div class='modal-header'>
                     <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-                    <h4 class='modal-title' id='myModalLabel'>Terima Lamaran Pekerjaan</h4> </div>
+                    <h4 class='modal-title' id='myModalLabel'>Hapus Bimbingan</h4> </div>
                 <div class='modal-body'>
-                    <form class='form-horizontal form-label-left' method='POST' action='proses_siswa.php?a=hapusbim' enctype='multipart/form-data'>
+                    <form class='form-horizontal form-label-left' method='POST' action='bin/siswa/proses_siswa.php?a=hapusbim' enctype='multipart/form-data'>
                         
                                     <div class='col-md-12'>
-                                        <b>Hapus Kegiatan ?</span> ?</b>
+                                        <b>Hapus Bimbingan ?</span> ?</b>
                                     </div><?php
-                                    echo "<input type='text' id='id' name='id'>";
+                                    echo "<input type='hidden' id='id' name='id'>";
                                     ?>
                 </div>
                 <div class='modal-footer'>
@@ -206,7 +206,7 @@ if($_SESSION['level']=='siswa'){
         header('location:tahun_ajaran.php');
     }
 }else{
-    header('location:../login.php');
+    header('location:beranda');
 }
 
 ?>
