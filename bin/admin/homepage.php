@@ -22,7 +22,7 @@ if($_SESSION['level']=='admin'){
                 <a href='updateprofile.php'><input type='Submit' value='UPDATE PROFILE'></a>
                 <a href='gantipassword.php'><input type='Submit' value='GANTI PASSWORD'></a>
                 <a href='inputperizinan.php'><input type='Submit' value='INPUT PERIZINAN'></a>
-                <a href='../../proses-logout'><input type='Submit' value='KELUAR'></a>
+                <a href='../proses.php?a=logout'><input type='Submit' value='KELUAR'></a>
             </fieldset> 
         </div>
         <!--body wrapper end-->

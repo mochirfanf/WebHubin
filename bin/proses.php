@@ -40,7 +40,6 @@
                         $_SESSION['level'] = $level;
                         $_SESSION['password'] = $password;
 
-<<<<<<< HEAD
                         header("location:super_admin/index.php");
                     }
                     if($level=="admin" AND $status=="aktif"){
@@ -53,20 +52,6 @@
                         $_SESSION['nip'] = $d["nip"];
                         header("location:admin/index.php");
                     }
-=======
-						header("location:bin/super_admin/index.php");
-					}
-					if($level=="admin" AND $status=="aktif"){
-						$_SESSION['username'] = $username;
-						$_SESSION['level'] = $level;
-						$_SESSION['password'] = $password;
-						$_SESSION['tahun_ajaran'] = '';
-
-						$d=mysql_fetch_array(mysql_query("SELECT * FROM hb_pengelola_hubin WHERE username='$username'"));
-						$_SESSION['nip'] = $d["nip"];
-						header("location:bin/admin/index.php");
-					}
->>>>>>> origin/master
 
                 }
 
@@ -80,11 +65,7 @@
                     $j = mysql_fetch_array(mysql_query("SELECT * FROM jurusan WHERE kapprog = '$username'"));
                     $_SESSION['jurusan'] = $j["id_jurusan"];
 
-<<<<<<< HEAD
                     header("location:kapprog/index.php");
-=======
-					header("location:bin/kapprog/index.php");
->>>>>>> origin/master
 
                 }
 
@@ -102,17 +83,10 @@
                         $_SESSION['jurusan'] = $j["id_jurusan"];
                         $_SESSION['tahun_ajaran'] = $j["tahun_ajaran"];
 
-<<<<<<< HEAD
                         header("location:siswa/index.php");
                     }
                     else{
                         ?>
-=======
-						header("location:homepage");
-					}
-					else{
-						?>
->>>>>>> origin/master
                         <script>
                             alert("LOGIN GAGAL\nUsername atau Password Salah");
                             top.location = "login.php";
@@ -133,7 +107,7 @@
                         $_SESSION['id_du'] = $c["id_du"];
                         $_SESSION['tahun_ajaran'] = "2013-2014";
 
-                        header("location:bin/perusahaan/index.php");
+                        header("location:perusahaan/index.php");
 
                 }
                 elseif($rguru > 0) {
@@ -149,7 +123,7 @@
                         $j = mysql_fetch_array(mysql_query("SELECT * FROM hb_guru_jurusan WHERE nip_guru = '$username'"));
                         $_SESSION['jurusan'] = $j["id_jurusan"];
 
-                        header("location:bin/guru/index.php");
+                        header("location:guru/index.php");
                     }
                     else{
                         ?>
@@ -179,15 +153,9 @@
                 $_SESSION['nip'] = "";
                 $_SESSION['tahun_ajaran'] ='';
                 $_SESSION['nis'] ='';
-<<<<<<< HEAD
                 session_destroy();
                 header('location:landing/index.php');
             break;
-=======
-				session_destroy();
-				header('location:beranda');
-			break;
->>>>>>> origin/master
 
 
             case "register":

@@ -14,11 +14,7 @@ if($_SESSION['level']=='siswa'){
 				$materi = anti_injection($_POST['materi']);
 				$tanggal = $_POST['tanggal'];
 				mysql_query(" INSERT INTO hb_bimbingan_tatap(nis,materi,tanggal_bimbingan,status) VALUES ('$_SESSION[username]','$materi','$tanggal','Belum Terverifikasi')") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
-		        ?>
-					<script>
-						alert("Profil telah diperbarui!");
-						window.history.go(-1);
-					</script><?php
+		        header("location:bimbingan2.php");
 
 			break;
 			case "update_profil":
@@ -41,7 +37,7 @@ if($_SESSION['level']=='siswa'){
 
 		     
 			break;
-			case "hapuskegiatanp":
+			case "hapuskegiatan":
 				mysql_query("DELETE FROM hb_kegiatan_prakerin WHERE id_kegiatan ='$_POST[id]'")or die ("Ups! Gagal Dihapus, Silahkan Coba Lagi! ".mysql_error());
 
 				?>
@@ -92,13 +88,8 @@ if($_SESSION['level']=='siswa'){
 		        $kegiatan = anti_injection($_POST['kegiatan']);
 		        $mingguke = anti_injection($_POST['mingguke']);
 
-		        mysql_query(" INSERT INTO hb_kegiatan_prakerin(nis,jenis_kegiatan,mingguke) VALUES ('$_SESSION[username]','$kegiatan','$mingguke')") or die("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
-		        ?>
-		        <script>
-						alert("Kegiatan tersebut telah diperbarui!");
-						window.history.go(-1);
-					</script>
-					<?php
+		        mysql_query(" INSERT INTO hb_kegiatan_prakerin(nis,jenis_kegiatan,mingguke) VALUES ('$_SESSION[username]','$kegiatan','$mingguke')") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+		        header("location:kegiatanprakerin.php");
 
 		     break;
 
@@ -124,7 +115,7 @@ if($_SESSION['level']=='siswa'){
 		        	$hl = "location:detail-loker-".$iddukerja;
 		    	header($hl);
 		    	}else{
-		    	header("location:lowongan-kerja");
+		    	header("location:lowongankerja.php");
 		    	}
 		     break;
 
@@ -155,12 +146,7 @@ if($_SESSION['level']=='siswa'){
 				$sisa = $d["sisa_kuota_penerimaan"] + 1 ;
 				mysql_query("UPDATE hb_du_penerima SET sisa_kuota_penerimaan= $sisa WHERE id_du='$_POST[id_du]' AND id_jurusan = $_SESSION[jurusan]") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
 
-				?>
-		        <script>
-						alert("Kegiatan tersebut telah diperbarui!");
-						window.history.go(-1);
-					</script>
-					<?php
+				header("location:pilih_tempat_prakerin.php");
 			break;
 
 			case "tambah_kegiatan":
@@ -179,15 +165,15 @@ if($_SESSION['level']=='siswa'){
 					?>
 					<script>
 						alert(" Berhasil Ditambahkan");
-						window.history.go(-1);
+						top.location='riwayat_kegiatan.php';
 					</script><?php
 				}
 			break;
 
 			case "hapuskegiatan":
 				
-				mysql_query("DELETE FROM hb_riwayat_siswa WHERE id_riwayat =$_GET[id]")or die ("Ups! Gagal Dihapus, Silahkan Coba Lagi! ".mysql_error());
-				
+				mysql_query("DELETE FROM hb_riwayat_siswa WHERE id_riwayat ='$_GET[id]'")or die ("Ups! Gagal Dihapus, Silahkan Coba Lagi! ".mysql_error());
+
 				?>
 					<script>
 						alert("Kegiatan tersebut telah dihapus!");
@@ -221,7 +207,7 @@ if($_SESSION['level']=='siswa'){
 	
 	}	
 }else{
-	header('location:beranda');
+	header('location:../login.php');
 }
 
 ?>

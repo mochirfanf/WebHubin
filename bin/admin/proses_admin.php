@@ -219,16 +219,6 @@ if($_SESSION['level']=='admin'){
 					</script><?php
 			break;
 
-			case "tidak_jadi_menolak":
-				$id = $_GET["id"];
-				mysql_query(" UPDATE hb_du_permintaan SET status_penerimaan='Proses' WHERE id_du=$id") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
-				?>
-					<script>
-						alert(" Status Telah Diperbaharui ");
-						top.location='dumenolak.php';
-					</script><?php
-			break;
-
 			case "hapusdu":
 				$id = $_GET["id"];
 				mysql_query("DELETE FROM hb_du_umum WHERE id_du = $id")or die ("Ups! Gagal Dihapus, Silahkan Coba Lagi! ".mysql_error());

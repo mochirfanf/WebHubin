@@ -241,7 +241,7 @@ if($_SESSION['level']=='siswa'){
         header('location:tahun_ajaran.php');
     }
 }else{
-    header('location:beranda');
+    header('location:../login.php');
 }
 
 ?>

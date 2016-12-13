@@ -1,5 +1,5 @@
 <?php
 	include "../koneksidb.php";
-		header("location:homepagesiswa");
+		header("location:homepage.php");
 	
 ?>

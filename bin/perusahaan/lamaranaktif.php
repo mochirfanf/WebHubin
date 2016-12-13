@@ -206,10 +206,6 @@ if($_SESSION['level']=='perusahaan'){
         </div>
     </div>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
                 <div class='modal fade' id='tolak' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
 <?php
 

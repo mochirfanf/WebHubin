@@ -21,7 +21,7 @@ if($_SESSION['level']=='super_admin'){
                 <a href="inputadmin.php"><input type="Submit" value=" INPUT ADMIN "></a>
                 <a href='gantipassword.php'><input type='Submit' value='GANTI PASSWORD'></a>
                 <a href='lihatadmin.php'><input type='Submit' value='LIHAT ADMIN'></a>
-                <a href="../../proses-logout"><input type="Submit" value=" KELUAR "></a>
+                <a href="../proses.php?a=logout"><input type="Submit" value=" KELUAR "></a>
             </fieldset> 
         </div>
         <!--body wrapper end-->

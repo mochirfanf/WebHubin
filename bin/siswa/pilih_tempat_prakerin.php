@@ -28,7 +28,7 @@ if($_SESSION['level']=='siswa'){
                             $di = mysql_fetch_array($query1);
                             
 ?>
-                            <form method="POST" action="bin/siswa/proses_siswa.php?a=hapus_permintaan" enctype="multipart/form-data">
+                            <form method="POST" action="proses_siswa.php?a=hapus_permintaan" enctype="multipart/form-data">
                                 <header class="panel-heading"> <big> Anda Telah Mendaftar Memilih Tempat Prakerin </big>
                                   <span class="pull-right">
                                     <small>Status : <?php echo "$di[status_verifikasi]";?></small> &nbsp; &nbsp; &nbsp;
@@ -42,7 +42,7 @@ if($_SESSION['level']=='siswa'){
                                  </span>
                                </header>
                             </form>
-                            <form class="form-horizontal form-label-left" method="POST" action="<?php echo "bin/siswa/proses_siswa.php?a=hapus_permintaan&id=$di[id_prakerin]"; ?>" enctype="multipart/form-data">
+                            <form class="form-horizontal form-label-left" method="POST" action="<?php echo "proses_siswa.php?a=hapus_permintaan&id=$di[id_prakerin]"; ?>" enctype="multipart/form-data">
 
                                 <div class="panel-body">
                                     <div class="form-group">
@@ -76,7 +76,7 @@ if($_SESSION['level']=='siswa'){
 
                     ?>
                     <header class="panel-heading"> <big>Informasi Penerimaan Siswa Untuk Prakerin </big> </header>
-                    <form class="form-horizontal form-label-left" method="POST" action="<?php echo "bin/siswa/proses_siswa.php?a=pilihtempat"; ?>" enctype="multipart/form-data">
+                    <form class="form-horizontal form-label-left" method="POST" action="<?php echo "proses_siswa.php?a=pilihtempat"; ?>" enctype="multipart/form-data">
 
                         <div class="panel-body">
                             <div class="form-group">
@@ -102,7 +102,7 @@ if($_SESSION['level']=='siswa'){
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-offset-7 col-lg-5">
-                                        <a type="button" href="du-penerima-prakerin" class="btn btn-danger"> Lihat Detail Penerimaan </a>
+                                        <a type="button" href="dumenerima.php" class="btn btn-danger"> Lihat Detail Penerimaan </a>
                                         <button value='Tambahkan' name='Tambahkan' type='submit' class="btn btn-primary"> Submit </button>
                                     <br><br><br>
                                 </div>
@@ -119,7 +119,7 @@ if($_SESSION['level']=='siswa'){
 <?php       include "footer.php";
     
 }else{
-    header('location:beranda');
+    header('location:../login.php');
 }
 
 ?>

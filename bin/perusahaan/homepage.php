@@ -19,7 +19,7 @@ if($_SESSION['level']=='perusahaan'){
         <div class="wrapper">
             <fieldset>
                 <legend> Hai DU/DI </legend>
-                <a href='../../proses-logout'><input type='Submit' value='KELUAR'></a>
+                <a href='../proses.php?a=logout'><input type='Submit' value='KELUAR'></a>
             </fieldset>
         </div>
         <!--body wrapper end-->

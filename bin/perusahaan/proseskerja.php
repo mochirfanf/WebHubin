@@ -13,7 +13,7 @@ if($_SESSION['level']=='perusahaan'){
       case "tutup":
 
       $qr = mysql_query("SELECT id_du_kerja FROM hb_du_permintaan_kerja WHERE id_du='$_SESSION[id_du]' ORDER BY id_du_kerja DESC LIMIT 1");
-      $dd = mysql_fetch_array($qr)or die(mysql_error());
+      $dd = mysql_fetch_array($qr)or die(mysql_error());;
 
       mysql_query(" UPDATE hb_du_permintaan_kerja SET status_permintaan='Ditutup' WHERE id_du_kerja='$dd[id_du_kerja]'") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
       
@@ -27,18 +27,13 @@ if($_SESSION['level']=='perusahaan'){
                         $dd = mysql_fetch_array($qr)or die(mysql_error());
 
                         $to     = $dd['email_siswa'];
-<<<<<<< HEAD
                         $judul  = "Lamaran";
-=======
-                        $judul  = "Aktivasi Akun Anda";
->>>>>>> origin/master
                         $dari   = "From: hubin.com\n";
                         $dari  .= "Content-type: text/html \r\n";
 
                         $pesan .= "<h4>Lamaran Anda diterima di ".$dd['nama_du'];
 
                         $kirim  = mail($to, $judul, $pesan, $dari)or die(mysql_error());
-<<<<<<< HEAD
                 header('location:lamaranaktif.php');
 
       break;
@@ -56,18 +51,9 @@ if($_SESSION['level']=='perusahaan'){
                         $pesan .= "<h4>Lamaran Anda belum diterima di ".$dd['nama_du'];
 
                         $kirim  = mail($to, $judul, $pesan, $dari)or die(mysql_error());
-=======
->>>>>>> origin/master
                 header('location:lamaranaktif.php');
 
       break;
-
-      case "terima_kerja":
-      mysql_query(" UPDATE hb_lamar_kerja SET status='Lamaran Ditolak' WHERE id_lamar=$_POST[id]") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
-                header('location:lamaranaktif.php');
-
-      break;
-
       case "update-prakerin":
 
 					$mulai		= anti_injection($_POST['mulai']);

@@ -85,14 +85,14 @@
 
             <!--sidebar nav start-->
             <ul class="nav nav-pills nav-stacked custom-nav">
-            <li><a href="../../beranda"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
+            <li><a href="../landing/index.php"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
                 <li class="<?php echo "$active"; ?> "><a href="homepage.php"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
 
-                <li class="menu-list <?php echo "$navactive1"; ?>"><a href=""><i class="fa fa-building-o"></i> <span> Permohonan Prakerin </span></a>
+                <li class="menu-list <?php echo "$navactive1"; ?>"><a href=""><i class="fa fa-building-o"></i> <span> Data DU / DI </span></a>
                     <ul class="sub-menu-list">
-                        <li class="<?php echo "$active3"; ?> "><a href="dari_hubin.php"> Dari Hubin </a></li>
-                        <li class="<?php echo "$active2"; ?> "><a href="dari_kapprog.php"> Dari Kapprog</a></li>
                         <li class="<?php echo "$active1"; ?> "><a href="dari_perusahaan.php"> Dari Perusahaan (DU / DI) </a></li>
+                        <li class="<?php echo "$active2"; ?> "><a href="dari_kapprog.php"> Dari Kapprog</a></li>
+                        <li class="<?php echo "$active3"; ?> "><a href="dari_hubin.php"> Dari Hubin </a></li>
                         <li class="<?php echo "$active4"; ?> "><a href="semua_du.php"> Semua DU / DI </a></li>
                     </ul>
                 </li>

@@ -2,7 +2,7 @@
     <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
         <div class="container text-center">
             <div class="footer-logo">
-                <a href="index.html"><img class="img-responsive" src="bin/landing/images/logo.png" alt=""></a>
+                <a href="index.html"><img class="img-responsive" src="images/logo.png" alt=""></a>
             </div>
             <div class="social-icons">
                 <ul>
@@ -26,17 +26,17 @@
         </div>
     </div>
 </footer>
-<script type="text/javascript" src="bin/landing/js/jquery.js"></script>
-<script type="text/javascript" src="bin/landing/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-<script type="text/javascript" src="bin/landing/js/jquery.inview.min.js"></script>
-<script type="text/javascript" src="bin/landing/js/wow.min.js"></script>
-<script type="text/javascript" src="bin/landing/js/mousescroll.js"></script>
-<script type="text/javascript" src="bin/landing/js/smoothscroll.js"></script>
-<script type="text/javascript" src="bin/landing/js/jquery.countTo.js"></script>
-<script type="text/javascript" src="bin/landing/js/lightbox.min.js"></script>
-<script type="text/javascript" src="bin/landing/js/main.js"></script>
-<script type="text/javascript" src="bin/landing/js/ajax_daerah.js"></script>
+<script type="text/javascript" src="js/jquery.inview.min.js"></script>
+<script type="text/javascript" src="js/wow.min.js"></script>
+<script type="text/javascript" src="js/mousescroll.js"></script>
+<script type="text/javascript" src="js/smoothscroll.js"></script>
+<script type="text/javascript" src="js/jquery.countTo.js"></script>
+<script type="text/javascript" src="js/lightbox.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/ajax_daerah.js"></script>
 <!--SCRIPTS-->
 <!--Slider-in icons-->
 <script type='text/javascript'>

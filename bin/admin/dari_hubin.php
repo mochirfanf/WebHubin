@@ -22,7 +22,7 @@ if($_SESSION['level']=='admin'){
                 <div class="col-sm-12">
                     <section class="panel">
                     <header class="panel-heading">
-                        <big>Permohonan Perizinan Prakerin</big>
+                        <big>Permintaan Perizinan Prakerin</big>
                          <span class="pull-right">
                          <a href="#myModal" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
                          <!-- Modal -->

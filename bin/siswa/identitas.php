@@ -39,7 +39,7 @@ if($_SESSION['level']=='siswa'){
                          </span>
                     </header>
 
-                   <form class="form-horizontal form-label-left" method="POST" action="siswa-update-profil" enctype="multipart/form-data" >
+                   <form class="form-horizontal form-label-left" method="POST" action="proses_siswa.php?a=update_profil" enctype="multipart/form-data" >
                     <div class="panel-body">
                         <div class="adv-table">
                                 <div class="item form-group">
@@ -154,6 +154,122 @@ if($_SESSION['level']=='siswa'){
             </div>
         </div>
 
+            <div class='modal fade' id='tambah' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+<?php
+
+                                    
+
+?>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                    <h4 class='modal-title' id='myModalLabel'>Tambah Kegiatan</h4> </div>
+                <div class='modal-body'>
+                    <form class='form-horizontal form-label-left' method='POST' action='proses_siswa.php?a=tambahkegiatanprakerin' enctype='multipart/form-data'>
+                        <div class='item form-group'>
+                                <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Kegiatan : <span class='required'></span> </label>
+                                <div class='col-md-7 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <textarea class='form-control col-md-12 col-xs-12' id='portofolio' name='kegiatan' required></textarea>
+                                 </div>
+
+                            </div>
+                        <div class='item form-group'>
+                                <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Minggu Ke : <span class='required'></span> </label>
+                                <div class='col-md-7 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <input type='number' class='form-control col-md-12 col-xs-12' id='portofolio' name='mingguke' required>
+                                 </div>
+                            </div>
+                </div>
+                <div class='modal-footer'>
+                    <div class='form-group'>
+                        <div class='col-md-4 col-md-offset-8'>
+                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                            <button style=' margin-top: -5px;' value='pilih' id='send' type='submit' class='btn btn-success' name='pilih'>Pilih</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+                <div class='modal fade' id='hapus' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+<?php
+
+                                    
+
+?>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                    <h4 class='modal-title' id='myModalLabel'>Terima Lamaran Pekerjaan</h4> </div>
+                <div class='modal-body'>
+                    <form class='form-horizontal form-label-left' method='POST' action='proses_siswa.php?a=hapuskegiatan' enctype='multipart/form-data'>
+                        
+                                    <div class='col-md-12'>
+                                        <b>Hapus Kegiatan ?</span> ?</b>
+                                    </div><?php
+                                    echo "<input type='hidden' id='id' name='id'>";
+                                    ?>
+                </div>
+                <div class='modal-footer'>
+                    <div class='form-group'>
+                        <div class='col-md-4 col-md-offset-8'>
+                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                            <button style=' margin-top: -5px;' value='Ya' id='send' type='submit' class='btn btn-success' name='pilih'>Ya</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+                <div class='modal fade' id='update' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+<?php
+
+                                    
+
+?>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                    <h4 class='modal-title' id='myModalLabel'>Update Kegiatan</h4> </div>
+                <div class='modal-body'>
+                    <form class='form-horizontal form-label-left' method='POST' action='proses_siswa.php?a=ubahkegiatanprakerin' enctype='multipart/form-data'>
+                        <div class='item form-group'>
+                        <input type='hidden' id='id' name='id'>
+                                <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Kegiatan : <span class='required'></span> </label>
+                                <div class='col-md-7 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <textarea class='form-control col-md-12 col-xs-12' id='kegiatan' name='kegiatan' required></textarea>
+                                 </div>
+
+                            </div>
+                        <div class='item form-group'>
+                                <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Minggu Ke : <span class='required'></span> </label>
+                                <div class='col-md-7 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <input type='text' class='form-control col-md-12 col-xs-12' id='mk' name='mingguke' required>
+
+                                 </div>
+                            </div>
+                </div>
+                <div class='modal-footer'>
+                    <div class='form-group'>
+                        <div class='col-md-4 col-md-offset-8'>
+                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                            <button style=' margin-top: -5px;' value='pilih' id='send' type='submit' class='btn btn-success' name='pilih'>Ubah</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
         <!--body wrapper end-->
 
 <?php       include "footer.php";
@@ -161,7 +277,7 @@ if($_SESSION['level']=='siswa'){
         header('location:tahun_ajaran.php');
     }
 }else{
-    header('location:beranda');
+    header('location:../login.php');
 }
 
 ?>
