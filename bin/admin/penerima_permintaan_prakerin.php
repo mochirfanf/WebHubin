@@ -75,7 +75,7 @@ if($_SESSION['level']=='admin'){
                                                             <h5>Konfirmasi</h5>
                                                         </div>
                                                         <div class='modal-body'>
-                                                            Apakah DU $d[nama_du] Telah Menolak Perizinan Prakerin?
+                                                            Apakah DU <b>$d[nama_du]</b> Telah Menolak Perizinan Prakerin?
                                                         </div>
                                                        <div class='modal-footer'>
                                                             <button type='button' class='btn btn-default' data-dismiss='modal'>Kembali</button>

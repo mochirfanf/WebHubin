@@ -31,6 +31,7 @@ if($_SESSION['level']=='admin'){
                                         <th>Alamat </th>
                                         <th>Email</th>
                                         <th>Sumber DU/DI</th>
+                                        <th>Aksi</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -63,6 +64,32 @@ if($_SESSION['level']=='admin'){
                                                         echo "$s[singkatan]";
                                                     }
                                          echo "</td>
+
+                                                <td class='center'>
+                                                    <a href='#menolak$d[id_du]' data-toggle='modal'>
+                                                        <button class='btn btn-sm btn-danger' type='button'><i class='fa fa-times'></i> Batalkan </button>
+                                                    </a>
+                                                </td>
+
+                                                    <div  style='text-transform:none' aria-hidden='true' aria-labelledby='myModalLabel' role='dialog' tabindex='-1' id='menolak$d[id_du]' class='modal fade'>
+                                                        <div class='modal-dialog'>
+                                                            <div class='modal-content'>
+                                                                <div class='modal-header'>
+                                                                    <button aria-hidden='true' data-dismiss='modal' class='close' type='button'>×</button>
+                                                                    <h5>Konfirmasi</h5>
+                                                                </div>
+                                                                <div class='modal-body'>
+                                                                   Batalkan Jawaban Menolak dari DU <b>$d[nama_du]</b> ?
+                                                                </div>
+                                                               <div class='modal-footer'>
+                                                                    <button type='button' class='btn btn-default' data-dismiss='modal'>Kembali</button>
+                                                                    <a href='proses_admin.php?a=tidak_jadi_menolak&id=$d[id_du]'>
+                                                                    <input type='submit' value='Ya' name='Ganti'class='btn btn-success'></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                             </tr>";
                                          }
                                     ?>
