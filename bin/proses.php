@@ -154,7 +154,7 @@
 				$_SESSION['tahun_ajaran'] ='';
                 $_SESSION['nis'] ='';
 				session_destroy();
-				header('location:../beranda');
+				header('location:beranda');
 			break;
 
 

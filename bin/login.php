@@ -17,7 +17,7 @@ include "koneksidb.php";
 				header('location:bin/perusahaan/index.php');
 			}
       		if($_SESSION['level']=='siswa'){
-				header('location:bin/siswa/index.php');
+				header('location:homepagesiswa');
 			}
       		if($_SESSION['level']=='guru'){
 				header('location:bin/guru/index.php');
