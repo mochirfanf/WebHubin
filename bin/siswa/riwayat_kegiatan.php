@@ -51,7 +51,7 @@ if($_SESSION['level']=='siswa'){
                                                 <h5><big>Edit Kegiatan</big></h5>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST" action="<?php echo "proses_siswa.php?a=editkegiatan&id=$d[id_riwayat]"; ?>"  enctype='multipart/form-data' class="form-horizontal" role="form">
+                                                <form method="POST" action="<?php echo "bin/siswa/proses_siswa.php?a=editkegiatan&id=$d[id_riwayat]"; ?>"  enctype='multipart/form-data' class="form-horizontal" role="form">
                                                     <div class="form-group">
                                                         <label class="control-label col-lg-4 col-sm-4"> Kegiatan Sekarang : </label>
                                                         <div  class="col-lg-8">
@@ -168,7 +168,7 @@ if($_SESSION['level']=='siswa'){
                                                         </div>
                                                        <div class='modal-footer'>
                                                             <button type='button' class='btn btn-default' data-dismiss='modal'>Kembali</button>
-                                                            <a href='proses_siswa.php?a=hapuskegiatan&id=$d[id_riwayat]'>
+                                                            <a href='bin/siswa/proses_siswa.php?a=hapuskegiatan&id=$d[id_riwayat]'>
                                                             <input type='submit' value='Hapus' name='Ganti'class='btn btn-success'></a>
                                                         </div>
                                                     </div>
@@ -192,7 +192,7 @@ if($_SESSION['level']=='siswa'){
 <?php       include "footer.php";
     
 }else{
-    header('location:../login.php');
+    header('location:beranda');
 }
 
 ?>

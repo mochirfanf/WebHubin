@@ -11,26 +11,26 @@
   <title><?php echo " $title ";  ?></title>
 
   <!--dynamic table-->
-  <link href="../js/advanced-datatable/css/demo_page.css" rel="stylesheet" />
-  <link href="../js/advanced-datatable/css/demo_table.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../js/data-tables/DT_bootstrap.css" />
+  <link href="bin/js/advanced-datatable/css/demo_page.css" rel="stylesheet" />
+  <link href="bin/js/advanced-datatable/css/demo_table.css" rel="stylesheet" />
+  <link rel="stylesheet" href="bin/js/data-tables/DT_bootstrap.css" />
 
   <!--gritter css-->
   <link rel='stylesheet' type='text/css' href='../js/gritter/css/jquery.gritter.css' />
 
   <!--icheck-->
-  <link href="../js/iCheck/skins/flat/green.css" rel="stylesheet">
-  <link rel="stylesheet" href="../css/jquery-ui_auto_complete.css">
+  <link href="bin/js/iCheck/skins/flat/green.css" rel="stylesheet">
+  <link rel="stylesheet" href="bin/css/jquery-ui_auto_complete.css">
 
   <!--pickers css-->
-  <link rel="stylesheet" type="text/css" href="../css/datepicker-custom.css" />
-  <link rel="stylesheet" type="text/css" href="../css/timepicker.css" />
-  <link rel="stylesheet" type="text/css" href="../css/colorpicker.css" />
-  <link rel="stylesheet" type="text/css" href="../js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
-  <link rel="stylesheet" type="text/css" href="../css/datetimepicker-custom.css" />
+  <link rel="stylesheet" type="text/css" href="bin/css/datepicker-custom.css" />
+  <link rel="stylesheet" type="text/css" href="bin/css/timepicker.css" />
+  <link rel="stylesheet" type="text/css" href="bin/css/colorpicker.css" />
+  <link rel="stylesheet" type="text/css" href="bin/js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+  <link rel="stylesheet" type="text/css" href="bin/css/datetimepicker-custom.css" />
 
-  <link href="../css/style.css" rel="stylesheet">
-  <link href="../css/style-responsive.css" rel="stylesheet">
+  <link href="bin/css/style.css" rel="stylesheet">
+  <link href="bin/css/style-responsive.css" rel="stylesheet">
 
 </head>
 
@@ -86,10 +86,9 @@
 
              <!--sidebar nav start-->
             <ul class="nav nav-pills nav-stacked custom-nav">
-            <li><a href="../landing/index.php"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
-                <li class="<?php echo "$active"; ?> "><a href="homepage.php"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
-
-                <li class="<?php echo "$active1"; ?> "><a href="identitas.php"><i class="fa fa-user"></i> <span> Edit Profile </span></a></li>
+                <li><a href="beranda"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
+                <li class="<?php echo "$active"; ?> "><a href="homepagesiswa"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+                <li class="<?php echo "$active1"; ?> "><a href="identitassiswa"><i class="fa fa-user"></i> <span> Edit Profile </span></a></li>
 
                 <li class="menu-list <?php echo "$navactive2"; ?>"><a href=""><i class="fa fa-building-o"></i> <span> Sistem Seleksi </span></a>
                     <ul class="sub-menu-list">
@@ -100,28 +99,36 @@
 
                 <li class="menu-list <?php echo "$navactive"; ?>"><a href=""><i class="fa fa-building-o"></i> <span> Tempat Prakerin</span></a>
                     <ul class="sub-menu-list">
-                        <li class="<?php echo "$active2"; ?> "><a href="dumenerima.php"> Lihat Tempat Prakerin</a></li>
-                        <li class="<?php echo "$active3"; ?> "><a href="pilih_tempat_prakerin.php"> Pilih Tempat Prakerin </a></li>
+                        <li class="<?php echo "$active2"; ?> "><a href="du-penerima-prakerin"> Lihat Tempat Prakerin</a></li>
+                        <li class="<?php echo "$active3"; ?> "><a href="pilih-prakerin"> Pilih Tempat Prakerin </a></li>
                     </ul>
                 </li>
+
 
                 <li class="menu-list <?php echo "$navactive78"; ?>"><a href=""><i class="fa fa-building-o"></i> <span> Kegiatan Prakerin</span></a>
                     <ul class="sub-menu-list">
-                        <li class="<?php echo "$active31"; ?> "><a href="kegiatanprakerin.php"> Program Kegiatan Prakerin </a></li>
-                        <li class="<?php echo "$active89"; ?> "><a href="bimbingan.php"> Bimbingan disini </a></li>
-                        <li class="<?php echo "$active90"; ?> "><a href="bimbingan2.php"> List Bimbingan Tatap Muka </a></li>
+                        <li class="<?php echo "$active31"; ?> "><a href="kegiatan-siswa"> Program Kegiatan Prakerin </a></li>
+                        <li class="<?php echo "$active89"; ?> "><a href="bimbingan-disini"> Bimbingan disini </a></li>
+                        <li class="<?php echo "$active90"; ?> "><a href="bimbingan-tatap"> List Bimbingan Tatap Muka </a></li>
                     </ul>
                 </li>
 
+
                 <li class="menu-list <?php echo "$navactive22"; ?>"><a href=""><i class="fa fa-building-o"></i> <span> Lowongan Pekerjaan</span></a>
                     <ul class="sub-menu-list">
+<<<<<<< HEAD
                         <li class="<?php echo "$active19"; ?> "><a href="../landing/lowongankerja"> Pilih Tempat Kerja </a></li>
+=======
+                        <li class="<?php echo "$active19"; ?> "><a href="lowongan-kerja"> Pilih Tempat Kerja </a></li>
+>>>>>>> origin/master
                     </ul>
                 </li>
+
+
                 <li class="menu-list <?php echo "$navactive3"; ?>"><a href=""><i class="fa fa-building-o"></i> <span> Update Riwayat Kegiatan </span></a>
                     <ul class="sub-menu-list">
-                        <li class="<?php echo "$active7"; ?> "><a href="tambah_kegiatan.php"> Tambah Kegiatan </a></li>
-                        <li class="<?php echo "$active8"; ?> "><a href="riwayat_kegiatan.php"> Riwayat Kegiatan </a></li>
+                        <li class="<?php echo "$active7"; ?> "><a href="tambah-riwayat"> Tambah Kegiatan </a></li>
+                        <li class="<?php echo "$active8"; ?> "><a href="riwayat-saya"> Riwayat Kegiatan </a></li>
                     </ul>
                 </li>
 
@@ -133,7 +140,7 @@
                     </ul>
                 </li> -->
 
-                <li class="<?php echo "$active10"; ?> "><a href="../proses.php?a=logout"><i class="fa fa-building-o"></i> <span>Logout </span></a></li>
+                <li class="<?php echo "$active10"; ?> "><a href="proses-logout"><i class="fa fa-building-o"></i> <span>Logout </span></a></li>
 
             </ul>
             <!--sidebar nav end-->

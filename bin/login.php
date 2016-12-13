@@ -5,19 +5,22 @@ include "koneksidb.php";
 	if(!empty($_SESSION['username'])){
 
 			if($_SESSION['level']=='super_admin'){
-				header('location:super_admin/index.php');
+				header('location:bin/super_admin/index.php');
 			}
 			if($_SESSION['level']=='admin'){
-				header('location:admin/index.php');
+				header('location:bin/admin/index.php');
 			}
 			if($_SESSION['level']=='kapprog'){
-				header('location:kapprog/index.php');
+				header('location:bin/kapprog/index.php');
 			}
       		if($_SESSION['level']=='perusahaan'){
-				header('location:perusahaan/index.php');
+				header('location:bin/perusahaan/index.php');
 			}
       		if($_SESSION['level']=='siswa'){
-				header('location:siswa/index.php');
+				header('location:homepagesiswa');
+			}
+      		if($_SESSION['level']=='guru'){
+				header('location:bin/guru/index.php');
 			}
 	}else{
 		?>

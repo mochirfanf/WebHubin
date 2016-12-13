@@ -28,7 +28,7 @@ if($_SESSION['level']=='siswa'){
                         </div>
                         <div class='col-md-12' style='height: 100px'>
 
-                        <form method="post" action="bimbingan.php">
+                        <form method="post" action="bimbingan-disini">
                         <div class='col-md-12' style='padding: 10px; text-right'>
                         <textarea class='col-md-12 form-control' name="msg" placeholder="Enter Message"></textarea>
                             </div>
@@ -65,7 +65,7 @@ if($_SESSION['level']=='siswa'){
                     <form class='form-horizontal form-label-left' method='POST' action='proses_siswa.php?a=lamarkerja' enctype='multipart/form-data'>
                         <div class='col-md-12'>
                             <div class='col-md-3'>
-                                <img id='poto' class='img-responsive' src='../images/uploads/<?php echo $dl['foto'];?>' >
+                                <img id='poto' class='img-responsive' src='bin/images/uploads/<?php echo $dl['foto'];?>' >
                             </div>
                             <div class='col-md-8 img-responsive'>
                                 <strong><h4 id='namasiswa'><?php echo $dl['nama_guru']?></h4></strong>
@@ -119,7 +119,7 @@ if($_SESSION['level']=='siswa'){
         
         include "footer2.php";
 }else{
-    header('location:../login.php');
+    header('location:beranda');
 }
 
 ?>

@@ -86,7 +86,7 @@ if($_SESSION['level']=='kapprog'){
 
 	
 }else{
-	header('location:../login.php');
+	header('location:beranda');
 }
 
 ?>

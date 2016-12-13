@@ -1,10 +1,38 @@
 RewriteEngine On
 
-RewriteRule ^beranda$                  				    		index.php [L]
+RewriteRule ^beranda$                  				    		bin/landing/index.php [L]
 RewriteRule ^lowongan-kerja$                  				    bin/landing/lowongankerja.php [L]
+
 RewriteRule ^lowongan-kerja?q-(.*)$                  			bin/landing/lowongankerja.php?q=$1 [L]
 RewriteRule ^pland-(.*)$                  				    	bin/landing/proses_landing.php?a=$1 [L]
+RewriteRule ^proses-login$                  				    bin/proses.php?a=login [L]
+RewriteRule ^proses-logout$                  				    bin/proses.php?a=logout [L]
+
 RewriteRule ^detail-loker-(.*)$                  				bin/landing/detail.php?id=$1 [L]
-RewriteRule ^siswa-lamar-ya(.*)$                  				bin/siswa/proses_siswa.php?a=lamarkerja&lan=ya [L]
+RewriteRule ^siswa-lamar-ya$                  					bin/siswa/proses_siswa.php?a=lamarkerja&lan=ya [L]
+RewriteRule ^siswa-update-profil$                  				bin/siswa/proses_siswa.php?a=update_profil [L]
+RewriteRule ^siswa-hapus-permintaan$                  				bin/siswa/proses_siswa.php?a=hapus_permintaan [L]
+RewriteRule ^siswa-hapus-per-(.*)$                  				bin/siswa/proses_siswa.php?a=hapus_permintaan&id=$1 [L]
+RewriteRule ^proses-siswa-pilih-prakerin$                  				bin/siswa/proses_siswa.php?a=pilihtempat[L]
+
+RewriteRule ^proses-tambahkegiatan$                  				bin/siswa/proses_siswa.php?a=tambahkegiatanprakerin[L]
+RewriteRule ^proses-hapuskegiatan$                  				bin/siswa/proses_siswa.php?a=hapuskegiatan[L]
+RewriteRule ^proses-ubahkegiatan$                  				bin/siswa/proses_siswa.php?a=ubahkegiatanprakerin[L]
+
+
+RewriteRule ^homepage$                  				    		bin/login.php [L]
+
+RewriteRule ^homepagesiswa$                  				    	bin/siswa/homepage.php [L]
+RewriteRule ^identitassiswa$                  				    	bin/siswa/identitas.php [L]
+RewriteRule ^du-penerima-prakerin$                  				bin/siswa/dumenerima.php [L]
+RewriteRule ^pilih-prakerin$                  				    	bin/siswa/pilih_tempat_prakerin.php [L]
+RewriteRule ^kegiatan-siswa$                  				    	bin/siswa/kegiatanprakerin.php [L]
+RewriteRule ^bimbingan-disini$                  				    bin/siswa/bimbingan.php [L]
+RewriteRule ^bimbingan-tatap$                  				    	bin/siswa/bimbingan2.php [L]
+RewriteRule ^tambah-riwayat$                  				    	bin/siswa/tambah_kegiatan.php [L]
+RewriteRule ^riwayat-saya$                  				    	bin/siswa/riwayat_kegiatan.php [L]
+
+
+
 
 Options All -Indexes

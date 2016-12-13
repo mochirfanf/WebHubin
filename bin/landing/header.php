@@ -10,15 +10,15 @@ include "../koneksidb.php";
         <meta name="description" content="">
         <meta name="author" content="">
         <title> Hubin :: SMKN 1 Cimahi </title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/animate.min.css" rel="stylesheet">
-        <link href="css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/lightbox.css" rel="stylesheet">
-        <link href="css/main.css" rel="stylesheet">
-        <link id="css-preset" href="css/presets/preset1.css" rel="stylesheet">
-        <link href="css/responsive.css" rel="stylesheet">
-        <link href="css/dealanding.css" rel="stylesheet">
-        <link href="../css/mycustom.css" rel="stylesheet">
+        <link href="bin/landing/css/bootstrap.min.css" rel="stylesheet">
+        <link href="bin/landing/css/animate.min.css" rel="stylesheet">
+        <link href="bin/landing/css/font-awesome.min.css" rel="stylesheet">
+        <link href="bin/landing/css/lightbox.css" rel="stylesheet">
+        <link href="bin/landing/css/main.css" rel="stylesheet">
+        <link id="css-preset" href="bin/landing/css/presets/preset1.css" rel="stylesheet">
+        <link href="bin/landing/css/responsive.css" rel="stylesheet">
+        <link href="bin/landing/css/dealanding.css" rel="stylesheet">
+        <link href="bin/css/mycustom.css" rel="stylesheet">
         <style>
             #map-canvas {
                 width: 100%;

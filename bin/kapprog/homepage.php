@@ -19,7 +19,7 @@ if($_SESSION['level']=='kapprog'){
         <div class="wrapper">
             <fieldset>
                 <legend> Hai Kaprog <?php echo "$_SESSION[jurusan]"; ?></legend>
-                <a href='../proses.php?a=logout'><input type='Submit' value='KELUAR'></a>
+                <a href='../../proses-logout'><input type='Submit' value='KELUAR'></a>
             </fieldset>
         </div>
         <!--body wrapper end-->
