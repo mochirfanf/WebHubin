@@ -79,7 +79,7 @@ include "header.php";
                     <ul class="nav navbar-nav navbar-right">
                         <li class="scroll active"><a href="#home">Home</a></li>
                         <li class="scroll"><a href="#prakerin">Prakerin</a></li>
-                        <li class="scroll"><a href="lowongan-kerja">Lowongan Kerja</a></li>
+                        <li class="scroll"><a href="lowongankerja.php">Lowongan Kerja</a></li>
                         <li class="scroll"><a href="#kontak-kami">Kontak Kami</a></li>
                     </ul>
                 </div>

@@ -14,7 +14,7 @@
 			$s = anti_injection($s);
 			
 
-			header("location:lowongan-kerja?q=$s");
+			header("location:lowongankerja.php?q=$s");
 			break;
 			case "input":
 				if (isset($_POST['MASUK'])){

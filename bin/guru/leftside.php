@@ -84,7 +84,7 @@
             <ul class="nav nav-pills nav-stacked custom-nav">
             <li><a href="../landing/index.php"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
                 <li class="<?php echo "$active1"; ?> "><a href="homepage.php"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
-                <li class="<?php echo "$active16"; ?> "><a href="semuasiswa.php"><i class="fa fa-building-o"></i> <span> Siswa Prakerin </span></a></li>
+                <!--<li class="<?php //echo "$active16"; ?> "><a href="semuasiswa.php"><i class="fa fa-building-o"></i> <span> Siswa Prakerin </span></a></li>-->
 
                 <li class="menu-list <?php echo "$navactive7"; ?>"><a href=""><i class="fa fa-building-o"></i> <span>Monitoring</span></a>
                     <ul class="sub-menu-list">
@@ -95,6 +95,7 @@
                     </ul>
                 </li>
                 <li class="<?php echo "$active19"; ?> "><a href="bimbingan.php"><i class="fa fa-building-o"></i> <span> Bimbingan </span></a></li>
+                <li class="<?php echo "$active84"; ?> "><a href="bimbingan2.php"><i class="fa fa-building-o"></i> <span> Verifikasi Bimbingan </span></a></li>
 
                 <li class="<?php echo "$active5"; ?> "><a href=""><i class="fa fa-sign-in"></i> <span> Informasi </span></a></li>
 

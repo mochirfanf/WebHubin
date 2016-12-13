@@ -26,6 +26,11 @@ if($_SESSION['level']=='perusahaan'){
                 header('location:lamaranaktif.php');
 
       break;
+      case "tolak_kerja":
+      mysql_query(" UPDATE hb_lamar_kerja SET status='Lamaran Ditolak' WHERE id_lamar=$_POST[id]") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
+                header('location:lamaranaktif.php');
+
+      break;
       case "update-prakerin":
 
 					$mulai		= anti_injection($_POST['mulai']);

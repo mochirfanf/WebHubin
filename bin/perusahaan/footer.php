@@ -140,8 +140,8 @@ $(document).ready(function() {
         var modal = $(this);
 
         modal.find("#id").val(recipient);
-
-
+        var recipient2 = button.data('nama');
+        modal.find("#namasiswa").text(recipient2);
     });
 
     $( "#sel" ).change(function() {
