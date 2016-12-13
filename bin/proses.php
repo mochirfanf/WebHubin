@@ -40,7 +40,7 @@
 						$_SESSION['level'] = $level;
 						$_SESSION['password'] = $password;
 
-						header("location:super_admin/index.php");
+						header("location:bin/super_admin/index.php");
 					}
 					if($level=="admin" AND $status=="aktif"){
 						$_SESSION['username'] = $username;
@@ -50,7 +50,7 @@
 
 						$d=mysql_fetch_array(mysql_query("SELECT * FROM hb_pengelola_hubin WHERE username='$username'"));
 						$_SESSION['nip'] = $d["nip"];
-						header("location:admin/index.php");
+						header("location:bin/admin/index.php");
 					}
 
 				}
@@ -65,7 +65,7 @@
 					$j = mysql_fetch_array(mysql_query("SELECT * FROM jurusan WHERE kapprog = '$username'"));
 					$_SESSION['jurusan'] = $j["id_jurusan"];
 
-					header("location:kapprog/index.php");
+					header("location:bin/kapprog/index.php");
 
 				}
 
@@ -83,7 +83,7 @@
 						$_SESSION['jurusan'] = $j["id_jurusan"];
                         $_SESSION['tahun_ajaran'] = $j["tahun_ajaran"];
 
-						header("location:homepagesiswa");
+						header("location:homepage");
 					}
 					else{
 						?>
@@ -107,7 +107,7 @@
                         $_SESSION['id_du'] = $c["id_du"];
                         $_SESSION['tahun_ajaran'] = "2013-2014";
 
-                        header("location:perusahaan/index.php");
+                        header("location:bin/perusahaan/index.php");
 
                 }
                 elseif($rguru > 0) {
@@ -123,7 +123,7 @@
                         $j = mysql_fetch_array(mysql_query("SELECT * FROM hb_guru_jurusan WHERE nip_guru = '$username'"));
                         $_SESSION['jurusan'] = $j["id_jurusan"];
 
-                        header("location:guru/index.php");
+                        header("location:bin/guru/index.php");
                     }
                     else{
                         ?>
@@ -154,7 +154,7 @@
 				$_SESSION['tahun_ajaran'] ='';
                 $_SESSION['nis'] ='';
 				session_destroy();
-				header('location:beranda');
+				header('location:../beranda');
 			break;
 
 

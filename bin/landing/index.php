@@ -14,7 +14,7 @@ include "header.php";
                     <?php
                         if(isset($_SESSION['level'])){
                             ?>
-                            <a data-scroll class="btn btn-start animated fadeInUpBig" href='<?php echo'homepage'. $_SESSION['level'];?>'>Dashboard</a>
+                            <a data-scroll class="btn btn-start animated fadeInUpBig" href='homepage'>Dashboard</a>
                             <?php
                         }
                         else{
@@ -35,7 +35,7 @@ include "header.php";
                     <?php
                         if(isset($_SESSION['level'])){
                             ?>
-                            <a data-scroll class="btn btn-start animated fadeInUpBig" href='<?php echo'../'. $_SESSION['level'].'/index.php';?>'>Dashboard</a>
+                            <a data-scroll class="btn btn-start animated fadeInUpBig" href='homepage'>Dashboard</a>
                             <?php
                         }
                         else{
@@ -54,7 +54,7 @@ include "header.php";
                     <?php
                         if(isset($_SESSION['level'])){
                             ?>
-                            <a data-scroll class="btn btn-start animated fadeInUpBig" href='<?php echo'../'. $_SESSION['level'].'/index.php';?>'>Dashboard</a>
+                            <a data-scroll class="btn btn-start animated fadeInUpBig" href='homepage'>Dashboard</a>
                             <?php
                         }
                         else{

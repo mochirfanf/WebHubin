@@ -20,7 +20,8 @@ RewriteRule ^proses-hapuskegiatan$                  				bin/siswa/proses_siswa.p
 RewriteRule ^proses-ubahkegiatan$                  				bin/siswa/proses_siswa.php?a=ubahkegiatanprakerin[L]
 
 
-RewriteRule ^homepagesiswa$                  				    	bin/siswa/homepage.php [L]
+RewriteRule ^homepage$                  				    		bin/login.php [L]
+
 RewriteRule ^identitassiswa$                  				    	bin/siswa/identitas.php [L]
 RewriteRule ^du-penerima-prakerin$                  				bin/siswa/dumenerima.php [L]
 RewriteRule ^pilih-prakerin$                  				    	bin/siswa/pilih_tempat_prakerin.php [L]
@@ -29,5 +30,8 @@ RewriteRule ^bimbingan-disini$                  				    	bin/siswa/bimbingan.php
 RewriteRule ^bimbingan-tatap$                  				    	bin/siswa/bimbingan2.php [L]
 RewriteRule ^tambah-riwayat$                  				    	bin/siswa/tambah_kegiatan.php [L]
 RewriteRule ^riwayat-saya$                  				    	bin/siswa/riwayat_kegiatan.php [L]
+
+
+
 
 Options All -Indexes
