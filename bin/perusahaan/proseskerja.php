@@ -21,13 +21,36 @@ if($_SESSION['level']=='perusahaan'){
 
       break;
 
-      case "terima_kerja":
+           case "terima_kerja":
       mysql_query(" UPDATE hb_lamar_kerja SET status='Lamaran Diterima' WHERE id_lamar=$_POST[id]") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
+                        $qr = mysql_query("SELECT nama_du,email_siswa FROM hb_du_umum INNER JOIN hb_du_permintaan_kerja ON hb_du_umum.id_du = hb_du_permintaan_kerja.id_du INNER JOIN hb_lamar_kerja ON hb_lamar_kerja.id_du_kerja = hb_du_permintaan_kerja.id_du_kerja INNER JOIN siswa ON siswa.nis = hb_lamar_kerja.nis WHERE id_lamar = $_POST[id]");
+                        $dd = mysql_fetch_array($qr)or die(mysql_error());
+
+                        $to     = $dd['email_siswa'];
+                        $judul  = "Lamaran";
+                        $dari   = "From: hubin.com\n";
+                        $dari  .= "Content-type: text/html \r\n";
+
+                        $pesan .= "<h4>Lamaran Anda diterima di ".$dd['nama_du'];
+
+                        $kirim  = mail($to, $judul, $pesan, $dari)or die(mysql_error());
                 header('location:lamaranaktif.php');
 
       break;
-      case "tolak_kerja":
+
+           case "terima_kerja":
       mysql_query(" UPDATE hb_lamar_kerja SET status='Lamaran Ditolak' WHERE id_lamar=$_POST[id]") or die ("Ups! Gagal Diperbaharui, Silahkan Coba Lagi! ".mysql_error());
+                        $qr = mysql_query("SELECT nama_du,email_siswa FROM hb_du_umum INNER JOIN hb_du_permintaan_kerja ON hb_du_umum.id_du = hb_du_permintaan_kerja.id_du INNER JOIN hb_lamar_kerja ON hb_lamar_kerja.id_du_kerja = hb_du_permintaan_kerja.id_du_kerja INNER JOIN siswa ON siswa.nis = hb_lamar_kerja.nis WHERE id_lamar = $_POST[id]");
+                        $dd = mysql_fetch_array($qr)or die(mysql_error());
+
+                        $to     = $dd['email_siswa'];
+                        $judul  = "Lamaran";
+                        $dari   = "From: hubin.com\n";
+                        $dari  .= "Content-type: text/html \r\n";
+
+                        $pesan .= "<h4>Lamaran Anda belum diterima di ".$dd['nama_du'];
+
+                        $kirim  = mail($to, $judul, $pesan, $dari)or die(mysql_error());
                 header('location:lamaranaktif.php');
 
       break;

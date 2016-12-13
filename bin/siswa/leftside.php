@@ -116,7 +116,7 @@
 
                 <li class="menu-list <?php echo "$navactive22"; ?>"><a href=""><i class="fa fa-building-o"></i> <span> Lowongan Pekerjaan</span></a>
                     <ul class="sub-menu-list">
-                        <li class="<?php echo "$active19"; ?> "><a href="lowongankerja.php"> Pilih Tempat Kerja </a></li>
+                        <li class="<?php echo "$active19"; ?> "><a href="../landing/lowongankerja.php"> Pilih Tempat Kerja </a></li>
                     </ul>
                 </li>
 

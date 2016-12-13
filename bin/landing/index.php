@@ -90,216 +90,6 @@ include "header.php";
     <!--/#home-->
     <!-- Modal -->
 
-    <div class='modal fade' id='register' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
-        <div class='modal-dialog'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-                    <h4 class='modal-title' id='myModalLabel'>Register Perusahaan</h4> </div>
-                <div class='modal-body'>
-                    <form class='form-horizontal form-label-left' method='POST' action='../proses.php?a=register' enctype='multipart/form-data'>
-                        <div class='item form-group'>
-                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Nama Perusahaan : <span class='required'></span> </label>
-                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <input class='form-control col-md-7 col-xs-12' name='nama'  placeholder='Nama Perusahaan' type='text' required> </div>
-                        </div>
-                        <div class='item form-group'>
-                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Email :<span class='required'></span> </label>
-                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <input class='form-control col-md-7 col-xs-12' name='email'  placeholder='Email' type='email' required> </div>
-                        </div>
-                        <div class='item form-group'>
-                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Alamat :<span class='required'></span> </label>
-                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <textarea class='form-control col-md-7 col-xs-12' name='alamat'  placeholder='Alamat' required></textarea>
-                            </div>
-                        </div>
-                        <div class='item form-group'>
-                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Provinsi :<span class='required'></span> </label>
-                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <select required name="prop" id="prop" onclick="ajaxkota(this.value)" class='form-control'>
-                                    <option value="">Pilih Provinsi</option>
-                                    <?php
-                                      include 'koneksi.php';
-                                      $query=$db->prepare("SELECT id_prov,nama FROM provinsi ORDER BY nama");
-                                      $query->execute();
-                                      while ($data=$query->fetchObject()){
-                                      echo '<option value="'.$data->id_prov.'">'.$data->nama.'</option>';
-                                      }
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class='item form-group'>
-                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Kota/Kabupaten :<span class='required'></span> </label>
-                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <select required name="kota" id="kota" onchange="ajaxkec(this.value)" class='form-control'>
-                                    <option value="">Pilih Kota/Kabupaten</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class='item form-group'>
-                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Kecamatan :<span class='required'></span> </label>
-                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <select required name="kec" id="kec" onchange="ajaxkel(this.value)" class='form-control'>
-                                    <option value="">Pilih Kecamatan</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class='item form-group'>
-                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Kelurahan/Desa :<span class='required'></span> </label>
-                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <select required name="kel" id="kel" onchange="showCoordinate();" class='form-control'>
-                                    <option value="">Pilih Kelurahan/Desa</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class='item form-group'>
-                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Kode Pos :<span class='required'></span> </label>
-                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <input required class='form-control col-md-7 col-xs-12' name='kodepos' placeholder='Kode Pos' type='number'> </div>
-                        </div>
-                </div>
-                <div class='modal-footer'>
-                    <div class='form-group'>
-                        <div class='col-md-4 col-md-offset-8'>
-                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
-                            <button style=' margin-top: -5px;' value='DAFTAR' id='send' type='submit' class='btn btn-success' name='DAFTAR'>Tambah</button>
-                        </div>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-    <div class='modal fade' id='login' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
-        <div class='modal-dialog'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-                    <h4 class='modal-title' id='myModalLabel'>Login</h4> </div>
-                <div class='modal-body'>
-                    <form class='form-horizontal form-label-left' method='POST' action='../proses.php?a=login' enctype='multipart/form-data'>
-                        <div class='item form-group'>
-                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Username : <span class='required'></span> </label>
-                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <input class='form-control col-md-7 col-xs-12' name='username'  placeholder='Username' type='text' required> </div>
-                        </div>
-                        <div class='item form-group'>
-                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Password :<span class='required'></span> </label>
-                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <input class='form-control col-md-7 col-xs-12' name='password'  placeholder='Password' type='password' required> </div>
-                        </div>
-                        <div class='modal-footer'>
-                    <div class='form-group'>
-                        <div class='col-md-4 col-md-offset-8'>
-                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
-                            <button style=' margin-top: -5px;' value='login' id='send' type='submit' class='btn btn-success' name='login'>Login</button>
-                        </div>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-
-
-
-            <div class='modal fade' id='detail' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
-<?php
-
-                                    
-
-?>
-        <div class='modal-dialog'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-                    <h4 class='modal-title' id='myModalLabel'>Detail Pekerjaan Kerja</h4> </div>
-                <div class='modal-body'>
-                    <form class='form-horizontal form-label-left' method='POST' action='' enctype='multipart/form-data'>
-                        
-                        <div class="col-lg-12"><?php
-                                    echo "<input type='hidden' id='id' name='id'>";
-                                    ?>
-                                    <div class='col-md-12'>
-                                        <h3 id='namadu'></h3><br>
-
-                                <span class="form-horizontal form-label-left">
-                                    <div class="form-group">
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12"> Jurusan : </label>
-                                        <div class="col-lg-6 flat-green">
-                                            <span id='jurusan'></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Nama Penanggung Jawab :</label>
-                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
-                                            <span id='penanggung'></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Kontak Penanggung Jawab :</label>
-                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
-                                           <span id='cp'></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Jenis Seleksi :</label>
-                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
-                                            <span id='jenis_seleksi'></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Tempat Seleksi :</label>
-                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
-                                            <span id='tempat'></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Tanggal Seleksi :</label>
-                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
-                                            <span id='tanggal'></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Gaji :</label>
-                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
-                                            <span id='gaji'></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Lainnya :</label>
-                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
-                                            <span id='lain'></span>
-                                        </div>
-                                    </div>
-
-                                    </div>
-                                </div>
-                </div>
-                <div class='modal-footer' style='border: 0'>
-                    <div class='form-group'>
-                        <div class='col-md-4 col-md-offset-8'>
-                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
-                            <button style=' margin-top: -5px;' value='pilih' id='send' type='submit' class='btn btn-success' name='pilih'>Pilih</button>
-                        </div>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
     <section id="visi">
         <div class="container">
             <div class="heading wow fadeInDown" data-wow-duration="2000ms" data-wow-delay="500ms">
@@ -609,6 +399,217 @@ include "header.php";
         </div>
     </section>
     <!--/#contact-->
+    
+    <div class='modal fade' id='register' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                    <h4 class='modal-title' id='myModalLabel'>Register Perusahaan</h4> </div>
+                <div class='modal-body'>
+                    <form class='form-horizontal form-label-left' method='POST' action='../proses.php?a=register' enctype='multipart/form-data'>
+                        <div class='item form-group'>
+                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Nama Perusahaan : <span class='required'></span> </label>
+                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <input class='form-control col-md-7 col-xs-12' name='nama'  placeholder='Nama Perusahaan' type='text' required> </div>
+                        </div>
+                        <div class='item form-group'>
+                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Email :<span class='required'></span> </label>
+                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <input class='form-control col-md-7 col-xs-12' name='email'  placeholder='Email' type='email' required> </div>
+                        </div>
+                        <div class='item form-group'>
+                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Alamat :<span class='required'></span> </label>
+                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <textarea class='form-control col-md-7 col-xs-12' name='alamat'  placeholder='Alamat' required></textarea>
+                            </div>
+                        </div>
+                        <div class='item form-group'>
+                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Provinsi :<span class='required'></span> </label>
+                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <select required name="prop" id="prop" onclick="ajaxkota(this.value)" class='form-control'>
+                                    <option value="">Pilih Provinsi</option>
+                                    <?php
+                                      include 'koneksi.php';
+                                      $query=$db->prepare("SELECT id_prov,nama FROM provinsi ORDER BY nama");
+                                      $query->execute();
+                                      while ($data=$query->fetchObject()){
+                                      echo '<option value="'.$data->id_prov.'">'.$data->nama.'</option>';
+                                      }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class='item form-group'>
+                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Kota/Kabupaten :<span class='required'></span> </label>
+                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <select required name="kota" id="kota" onchange="ajaxkec(this.value)" class='form-control'>
+                                    <option value="">Pilih Kota/Kabupaten</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class='item form-group'>
+                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Kecamatan :<span class='required'></span> </label>
+                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <select required name="kec" id="kec" onchange="ajaxkel(this.value)" class='form-control'>
+                                    <option value="">Pilih Kecamatan</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class='item form-group'>
+                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Kelurahan/Desa :<span class='required'></span> </label>
+                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <select required name="kel" id="kel" onchange="showCoordinate();" class='form-control'>
+                                    <option value="">Pilih Kelurahan/Desa</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class='item form-group'>
+                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Kode Pos :<span class='required'></span> </label>
+                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <input required class='form-control col-md-7 col-xs-12' name='kodepos' placeholder='Kode Pos' type='number'> </div>
+                        </div>
+                </div>
+                <div class='modal-footer'>
+                    <div class='form-group'>
+                        <div class='col-md-4 col-md-offset-8'>
+                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                            <button style=' margin-top: -5px;' value='DAFTAR' id='send' type='submit' class='btn btn-success' name='DAFTAR'>Tambah</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class='modal fade' id='login' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                    <h4 class='modal-title' id='myModalLabel'>Login</h4> </div>
+                <div class='modal-body'>
+                    <form class='form-horizontal form-label-left' method='POST' action='../proses.php?a=login' enctype='multipart/form-data'>
+                        <div class='item form-group'>
+                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Username : <span class='required'></span> </label>
+                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <input class='form-control col-md-7 col-xs-12' name='username'  placeholder='Username' type='text' required> </div>
+                        </div>
+                        <div class='item form-group'>
+                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Password :<span class='required'></span> </label>
+                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <input class='form-control col-md-7 col-xs-12' name='password'  placeholder='Password' type='password' required> </div>
+                        </div>
+                        <div class='modal-footer'>
+                    <div class='form-group'>
+                        <div class='col-md-4 col-md-offset-8'>
+                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                            <button style=' margin-top: -5px;' value='login' id='send' type='submit' class='btn btn-success' name='login'>Login</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+            <div class='modal fade' id='detail' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+<?php
+
+                                    
+
+?>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                    <h4 class='modal-title' id='myModalLabel'>Detail Pekerjaan Kerja</h4> </div>
+                <div class='modal-body'>
+                    <form class='form-horizontal form-label-left' method='POST' action='' enctype='multipart/form-data'>
+                        
+                        <div class="col-lg-12"><?php
+                                    echo "<input type='hidden' id='id' name='id'>";
+                                    ?>
+                                    <div class='col-md-12'>
+                                        <h3 id='namadu'></h3><br>
+
+                                <span class="form-horizontal form-label-left">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12"> Jurusan : </label>
+                                        <div class="col-lg-6 flat-green">
+                                            <span id='jurusan'></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Nama Penanggung Jawab :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <span id='penanggung'></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Kontak Penanggung Jawab :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                           <span id='cp'></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Jenis Seleksi :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <span id='jenis_seleksi'></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Tempat Seleksi :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <span id='tempat'></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Tanggal Seleksi :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <span id='tanggal'></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Gaji :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <span id='gaji'></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4 col-sm-4 col-xs-12">Lainnya :</label>
+                                        <div style="margin-top:7px" class="col-lg-6 flat-green">
+                                            <span id='lain'></span>
+                                        </div>
+                                    </div>
+
+                                    </div>
+                                </div>
+                </div>
+                <div class='modal-footer' style='border: 0'>
+                    <div class='form-group'>
+                        <div class='col-md-4 col-md-offset-8'>
+                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                            <button style=' margin-top: -5px;' value='pilih' id='send' type='submit' class='btn btn-success' name='pilih'>Pilih</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <?php
 include "footer.php";
 ?>

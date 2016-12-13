@@ -80,9 +80,21 @@ $total_pages = ceil($get_total_rows[0]/$item_per_page);
                     <?php 
 
                     }?>
+                    <?php if(!isset($_SESSION['level'])){
+                        ?>
                     <li>
                         <a href='' data-toggle="modal" data-target="#login">LOGIN</a>
                     </li>
+                    <?php 
+
+                    }else{?>
+                    <li>
+                        <a href='../proses.php?a=logout'">LOGOUT</a>
+                    </li>
+                    <?php
+                }
+                ?>
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

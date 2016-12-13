@@ -58,18 +58,42 @@ include "../koneksidb.php";
                     <li>
                         <a href="index.php">HOME</a>
                     </li>
-                    <li>
+                    <li class='ac'>
                         <a href="lowongankerja.php">LOWONGAN KERJA</a>
                     </li>
-                    <li class='ac'>
+                    <?php if(isset($_SESSION['level'])){
+                        if($_SESSION['level']=='siswa'){
+                        ?>
+                    <li >
                         <a href="lamaransaya.php">LAMARAN SAYA</a>
                     </li>
+                    <?php 
+                }
+                    }
+                    ?>
+                    <?php if(isset($_SESSION['level'])){
+                        ?>
                     <li>
                         <a href="<?php echo '../'.$_SESSION['level'].'/homepage.php';?>">DASHBOARD</a>
                     </li>
+                    <?php 
+
+                    }?>
+                    <?php if(!isset($_SESSION['level'])){
+                        ?>
                     <li>
                         <a href='' data-toggle="modal" data-target="#login">LOGIN</a>
                     </li>
+                    <?php 
+
+                    }else{?>
+                    <li>
+                        <a href='../proses.php?a=logout'">LOGOUT</a>
+                    </li>
+                    <?php
+                }
+                ?>
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

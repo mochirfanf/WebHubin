@@ -1,27 +1,27 @@
 <?php
 
-	include "koneksidb.php";
+    include "koneksidb.php";
 
-	function anti_injection($param){
-		$filter = mysql_real_escape_string(stripslashes(strip_tags(htmlspecialchars($param,ENT_QUOTES))));
-		return $filter;
-	}
+    function anti_injection($param){
+        $filter = mysql_real_escape_string(stripslashes(strip_tags(htmlspecialchars($param,ENT_QUOTES))));
+        return $filter;
+    }
 
-	if (!empty($_GET ["a"])) {
-		switch ($_GET ["a"]){
-			case "login":
-				$username = anti_injection($_POST['username']);
-				$password = anti_injection($_POST['password']);
-				$password = md5($password);
+    if (!empty($_GET ["a"])) {
+        switch ($_GET ["a"]){
+            case "login":
+                $username = anti_injection($_POST['username']);
+                $password = anti_injection($_POST['password']);
+                $password = md5($password);
 
-				$useradmin 	= mysql_query("SELECT * FROM hb_user_admin WHERE username='$username' AND password='$password'");
-				$ruseradmin = mysql_fetch_row($useradmin);
+                $useradmin  = mysql_query("SELECT * FROM hb_user_admin WHERE username='$username' AND password='$password'");
+                $ruseradmin = mysql_fetch_row($useradmin);
 
-				$kapprog = mysql_query("SELECT * FROM jurusan WHERE kapprog = '$username'");
-				$rkapprog = mysql_fetch_row($kapprog);
+                $kapprog = mysql_query("SELECT * FROM jurusan WHERE kapprog = '$username'");
+                $rkapprog = mysql_fetch_row($kapprog);
 
-				$siswa = mysql_query("SELECT * FROM siswa WHERE nis = '$username'");
-				$rsiswa = mysql_fetch_row($siswa);
+                $siswa = mysql_query("SELECT * FROM siswa WHERE nis = '$username'");
+                $rsiswa = mysql_fetch_row($siswa);
 
                 $guru = mysql_query("SELECT * FROM guru WHERE nip_guru = '$username'");
                 $rguru = mysql_fetch_row($guru);
@@ -29,64 +29,64 @@
                 $userperusahaan  = mysql_query("SELECT * FROM hb_du_umum WHERE username='$username' AND password='$password' AND level='perusahaan' AND status='aktif' ");
                 $ruserperusahaan = mysql_fetch_row($userperusahaan);
 
-				if($ruseradmin>0){
+                if($ruseradmin>0){
 
-					$c  	= mysql_fetch_array(mysql_query("SELECT * FROM hb_user_admin WHERE username='$username' and password='$password'"));
-					$level  = $c['level'];
-					$status = $c['status'];
+                    $c      = mysql_fetch_array(mysql_query("SELECT * FROM hb_user_admin WHERE username='$username' and password='$password'"));
+                    $level  = $c['level'];
+                    $status = $c['status'];
 
-					if($level=="super_admin" AND $status=="aktif"){
-						$_SESSION['username'] = $username;
-						$_SESSION['level'] = $level;
-						$_SESSION['password'] = $password;
+                    if($level=="super_admin" AND $status=="aktif"){
+                        $_SESSION['username'] = $username;
+                        $_SESSION['level'] = $level;
+                        $_SESSION['password'] = $password;
 
-						header("location:super_admin/index.php");
-					}
-					if($level=="admin" AND $status=="aktif"){
-						$_SESSION['username'] = $username;
-						$_SESSION['level'] = $level;
-						$_SESSION['password'] = $password;
-						$_SESSION['tahun_ajaran'] = '';
+                        header("location:super_admin/index.php");
+                    }
+                    if($level=="admin" AND $status=="aktif"){
+                        $_SESSION['username'] = $username;
+                        $_SESSION['level'] = $level;
+                        $_SESSION['password'] = $password;
+                        $_SESSION['tahun_ajaran'] = '';
 
-						$d=mysql_fetch_array(mysql_query("SELECT * FROM hb_pengelola_hubin WHERE username='$username'"));
-						$_SESSION['nip'] = $d["nip"];
-						header("location:admin/index.php");
-					}
+                        $d=mysql_fetch_array(mysql_query("SELECT * FROM hb_pengelola_hubin WHERE username='$username'"));
+                        $_SESSION['nip'] = $d["nip"];
+                        header("location:admin/index.php");
+                    }
 
-				}
+                }
 
-				elseif($rkapprog > 0) {
+                elseif($rkapprog > 0) {
 
-					$c  = mysql_fetch_array( mysql_query("SELECT * FROM hb_login_operator WHERE nip_nis = '$username' and password='$password'"));
-					$_SESSION['level'] = "kapprog";
-					$_SESSION['username'] = $username;
-					$_SESSION['password'] = $password;
+                    $c  = mysql_fetch_array( mysql_query("SELECT * FROM hb_login_operator WHERE nip_nis = '$username' and password='$password'"));
+                    $_SESSION['level'] = "kapprog";
+                    $_SESSION['username'] = $username;
+                    $_SESSION['password'] = $password;
 
-					$j = mysql_fetch_array(mysql_query("SELECT * FROM jurusan WHERE kapprog = '$username'"));
-					$_SESSION['jurusan'] = $j["id_jurusan"];
+                    $j = mysql_fetch_array(mysql_query("SELECT * FROM jurusan WHERE kapprog = '$username'"));
+                    $_SESSION['jurusan'] = $j["id_jurusan"];
 
-					header("location:kapprog/index.php");
+                    header("location:kapprog/index.php");
 
-				}
+                }
 
-				elseif($rsiswa > 0) {
+                elseif($rsiswa > 0) {
 
-					$c  = mysql_query("SELECT * FROM hb_login_operator WHERE nip_nis = '$username' and password='$password'");
-					$crow = mysql_fetch_row($c);
+                    $c  = mysql_query("SELECT * FROM hb_login_operator WHERE nip_nis = '$username' and password='$password'");
+                    $crow = mysql_fetch_row($c);
 
-					if ($crow>0) {
-						$_SESSION['level'] = "siswa";
-						$_SESSION['username'] = $username;
-						$_SESSION['password'] = $password;
+                    if ($crow>0) {
+                        $_SESSION['level'] = "siswa";
+                        $_SESSION['username'] = $username;
+                        $_SESSION['password'] = $password;
 
-						$j = mysql_fetch_array(mysql_query("SELECT * FROM siswa WHERE nis = '$username'"));
-						$_SESSION['jurusan'] = $j["id_jurusan"];
+                        $j = mysql_fetch_array(mysql_query("SELECT * FROM siswa WHERE nis = '$username'"));
+                        $_SESSION['jurusan'] = $j["id_jurusan"];
                         $_SESSION['tahun_ajaran'] = $j["tahun_ajaran"];
 
-						header("location:siswa/index.php");
-					}
-					else{
-						?>
+                        header("location:siswa/index.php");
+                    }
+                    else{
+                        ?>
                         <script>
                             alert("LOGIN GAGAL\nUsername atau Password Salah");
                             top.location = "login.php";
@@ -94,7 +94,7 @@
                         <?php
                     }
 
-				}
+                }
 
                 elseif($ruserperusahaan > 0) {
 
@@ -135,8 +135,8 @@
                     }
 
                 }
-				else{
-					?>
+                else{
+                    ?>
                     <script>
                         alert("LOGIN GAGAL\nUsername atau Password Salah");
                         top.location = "login.php";
@@ -144,18 +144,18 @@
                     <?php
                 }
 
-			break;
+            break;
 
-			case "logout";
-				$_SESSION['level']= "";
-				$_SESSION['username']="";
-				$_SESSION['password']="";
-				$_SESSION['nip'] = "";
-				$_SESSION['tahun_ajaran'] ='';
+            case "logout";
+                $_SESSION['level']= "";
+                $_SESSION['username']="";
+                $_SESSION['password']="";
+                $_SESSION['nip'] = "";
+                $_SESSION['tahun_ajaran'] ='';
                 $_SESSION['nis'] ='';
-				session_destroy();
-				header('location:landing/index.php');
-			break;
+                session_destroy();
+                header('location:landing/index.php');
+            break;
 
 
             case "register":
@@ -179,7 +179,7 @@
                     }
 
                     if($f==0){
-                        define('ROOT', 'http://localhost:8080/WebHubin/bin/landing/');
+                        define('ROOT', 'sdrcstudio.com/sims/hubin/bin/landing/');
                         $kode   = md5(uniqid(rand()));
 
                         $to     = $email;
@@ -188,12 +188,12 @@
                         $dari  .= "Content-type: text/html \r\n";
 
                         $pesan  = "Klik link berikut untuk mengaktifkan akun: <br />";
-                        $pesan .= "<a href='".ROOT."konfirm.php?email=".$_POST['email']."&kode=".$kode."'>".ROOT."konfirm.php?email=".$_POST['email']."&kode=$kode</a>";
+                        $pesan .= "<a href='".ROOT."verifikasiakun.php?kode=".$kode."'>Verifikasi Akun</a>";
 
-                        //$kirim  = mail($to, $judul, $pesan, $dari)or die(mysql_error());
+                        $kirim  = mail($to, $judul, $pesan, $dari)or die(mysql_error());
 
 
-                        //if ($kirim) {
+                        if ($kirim) {
                             mysql_query("INSERT INTO hb_du_umum (id_kel, nama_du, email_du, alamat, id_prov, id_kab, id_kec, no_kodepos, level, status, kode)
                                 VALUES('$kelurahan' ,'$nama','$email','$alamat','$provinsi', '$kabupaten', '$kecamatan',  '$kodepos', 'perusahaan', 'Belum Aktif', '$kode')")  or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
 
@@ -204,7 +204,7 @@
                                 top.location = 'landing/index.php';
                             </script>
                             <?php
-                        //}
+                        }
 
 
                     }else{
@@ -220,8 +220,8 @@
 
               case "daftar-perusahaan":
                 $username = anti_injection($_POST['username']);
-        				$password = anti_injection($_POST['password']);
-        				$password = md5($password);
+                        $password = anti_injection($_POST['password']);
+                        $password = md5($password);
                 $nama = anti_injection($_POST['nama']);
                 $email = anti_injection($_POST['email']);
                 $bidang = anti_injection($_POST['bidang']);
@@ -247,7 +247,7 @@
                     }
               break;
 
-		}
-	}
+        }
+    }
 
 ?>
