@@ -5,7 +5,7 @@ include "../koneksidb.php";
 
 
 if(!empty($_GET['kode'])){ 
-	$c  = mysql_query("SELECT * FROM hb_du_umum WHERE kode=$_GET[kode]");
+	$c  = mysql_query("SELECT * FROM hb_du_umum WHERE kode='$_GET[kode]'");
     $crow = mysql_fetch_row($c);
     if($crow>0){
 

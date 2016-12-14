@@ -151,7 +151,7 @@ if($_SESSION['level']=='perusahaan'){
                             <div class='col-md-12' style='padding: 20px'>
                                 <h4 id='text'>Lampiran</h4>
                                 <p id=''>
-                                <a href='#' id='lam'>Unduh Lampiran</a>
+                                <a href='#' id='lam' target='_blank' download='#'>Unduh Lampiran</a>
                                 </p>
                             </div>
                         </div><?php

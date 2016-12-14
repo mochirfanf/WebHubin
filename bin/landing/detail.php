@@ -100,36 +100,6 @@ include "../koneksidb.php";
         </div>
         <!-- /.container -->
     </nav>
-    <div class='modal fade' id='login' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
-        <div class='modal-dialog'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-                    <h4 class='modal-title' id='myModalLabel'>Login</h4> </div>
-                <div class='modal-body'>
-                    <form class='form-horizontal form-label-left' method='POST' action='../proses.php?a=login' enctype='multipart/form-data'>
-                        <div class='item form-group'>
-                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Username : <span class='required'></span> </label>
-                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <input class='form-control col-md-7 col-xs-12' name='username'  placeholder='Username' type='text' required> </div>
-                        </div>
-                        <div class='item form-group'>
-                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Password :<span class='required'></span> </label>
-                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
-                                <input class='form-control col-md-7 col-xs-12' name='password'  placeholder='Password' type='password' required> </div>
-                        </div>
-                        <div class='modal-footer'>
-                    <div class='form-group'>
-                        <div class='col-md-4 col-md-offset-8'>
-                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
-                            <button style=' margin-top: -5px;' value='login' id='send' type='submit' class='btn btn-success' name='login'>Login</button>
-                        </div>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 <!-- Begin Body -->
 <div class="container">
     <div class="row fmargin"> 
@@ -204,7 +174,7 @@ include "../koneksidb.php";
                                 $pl = mysql_query("SELECT * FROM hb_lamar_kerja INNER JOIN siswa ON hb_lamar_kerja.nis = siswa.nis WHERE id_du_kerja = '$d[id_du_kerja]'");
                                     while($dm = mysql_fetch_array($pl)){
                             ?>
-                                    <li><b><img style="background-image: url('<?php echo 'bin/images/uploads/'.$dm['foto'];?>');background-size: cover;" class='up'></b><a href="#"><i><?php echo $dm['nama_siswa']?></i></a></li>
+                                    <li><b><img style="background-image: url('<?php echo '../images/uploads/'.$dm['foto'];?>');background-size: cover;" class='up'></b><a href="#"><i><?php echo $dm['nama_siswa']?></i></a></li>
                                     <?php
 
                                 }
@@ -314,7 +284,7 @@ include "../koneksidb.php";
                     <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
                     <h4 class='modal-title' id='myModalLabel'>Lamaran Pekerjaan</h4> </div>
                 <div class='modal-body'>
-                    <form class='form-horizontal form-label-left' method='POST' action='siswa-lamar-ya' enctype='multipart/form-data'>
+                    <form class='form-horizontal form-label-left' method='POST' action='../siswa/proses_siswa.php?a=lamarkerja&lan=ya' enctype='multipart/form-data'>
                         <div class='item form-group'>
                                 <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Portofolio : <span class='required'></span> </label>
                                 <div class='col-md-7 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
@@ -347,6 +317,36 @@ include "../koneksidb.php";
     </div>
 
 
+    <div class='modal fade' id='login' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                    <h4 class='modal-title' id='myModalLabel'>Login</h4> </div>
+                <div class='modal-body'>
+                    <form class='form-horizontal form-label-left' method='POST' action='../proses.php?a=login' enctype='multipart/form-data'>
+                        <div class='item form-group'>
+                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'>Username : <span class='required'></span> </label>
+                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <input class='form-control col-md-7 col-xs-12' name='username'  placeholder='Username' type='text' required> </div>
+                        </div>
+                        <div class='item form-group'>
+                            <label class='control-label col-md-3 col-sm-3 col-xs-12' for='name'> Password :<span class='required'></span> </label>
+                            <div class='col-md-9 col-sm-9 col-xs-12' style='margin-bottom:20px;'>
+                                <input class='form-control col-md-7 col-xs-12' name='password'  placeholder='Password' type='password' required> </div>
+                        </div>
+                        <div class='modal-footer'>
+                    <div class='form-group'>
+                        <div class='col-md-4 col-md-offset-8'>
+                            <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                            <button style=' margin-top: -5px;' value='login' id='send' type='submit' class='btn btn-success' name='login'>Login</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Footer -->
     <footer>
         <div class="container">

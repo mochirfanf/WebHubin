@@ -2,7 +2,6 @@
 include "header.php";
 ?>
     <!--.preloader-->
-    <div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
     <!--/.preloader-->
     <header id="home">
         <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
@@ -20,7 +19,7 @@ include "header.php";
                         else{
                     ?>
                     <a data-scroll class="btn btn-start animated fadeInUpBig" data-toggle="modal" data-target="#login">Login</a>
-                    <a data-scroll class="btn btn-start animated fadeInUpBig"  data-toggle="modal" data-target="#register">Lakukan Kerjasama</a>
+                    <a data-scroll class="btn btn-start animated fadeInUpBig"  data-toggle="modal" data-target="#register">Registrasi Kerjasama</a>
                     <?php
                 }
                 ?>
@@ -41,7 +40,7 @@ include "header.php";
                         else{
                     ?>
                     <a data-scroll class="btn btn-start animated fadeInUpBig" data-toggle="modal" data-target="#login">Login</a>
-                    <a data-scroll class="btn btn-start animated fadeInUpBig"  data-toggle="modal" data-target="#register">Lakukan Kerjasama</a>
+                    <a data-scroll class="btn btn-start animated fadeInUpBig"  data-toggle="modal" data-target="#register">Registrasi Kerjasama</a>
                     <?php
                 }
                 ?>
@@ -60,7 +59,7 @@ include "header.php";
                         else{
                     ?>
                     <a data-scroll class="btn btn-start animated fadeInUpBig" data-toggle="modal" data-target="#login">Login</a>
-                    <a data-scroll class="btn btn-start animated fadeInUpBig"  data-toggle="modal" data-target="#register">Lakukan Kerjasama</a>
+                    <a data-scroll class="btn btn-start animated fadeInUpBig"  data-toggle="modal" data-target="#register">Registrasi Kerjasama</a>
                     <?php
                 }
                 ?>

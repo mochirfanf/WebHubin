@@ -1,0 +1,147 @@
+[13-Dec-2016 06:42:51 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/u6164942/sdrcstudio.com/sims/hubin/bin/koneksidb.php on line 5
+[13-Dec-2016 06:42:51 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/u6164942/sdrcstudio.com/sims/hubin/bin/koneksidb.php on line 5
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: navactive2 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 93
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: active4 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 95
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: active6 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 96
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: navactive in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 100
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: active2 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 102
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: active3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 103
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: navactive78 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 108
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: active31 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 110
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: active89 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 111
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: active90 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 112
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: navactive22 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 117
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: active19 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 119
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: navactive3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 124
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: active7 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 126
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: active8 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 127
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: navactive3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 132
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: active7 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 134
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: active8 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 135
+[13-Dec-2016 06:42:51 UTC] PHP Notice:  Undefined variable: active10 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 139
+[13-Dec-2016 06:42:53 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/u6164942/sdrcstudio.com/sims/hubin/bin/koneksidb.php on line 5
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: navactive2 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 93
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active4 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 95
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active6 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 96
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: navactive in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 100
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active2 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 102
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 103
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: navactive78 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 108
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active31 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 110
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active89 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 111
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active90 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 112
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: navactive22 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 117
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active19 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 119
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: navactive3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 124
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active7 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 126
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active8 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 127
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: navactive3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 132
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active7 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 134
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active8 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 135
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active10 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 139
+[13-Dec-2016 06:42:53 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/u6164942/sdrcstudio.com/sims/hubin/bin/koneksidb.php on line 5
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: navactive2 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 93
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active4 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 95
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active6 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 96
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: navactive in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 100
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active2 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 102
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 103
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: navactive78 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 108
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active31 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 110
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active89 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 111
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active90 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 112
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: navactive22 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 117
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active19 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 119
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: navactive3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 124
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active7 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 126
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active8 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 127
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: navactive3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 132
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active7 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 134
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active8 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 135
+[13-Dec-2016 06:42:53 UTC] PHP Notice:  Undefined variable: active10 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 139
+[13-Dec-2016 06:59:46 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/u6164942/sdrcstudio.com/sims/hubin/bin/koneksidb.php on line 5
+[13-Dec-2016 07:00:03 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/u6164942/sdrcstudio.com/sims/hubin/bin/koneksidb.php on line 5
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined index: lan in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/proses_siswa.php on line 114
+[13-Dec-2016 07:00:03 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/u6164942/sdrcstudio.com/sims/hubin/bin/koneksidb.php on line 5
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined variable: active1 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 91
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined variable: navactive2 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 93
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined variable: active4 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 95
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined variable: active6 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 96
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined variable: navactive in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 100
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined variable: active2 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 102
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined variable: active3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 103
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined variable: navactive78 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 108
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined variable: active31 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 110
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined variable: active89 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 111
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined variable: active90 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 112
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined variable: navactive3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 124
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined variable: active7 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 126
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined variable: active8 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 127
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined variable: navactive3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 132
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined variable: active7 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 134
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined variable: active8 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 135
+[13-Dec-2016 07:00:03 UTC] PHP Notice:  Undefined variable: active10 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 139
+[13-Dec-2016 07:00:04 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/u6164942/sdrcstudio.com/sims/hubin/bin/koneksidb.php on line 5
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active1 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 91
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: navactive2 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 93
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active4 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 95
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active6 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 96
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: navactive in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 100
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active2 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 102
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 103
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: navactive78 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 108
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active31 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 110
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active89 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 111
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active90 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 112
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: navactive3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 124
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active7 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 126
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active8 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 127
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: navactive3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 132
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active7 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 134
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active8 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 135
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active10 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 139
+[13-Dec-2016 07:00:04 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/u6164942/sdrcstudio.com/sims/hubin/bin/koneksidb.php on line 5
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active1 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 91
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: navactive2 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 93
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active4 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 95
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active6 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 96
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: navactive in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 100
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active2 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 102
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 103
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: navactive78 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 108
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active31 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 110
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active89 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 111
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active90 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 112
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: navactive3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 124
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active7 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 126
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active8 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 127
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: navactive3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 132
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active7 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 134
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active8 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 135
+[13-Dec-2016 07:00:04 UTC] PHP Notice:  Undefined variable: active10 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 139
+[13-Dec-2016 07:02:21 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/u6164942/sdrcstudio.com/sims/hubin/bin/koneksidb.php on line 5
+[13-Dec-2016 07:02:21 UTC] PHP Notice:  Undefined index: lan in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/proses_siswa.php on line 113
+[13-Dec-2016 07:02:26 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/u6164942/sdrcstudio.com/sims/hubin/bin/koneksidb.php on line 5
+[13-Dec-2016 07:02:26 UTC] PHP Notice:  Undefined variable: active1 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 91
+[13-Dec-2016 07:02:26 UTC] PHP Notice:  Undefined variable: navactive2 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 93
+[13-Dec-2016 07:02:26 UTC] PHP Notice:  Undefined variable: active4 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 95
+[13-Dec-2016 07:02:26 UTC] PHP Notice:  Undefined variable: active6 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 96
+[13-Dec-2016 07:02:26 UTC] PHP Notice:  Undefined variable: navactive in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 100
+[13-Dec-2016 07:02:26 UTC] PHP Notice:  Undefined variable: active2 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 102
+[13-Dec-2016 07:02:26 UTC] PHP Notice:  Undefined variable: active3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 103
+[13-Dec-2016 07:02:26 UTC] PHP Notice:  Undefined variable: navactive78 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 108
+[13-Dec-2016 07:02:26 UTC] PHP Notice:  Undefined variable: active31 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 110
+[13-Dec-2016 07:02:26 UTC] PHP Notice:  Undefined variable: active89 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 111
+[13-Dec-2016 07:02:26 UTC] PHP Notice:  Undefined variable: active90 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 112
+[13-Dec-2016 07:02:26 UTC] PHP Notice:  Undefined variable: navactive3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 124
+[13-Dec-2016 07:02:26 UTC] PHP Notice:  Undefined variable: active7 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 126
+[13-Dec-2016 07:02:26 UTC] PHP Notice:  Undefined variable: active8 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 127
+[13-Dec-2016 07:02:26 UTC] PHP Notice:  Undefined variable: navactive3 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 132
+[13-Dec-2016 07:02:26 UTC] PHP Notice:  Undefined variable: active7 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 134
+[13-Dec-2016 07:02:26 UTC] PHP Notice:  Undefined variable: active8 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 135
+[13-Dec-2016 07:02:26 UTC] PHP Notice:  Undefined variable: active10 in /home/u6164942/sdrcstudio.com/sims/hubin/bin/siswa/leftside.php on line 139
+[13-Dec-2016 07:19:27 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/u6164942/sdrcstudio.com/sims/hubin/bin/koneksidb.php on line 5
+[13-Dec-2016 07:32:47 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/u6164942/sdrcstudio.com/sims/hubin/bin/koneksidb.php on line 5
+[13-Dec-2016 07:32:47 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/u6164942/sdrcstudio.com/sims/hubin/bin/koneksidb.php on line 5
+[13-Dec-2016 07:33:35 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/u6164942/sdrcstudio.com/sims/hubin/bin/koneksidb.php on line 5
+[13-Dec-2016 07:33:35 UTC] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/u6164942/sdrcstudio.com/sims/hubin/bin/koneksidb.php on line 5

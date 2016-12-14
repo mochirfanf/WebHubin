@@ -1,4 +1,3 @@
-
         <!--footer section start-->
         <footer class="sticky-footer">
             2015 &copy; Hubin by DeaEmalia
@@ -94,7 +93,10 @@ $(document).ready(function() {
                 modal.find("#email").text(result['email_siswa']);
                 modal.find("#notelp").text(result['no_telepon']);
                 if(result['lampiran']!=""){
-                    modal.find("#lam").attr("href", "../siswa/"+result['lampiran']);
+                    modal.find("#lam").attr("href", "../siswa/"+ result['lampiran']);
+                    var lam = result['lampiran'];
+                    var lam2 = lam.split('/');
+                    modal.find("#lam").attr("download", lam2[1]);
                 }else{
 
                 modal.find("#lam").text("");

@@ -105,14 +105,13 @@ if($_SESSION['level']=='siswa'){
 					$lam2 = $namafolder . basename($iddukerja."-".$tgl). $file_ext;				
 					if (!move_uploaded_file($_FILES['lampiran']['tmp_name'], $lam2))
 					{
-					   die("Failed Upload the File");
 					}
 			
 				}
 
 		        mysql_query(" INSERT INTO hb_lamar_kerja(id_du_kerja, nis, tgl, portofolio, status,lampiran) VALUES ('$iddukerja','$_SESSION[username]', '$tgl', '$portofolio','Belum Diterima','$lam2')") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
 		        if($_GET['lan']=='ya'){
-		        	$hl = "location:detail-loker-".$iddukerja;
+		        	$hl = "location:../landing/detail.php?id=".$iddukerja;
 		    	header($hl);
 		    	}else{
 		    	header("location:lowongankerja.php");

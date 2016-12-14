@@ -56,7 +56,7 @@ $_GET['q'] = str_replace('-', ' ', $_GET['q']);
 
                     </div>
 
-                    <a href='detail.php>id=<?php echo $d['id_du_kerja']?>' class="btn btn-default dropdown-toggle btn-jobs"  aria-haspopup="true" aria-expanded="false" style='float: right;background-color: #749593'>
+                    <a href='detail.php?id=<?php echo $d['id_du_kerja']?>' class="btn btn-default dropdown-toggle btn-jobs"  aria-haspopup="true" aria-expanded="false" style='float: right;background-color: #749593'>
                         Lebih Detail
                     </a>
                     <br><br>
