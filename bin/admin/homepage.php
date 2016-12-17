@@ -3,6 +3,7 @@
 include "../koneksidb.php";
 
 if($_SESSION['level']=='admin'){ 
+    header('location:dari_perusahaan.php');
 	if ($_SESSION['tahun_ajaran']!='') {
         $title="Homepage Admin";
         $active = "active";

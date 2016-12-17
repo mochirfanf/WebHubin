@@ -1,0 +1,193 @@
+Imports System.Data.OleDb
+
+Public Class pemesanan
+    Dim cmd As New OleDbCommand
+    Dim cmd2 As New OleDbCommand
+    Dim adapt As New OleDbDataAdapter
+    Dim dt As New DataTable
+    Dim dr As OleDbDataReader
+    Dim dr2 As OleDbDataReader
+
+    Sub Generate_kode()
+        If Not CON.State = ConnectionState.Open Then Open_Koneksi()
+        cmd = New OleDbCommand("SELECT * FROM tb_pesanan ORDER BY no_surat DESC", CON)
+        dr = cmd.ExecuteReader()
+        If dr.Read() Then
+            Dim kode As String = dr("no_surat")
+            Dim pisah As String = kode.Substring(1)
+            Dim pisah2 As Integer = Convert.ToInt32(pisah)
+            pisah2 = pisah2 + 1
+            Dim kode_k As String
+            If pisah2 < 10 Then
+                kode_k = "S00" & pisah2
+            ElseIf pisah2 < 100 Then
+                kode_k = "S0" & pisah2
+            Else
+                kode_k = "S" & pisah2
+            End If
+            kode_s.Text = kode_k
+        End If
+
+    End Sub
+    Sub Data_Load()
+        Dim cmd As New OleDbCommand
+        Dim adapt As New OleDbDataAdapter
+        Dim dt As New DataTable
+
+        Try
+            If Not CON.State = ConnectionState.Open Then Open_Koneksi()
+
+            cmd.Connection = CON
+            cmd.CommandText = "SELECT * FROM tb_sementara ORDER BY no ASC"
+            adapt.SelectCommand = cmd
+            adapt.Fill(dt)
+
+            With DataGridView1
+                .RowHeadersVisible = False
+                .AllowUserToAddRows = False
+                .ReadOnly = False
+                .DataSource = dt
+            End With
+            DataGridView1.Columns(0).Width = 50
+            DataGridView1.Columns(1).Width = 100
+            DataGridView1.Columns(2).Width = 150
+            DataGridView1.Columns(3).Width = 100
+            DataGridView1.Columns(4).Width = 100
+            DataGridView1.Columns(5).Width = 100
+
+        Catch ex As OleDbException
+            MessageBox.Show("Error: " & ex.Message)
+        Finally
+            CON.Close()
+        End Try
+
+        If Not CON.State = ConnectionState.Open Then Open_Koneksi()
+        cmd = New OleDbCommand("SELECT SUM(total_harga)  as ttl FROM tb_sementara", CON)
+        dr = cmd.ExecuteReader()
+        If dr.Read() Then
+            ttl.Text = "Rp" & dr("ttl")
+        End If
+        Dim ttl_ As String = (ttl.Text).Substring(2)
+        If dp.Text <> "" Then
+            Dim dp_ As Integer = Convert.ToDouble(ttl_) / 2
+            dp.Text = "Rp" & dp_
+        End If
+
+
+    End Sub
+
+    Private Sub pemesanan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Data_Load()
+        Generate_kode()
+
+        If Not CON.State = ConnectionState.Open Then Open_Koneksi()
+        cmd = New OleDbCommand("SELECT * FROM tb_klien ORDER BY kode_klien ASC", CON)
+        dr = cmd.ExecuteReader()
+
+        While dr.Read()
+            Dim a As String
+            a = dr("kode_klien") & " | " & dr("nama_klien")
+            cb_klien.Items.Add(a)
+        End While
+
+        If Not CON.State = ConnectionState.Open Then Open_Koneksi()
+        cmd = New OleDbCommand("SELECT * FROM tb_barang ORDER BY id_barang ASC", CON)
+        dr = cmd.ExecuteReader()
+
+        While dr.Read()
+            Dim a As String
+            a = dr("id_barang") & "|" & dr("nama_barang")
+            cb_barang.Items.Add(a)
+        End While
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Dim kode As String = kode_s.Text
+        Dim idkl As String = cb_klien.Text.Substring(0, 4)
+        Dim tgl_pesan As String = String.Format("{0:dd/MM/yyyy}", DateTime.Now)
+        Dim tgl_kirim As String = String.Format("{0:dd/MM/yyyy}", tanggal_kirim.Value)
+        Dim tgl_terima As String = String.Format("{0:dd/MM/yyyy}", tanggal_terima.Value)
+        If idkl <> "" Then
+            Try
+                If Not CON.State = ConnectionState.Open Then Open_Koneksi()
+
+                cmd = New OleDbCommand("INSERT INTO tb_pesanan values('" & kode & "','" & idkl & "','" & tgl_pesan & "','" & "Belum" & "','" & tgl_kirim & "','" & tgl_terima & "')", CON)
+                cmd.ExecuteNonQuery()
+
+                cmd = New OleDbCommand("SELECT * FROM tb_sementara", CON)
+                dr = cmd.ExecuteReader()
+                While dr.Read()
+                    cmd2 = New OleDbCommand("INSERT INTO tb_detail_pemesanan(no_surat,id_barang,jumlah) values('" & kode & "','" & dr("id_barang") & "','" & dr("jumlah") & "')", CON)
+                    cmd2.ExecuteNonQuery()
+
+                    cmd2 = New OleDbCommand("SELECT stok FROM tb_barang WHERE id_barang='" & kode & "'", CON)
+                    dr2 = cmd2.ExecuteReader()
+
+                    If dr2.Read() Then
+                        Dim stok_ As Integer = Convert.ToInt32(dr2("stok")) - Convert.ToInt32(dr("jumlah"))
+                        cmd2 = New OleDbCommand("UPDATE stok tb_barang SET stok=" & stok_ & " WHERE id_barang='" & kode & "'", CON)
+                        cmd2.ExecuteNonQuery()
+                    End If
+                End While
+                cmd2 = New OleDbCommand("INSERT INTO tb_pembayaran(no_surat,bayar,tgl_bayar) values('" & kode & "'," & (dp.Text).Substring(2) & ",'" & tgl_pesan & "')", CON)
+                cmd2.ExecuteNonQuery()
+
+                cmd2 = New OleDbCommand("DELETE FROM tb_sementara", CON)
+                cmd2.ExecuteNonQuery()
+            Catch ex As OleDbException
+                MessageBox.Show("Error: " & ex.Message)
+            End Try
+        End If
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim cb_brg As String = cb_barang.Text
+        Dim jml As String = jumlah.Text
+        Dim hrg As Integer
+        Dim idbr As String = cb_barang.Text.Substring(0, 4)
+        Dim nmbrg As String = cb_barang.Text.Substring(5)
+
+        If Not CON.State = ConnectionState.Open Then Open_Koneksi()
+        cmd = New OleDbCommand("SELECT * FROM tb_barang WHERE id_barang='" & idbr & "'", CON)
+        dr = cmd.ExecuteReader()
+        If dr.Read() Then
+            hrg = Convert.ToInt32(dr("harga"))
+        End If
+
+        Try
+            If Not CON.State = ConnectionState.Open Then Open_Koneksi()
+            cmd = New OleDbCommand("INSERT INTO tb_sementara(id_barang,nama_barang,jumlah,harga,total_harga) values('" & idbr & "','" & nmbrg & "','" & jml & "','" & hrg & "','" & (jml * hrg) & "')", CON)
+            cmd.ExecuteNonQuery()
+            Data_Load()
+        Catch ex As Exception
+            MsgBox("Can't " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+
+    End Sub
+
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles dp.TextChanged
+
+    End Sub
+
+    Private Sub PelangganToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PelangganToolStripMenuItem.Click
+        Pelanggan.Show()
+        Me.Hide()
+
+    End Sub
+
+    Private Sub BarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarangToolStripMenuItem.Click
+        barang.Show()
+        Me.Hide()
+
+    End Sub
+
+    Private Sub PembayaranToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PembayaranToolStripMenuItem.Click
+        Pembayaran.Show()
+        Me.Hide()
+
+    End Sub
+End Class

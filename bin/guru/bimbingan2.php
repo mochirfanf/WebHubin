@@ -6,7 +6,7 @@ if($_SESSION['level']=='guru'){
     if ($_SESSION['tahun_ajaran']!='') {
         $title="Daftar Siswa yang Dimonitoring";
         $active ="";
-        $active19 = "active";
+        $active84 = "active";
         $ac = "active";
         $data = mysql_query( "SELECT * FROM hb_prakerin WHERE saran_pembimbing = $_SESSION[username] AND tahun_ajaran='$_SESSION[tahun_ajaran]'");
        

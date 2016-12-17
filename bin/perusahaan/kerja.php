@@ -65,7 +65,7 @@ if($_SESSION['level']=='perusahaan'){
                                 <form method="POST" action="prosesperusahaan.php?a=hapus_permintaan" enctype="multipart/form-data">
                                 <header class="panel-heading"> <big> Permintaan Siswa Untuk Prakerin </big>
                                   <span class="pull-right">
-                                    <small>Status : <?php echo "$di[status_permintaan]";?></small> &nbsp; &nbsp; &nbsp;
+                                    <small>Status : <?php echo "Aktif";?></small> &nbsp; &nbsp; &nbsp;
                                     <a href='#tutup' data-toggle='modal'><span class='pull-right btn btn-danger btn-xs'> TUTUP PERMINTAAN </span></a><br>
                                     </form>
                                  </span>
@@ -179,7 +179,7 @@ if($_SESSION['level']=='perusahaan'){
                             <br><br>
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Permintaan Jurusan : </label>
                                                         <div class="input_fields_wrap col-lg-1">
-                                                            <button class="btn btn-danger add_field_button"><i class='fa fa-plus-square'></i></button>
+                                                            <span class="btn btn-danger add_field_button"><i class='fa fa-plus-square'></i></span>
                                                         </div>
 
                                                         <div style="margin-left: -50px;"  class="col-lg-4">

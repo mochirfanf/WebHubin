@@ -119,7 +119,18 @@ $(document).ready(function() {
 
 
     });
+$('#verifikasibimbingan').on('show.bs.modal', function (event) {
 
+        var button = $(event.relatedTarget); // Button that triggered the modal
+
+        var recipient = button.data('id'); // Extract info from data-* attributes
+
+
+        var modal = $(this);
+
+        modal.find("#id").val(recipient);
+
+    });
     </script>
   <link href="../css/admin.css" rel="stylesheet">
 </body>

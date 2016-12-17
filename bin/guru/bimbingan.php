@@ -6,7 +6,7 @@ if($_SESSION['level']=='guru'){
     if ($_SESSION['tahun_ajaran']!='') {
         $title="Daftar Siswa yang Dimonitoring";
         $active ="";
-        $active19 = "active";
+        $active45 = "active";
         $ac = "active";
         $data = mysql_query( "SELECT * FROM hb_prakerin WHERE saran_pembimbing = $_SESSION[username] AND tahun_ajaran='$_SESSION[tahun_ajaran]'");
        
@@ -41,12 +41,14 @@ if($_SESSION['level']=='guru'){
                         <?php 
                             $no =0;
                             while ($d = mysql_fetch_array($data)) {
+                                ?>
+                                
+                                <?php
                                 $no = $no+1;
                                 $d2 = mysql_fetch_array(mysql_query("SELECT nama_guru FROM guru WHERE nip_guru ='$d[saran_pembimbing]'"))or die(mysql_error());
-                                $d3 = mysql_fetch_array(mysql_query("SELECT nama_siswa,id_jurusan,kelas FROM siswa WHERE nis ='$d[nis]'"));
+                                $d3 = mysql_fetch_array(mysql_query("SELECT nama_siswa,id_jurusan,kelas FROM siswa WHERE nis ='$d[nis]'"))or die(mysql_error());
                                 $d4 = mysql_fetch_array(mysql_query("SELECT kabupaten.nama AS namakab, nama_du, alamat, nama_penanggung_jawab_umum FROM hb_du_umum INNER JOIN kabupaten ON kabupaten.id_kab=hb_du_umum.id_kab WHERE id_du ='$d[id_du]'"))or die(mysql_error());
-
-                                $j = mysql_fetch_array(mysql_query("SELECT * FROM jurusan WHERE id_jurusan='$d3[id_jurusan]'"));
+                                $j = mysql_fetch_array(mysql_query("SELECT * FROM jurusan WHERE id_jurusan='$d3[id_jurusan]'"))or die(mysql_error());
                                 echo "
                                     <tr class='gradeA'>
                                         <td> $no </td>
@@ -75,10 +77,10 @@ if($_SESSION['level']=='guru'){
 
 <?php       include "footer.php";
     }else{
-        header('location:tahun_ajaran.php');
+        header('location:ta-guru');
     }
 }else{
-    header('location:../login.php');
+    header('location:beranda');
 }
 
 ?>

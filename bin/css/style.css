@@ -719,7 +719,7 @@ h5.left-nav-title {
 }
 
 .notification-menu .dropdown-menu-usermenu {
-    background: #fff;
+    background: #57C1A2;
     min-width: 200px;
 }
 
@@ -2207,7 +2207,7 @@ ul.user-states li {
 
 .dataTables_paginate.paging_bootstrap.pagination li:hover a, .dataTables_paginate.paging_bootstrap.pagination li.active a {
     color: #fff;
-    background: #fff;
+    background: #57c1a2;
     text-decoration: none;
 }
 
@@ -4752,4 +4752,7 @@ ol.comment-list {
     color:#3c3c3c;
     padding: 15px;
     font-size: 12pt;
+}
+.nav-tabs>li>a:hover{
+    background-color: #e9e9e9;
 }

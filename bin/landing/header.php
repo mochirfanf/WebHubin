@@ -43,7 +43,18 @@ include "../koneksidb.php";
     <script src="js/respond.min.js"></script>
   <![endif]-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
-        <link rel="shortcut icon" href="images/favicon.ico"> </head>
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/ajax_daerah.js"></script>
+        <script type="text/javascript" src="js/jquery.inview.min.js"></script>
+        <script type="text/javascript" src="js/wow.min.js"></script>
+        <script type="text/javascript" src="js/mousescroll.js"></script>
+        <script type="text/javascript" src="js/smoothscroll.js"></script>
+        <script type="text/javascript" src="js/jquery.countTo.js"></script>
+        <script type="text/javascript" src="js/lightbox.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </head>
     <!--/head-->
 
     <body>

@@ -17,6 +17,7 @@ if($_SESSION['level']=='admin'){
 		include "leftside.php"; ?>
 
         <!--body wrapper start-->
+
         <div class="wrapper">
             <div class="row">
                 <div class="col-sm-12">
@@ -26,94 +27,6 @@ if($_SESSION['level']=='admin'){
                          <span class="pull-right">
                          <a href="#myModal" data-toggle="modal" class="btn btn-xs btn-danger">NEW</a>
                          <!-- Modal -->
-                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                                <h5><big>Tambah Permintaan Perizinan Prakerin</big></h5>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="proses_admin.php?a=inputperizinan"  enctype='multipart/form-data' class="form-horizontal" role="form">
-                                                    <div class="form-group">
-                                                        <label class="col-lg-3 col-sm-3 control-label">Nama DU</label>
-                                                        <div class="col-lg-9">
-                                                            <input type="text" class="form-control" name="nama_du" placeholder="Nama Dunia Usaha" required="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-3 col-sm-3 control-label">Email</label>
-                                                        <div class="col-lg-9">
-                                                            <input type="email" class="form-control" name="email_du" placeholder="Email" required="">
-                                                        </div>
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label class="col-lg-3 col-sm-3 control-label">Alamat</label>
-                                                        <div class="col-lg-9">
-                                                            <textarea cols="3" class='form-control col-md-7 col-xs-13' name='alamat' required='required' placeholder='Alamat' type='number'> </textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-3 col-sm-3 control-label">Provinsi</label>
-                                                        <div class="col-lg-9">
-                                                            <select name="prop" id="prop" onclick="ajaxkota(this.value)" class='form-control' required="">
-                                                                <option value="">Pilih Provinsi</option>
-                                                                <?php
-                                                                  include 'koneksi.php';
-                                                                  $query=$db->prepare("SELECT id_prov,nama FROM provinsi ORDER BY nama");
-                                                                  $query->execute();
-                                                                  while ($data=$query->fetchObject()){
-                                                                  echo '<option value="'.$data->id_prov.'">'.$data->nama.'</option>';
-                                                                  }
-                                                                ?>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-3 col-sm-3 control-label">Kota/Kabupaten</label>
-                                                        <div class="col-lg-9">
-                                                            <select name="kota" id="kota" onchange="ajaxkec(this.value)" class='form-control' required="">
-                                                                <option value="">Pilih Kota/Kabupaten</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-3 col-sm-3 control-label">Kecamatan</label>
-                                                        <div class="col-lg-9">
-                                                            <select name="kec" id="kec" onchange="ajaxkel(this.value)" class='form-control' required="">
-                                                                <option value="">Pilih Kecamatan</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-3 col-sm-3 control-label">Kelurahan/Desa</label>
-                                                        <div class="col-lg-9">
-                                                            <select name="kel" id="kel" onchange="showCoordinate();" class='form-control' required="">
-                                                                <option value="">Pilih Kelurahan/Desa</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-lg-3 col-sm-3 control-label">Kode Pos</label>
-                                                        <div class="col-lg-9">
-                                                            <input type="number" class="form-control" name="kodepos" placeholder="Kodepos" required="">
-                                                        </div>
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label class="col-lg-3 col-sm-3 control-label">Tambah Keterangan</label>
-                                                        <div class="col-lg-9">
-                                                            <textarea cols="3" class='form-control col-md-7 col-xs-13' name='keterangan' required='required' placeholder='Alamat' type='number'> </textarea>
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                           <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                                                <input type='submit' value='Tambahkan' name='Tambahkan'class='btn btn-success'>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                         <!-- modal -->
                         <?php
                              while ($t = mysql_fetch_array($data3)) {
@@ -297,6 +210,7 @@ if($_SESSION['level']=='admin'){
                                     ";
                             }
                         ?>
+
                     </tbody>
                     </table>
                     </div>
@@ -307,10 +221,102 @@ if($_SESSION['level']=='admin'){
                     </section>
                 </div>
             </div>
+
         </div>
         <!--body wrapper end-->
 
-<?php		include "footer.php";
+
+<?php		include "footer.php";?>
+
+                                <div  style="text-transform:none" aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                                <h5><big>Tambah Permintaan Perizinan Prakerin</big></h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="POST" action="proses_admin.php?a=inputperizinan"  enctype='multipart/form-data' class="form-horizontal" role="form">
+                                                    <div class="form-group">
+                                                        <label class="col-lg-3 col-sm-3 control-label">Nama DU</label>
+                                                        <div class="col-lg-9">
+                                                            <input type="text" class="form-control" name="nama_du" placeholder="Nama Dunia Usaha" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-3 col-sm-3 control-label">Email</label>
+                                                        <div class="col-lg-9">
+                                                            <input type="email" class="form-control" name="email_du" placeholder="Email" required="">
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-group">
+                                                        <label class="col-lg-3 col-sm-3 control-label">Alamat</label>
+                                                        <div class="col-lg-9">
+                                                            <textarea cols="3" class='form-control col-md-7 col-xs-13' name='alamat' required='required' placeholder='Alamat' type='number'> </textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-3 col-sm-3 control-label">Provinsi</label>
+                                                        <div class="col-lg-9">
+                                                            <select name="prop" id="prop" onclick="ajaxkota(this.value)" class='form-control' required="">
+                                                                <option value="">Pilih Provinsi</option>
+                                                                <?php
+                                                                  include 'koneksi.php';
+                                                                  $query=$db->prepare("SELECT id_prov,nama FROM provinsi ORDER BY nama");
+                                                                  $query->execute();
+                                                                  while ($data=$query->fetchObject()){
+                                                                  echo '<option value="'.$data->id_prov.'">'.$data->nama.'</option>';
+                                                                  }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-3 col-sm-3 control-label">Kota/Kabupaten</label>
+                                                        <div class="col-lg-9">
+                                                            <select name="kota" id="kota" onchange="ajaxkec(this.value)" class='form-control' required="">
+                                                                <option value="">Pilih Kota/Kabupaten</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-3 col-sm-3 control-label">Kecamatan</label>
+                                                        <div class="col-lg-9">
+                                                            <select name="kec" id="kec" onchange="ajaxkel(this.value)" class='form-control' required="">
+                                                                <option value="">Pilih Kecamatan</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-3 col-sm-3 control-label">Kelurahan/Desa</label>
+                                                        <div class="col-lg-9">
+                                                            <select name="kel" id="kel" onchange="showCoordinate();" class='form-control' required="">
+                                                                <option value="">Pilih Kelurahan/Desa</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-3 col-sm-3 control-label">Kode Pos</label>
+                                                        <div class="col-lg-9">
+                                                            <input type="number" class="form-control" name="kodepos" placeholder="Kodepos" required="">
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-group">
+                                                        <label class="col-lg-3 col-sm-3 control-label">Tambah Keterangan</label>
+                                                        <div class="col-lg-9">
+                                                            <textarea cols="3" class='form-control col-md-7 col-xs-13' name='keterangan' required='required' placeholder='Alamat' type='number'> </textarea>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                           <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+                                                <input type='submit' value='Tambahkan' name='Tambahkan'class='btn btn-success'>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+<?php
 	}else{
 		header('location:tahun_ajaran.php');
 	}

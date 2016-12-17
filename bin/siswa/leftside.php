@@ -158,10 +158,10 @@
         <!--notification menu start -->
         <div class="menu-right">
             <ul class="notification-menu">
-                <li>
+                <!--<li>
                     <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="badge">3</span> <!-- iNI BUAT BERAPA - BERAPA NYA -->
+                        <span class="badge">3</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-head pull-right">
                         <h5 class="title"> 3 Pesan Masuk </h5>
@@ -236,17 +236,17 @@
                             <li class="new"><a href="">See All Notifications</a></li>
                         </ul>
                     </div>
-                </li>
+                </li>-->
                 <li>
                     <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <img src="../images/admin/deae.jpg" alt="" />
-                        Dea Emalia
+                        <img src="<?php echo $poto?>" alt="" />
+                        <?php echo substr($iden['nama_siswa'],0,15)?>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                        <li><a href="#"><i class="fa fa-user"></i>  Profile</a></li>
-                        <li><a href="#"><i class="fa fa-cog"></i>  Settings</a></li>
-                        <li><a href="#"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                        <!--<li><a href="#"><i class="fa fa-user"></i>  Profile</a></li>
+                        <li><a href="#"><i class="fa fa-cog"></i>  Settings</a></li>-->
+                        <li><a href="../proses.php?a=logout"><i class="fa fa-sign-out"></i> Log Out</a></li>
                     </ul>
                 </li>
 

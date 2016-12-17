@@ -10,6 +10,13 @@
 if($_SESSION['level']=='kapprog'){
 	if (!empty($_GET ["a"])) {
 		switch ($_GET ["a"]){
+			case "verifikasibimbingan":
+
+			mysql_query("UPDATE hb_bimbingan_tatap SET status='Sudah Terverifikasi' WHERE id_bimbingan_tatap='$_POST[id]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
+					
+					header("location:verifikasibimbingan.php?id=".$_POST['nis']);
+
+			break;
 			case "pilihpem" :
 				if(isset($_POST['pilih'])){
 					mysql_query("UPDATE hb_prakerin SET saran_pembimbing='$_POST[pembimbing]' WHERE nis='$_POST[nis]'") or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());

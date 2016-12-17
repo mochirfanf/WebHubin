@@ -44,7 +44,7 @@
 
 
 
-<script type="text/javascript" src="../js/ajax_daerah.js"></script>
+<script type="text/javascript" src="../landing/js/ajax_daerah.js"></script>
 
  <script type="text/javascript">
 $(document).ready(function() {
@@ -57,7 +57,7 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append("<div class='form-inline' style='width:800px;;float:left'><br><div><?php echo "<select required class='form-control m-bot15 sk' name='jurusan[]' id='jur[]' style='float:left'> <option value=''> * Pilih Jurusan * </option>";  $jurusan = mysql_query("SELECT * FROM jurusan"); while($j = mysql_fetch_array($jurusan)){ echo " <option value='$j[id_jurusan]'> $j[nama_jurusan] </option>"; } echo " </select>"; ?> <input type='number' class='form-control' style='width:80px;float:left' name='jumlah[]' id='jl[]' placeholder='Jumlah' required> <a href='#' class='remove_field'><button style=' margin-left:10px; 'class='btn btn-xs btn-danger add_field_button'><i class='fa fa-times-circle'></i></button></a></div></div></div><div class='col-md-12' style='padding:0'><div class='col-md-10' style='padding:0 10px 0 0'><input type='text' name='skill[]' placeholder='Web,Teknisi,Android' class='form-control'></div><div class='col-md-12' style='padding:0'><small style='color: #D9534F'>Pisahkan Skill dengan Koma</small></div></div>"); //add input box
+            $(wrapper).append("<div class='form-inline' style='width:800px;float:left'><br><div><?php echo "<select required class='form-control m-bot15 sk' name='jurusan[]' id='jur[]' style='float:left'> <option value=''> * Pilih Jurusan * </option>";  $jurusan = mysql_query("SELECT * FROM jurusan"); while($j = mysql_fetch_array($jurusan)){ echo " <option value='$j[id_jurusan]'> $j[nama_jurusan] </option>"; } echo " </select>"; ?> <input type='number' class='form-control' style='width:80px;float:left' name='jumlah[]' id='jl[]' placeholder='Jumlah' required> <a href='#' class='remove_field'><button style=' margin-left:10px; 'class='btn btn-xs btn-danger add_field_button'><i class='fa fa-times-circle'></i></button></a><div class='col-md-12' style='padding:0'><div class='col-md-10' style='padding:0 10px 0 0'><input type='text' name='skill[]' placeholder='Web,Teknisi,Android' class='form-control'></div><div class='col-md-12' style='padding:0'><small style='color: #D9534F'>Pisahkan Skill dengan Koma</small></div></div></div></div></div>"); //add input box
         }
     });
 

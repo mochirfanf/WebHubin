@@ -3,7 +3,7 @@
 include "../koneksidb.php";
 
 if($_SESSION['level']=='perusahaan'){
-
+        header('location:identitas.php');
         $title="Homepage Perusahaan";
         $active = "active";
 		include "leftside.php"; ?>

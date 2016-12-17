@@ -3,6 +3,7 @@
 include "../koneksidb.php";
 
 if($_SESSION['level']=='kapprog'){
+    header('location:semua_du.php');
 	if ($_SESSION['tahun_ajaran']!='') {
         $title="Homepage Kapprog";
         $active = "active";

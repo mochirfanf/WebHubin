@@ -18,6 +18,7 @@
 <script src="../js/modernizr.min.js"></script>
 <script src="../js/jquery.nicescroll.js"></script>
 
+<script type="text/javascript" src="../js/ajax_daerah.js"></script>
 <script src="../js/jquery-ui_auto_complete.js"></script>
 
 <!--dynamic table-->
@@ -201,7 +202,6 @@ $(document).ready(function() {
 
 });
     </script>
-<script type="text/javascript" src="../js/ajax_daerah.js"></script>
   <link href="../css/admin.css" rel="stylesheet">
 </body>
 </html>

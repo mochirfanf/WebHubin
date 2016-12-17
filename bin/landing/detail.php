@@ -123,7 +123,7 @@ include "../koneksidb.php";
 
                     <br>
                     <div class="row">
-                        <div class="col col-sm-8">
+                        <div class="col col-md-10">
                             <?php echo $d['lainnya']?>
 
 
@@ -143,7 +143,7 @@ include "../koneksidb.php";
                             </h5>
                             <br>
                             <div class="row">
-                        <div class="col col-sm-8">
+                        <div class="col col-md-12">
                             <?php echo substr($d['lainnya'],0,200).'...';
                             $dl = mysql_query("SELECT * FROM hb_du_jumlah_permintaan_du_kerja INNER JOIN jurusan ON jurusan.id_jurusan = hb_du_jumlah_permintaan_du_kerja.id_jurusan WHERE id_du_kerja = '$d[id_du_kerja]'")or die(mysql_error());
                                     
@@ -174,7 +174,7 @@ include "../koneksidb.php";
                                 $pl = mysql_query("SELECT * FROM hb_lamar_kerja INNER JOIN siswa ON hb_lamar_kerja.nis = siswa.nis WHERE id_du_kerja = '$d[id_du_kerja]'");
                                     while($dm = mysql_fetch_array($pl)){
                             ?>
-                                    <li><b><img style="background-image: url('<?php echo '../images/uploads/'.$dm['foto'];?>');background-size: cover;" class='up'></b><a href="#"><i><?php echo $dm['nama_siswa']?></i></a></li>
+                                    <li><b><img style="background-image: url('<?php echo '../images/uploads/'.$dm['foto'];?>');background-size: cover;" class='up'></b><a href="#"><i><?php echo substr($dm['nama_siswa'],0,15)?></i></a></li>
                                     <?php
 
                                 }
@@ -194,14 +194,14 @@ include "../koneksidb.php";
                                 if(!empty($ada)){
                                     $isi = "disabled";
                                     $ahref= "";
-                                    $tul = "Lamaran Terkirim";
+                                    $tul = "TERKIRIM";
                                 }else{
                                     $isi = "";
                                     $ahref= "#apply";
-                                    $tul= "Lamar Pekerjaan";
+                                    $tul= "LAMAR";
                                 }
                                 ?>
-                        <div class="col col-sm-4">
+                        <div class="col col-md-2"><br><br>
                             <button data-target='<?php echo $ahref;?>' class='btn btn-info' data-toggle='modal' data-id='<?php echo $d['id_du_kerja']?>' <?php echo $isi;?>><?php echo $tul;?></button>
                             
                         </div>   

@@ -3,6 +3,7 @@
 include "../koneksidb.php";
 
 if($_SESSION['level']=='siswa'){
+    header('location:identitas.php');
     if ($_SESSION['tahun_ajaran']!='') {
         $title="Permohonan Perizinan Prakerin";
         $active ="";

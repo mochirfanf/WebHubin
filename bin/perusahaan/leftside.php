@@ -88,7 +88,7 @@
             <!--sidebar nav start-->
             <ul class="nav nav-pills nav-stacked custom-nav">
             <li><a href="../landing/index.php"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
-                <li class="<?php echo "$active"; ?> "><a href="homepage.php"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+                <!--<li class="<?php echo "$active"; ?> "><a href="homepage.php"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>-->
                 <li class="<?php echo "$active2"; ?> "><a href="identitas.php"><i class="fa fa-home"></i> <span>Identitas Perusahaan</span></a></li>
                 <li class="<?php echo "$active3"; ?> "><a href="prakerin.php"><i class="fa fa-home"></i> <span>Prakerin</span></a></li>
                 
@@ -96,7 +96,7 @@
                     <ul class="sub-menu-list">
                         <li class="<?php echo "$active12"; ?> "><a href="kerja.php"> Permintaan Kerja </a></li>
                         <li class="<?php echo "$active13"; ?> "><a href="lamaranaktif.php"> Lamaran Aktif </a></li>
-                        <li class="<?php echo "$active14"; ?> "><a href="informasi_penerima_kapprog.php"> Riwayat Permintaan </a></li>
+                        <li class="<?php echo "$active54"; ?> "><a href="riwayatkerja.php"> Riwayat Permintaan </a></li>
                     </ul>
                 </li>
 
@@ -122,10 +122,10 @@
         <!--notification menu start -->
         <div class="menu-right">
             <ul class="notification-menu">
-                <li>
+                <!--<li>
                     <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="badge">3</span> <!-- iNI BUAT BERAPA - BERAPA NYA -->
+                        <span class="badge">3</span> 
                     </a>
                     <div class="dropdown-menu dropdown-menu-head pull-right">
                         <h5 class="title"> 3 Pesan Masuk </h5>
@@ -200,17 +200,17 @@
                             <li class="new"><a href="">See All Notifications</a></li>
                         </ul>
                     </div>
-                </li>
+                </li>-->
                 <li>
                     <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <img src="../images/admin/deae.jpg" alt="" />
-                        Dea Emalia
+                        <img src="<?php echo $poto?>" alt="" />
+                        <?php echo $iden['nama_du']?>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                        <li><a href="#"><i class="fa fa-user"></i>  Profile</a></li>
-                        <li><a href="#"><i class="fa fa-cog"></i>  Settings</a></li>
-                        <li><a href="#"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                        <!--<li><a href="#"><i class="fa fa-user"></i>  Profile</a></li>
+                        <li><a href="#"><i class="fa fa-cog"></i>  Settings</a></li>-->
+                        <li><a href="../proses.php?a=logout"><i class="fa fa-sign-out"></i> Log Out</a></li>
                     </ul>
                 </li>
 

@@ -7,7 +7,7 @@ if($_SESSION['level']=='kapprog'){
         $title="Permohonan Perizinan Prakerin";
         $active = "";
         $active17 = "active";
-        $navactive5 ="nav-active";
+        $navactive66 ="nav-active";
 
         $data2 = mysql_query("SELECT * FROM hb_du_umum WHERE status!='Belum Aktif'");
 

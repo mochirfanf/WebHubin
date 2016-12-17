@@ -87,11 +87,11 @@
                     }
                     else{
                         ?>
-                        <script>
-                            alert("LOGIN GAGAL\nUsername atau Password Salah");
-                            top.location = "login.php";
-                        </script>
-                        <?php
+    <script>
+        alert("LOGIN GAGAL\nUsername atau Password Salah");
+        top.location = "login.php";
+    </script>
+    <?php
                     }
 
                 }
@@ -127,21 +127,21 @@
                     }
                     else{
                         ?>
-                        <script>
-                            alert("LOGIN GAGAL\nUsername atau Password Salah");
-                            top.location = "login.php";
-                        </script>
-                        <?php
+        <script>
+            alert("LOGIN GAGAL\nUsername atau Password Salah");
+            top.location = "login.php";
+        </script>
+        <?php
                     }
 
                 }
                 else{
                     ?>
-                    <script>
-                        alert("LOGIN GAGAL\nUsername atau Password Salah");
-                        top.location = "login.php";
-                    </script>
-                    <?php
+            <script>
+                alert("LOGIN GAGAL\nUsername atau Password Salah");
+                top.location = "login.php";
+            </script>
+            <?php
                 }
 
             break;
@@ -179,41 +179,39 @@
                     }
 
                     if($f==0){
-                        define('ROOT', 'sdrcstudio.com/sims/hubin/bin/landing/');
+                        define('ROOT', 'http://hubin.smkn1-cmi.sch.id/bin/landing/');
                         $kode   = md5(uniqid(rand()));
 
                         $to     = $email;
                         $judul  = "Aktivasi Akun Anda";
-                        $dari   = "From: hubin.com\n";
+                        $dari   = "From: http://hubin.smkn1-cmi.sch.id/\n";
                         $dari  .= "Content-type: text/html \r\n";
 
                         $pesan  = "Klik link berikut untuk mengaktifkan akun: <br />";
                         $pesan .= "<a href='".ROOT."verifikasiakun.php?kode=".$kode."'>Verifikasi Akun</a>";
 
                         $kirim  = mail($to, $judul, $pesan, $dari)or die(mysql_error());
-
-
                         if ($kirim) {
                             mysql_query("INSERT INTO hb_du_umum (id_kel, nama_du, email_du, alamat, id_prov, id_kab, id_kec, no_kodepos, level, status, kode)
                                 VALUES('$kelurahan' ,'$nama','$email','$alamat','$provinsi', '$kabupaten', '$kecamatan',  '$kodepos', 'perusahaan', 'Belum Aktif', '$kode')")  or die ("Ups! Gagal Ditambahkan, Silahkan Coba Lagi! ".mysql_error());
 
 
                         ?>
-                            <script>
-                                alert(" Register Berhasil! Cek Email untuk Verifikasi ");
-                                top.location = 'landing/index.php';
-                            </script>
-                            <?php
+                <script>
+                    alert(" Register Berhasil! Cek Email untuk Verifikasi ");
+                    top.location = 'landing/index.php';
+                </script>
+                <?php
                         }
 
 
                     }else{
                       ?>
-                            <script>
-                                alert('Gagal Dikirim ! Email Telah Digunakan');
-                                top.location = 'landing/index.php';
-                            </script>
-                            <?php
+                    <script>
+                        alert('Gagal Dikirim ! Email Telah Digunakan');
+                        top.location = 'landing/index.php';
+                    </script>
+                    <?php
                     }
 
               break;
@@ -240,10 +238,10 @@
                         mysql_query("INSERT INTO hb_du(username,nama_du,email,bidang) VALUES('$username','$nama','$email','$bidang')");
                     }else{
                       ?>
-                    <script>
-                        alert('Username Telah Digunakan');
-                    </script>
-                    <?php
+                        <script>
+                            alert('Username Telah Digunakan');
+                        </script>
+                        <?php
                     }
               break;
 

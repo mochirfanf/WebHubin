@@ -26,16 +26,6 @@
         </div>
     </div>
 </footer>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/jquery.inview.min.js"></script>
-<script type="text/javascript" src="js/wow.min.js"></script>
-<script type="text/javascript" src="js/mousescroll.js"></script>
-<script type="text/javascript" src="js/smoothscroll.js"></script>
-<script type="text/javascript" src="js/jquery.countTo.js"></script>
-<script type="text/javascript" src="js/lightbox.min.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/ajax_daerah.js"></script>
 <!--SCRIPTS-->
 <!--Slider-in icons-->
 <script type='text/javascript'>
@@ -54,25 +44,22 @@
         });
     });
 </script>
-
-     <script>
-
+<script>
     $('#detail').on('show.bs.modal', function (event) {
-
-      var button = $(event.relatedTarget); // Button that triggered the modal
-      var recipient = button.data('id'); // Extract info from data-* attributes
-      var modal = $(this);
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var recipient = button.data('id'); // Extract info from data-* attributes
+        var modal = $(this);
         $.ajax({
-            type: 'POST',
-            url: 'detailpekerjaan.php',
-            data: 'id='+recipient,
-            dataType: 'json',
-            success: function(result) {
+            type: 'POST'
+            , url: 'detailpekerjaan.php'
+            , data: 'id=' + recipient
+            , dataType: 'json'
+            , success: function (result) {
                 modal.find("#id").val(recipient);
                 modal.find("#namadu").text(result['nama_du']);
                 var data = result['jur'];
                 var arr = data.split(',');
-                modal.find("#jurusan").html(arr[0]+"<br>"+arr[1]);
+                modal.find("#jurusan").html(arr[0] + "<br>" + arr[1]);
                 modal.find("#penanggung").text(result['penanggung_jawab']);
                 modal.find("#cp").text(result['cp']);
                 modal.find("#jenis_seleksi").text(result['seleksi']);
@@ -80,17 +67,10 @@
                 modal.find("#tanggal").text(result['tanggal_seleksi']);
                 modal.find("#gaji").text(result['gaji']);
                 modal.find("#lain").text(result['lainnya']);
-
             }
         })
-     
-
     });
-
-    
-
-    </script>
-    
+</script>
 </body>
 
 </html>

@@ -46,7 +46,7 @@
 ?>
         <!--logo and iconic logo start-->
         <div class="logo">
-            <div class='crc'></div>
+            <div class='crc' style="background-image: url('../images/uploads/img.png');")></div>
             <div class='leftcrc'><?php echo $iden['nama_guru']?><br><br>
                 <div class='text-center'>
                     <div class='levell'><?php echo strtoupper($_SESSION['level'])?></div>
@@ -82,8 +82,8 @@
             <!--sidebar nav start-->
             <ul class="nav nav-pills nav-stacked custom-nav">
             <li><a href="../landing/index.php"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
-                <li class="<?php echo "$active1"; ?> "><a href="homepage.php"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
-                <li class="menu-list <?php echo "$navactive5"; ?>"><a href=""><i class="fa fa-building-o"></i> <span> Data DU / DI</span></a>
+                <!--<li class="<?php echo "$active1"; ?> "><a href="homepage.php"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>-->
+                <li class="menu-list <?php echo "$navactive66"; ?>"><a href=""><i class="fa fa-building-o"></i> <span> Data DU / DI</span></a>
                     <ul class="sub-menu-list">
                         <li class="<?php echo "$active17"; ?> "><a href="semua_du.php"><i class="fa fa-building-o"></i> <span> Semua Data DU/DI </span></a></li>
                     </ul>
@@ -131,6 +131,8 @@
                         <li class="<?php echo "$active15"; ?> "><a href="belum_monitoring.php"> Siswa yang Belum di Monitoring </a></li>
                     </ul>
                 </li>
+                <li class="<?php echo "$active88"; ?> "><a href="bimbingan.php"><i class="fa fa-building-o"></i> <span> Bimbingan </span></a></li>
+                <li class="<?php echo "$active84"; ?> "><a href="bimbingan2.php"><i class="fa fa-building-o"></i> <span> Verifikasi Bimbingan </span></a></li>
 
                 <li class="<?php echo "$active5"; ?> "><a href=""><i class="fa fa-sign-in"></i> <span> Informasi </span></a></li>
 
@@ -155,10 +157,10 @@
         <!--notification menu start -->
         <div class="menu-right">
             <ul class="notification-menu">
-                <li>
+                <!--<li>
                     <a href="#" class="btn btn-default dropdown-toggle info-number" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
-                        <span class="badge">3</span> <!-- iNI BUAT BERAPA - BERAPA NYA -->
+                        <span class="badge">3</span> 
                     </a>
                     <div class="dropdown-menu dropdown-menu-head pull-right">
                         <h5 class="title"> 3 Pesan Masuk </h5>
@@ -233,17 +235,17 @@
                             <li class="new"><a href="">See All Notifications</a></li>
                         </ul>
                     </div>
-                </li>
+                </li>-->
                 <li>
                     <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                        <img src="../images/admin/deae.jpg" alt="" />
-                        Dea Emalia
+                        <img src="../images/uploads/img.png" alt="" />
+                        <?php echo substr($iden['nama_guru'],0,15)?>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                        <li><a href="#"><i class="fa fa-user"></i>  Profile</a></li>
-                        <li><a href="#"><i class="fa fa-cog"></i>  Settings</a></li>
-                        <li><a href="#"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                        <!--<li><a href="#"><i class="fa fa-user"></i>  Profile</a></li>
+                        <li><a href="#"><i class="fa fa-cog"></i>  Settings</a></li>-->
+                        <li><a href="../proses.php?a=logout"><i class="fa fa-sign-out"></i> Log Out</a></li>
                     </ul>
                 </li>
 
